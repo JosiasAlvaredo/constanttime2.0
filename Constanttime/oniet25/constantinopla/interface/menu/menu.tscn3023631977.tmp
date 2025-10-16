@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://elxcgcdq1x4p"]
+
+[ext_resource type="Script" uid="uid://8d5ao2qo4ey5" path="res://interface/menu/menu.gd" id="1_l7knw"]
+[ext_resource type="Texture2D" uid="uid://c3puwymg06cg8" path="res://assets/fondoInicio.png" id="2_bdyrj"]
+[ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="2_fg7ri"]
+[ext_resource type="Theme" uid="uid://md5b72htgblv" path="res://assets/temas/menu.tres" id="3_lyntm"]
+[ext_resource type="AudioStream" uid="uid://u7yh4e50vp00" path="res://assets/sonidos/lv_0_20251016144856.mp3" id="5_tvg1i"]
+[ext_resource type="AudioStream" uid="uid://1tkofvfvr0my" path="res://assets/sonidos/drop-coin-384921.mp3" id="6_rcupf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyntm"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvg1i"]
+bg_color = Color(0.87058824, 0.6901961, 0.1882353, 0.39215687)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcupf"]
+bg_color = Color(0.87058824, 0.87058824, 0.87058824, 0.43529412)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bdyrj"]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_l7knw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.38170326, 0.38170323, 0.38170323, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_bdyrj")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -176.0
+offset_right = 189.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="iniciar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_lyntm")
+theme_override_fonts/font = ExtResource("2_fg7ri")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_lyntm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tvg1i")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rcupf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bdyrj")
+text = "Iniciar"
+
+[node name="opciones" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_lyntm")
+theme_override_fonts/font = ExtResource("2_fg7ri")
+theme_override_font_sizes/font_size = 40
+text = "Opciones"
+
+[node name="salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_lyntm")
+theme_override_fonts/font = ExtResource("2_fg7ri")
+theme_override_font_sizes/font_size = 40
+text = "Salir"
+
+[node name="Lv020251016144856" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(558, -73)
+stream = ExtResource("5_tvg1i")
+autoplay = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(584, 145)
+stream = ExtResource("6_rcupf")
+
+[connection signal="pressed" from="VBoxContainer/iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="VBoxContainer/opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="VBoxContainer/salir" to="." method="_on_salir_pressed"]

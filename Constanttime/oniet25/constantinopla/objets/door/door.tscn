@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3086cgc4hb6k"]
+
+[ext_resource type="Script" uid="uid://h2xyjnhv5erb" path="res://objets/door/door.gd" id="1_78hgy"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_b2uyd"]
+[ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="3_drnxy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78hgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drnxy"]
+size = Vector2(7, 20)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_78hgy")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(12, -0.25000036)
+scale = Vector2(0.03125006, 0.13671875)
+texture = ExtResource("1_b2uyd")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_78hgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, 0)
+shape = SubResource("RectangleShape2D_drnxy")
+
+[node name="Exclamation" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(9, -2)
+texture = ExtResource("3_drnxy")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr6jsm4tnov2m"]
+
+[ext_resource type="Script" uid="uid://cucbakknmp4b" path="res://objets/chenge_node_to/chaenge_node.gd" id="1_tbde8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeixg"]
+
+[node name="change_node_to" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_tbde8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_eeixg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbahbix74qof1"]
+
+[ext_resource type="Script" uid="uid://ew5pgpf8744m" path="res://characters/player/player.gd" id="1_xxgcw"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_exd8k"]
+[ext_resource type="Texture2D" uid="uid://cmajrlck45mam" path="res://assets/hourglass-clipart-1672829725Y8J.png" id="3_exd8k"]
+[ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="4_5dc8e"]
+[ext_resource type="AudioStream" uid="uid://dasf66a2ropb0" path="res://assets/sonidos/slow-cinematic-clock-ticking-tension-2-323078.mp3" id="5_ixbpm"]
+[ext_resource type="AudioStream" uid="uid://b5xxtt6bfkwm5" path="res://assets/sonidos/pasos-steps-40285.mp3" id="6_c6leb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exd8k"]
+size = Vector2(31, 24)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxgcw"]
+radius = 12.0415945
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_exd8k"]
+radius = 13.0
+
+[node name="player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_xxgcw")
+
+[node name="interactive" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactive"]
+position = Vector2(-1.5, -2)
+shape = SubResource("RectangleShape2D_exd8k")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_exd8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_xxgcw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -20)
+zoom = Vector2(2, 2)
+
+[node name="timer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -145.0
+offset_top = 67.0
+offset_right = -105.0
+offset_bottom = 107.0
+
+[node name="Icon" type="ColorRect" parent="timer"]
+custom_minimum_size = Vector2(20, 80)
+layout_mode = 0
+offset_left = -90.0
+offset_top = 42.0
+offset_right = -70.0
+offset_bottom = 122.0
+scale = Vector2(1, 0.1)
+color = Color(0, 1, 0, 1)
+
+[node name="HourglassClipart1672829725y8j" type="Sprite2D" parent="timer"]
+position = Vector2(-91.00001, 46)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_exd8k")
+
+[node name="Timer" type="Timer" parent="timer"]
+wait_time = 60.0
+one_shot = true
+
+[node name="hit_box" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_exd8k")
+
+[node name="Exclamation" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(3, -17)
+texture = ExtResource("4_5dc8e")
+
+[node name="tiempo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ixbpm")
+volume_db = -15.145
+
+[node name="pasos" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_c6leb")
+autoplay = true
+
+[connection signal="area_entered" from="interactive" to="." method="_on_interactive_area_entered"]
+[connection signal="area_exited" from="interactive" to="." method="_on_interactive_area_exited"]
+[connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="hit_box" to="." method="_on_hit_box_body_entered"]

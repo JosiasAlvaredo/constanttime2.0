@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://yhqut24k0cu2"]
+
+[ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="1_fe8iq"]
+[ext_resource type="Script" uid="uid://c08mkir3h2oa3" path="res://interface/menu/controles.gd" id="1_l8we1"]
+
+[node name="Controles" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_l8we1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1584723, 0.15847233, 0.1584723, 1)
+
+[node name="Atras" type="Button" parent="."]
+offset_left = 44.0
+offset_top = 47.0
+offset_right = 135.0
+offset_bottom = 95.0
+theme_override_fonts/font = ExtResource("1_fe8iq")
+theme_override_font_sizes/font_size = 40
+text = "Atras"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -297.5
+offset_top = -266.0
+offset_right = 297.5
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("1_fe8iq")
+theme_override_font_sizes/normal_font_size = 40
+text = "Movimiento:
+
+Izquierda/Derecha
+A y D ó Flechas laterales
+
+Salto
+W ó Z
+
+Dash
+Ctrl ó Shift
+Interactuar:
+Barra espaciadora
+
+"
+
+[connection signal="pressed" from="Atras" to="." method="_on_atras_pressed"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://knghladjl61s"]
+
+[ext_resource type="Script" path="res://interface/menu/opciones.gd" id="1_62ub8"]
+[ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="2_hcmok"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcmok"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pmqs5"]
+bg_color = Color(0.44291073, 0.4429108, 0.4429106, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a654"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Opciones" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_62ub8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2051174, 0.20511746, 0.20511737, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.0
+offset_top = -38.5
+offset_right = 139.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="controles" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hcmok")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_hcmok")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pmqs5")
+text = "Controles
+"
+
+[node name="atras" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hcmok")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_0a654")
+text = "Atras
+"
+
+[connection signal="pressed" from="VBoxContainer/controles" to="." method="_on_controles_pressed"]
+[connection signal="pressed" from="VBoxContainer/atras" to="." method="_on_atras_pressed"]

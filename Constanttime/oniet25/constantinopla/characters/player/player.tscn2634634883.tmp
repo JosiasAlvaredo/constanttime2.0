@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbahbix74qof1"]
+
+[ext_resource type="Script" uid="uid://ew5pgpf8744m" path="res://characters/player/player.gd" id="1_xxgcw"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_exd8k"]
+[ext_resource type="Texture2D" uid="uid://cmajrlck45mam" path="res://assets/hourglass-clipart-1672829725Y8J.png" id="3_exd8k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxgcw"]
+radius = 12.0415945
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_xxgcw")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_exd8k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("CircleShape2D_xxgcw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)
+
+[node name="timer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="Sprite2D" parent="timer"]
+position = Vector2(-91, 47)
+scale = Vector2(1, 0.1)
+texture = ExtResource("2_exd8k")
+offset = Vector2(64, -10)
+
+[node name="HourglassClipart1672829725y8j" type="Sprite2D" parent="timer"]
+position = Vector2(-91.00001, 46)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_exd8k")
+
+[node name="Timer" type="Timer" parent="timer"]
+wait_time = 60.0
+one_shot = true
+autostart = true

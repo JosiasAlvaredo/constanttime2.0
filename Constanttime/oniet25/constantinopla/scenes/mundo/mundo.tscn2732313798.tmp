@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxue8xmconedu"]
+
+[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="1_6kkx2"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_efvep"]
+[ext_resource type="PackedScene" uid="uid://cn1gykrd1riwo" path="res://characters/NPC/mago_comienzo.tscn" id="3_efvep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aw57h"]
+size = Vector2(20, 18.492098)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_6kkx2")]
+position = Vector2(81, 20)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(142, 147)
+scale = Vector2(31.486973, 4.710262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 0.7539482)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_aw57h")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-1.5, -0.5)
+scale = Vector2(0.1328125, 0.1328125)
+texture = ExtResource("2_efvep")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(561, 57.000023)
+scale = Vector2(31.486973, 4.710262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(0, 0.7539482)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_aw57h")
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-1.5, -0.5)
+scale = Vector2(0.1328125, 0.1328125)
+texture = ExtResource("2_efvep")
+
+[node name="Mago_comienzo" parent="." instance=ExtResource("3_efvep")]
+position = Vector2(-69, 77)
