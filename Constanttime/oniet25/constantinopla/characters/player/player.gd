@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var death_timer=$timer/Timer
 @onready var tiempo: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var pasos: AudioStreamPlayer2D = $pasos
+@onready var sprite=$Icon
 
 var jump_speed=1000
 var speed=200
@@ -13,7 +14,8 @@ var sicking=false
 var sickjump=false
 var coyote_time=true
 var is_inmunity=false
-
+var is_facing_right = true
+var firts=true
 func _ready() -> void:
 	death_timer.start(GlobalValues.time)
 
@@ -25,18 +27,27 @@ func _physics_process(delta: float) -> void:
 	dash()
 	sick()
 	timer()
+	flip()
 	move_and_slide()
+
+
+func flip():
+	if (is_facing_right and velocity.x < 0) or (not is_facing_right and velocity.x > 0):
+		sprite.scale.x *= -1
+		is_facing_right = not is_facing_right
 
 	
 func jump(delta):
 	if (is_on_floor() or coyote_time) and Input.is_action_just_pressed("jump"):
 		velocity.y=move_toward(velocity.y,-jump_speed,jump_speed/3)
+		sprite.play("jump")
 	if Input.is_action_just_released("jump") and velocity.y<0:
 		velocity.y=0
 	
 	if not is_on_floor() and not dashing:
 		velocity.y+=GlobalValues.gravity*delta
 		coyote_timer()
+		sprite.play("dash")
 	else:
 		
 		coyote_time=true
@@ -53,11 +64,13 @@ func move():
 	if get_axis:
 		if is_on_floor():
 			pasos.stream_paused = false
+		sprite.play("move")
 		velocity.x=move_toward(velocity.x,speed*get_axis,speed/5)
 		direction=get_axis
 	elif not dashing:
 		pasos.stream_paused = true
 		velocity.x=move_toward(velocity.x,0,speed/5)
+		sprite.play("default")
 
 func dash():
 	if Input.is_action_just_pressed("dash") and can_dash:
@@ -67,15 +80,26 @@ func dash():
 			direction*=-1
 		can_dash=false
 	if dashing:
+		sprite.play("dash")
 		velocity.x=move_toward(velocity.x,speed*6*direction,speed)
 		
 func sick():
 	var get_axis=Input.get_axis("left","right")
+	
 	if is_on_wall_only() and not sickjump and get_axis:
+		pasos.stream_paused=false
+		sprite.play("wall")
+		
+		if is_facing_right and firts:
+			is_facing_right=false
+		elif firts:
+			is_facing_right=true
+		firts=false
 		velocity.y=GlobalValues.gravity/40
 		sicking=true
 		direction=get_axis
 	else:
+		firts=true
 		sicking=false
 		sickjump=false
 		
@@ -105,6 +129,7 @@ func inmunity():
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer_value(3) and not is_inmunity:
+		sprite.play("dash")
 		var time=death_timer.time_left
 		death_timer.stop()
 		if time-10<=0:
