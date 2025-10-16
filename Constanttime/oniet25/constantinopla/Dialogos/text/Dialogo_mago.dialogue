@@ -1,4 +1,12 @@
 ~ start
-Mago: ooooooo Player ayudame a arreglar este error
-Player: no
+if not GlobalValues.has_met_npc
+	Mago: Hijo mio, te he creado para arreglar mis errores
+	Constantime: ...
+	Mago: Tu mision es detener a mi Yo joven, antes de que destruya el mundo.
+	Constantime: ¿Cómo hare eso?
+	Mago: Al salir de esta cueva viajaras al pasado, y tendras que buscar una [wave]llave al fondo del bosque[/wave] para poder abrir la puerta que se encuentra arriba de la cueva.
+	set GlobalValues.has_met_npc = true
+else
+	Mago: Recuerda, sal de la cueva y ten cuidado, cada vez que mueras o se te agote el timpo, retrocederas en el tiempo y volveras a este lugar. Pero podras conservar los objetos que allas agarrado.
+	
 => END
