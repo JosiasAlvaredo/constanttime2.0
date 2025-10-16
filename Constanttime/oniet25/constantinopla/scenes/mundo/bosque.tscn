@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=30 format=4 uid="uid://cxvchy8hruiye"]
+=======
+[gd_scene load_steps=30 format=4 uid="uid://dayefqg8tv3p7"]
+>>>>>>> 3578baf2cc745ef4996e20cbfa8ad7d9efbf20a6
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_3pvrp"]
@@ -6,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/image.png" id="3_ddlmk"]
 [ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="4_pgh1i"]
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="5_lvklr"]
+[ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="7_euxkv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgh1i"]
 size = Vector2(80, 18)
@@ -274,7 +279,7 @@ tile_map_data = PackedByteArray("AAAAAAsAAQAAAAYAAAABAAsAAQABAAYAAAACAAsAAQABAAY
 [node name="change_node_to" parent="." instance=ExtResource("3_3pvrp")]
 position = Vector2(11, 309)
 scale = Vector2(1, 4)
-nodeName = "mundo"
+nodeName = "mundo2"
 
 [node name="Plataformas" type="Node" parent="."]
 
@@ -529,3 +534,8 @@ shape = SubResource("RectangleShape2D_3pvrp")
 
 [node name="player" parent="." instance=ExtResource("2_3pvrp")]
 position = Vector2(85, 333)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_euxkv")
+volume_db = -14.135
+autoplay = true
