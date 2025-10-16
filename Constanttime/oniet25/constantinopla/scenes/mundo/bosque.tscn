@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://d3euk0iohp5hu"]
+[gd_scene load_steps=30 format=4 uid="uid://dayefqg8tv3p7"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_3pvrp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/image.png" id="3_ddlmk"]
 [ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="4_pgh1i"]
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="5_lvklr"]
+[ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="7_euxkv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgh1i"]
 size = Vector2(80, 18)
@@ -145,6 +146,21 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_euxkv"]
 size = Vector2(27, 26)
 
+[sub_resource type="Animation" id="Animation_s8ca8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(536, 333)]
+}
+
 [sub_resource type="Animation" id="Animation_htf8p"]
 resource_name = "fly"
 length = 3.0
@@ -162,7 +178,13 @@ tracks/0/keys = {
 "values": [Vector2(536, 333), Vector2(659, 418), Vector2(737, 325)]
 }
 
-[sub_resource type="Animation" id="Animation_s8ca8"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yqdhd"]
+_data = {
+&"RESET": SubResource("Animation_s8ca8"),
+&"fly": SubResource("Animation_htf8p")
+}
+
+[sub_resource type="Animation" id="Animation_et63w"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -174,13 +196,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(536, 333)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yqdhd"]
-_data = {
-&"RESET": SubResource("Animation_s8ca8"),
-&"fly": SubResource("Animation_htf8p")
+"values": [Vector2(2356, 248)]
 }
 
 [sub_resource type="Animation" id="Animation_yqdhd"]
@@ -200,7 +216,13 @@ tracks/0/keys = {
 "values": [Vector2(2356, 248), Vector2(2473, 386), Vector2(2581, 305), Vector2(2467, 222), Vector2(2356, 248)]
 }
 
-[sub_resource type="Animation" id="Animation_et63w"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xgvh0"]
+_data = {
+&"RESET": SubResource("Animation_et63w"),
+&"fly": SubResource("Animation_yqdhd")
+}
+
+[sub_resource type="Animation" id="Animation_dwpfe"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -212,13 +234,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2356, 248)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xgvh0"]
-_data = {
-&"RESET": SubResource("Animation_et63w"),
-&"fly": SubResource("Animation_yqdhd")
+"values": [Vector2(2855, 417)]
 }
 
 [sub_resource type="Animation" id="Animation_xgvh0"]
@@ -236,21 +252,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(2855, 417), Vector2(2826, 312), Vector2(2834, 420), Vector2(2854, 543), Vector2(2855, 417)]
-}
-
-[sub_resource type="Animation" id="Animation_dwpfe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2855, 417)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cxve1"]
@@ -271,7 +272,7 @@ tile_map_data = PackedByteArray("AAAAAAsAAQAAAAYAAAABAAsAAQABAAYAAAACAAsAAQABAAY
 [node name="change_node_to" parent="." instance=ExtResource("3_3pvrp")]
 position = Vector2(11, 309)
 scale = Vector2(1, 4)
-nodeName = "mundo"
+nodeName = "mundo2"
 
 [node name="Plataformas" type="Node" parent="."]
 
@@ -446,3 +447,8 @@ shape = SubResource("RectangleShape2D_3pvrp")
 
 [node name="player" parent="." instance=ExtResource("2_3pvrp")]
 position = Vector2(85, 333)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_euxkv")
+volume_db = -14.135
+autoplay = true
