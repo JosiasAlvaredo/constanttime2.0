@@ -15,7 +15,7 @@ var sickjump=false
 var coyote_time=true
 var is_inmunity=false
 var is_facing_right = true
-var firts=true
+
 func _ready() -> void:
 	death_timer.start(GlobalValues.time)
 
@@ -90,16 +90,11 @@ func sick():
 		pasos.stream_paused=false
 		sprite.play("wall")
 		
-		if is_facing_right and firts:
-			is_facing_right=false
-		elif firts:
-			is_facing_right=true
-		firts=false
 		velocity.y=GlobalValues.gravity/40
 		sicking=true
 		direction=get_axis
 	else:
-		firts=true
+
 		sicking=false
 		sickjump=false
 		
@@ -145,7 +140,11 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		inmunity()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body.get_collision_layer_value(4):
+	
+	if body is TileMapLayer:
+		GlobalValues.time=60
+		get_tree().change_scene_to_file("res://scenes/mundo/mundo.tscn")
+	elif body.get_collision_layer_value(4):
 		GlobalValues.time=60
 		get_tree().change_scene_to_file("res://scenes/mundo/mundo.tscn")
 

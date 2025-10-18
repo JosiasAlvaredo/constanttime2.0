@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxpbdg01bqmir"]
+[gd_scene load_steps=6 format=3 uid="uid://bxpbdg01bqmir"]
 
 [ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/enemigo_plataformero.gd" id="1_3cvo5"]
-[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_4qbt2"]
+[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/New Piskel (5).png" id="2_3cvo5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxx27"]
+atlas = ExtResource("2_3cvo5")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3cvo5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_4qbt2")
+"texture": SubResource("AtlasTexture_vxx27")
 }],
 "loop": true,
 "name": &"default",
@@ -23,13 +27,11 @@ collision_layer = 4
 script = ExtResource("1_3cvo5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(7.6293945e-06, 0.8800006)
-scale = Vector2(0.2, 0.17)
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_3cvo5")
 
 [node name="FloorDetection" type="RayCast2D" parent="AnimatedSprite2D"]
 position = Vector2(0, -7.6293945e-06)
-scale = Vector2(4.9999995, 5.8823524)
 target_position = Vector2(0, 20.000004)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

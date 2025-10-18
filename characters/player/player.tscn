@@ -7,15 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://b5xxtt6bfkwm5" path="res://assets/sonidos/pasos-steps-40285.mp3" id="6_c6leb"]
 [ext_resource type="Texture2D" uid="uid://k4x27ndt01bu" path="res://assets/constime.png" id="7_dirf7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_exd8k"]
-size = Vector2(31, 24)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xxgcw"]
-radius = 7.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_exd8k"]
-radius = 11.045361
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_idpv6"]
 atlas = ExtResource("7_dirf7")
 region = Rect2(114, 220, 38, 55)
@@ -149,21 +140,36 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exd8k"]
+size = Vector2(41, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6leb"]
+size = Vector2(22, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dirf7"]
+size = Vector2(26, 35)
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_xxgcw")
+
+[node name="Icon" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -2.3841858e-07)
+sprite_frames = SubResource("SpriteFrames_lv4bx")
+animation = &"wall"
+autoplay = "default"
+frame_progress = 0.46957767
 
 [node name="interactive" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interactive"]
-position = Vector2(-1.5, -2)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_exd8k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2)
-shape = SubResource("CircleShape2D_xxgcw")
+shape = SubResource("RectangleShape2D_c6leb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -20)
@@ -201,8 +207,8 @@ collision_layer = 2
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
-position = Vector2(-1, -2)
-shape = SubResource("CircleShape2D_exd8k")
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_dirf7")
 
 [node name="Exclamation" type="Sprite2D" parent="."]
 visible = false
@@ -216,13 +222,6 @@ volume_db = -15.145
 [node name="pasos" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_c6leb")
 autoplay = true
-
-[node name="Icon" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2, -2.3841858e-07)
-scale = Vector2(0.618421, 0.5954546)
-sprite_frames = SubResource("SpriteFrames_lv4bx")
-animation = &"dash"
-autoplay = "default"
 
 [connection signal="area_entered" from="interactive" to="." method="_on_interactive_area_entered"]
 [connection signal="area_exited" from="interactive" to="." method="_on_interactive_area_exited"]
