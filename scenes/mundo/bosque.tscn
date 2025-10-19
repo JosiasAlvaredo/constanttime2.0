@@ -1,9 +1,9 @@
 [gd_scene load_steps=32 format=4 uid="uid://d3euk0iohp5hu"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/tiles/tile_map.tscn" id="1_4076m"]
-[ext_resource type="Texture2D" uid="uid://c3puwymg06cg8" path="res://assets/fondoInicio.png" id="1_diag3"]
-[ext_resource type="Script" uid="uid://kacti5n4cpxi" path="res://scenes/mundo/fondo_inicio.gd" id="2_0i6q2"]
+[ext_resource type="Texture2D" uid="uid://bsgfeauiidfhh" path="res://assets/forest_ground.png" id="1_hsv7o"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_3pvrp"]
+[ext_resource type="Texture2D" uid="uid://h878ib1eo730" path="res://assets/three.png" id="2_diag3"]
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/chenge_node_to/chaenge_node.tscn" id="3_3pvrp"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/image.png" id="3_ddlmk"]
 [ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="4_pgh1i"]
@@ -241,11 +241,132 @@ size = Vector2(4015.5, 20)
 
 [node name="Cueva" type="Node2D"]
 
-[node name="FondoInicio" type="Sprite2D" parent="."]
-position = Vector2(84.49999, 315)
-scale = Vector2(0.29947913, 0.29999998)
-texture = ExtResource("1_diag3")
-script = ExtResource("2_0i6q2")
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
+
+[node name="Parallax2D4" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(-1064, -21)
+repeat_size = Vector2(600, 0)
+repeat_times = 20
+follow_viewport = false
+
+[node name="Three" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(358, 383)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="Three2" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(786, 399)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="Three3" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(1183, 360)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="Three4" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(229, 370)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="Three5" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(657, 386)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="Three6" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(1054, 347)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="Three7" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(685, 386)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="Three8" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(1113, 402)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="Three9" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.37413922, 0.37413928, 0.37413913, 1)
+position = Vector2(1510, 363)
+scale = Vector2(3, 3)
+texture = ExtResource("2_diag3")
+
+[node name="ForestGround" type="Sprite2D" parent="ParallaxBackground/Parallax2D4"]
+modulate = Color(0.33660764, 0.3366076, 0.3366076, 1)
+position = Vector2(410, 458)
+scale = Vector2(10, 10)
+texture = ExtResource("1_hsv7o")
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(-1064, -21)
+repeat_size = Vector2(900, 0)
+repeat_times = 20
+follow_viewport = false
+
+[node name="Three" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+modulate = Color(0.69135684, 0.6913568, 0.6913567, 1)
+position = Vector2(198, 355.99997)
+scale = Vector2(4, 4)
+texture = ExtResource("2_diag3")
+
+[node name="Three2" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+modulate = Color(0.69135684, 0.6913568, 0.6913567, 1)
+position = Vector2(626, 371.99997)
+scale = Vector2(4, 4)
+texture = ExtResource("2_diag3")
+
+[node name="Three3" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+modulate = Color(0.69135684, 0.6913568, 0.6913567, 1)
+position = Vector2(1023, 333)
+scale = Vector2(4, 4)
+texture = ExtResource("2_diag3")
+
+[node name="ForestGround" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+modulate = Color(0.5370113, 0.5370113, 0.5370113, 1)
+position = Vector2(410, 458)
+scale = Vector2(10, 10)
+texture = ExtResource("1_hsv7o")
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(1200, 0)
+repeat_times = 20
+follow_viewport = false
+
+[node name="Three" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+position = Vector2(196, 304)
+scale = Vector2(5, 5)
+texture = ExtResource("2_diag3")
+
+[node name="Three2" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+position = Vector2(624, 320)
+scale = Vector2(5, 5)
+texture = ExtResource("2_diag3")
+
+[node name="Three3" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+position = Vector2(1021, 281.00003)
+scale = Vector2(5, 5)
+texture = ExtResource("2_diag3")
+
+[node name="ForestGround" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+position = Vector2(410, 458)
+scale = Vector2(10, 10)
+texture = ExtResource("1_hsv7o")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_4076m")]
 position = Vector2(3, -2)

@@ -25,6 +25,11 @@ GameManager="*res://autoloads/game_manager.gd"
 
 runtime/balloon_path="res://Dialogos/balloon.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
