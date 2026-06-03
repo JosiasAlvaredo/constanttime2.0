@@ -19,6 +19,12 @@ class_name Player
 
 @onready var Interactive_Box_collition: CollisionShape2D = $AnimatedSprite2D/Interactive_Box/CollisionShape2D
 
+@onready var time_bar=$timer/Time_bar
+@onready var death_timer: Timer = $timer/Timer
+
+
+
+var is_inmunity=false
 var hand_using=""
 
 var gravity:float= ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -26,7 +32,12 @@ var gravity:float= ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction=1
 var direction_y=0
 
+func _ready() -> void:
+	death_timer.start(GlobalValues.time)
+	
+
 func _physics_process(delta: float) -> void:
+	timer()
 	direction=-Input.get_axis("Right","Left")
 	direction_y=-Input.get_axis("Up","Crouch")
 	velocity.y+= gravity*delta
@@ -34,6 +45,41 @@ func _physics_process(delta: float) -> void:
 	bullet.target_position=get_local_mouse_position()
 	
 	move_and_slide()
-
-
 	
+func FLIP():
+	animated_sprite_2d.scale.x=abs(animated_sprite_2d.scale.x)*-direction
+
+func dead():
+	GlobalValues.time=60
+	get_tree().change_scene_to_file("res://scenes/mundo/mundo.tscn")
+
+
+func timer():
+	time_bar.size.x=death_timer.time_left
+	GlobalValues.time=death_timer.time_left
+	if death_timer.time_left == 0:
+		dead()
+func inmunity():
+	await get_tree().create_timer(1).timeout
+	is_inmunity=false
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+
+	if area.get_collision_layer_value(3) and not is_inmunity:
+		var time=death_timer.time_left
+		death_timer.stop()
+		if time-10<=0:
+			dead()
+		else:
+			death_timer.start(time-10)
+		
+		var enemy=area.get_parent()
+		is_inmunity=true
+		inmunity()
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body is TileMapLayer:
+		dead()
+	elif body.get_collision_layer_value(4):
+		dead()
+		

@@ -4,7 +4,7 @@ var direction
 func on_physics_process(delta: float) -> void:
 	direction=controlled_node.direction
 	if direction!=0: 
-		controlled_node.animated_sprite_2d.scale.x=abs(controlled_node.animated_sprite_2d.scale.x)*-direction
+		controlled_node.FLIP()
 	
 	controlled_node.animated_sprite_2d.play("Run")
 	
