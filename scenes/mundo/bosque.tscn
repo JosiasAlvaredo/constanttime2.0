@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_3pvrp"]
 [ext_resource type="Texture2D" uid="uid://h878ib1eo730" path="res://assets/three.png" id="2_diag3"]
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/chenge_node_to/chaenge_node.tscn" id="3_3pvrp"]
-[ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/image.png" id="3_ddlmk"]
+[ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="3_ddlmk"]
 [ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="4_pgh1i"]
 [ext_resource type="PackedScene" uid="uid://bi5ds31rc0pj3" path="res://characters/Enemigos/enemigo_volador.tscn" id="5_euxkv"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="7_euxkv"]
