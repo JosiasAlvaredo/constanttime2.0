@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://kdplfgigr5o6"]
+
+[ext_resource type="Script" uid="uid://brx7naiteghpp" path="res://Objets/Characters/States/climb.gd" id="1_fgb8c"]
+
+[node name="Climb" type="Node" unique_id=29894792]
+script = ExtResource("1_fgb8c")

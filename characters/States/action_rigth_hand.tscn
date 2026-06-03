@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c2ax1oj1xg2s4"]
+
+[ext_resource type="Script" uid="uid://dvhxavf6iqlgq" path="res://Objets/Characters/States/action_rigth_hand.gd" id="1_03xug"]
+
+[node name="Action_Rigth_Hand" type="Node" unique_id=824303545]
+script = ExtResource("1_03xug")

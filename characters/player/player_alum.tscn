@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://6oreej70nbut"]
+
+[ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://Objets/Characters/Player/player.gd" id="1_uwt48"]
+[ext_resource type="Texture2D" uid="uid://c2eguhismeu3j" path="res://Assets/characters/Nueva carpeta/alum/Mati alum climg.png" id="2_uwt48"]
+[ext_resource type="Texture2D" uid="uid://cdryi068cuq6s" path="res://Assets/characters/Nueva carpeta/alum/Mati alum Crouched.png" id="3_j3rqm"]
+[ext_resource type="Texture2D" uid="uid://b5uqkj0cexiq2" path="res://Assets/characters/Nueva carpeta/alum/Mati alum Idle.png" id="4_xlrwa"]
+[ext_resource type="Texture2D" uid="uid://fk0qepxcithk" path="res://Assets/characters/Nueva carpeta/alum/Mati alum Jump.png" id="5_mnnt0"]
+[ext_resource type="Texture2D" uid="uid://ed7q4sxxm0e7" path="res://Assets/characters/Nueva carpeta/alum/Mati alum Run.png" id="6_ackw2"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://Objets/Characters/States/state_machine.tscn" id="7_66kat"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://Objets/Characters/States/idle.tscn" id="8_ypwfb"]
+[ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://Objets/Characters/States/move.tscn" id="9_2oe0b"]
+[ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://Objets/Characters/States/fall.tscn" id="10_7q3u2"]
+[ext_resource type="PackedScene" uid="uid://djikhfs38ii0w" path="res://Objets/Characters/States/jump.tscn" id="11_lsd12"]
+[ext_resource type="PackedScene" uid="uid://o5y7bwwxch8g" path="res://Objets/Characters/States/crouched.tscn" id="12_c46vy"]
+[ext_resource type="PackedScene" uid="uid://dp6i4nd3sbtyb" path="res://Objets/Characters/States/roll.tscn" id="13_hrnw0"]
+[ext_resource type="PackedScene" uid="uid://nbdce5ors7ng" path="res://Objets/Characters/States/action_left_hand.tscn" id="14_f71x5"]
+[ext_resource type="PackedScene" uid="uid://c2ax1oj1xg2s4" path="res://Objets/Characters/States/action_rigth_hand.tscn" id="15_3frt0"]
+[ext_resource type="PackedScene" uid="uid://kdplfgigr5o6" path="res://Objets/Characters/States/climb.tscn" id="16_jlaib"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8s5q"]
+atlas = ExtResource("2_uwt48")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66kat"]
+atlas = ExtResource("3_j3rqm")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypwfb"]
+atlas = ExtResource("4_xlrwa")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oe0b"]
+atlas = ExtResource("4_xlrwa")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q3u2"]
+atlas = ExtResource("4_xlrwa")
+region = Rect2(0, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsd12"]
+atlas = ExtResource("5_mnnt0")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c46vy"]
+atlas = ExtResource("6_ackw2")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrnw0"]
+atlas = ExtResource("6_ackw2")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f71x5"]
+atlas = ExtResource("6_ackw2")
+region = Rect2(0, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3frt0"]
+atlas = ExtResource("6_ackw2")
+region = Rect2(0, 150, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qho3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8s5q")
+}],
+"loop": true,
+"name": &"Climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66kat")
+}],
+"loop": true,
+"name": &"Crouched",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypwfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oe0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q3u2")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsd12")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c46vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrnw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f71x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3frt0")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lxq0"]
+size = Vector2(27, 30)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgn4q"]
+radius = 3.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1lxq0"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_waxq6"]
+
+[node name="Player" type="CharacterBody2D" unique_id=294110880]
+collision_layer = 2
+collision_mask = 257
+script = ExtResource("1_uwt48")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1086233672]
+sprite_frames = SubResource("SpriteFrames_qho3q")
+animation = &"Climb"
+autoplay = "Idle"
+
+[node name="Body_up" type="RayCast2D" parent="AnimatedSprite2D" unique_id=676597199]
+visible = false
+position = Vector2(0, -8)
+target_position = Vector2(-9, 0)
+
+[node name="Body_Down" type="RayCast2D" parent="AnimatedSprite2D" unique_id=372911850]
+visible = false
+position = Vector2(0, 11)
+target_position = Vector2(-9, 0)
+
+[node name="Mele" type="Area2D" parent="AnimatedSprite2D" unique_id=971655938]
+collision_layer = 32
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele" unique_id=101775075]
+position = Vector2(-13.5, 0)
+shape = SubResource("RectangleShape2D_1lxq0")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Interactive_Box" type="Area2D" parent="AnimatedSprite2D" unique_id=1044144888]
+collision_layer = 128
+collision_mask = 68
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Interactive_Box" unique_id=1636351570]
+position = Vector2(-13.5, 0)
+shape = SubResource("RectangleShape2D_1lxq0")
+disabled = true
+debug_color = Color(2.4065375e-08, 0.5417988, 0.17373273, 0.41960785)
+
+[node name="Bullet" type="RayCast2D" parent="." unique_id=1720135397]
+target_position = Vector2(-59, 0)
+collision_mask = 13
+
+[node name="Stand_up_collition" type="CollisionShape2D" parent="." unique_id=183105663]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_cgn4q")
+
+[node name="Crouched_collition" type="CollisionShape2D" parent="." unique_id=439786734]
+visible = false
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_1lxq0")
+debug_color = Color(0, 0.65061754, 0.10042784, 0.41960785)
+
+[node name="Hit_box" type="Area2D" parent="." unique_id=664580900]
+collision_layer = 8
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_box" unique_id=1744116180]
+visible = false
+shape = SubResource("CapsuleShape2D_waxq6")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("7_66kat")]
+default_state = NodePath("Idle")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("8_ypwfb")]
+
+[node name="Move" parent="State_Machine" unique_id=453338450 instance=ExtResource("9_2oe0b")]
+
+[node name="Fall" parent="State_Machine" unique_id=1275433795 instance=ExtResource("10_7q3u2")]
+
+[node name="Jump" parent="State_Machine" unique_id=1722413970 instance=ExtResource("11_lsd12")]
+
+[node name="Crouched" parent="State_Machine" unique_id=1474639818 instance=ExtResource("12_c46vy")]
+
+[node name="Roll" parent="State_Machine" unique_id=1298254877 instance=ExtResource("13_hrnw0")]
+
+[node name="Action_Left_Hand" parent="State_Machine" unique_id=520815838 instance=ExtResource("14_f71x5")]
+
+[node name="Action_Rigth_Hand" parent="State_Machine" unique_id=824303545 instance=ExtResource("15_3frt0")]
+
+[node name="Climb" parent="State_Machine" unique_id=29894792 instance=ExtResource("16_jlaib")]

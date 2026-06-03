@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dkqv2s6wv6vun"]
+
+[ext_resource type="Script" uid="uid://dyg7kte3jkuoh" path="res://Objets/Items/rock.gd" id="1_ltww1"]
+
+[node name="Rock" type="Node" unique_id=1287587268]
+script = ExtResource("1_ltww1")

@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://bndddn57u7ca5"]
+
+[ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://Objets/Characters/Player/player.gd" id="1_5y5mg"]
+[ext_resource type="Texture2D" uid="uid://0acceiok4ctr" path="res://Assets/characters/Nueva carpeta/Mati Crouched.png" id="2_1lxq0"]
+[ext_resource type="Texture2D" uid="uid://denoj1e4ky38" path="res://Assets/characters/Nueva carpeta/Mati Idle.png" id="2_blik6"]
+[ext_resource type="Texture2D" uid="uid://b63q76q86f02k" path="res://Assets/characters/Nueva carpeta/Mati Run.png" id="3_artkk"]
+[ext_resource type="Texture2D" uid="uid://cfsgy56q73gyt" path="res://Assets/characters/Nueva carpeta/Mati Jump.png" id="3_gwa4w"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://Objets/Characters/States/state_machine.tscn" id="3_yklsb"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://Objets/Characters/States/idle.tscn" id="4_d4e2f"]
+[ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://Objets/Characters/States/move.tscn" id="5_cdgnk"]
+[ext_resource type="PackedScene" uid="uid://djikhfs38ii0w" path="res://Objets/Characters/States/jump.tscn" id="7_artkk"]
+[ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://Objets/Characters/States/fall.tscn" id="7_tbqdr"]
+[ext_resource type="PackedScene" uid="uid://o5y7bwwxch8g" path="res://Objets/Characters/States/crouched.tscn" id="8_tbqdr"]
+[ext_resource type="PackedScene" uid="uid://dp6i4nd3sbtyb" path="res://Objets/Characters/States/roll.tscn" id="10_1lxq0"]
+[ext_resource type="PackedScene" uid="uid://nbdce5ors7ng" path="res://Objets/Characters/States/action_left_hand.tscn" id="11_blik6"]
+[ext_resource type="PackedScene" uid="uid://c2ax1oj1xg2s4" path="res://Objets/Characters/States/action_rigth_hand.tscn" id="12_artkk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wk3j"]
+atlas = ExtResource("2_1lxq0")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_artkk"]
+atlas = ExtResource("2_blik6")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbqdr"]
+atlas = ExtResource("2_blik6")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwa4w"]
+atlas = ExtResource("2_blik6")
+region = Rect2(0, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hs4c"]
+atlas = ExtResource("3_gwa4w")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lxq0"]
+atlas = ExtResource("3_artkk")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waxq6"]
+atlas = ExtResource("3_artkk")
+region = Rect2(0, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15vyk"]
+atlas = ExtResource("3_artkk")
+region = Rect2(0, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwsfn"]
+atlas = ExtResource("3_artkk")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qho3q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wk3j")
+}],
+"loop": true,
+"name": &"Crouched",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbqdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwa4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbqdr")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hs4c")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lxq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waxq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15vyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwsfn")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgn4q"]
+radius = 3.0
+height = 26.0
+
+[node name="Player" type="CharacterBody2D" unique_id=294110880]
+script = ExtResource("1_5y5mg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1086233672]
+sprite_frames = SubResource("SpriteFrames_qho3q")
+animation = &"Crouched"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=183105663]
+visible = false
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_cgn4q")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_yklsb")]
+default_state = NodePath("Idle")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_d4e2f")]
+
+[node name="Move" parent="State_Machine" unique_id=453338450 instance=ExtResource("5_cdgnk")]
+
+[node name="Fall" parent="State_Machine" unique_id=1275433795 instance=ExtResource("7_tbqdr")]
+
+[node name="Jump" parent="State_Machine" unique_id=1722413970 instance=ExtResource("7_artkk")]
+
+[node name="Crouched" parent="State_Machine" unique_id=1474639818 instance=ExtResource("8_tbqdr")]
+
+[node name="Roll" parent="State_Machine" unique_id=1298254877 instance=ExtResource("10_1lxq0")]
+
+[node name="Action_Left_Hand" parent="State_Machine" unique_id=520815838 instance=ExtResource("11_blik6")]
+
+[node name="Action_Rigth_Hand" parent="State_Machine" unique_id=824303545 instance=ExtResource("12_artkk")]

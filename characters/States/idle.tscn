@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bg8rpo725dog0"]
+
+[ext_resource type="Script" uid="uid://dpxpju1tgjqfw" path="res://Objets/Characters/States/idle.gd" id="1_fnntf"]
+
+[node name="Idle" type="Node" unique_id=137508918]
+script = ExtResource("1_fnntf")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dkmu7i15llj3v"]
+
+[ext_resource type="Script" uid="uid://cvo2abymop2rb" path="res://Objets/Characters/States/fall.gd" id="1_hv640"]
+
+[node name="Fall" type="Node" unique_id=1275433795]
+script = ExtResource("1_hv640")

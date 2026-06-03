@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://do85pg3dcvjr7"]
+
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://Objets/Items/Itema_base.gd" id="1_mi44n"]
+
+[node name="Steal_bar" type="Node" unique_id=947535543]
+script = ExtResource("1_mi44n")

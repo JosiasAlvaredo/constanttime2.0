@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://djikhfs38ii0w"]
+
+[ext_resource type="Script" uid="uid://b6d3vjiea672f" path="res://Objets/Characters/States/jump.gd" id="1_4f0xk"]
+
+[node name="Jump" type="Node" unique_id=1722413970]
+script = ExtResource("1_4f0xk")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dp6i4nd3sbtyb"]
+
+[ext_resource type="Script" uid="uid://d1yqlik27w1wb" path="res://Objets/Characters/States/roll.gd" id="1_65scu"]
+
+[node name="Roll" type="Node" unique_id=1298254877]
+script = ExtResource("1_65scu")
