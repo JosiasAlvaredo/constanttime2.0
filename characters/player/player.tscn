@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dbahbix74qof1"]
+[gd_scene format=3 uid="uid://bok7xc6alf50f"]
 
 [ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://characters/player/player.gd" id="1_5y5mg"]
 [ext_resource type="Texture2D" uid="uid://k4x27ndt01bu" path="res://assets/constime.png" id="2_on558"]
@@ -182,8 +182,21 @@ height = 14.0
 
 [node name="Player" type="CharacterBody2D" unique_id=294110880]
 collision_layer = 2
-collision_mask = 257
 script = ExtResource("1_5y5mg")
+
+[node name="timer" type="Node2D" parent="." unique_id=711565415]
+
+[node name="Timer" type="Timer" parent="timer" unique_id=311554083]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Time_bar" type="ColorRect" parent="timer" unique_id=1403899849]
+offset_left = -209.0
+offset_top = 86.0
+offset_right = -108.0
+offset_bottom = 98.0
+color = Color(0.36705732, 0.62493634, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1086233672]
 sprite_frames = SubResource("SpriteFrames_qho3q")
@@ -236,8 +249,8 @@ shape = SubResource("CapsuleShape2D_1lxq0")
 debug_color = Color(0, 0.65061754, 0.10042784, 0.41960785)
 
 [node name="Hit_box" type="Area2D" parent="." unique_id=664580900]
-collision_layer = 8
-collision_mask = 32
+collision_layer = 2
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_box" unique_id=1744116180]
 visible = false
@@ -263,3 +276,6 @@ default_state = NodePath("Idle")
 [node name="Action_Rigth_Hand" parent="State_Machine" unique_id=824303545 instance=ExtResource("12_artkk")]
 
 [node name="Climb" parent="State_Machine" unique_id=29894792 instance=ExtResource("16_1lxq0")]
+
+[connection signal="area_entered" from="Hit_box" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="Hit_box" to="." method="_on_hit_box_body_entered"]

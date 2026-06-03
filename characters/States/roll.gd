@@ -6,7 +6,7 @@ func start():
 	controlled_node.velocity.x=direction*controlled_node.roll_velocity
 	controlled_node.stand_up_collition.disabled=true
 	if direction!=0:
-		controlled_node.animated_sprite_2d.scale.x=abs(controlled_node.animated_sprite_2d.scale.x)*-direction
+		controlled_node.FLIP()
 	await get_tree().create_timer(0.2).timeout
 	controlled_node.velocity.x=0
 
