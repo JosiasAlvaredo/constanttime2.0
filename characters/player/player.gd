@@ -3,6 +3,7 @@ class_name Player
 
 @onready var body_up: RayCast2D = $AnimatedSprite2D/Body_up
 @onready var body_down: RayCast2D = $AnimatedSprite2D/Body_Down
+@onready var coyote_ray: RayCast2D = $AnimatedSprite2D/coyote_ray
 
 @onready var stand_up_collition: CollisionShape2D = $Stand_up_collition
 @onready var crouched_collition: CollisionShape2D = $Crouched_collition
@@ -40,8 +41,10 @@ func _physics_process(delta: float) -> void:
 	timer()
 	direction=-Input.get_axis("Right","Left")
 	direction_y=-Input.get_axis("Up","Crouch")
-	velocity.y+= gravity*delta
 	
+	velocity.y+= gravity*delta
+		
+		
 	bullet.target_position=get_local_mouse_position()
 	
 	move_and_slide()
@@ -59,6 +62,7 @@ func timer():
 	GlobalValues.time=death_timer.time_left
 	if death_timer.time_left == 0:
 		dead()
+		
 func inmunity():
 	await get_tree().create_timer(1).timeout
 	is_inmunity=false
@@ -83,3 +87,6 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 	elif body.get_collision_layer_value(4):
 		dead()
 		
+func coyote_timer():
+	await get_tree().create_timer(0.2).timeout
+	return true

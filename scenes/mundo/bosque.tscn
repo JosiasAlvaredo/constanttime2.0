@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="Texture2D" uid="uid://bsgfeauiidfhh" path="res://assets/forest_ground.png" id="1_hsv7o"]
-[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_3pvrp"]
+[ext_resource type="PackedScene" uid="uid://bok7xc6alf50f" path="res://characters/player/player.tscn" id="2_3pvrp"]
 [ext_resource type="Texture2D" uid="uid://h878ib1eo730" path="res://assets/three.png" id="2_diag3"]
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/chenge_node_to/chaenge_node.tscn" id="3_3pvrp"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/image.png" id="3_ddlmk"]
@@ -489,8 +489,8 @@ autoplay = &"fly"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 0)
-collision_layer = 9
-collision_mask = 9
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=408755710]
 position = Vector2(1886.25, 653)
