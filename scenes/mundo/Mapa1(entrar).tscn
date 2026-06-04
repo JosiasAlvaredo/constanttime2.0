@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://c5flfiobqy1eh"]
+[gd_scene load_steps=0 format=4 uid="uid://c5flfiobqy1eh"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/tiles/tile_map.tscn" id="1_x66nm"]
 [ext_resource type="PackedScene" uid="uid://cn1gykrd1riwo" path="res://characters/NPC/mago_comienzo.tscn" id="2_3vxfe"]

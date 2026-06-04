@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://knghladjl61s"]
+[gd_scene load_steps=7 format=3 uid="uid://knghladjl61s"]
 
-[ext_resource type="Script" path="res://interface/menu/opciones.gd" id="1_62ub8"]
+[ext_resource type="Script" uid="uid://ddknjytesvwnc" path="res://interface/menu/opciones.gd" id="1_62ub8"]
 [ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="2_hcmok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcmok"]
@@ -12,11 +12,16 @@ bg_color = Color(0.44291073, 0.4429108, 0.4429106, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a654"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="Opciones" type="CanvasLayer"]
+[sub_resource type="LabelSettings" id="LabelSettings_hcmok"]
+font = ExtResource("2_hcmok")
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="Opciones" type="CanvasLayer" unique_id=1285989948]
 process_mode = 3
 script = ExtResource("1_62ub8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1369277412]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2051174, 0.20511746, 0.20511737, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2100824599]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 
-[node name="controles" type="Button" parent="VBoxContainer"]
+[node name="controles" type="Button" parent="VBoxContainer" unique_id=1393017250]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hcmok")
 theme_override_font_sizes/font_size = 40
@@ -47,7 +52,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pmqs5")
 text = "Controles
 "
 
-[node name="atras" type="Button" parent="VBoxContainer"]
+[node name="atras" type="Button" parent="VBoxContainer" unique_id=1039401151]
 process_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_hcmok")
@@ -56,5 +61,30 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_0a654")
 text = "Atras
 "
 
+[node name="CheckBox" type="CheckBox" parent="." unique_id=1427847191]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = 54.0
+offset_right = -111.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.52, 2.52)
+
+[node name="Label" type="Label" parent="CheckBox" unique_id=1174042190]
+layout_mode = 0
+offset_left = 25.39683
+offset_top = 4.7619066
+offset_right = 110.39683
+offset_bottom = 27.761906
+scale = Vector2(1.000001, 1.000001)
+text = "Full Screen"
+label_settings = SubResource("LabelSettings_hcmok")
+
 [connection signal="pressed" from="VBoxContainer/controles" to="." method="_on_controles_pressed"]
 [connection signal="pressed" from="VBoxContainer/atras" to="." method="_on_atras_pressed"]
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]
