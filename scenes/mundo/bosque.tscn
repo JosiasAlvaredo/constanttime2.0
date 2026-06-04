@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="4_pgh1i"]
 [ext_resource type="PackedScene" uid="uid://bi5ds31rc0pj3" path="res://characters/Enemigos/enemigo_volador.tscn" id="5_euxkv"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="7_euxkv"]
-[ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/key/key.tscn" id="8_gihg5"]
+[ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="8_gihg5"]
+[ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/objets/door/door.tscn" id="11_0i6q2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgh1i"]
 size = Vector2(80, 18)
@@ -375,7 +376,7 @@ tile_map_data = PackedByteArray("AAAAAAsAAQAAAAYAAAABAAsAAQABAAYAAAACAAsAAQABAAY
 [node name="change_node_to" parent="." unique_id=1413512321 instance=ExtResource("3_3pvrp")]
 position = Vector2(14, 310)
 scale = Vector2(1, 4)
-nodeName = "Mapa1(entrar)"
+nodeName = "mundo2"
 
 [node name="Plataformas" type="Node" parent="." unique_id=1060594419]
 
@@ -509,3 +510,11 @@ autoplay = true
 
 [node name="key" parent="." unique_id=2056058475 instance=ExtResource("8_gihg5")]
 position = Vector2(3357, 389)
+zona = "Bosque"
+_name = "LLave_del_bosque"
+
+[node name="Puerta_del_bosque" parent="." unique_id=54625952 instance=ExtResource("11_0i6q2")]
+position = Vector2(362, 434)
+zona = "Bosque"
+_name = "Puerta_del_bosque"
+key_name = "LLave_del_bosque"

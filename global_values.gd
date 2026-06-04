@@ -9,7 +9,7 @@ var has_met_npc = false
 var hechizo=false
 
 #Bosque
-var bosque={
-	"Llave_del_bosque":false,
+var Bosque={
+	"LLave_del_bosque":true,
 	"Puerta_del_bosque":false
 }
