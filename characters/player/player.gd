@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func FLIP():
-	animated_sprite_2d.scale.x=abs(animated_sprite_2d.scale.x)*-direction
+	animated_sprite_2d.scale.x=abs(animated_sprite_2d.scale.x)*direction
 
 func dead():
 	GlobalValues.time=60

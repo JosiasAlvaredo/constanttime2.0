@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bok7xc6alf50f"]
 
 [ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://characters/player/player.gd" id="1_5y5mg"]
-[ext_resource type="Texture2D" uid="uid://k4x27ndt01bu" path="res://assets/constime.png" id="2_on558"]
+[ext_resource type="Texture2D" uid="uid://d08fvkvmnbfsf" path="res://assets/constime.png" id="2_on558"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_yklsb"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_d4e2f"]
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_cdgnk"]
@@ -204,18 +204,12 @@ animation = &"Climb"
 autoplay = "Idle"
 
 [node name="Body_up" type="RayCast2D" parent="AnimatedSprite2D" unique_id=676597199]
-visible = false
 position = Vector2(0, -8)
-target_position = Vector2(-11, 0)
+target_position = Vector2(11, 0)
 
 [node name="Body_Down" type="RayCast2D" parent="AnimatedSprite2D" unique_id=372911850]
-visible = false
 position = Vector2(0, 11)
-target_position = Vector2(-10, 0)
-
-[node name="coyote_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1017857805]
-position = Vector2(16, 1)
-target_position = Vector2(0, 16)
+target_position = Vector2(11, 0)
 
 [node name="Mele" type="Area2D" parent="AnimatedSprite2D" unique_id=971655938]
 visible = false
