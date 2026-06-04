@@ -33,7 +33,7 @@ func on_physics_process(delta: float) -> void:
 		corner_down=false
 		
 	if corner_up and not controlled_node.body_up.is_colliding() and not controlled_node.body_down.is_colliding():
-		controlled_node.velocity.x=direction_y*-init_direction_x*controlled_node.Climb_velocity/5
+		controlled_node.velocity.x=direction_y*init_direction_x*controlled_node.Climb_velocity/5
 		if controlled_node.is_on_floor():
 			state_machine.change_to("Idle")
 	elif  corner_down and not controlled_node.body_up.is_colliding() and not controlled_node.body_down.is_colliding():
@@ -46,7 +46,7 @@ func on_physics_process(delta: float) -> void:
 		
 func on_input(event: InputEvent) -> void:
 	
-	var direction_x=-Input.get_axis("Right","Left")
+	var direction_x=Input.get_axis("Right","Left")
 	
 	if Input.is_action_pressed("Jump"):
 		state_machine.change_to("Jump")
