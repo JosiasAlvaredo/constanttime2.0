@@ -54,7 +54,7 @@ func FLIP():
 
 func dead():
 	GlobalValues.time=60
-	get_tree().change_scene_to_file("res://scenes/mundo/mundo.tscn")
+	get_tree().change_scene_to_file("res://scenes/mundo/Mapa1.tscn")
 
 
 func timer():
