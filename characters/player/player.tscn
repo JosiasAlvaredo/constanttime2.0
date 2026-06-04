@@ -203,6 +203,11 @@ sprite_frames = SubResource("SpriteFrames_qho3q")
 animation = &"Climb"
 autoplay = "Idle"
 
+[node name="Crouch_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=773458601]
+position = Vector2(1, -6)
+scale = Vector2(2.3200002, 1)
+target_position = Vector2(0, -17)
+
 [node name="Body_up" type="RayCast2D" parent="AnimatedSprite2D" unique_id=676597199]
 position = Vector2(0, -8)
 target_position = Vector2(11, 0)

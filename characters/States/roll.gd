@@ -21,7 +21,10 @@ func on_physics_process(delta: float) -> void:
 			state_machine.change_to("Crouched")
 		else:
 			controlled_node.stand_up_collition.disabled=false
-			state_machine.change_to("Move")
+			if not controlled_node.crouch_ray.is_colliding():
+				state_machine.change_to("Move")
+			else:
+				state_machine.change_to("Roll")
 
 
 		

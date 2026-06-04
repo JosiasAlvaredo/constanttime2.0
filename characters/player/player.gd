@@ -3,7 +3,7 @@ class_name Player
 
 @onready var body_up: RayCast2D = $AnimatedSprite2D/Body_up
 @onready var body_down: RayCast2D = $AnimatedSprite2D/Body_Down
-@onready var coyote_ray: RayCast2D = $AnimatedSprite2D/coyote_ray
+@onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
 
 @onready var stand_up_collition: CollisionShape2D = $Stand_up_collition
 @onready var crouched_collition: CollisionShape2D = $Crouched_collition
@@ -22,7 +22,6 @@ class_name Player
 
 @onready var time_bar=$timer/Time_bar
 @onready var death_timer: Timer = $timer/Timer
-
 
 
 var is_inmunity=false

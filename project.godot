@@ -21,9 +21,9 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
+DialogueManager="*uid://c3rodes2l3gxb"
 GlobalValues="*res://global_values.gd"
 GameManager="*res://autoloads/game_manager.gd"
-DialogueManager="*uid://c3rodes2l3gxb"
 
 [dialogue_manager]
 
@@ -34,6 +34,7 @@ runtime/balloon_path="res://Dialogos/balloon.tscn"
 window/size/mode=1
 window/size/borderless=true
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 

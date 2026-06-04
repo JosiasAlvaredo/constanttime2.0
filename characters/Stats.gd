@@ -13,3 +13,4 @@ func delay_roll():
 	can_roll=false
 	await get_tree().create_timer(0.4).timeout
 	can_roll=true
+	print("can_roll")
