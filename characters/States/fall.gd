@@ -31,6 +31,6 @@ func on_input(event: InputEvent) -> void:
 		state_machine.change_to("Jump")
 		
 func coyote_time():
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.07).timeout
 	can_jump=false
 	

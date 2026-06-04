@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmadcamjdsbkf"]
+[gd_scene format=3 uid="uid://beoaenvhgjpsb"]
 
-[ext_resource type="Script" uid="uid://d1sx4kiipuk8" path="res://interface/intro.gd" id="1_0cim3"]
+[ext_resource type="Script" uid="uid://dachuioxluywm" path="res://interface/intro.gd" id="1_0cim3"]
 [ext_resource type="AudioStream" uid="uid://btirdp8v3eklg" path="res://interface/sondangsirait419-tikus-220067.mp3" id="2_0cim3"]
 [ext_resource type="Texture2D" uid="uid://hkd6aa3xdl6o" path="res://assets/1000240443.png" id="2_5sjug"]
 
@@ -123,9 +123,7 @@ offset_bottom = 695.0
 color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=660708362]
-libraries = {
-&"": SubResource("AnimationLibrary_iktx4")
-}
+libraries/ = SubResource("AnimationLibrary_iktx4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1982431615]
 stream = ExtResource("2_0cim3")
