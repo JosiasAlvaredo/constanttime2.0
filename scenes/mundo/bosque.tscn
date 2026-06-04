@@ -375,7 +375,7 @@ tile_map_data = PackedByteArray("AAAAAAsAAQAAAAYAAAABAAsAAQABAAYAAAACAAsAAQABAAY
 [node name="change_node_to" parent="." unique_id=1413512321 instance=ExtResource("3_3pvrp")]
 position = Vector2(14, 310)
 scale = Vector2(1, 4)
-nodeName = "mundo2"
+nodeName = "Mapa1(entrar)"
 
 [node name="Plataformas" type="Node" parent="." unique_id=1060594419]
 
