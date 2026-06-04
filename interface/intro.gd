@@ -1,16 +1,10 @@
-extends CanvasLayer
+extends Node2D
 
-@onready var intro = $AnimationPlayer
-
-var tiempo = 3
+@onready var animation_intro = $AnimationPlayer
 
 func _ready() -> void:
-	intro.play("intro")
-	get_tree().create_timer(tiempo).timeout.connect(ida)
+	animation_intro.play("Intro")
+	get_tree().create_timer(5).timeout.connect(start_menu)
 
-func ida () -> void:
-	intro.play("ida")
-	get_tree().create_timer(tiempo).timeout.connect(menu)
-
-func menu () -> void:
+func start_menu():
 	get_tree().change_scene_to_file("res://interface/menu/menu.tscn")
