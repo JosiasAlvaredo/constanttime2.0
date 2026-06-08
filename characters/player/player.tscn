@@ -183,6 +183,7 @@ height = 24.0
 [node name="Player" type="CharacterBody2D" unique_id=294110880]
 collision_layer = 2
 script = ExtResource("1_5y5mg")
+Jump_stength = -360
 
 [node name="timer" type="Node2D" parent="." unique_id=711565415]
 
