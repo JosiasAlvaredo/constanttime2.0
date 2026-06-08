@@ -39,6 +39,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	timer()
 	direction=-Input.get_axis("Right","Left")
+	
 	direction_y=-Input.get_axis("Up","Crouch")
 	
 	velocity.y+= gravity*delta
@@ -63,8 +64,9 @@ func timer():
 		dead()
 		
 func inmunity():
-	await get_tree().create_timer(1).timeout
-	is_inmunity=false
+	if get_tree():
+		await get_tree().create_timer(1).timeout
+		is_inmunity=false
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 
