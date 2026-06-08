@@ -9,6 +9,8 @@ class_name Stats
 
 var can_roll=true
 
+var can_jump=true
+
 func delay_roll():
 	can_roll=false
 	await get_tree().create_timer(0.4).timeout
