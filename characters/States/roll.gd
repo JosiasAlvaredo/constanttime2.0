@@ -2,7 +2,7 @@ extends State_base
 var direction
 
 func start():
-	direction=controlled_node.direction	
+	direction=controlled_node.direction
 	controlled_node.velocity.x=direction*controlled_node.roll_velocity
 	controlled_node.stand_up_collition.disabled=true
 	if direction!=0:
