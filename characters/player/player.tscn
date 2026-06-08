@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dp6i4nd3sbtyb" path="res://characters/States/roll.tscn" id="10_1lxq0"]
 [ext_resource type="PackedScene" uid="uid://nbdce5ors7ng" path="res://characters/States/action_left_hand.tscn" id="11_blik6"]
 [ext_resource type="PackedScene" uid="uid://c2ax1oj1xg2s4" path="res://characters/States/action_rigth_hand.tscn" id="12_artkk"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="13_icpky"]
+[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="14_58jvb"]
 [ext_resource type="PackedScene" uid="uid://kdplfgigr5o6" path="res://characters/States/climb.tscn" id="16_1lxq0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_on558"]
@@ -282,6 +284,9 @@ default_state = NodePath("Idle")
 [node name="Action_Rigth_Hand" parent="State_Machine" unique_id=824303545 instance=ExtResource("12_artkk")]
 
 [node name="Climb" parent="State_Machine" unique_id=29894792 instance=ExtResource("16_1lxq0")]
+
+[node name="Recoil" parent="State_Machine" unique_id=959375226 instance=ExtResource("13_icpky")]
+script = ExtResource("14_58jvb")
 
 [connection signal="area_entered" from="Hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Hit_box" to="." method="_on_hit_box_body_entered"]

@@ -23,6 +23,8 @@ class_name Player
 @onready var time_bar=$timer/Time_bar
 @onready var death_timer: Timer = $timer/Timer
 
+@onready var state_machine: State_Machine = $State_Machine
+
 
 var is_inmunity=false
 var hand_using=""
@@ -65,21 +67,24 @@ func timer():
 		
 func inmunity():
 	if get_tree():
-		await get_tree().create_timer(1).timeout
+		is_inmunity=true
+		state_machine.change_to("Recoil")
+		await get_tree().create_timer(1.5).timeout
 		is_inmunity=false
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
 
 	if area.get_collision_layer_value(3) and not is_inmunity:
 		var time=death_timer.time_left
+		var enemy=area.get_parent()
+		
 		death_timer.stop()
 		if time-10<=0:
 			dead()
 		else:
 			death_timer.start(time-10)
 		
-		var enemy=area.get_parent()
-		is_inmunity=true
+		velocity.x=sign(enemy.position.x-position.x)
 		inmunity()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:

@@ -15,6 +15,7 @@ func _state_default_start():
 	_state_start()
 	
 func _state_start():
+
 	current_state.controlled_node=controlled_node
 	current_state.state_machine=self
 	current_state.start()
@@ -44,3 +45,4 @@ func _unhandled_input(event: InputEvent) -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if current_state and current_state.has_method("on_unhandled_key_input") and (controlled_node is Player):
 		current_state.on_unhandled_key_input(event)
+		
