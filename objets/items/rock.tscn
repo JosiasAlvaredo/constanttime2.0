@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dkqv2s6wv6vun"]
 
-[ext_resource type="Script" uid="uid://dyg7kte3jkuoh" path="res://Objets/Items/rock.gd" id="1_ltww1"]
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Itema_base.gd" id="1_vswh6"]
+[ext_resource type="PackedScene" uid="uid://c8m7uxcscjgpo" path="res://objets/items/item.tscn" id="2_lc80n"]
 
-[node name="Rock" type="Node" unique_id=1287587268]
-script = ExtResource("1_ltww1")
+[node name="Rock" type="Node2D" unique_id=274988526]
+script = ExtResource("1_vswh6")
+
+[node name="Item" parent="." unique_id=1435743609 instance=ExtResource("2_lc80n")]

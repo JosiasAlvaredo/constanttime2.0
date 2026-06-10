@@ -29,6 +29,6 @@ func on_physics_process(delta: float) -> void:
 
 		
 func on_input(event: InputEvent) -> void:
-	if Input.is_action_pressed("Jump"):
+	if Input.is_action_pressed("Jump") and not controlled_node.crouch_ray.is_colliding():
 		controlled_node.stand_up_collition.disabled=false
 		state_machine.change_to("Jump")
