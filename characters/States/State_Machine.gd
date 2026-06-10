@@ -31,10 +31,16 @@ func _process(delta:float) -> void:
 		current_state.on_process(delta)
 
 func _physics_process(delta:float) -> void:
+	if GlobalValues.is_dialogue_active:
+		
+		change_to("Idle")
 	if current_state and current_state.has_method("on_physics_process"):
+		
 		current_state.on_physics_process(delta)
 
 func _input(event: InputEvent) -> void:
+	if GlobalValues.is_dialogue_active:
+		return
 	if current_state and current_state.has_method("on_input") and (controlled_node is Player):
 		current_state.on_input(event)
 

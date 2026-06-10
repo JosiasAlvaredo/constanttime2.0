@@ -3,8 +3,8 @@ var recoil_velocity= Vector2(0,0)
 func start():
 
 	controlled_node.can_jump=false
-	controlled_node.animated_sprite_2d.play("Jump")
-	controlled_node.velocity.y=controlled_node.Jump_stength * (1/2**0.5)
+	controlled_node.animated_sprite_2d.play(controlled_node.animations["jump"])
+	controlled_node.velocity.y*=controlled_node.Jump_stength * (1/2**0.5)
 	controlled_node.velocity.x*=controlled_node.Jump_stength * (1/2**0.5)
 	recoil_velocity.x=controlled_node.velocity.x
 	recoil_velocity.y=controlled_node.velocity.y

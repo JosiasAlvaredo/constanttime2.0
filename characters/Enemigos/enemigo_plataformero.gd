@@ -1,11 +1,14 @@
-extends CharacterBody2D
+extends Stats
 
-@onready var animated_sprite = $AnimatedSprite2D
-const MAX_SPEED: float = 100.0
+@onready var state_machine: State_Machine = $State_Machine
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
 
-func _ready():
-	$AnimatedSprite2D.scale.x *= 1
-	velocity.x = MAX_SPEED
+
+var fliping=false
+var direction=1
+var animations={ "idle":"Default", "move":"Default", "jump":"Default","fall":"Default"}
+
 
 func _next_to_left_wall() -> bool:
 	return $LeftRay.is_colliding()
@@ -16,16 +19,22 @@ func _next_to_right_wall() -> bool:
 func _floor_detection() -> bool:
 	return $AnimatedSprite2D/FloorDetection.is_colliding()
 
-func _flip():
+func FLIP():
 	if _next_to_right_wall() or _next_to_left_wall() or !_floor_detection():
-		velocity.x *= -1
+		direction *= -1
 		$AnimatedSprite2D.scale.x *= -1
 
+func damage(enemy):
+	velocity.x=sign(enemy.global_position.x-global_position.x)
+	velocity.y=sign(enemy.global_position.y-global_position.y)
+	live-=1
+	state_machine.change_to("Recoil")
+	if live<=0:
+		dead()
+
+func dead():
+	queue_free()
+
 func _physics_process(delta):
-	if GlobalValues.is_dialogue_active:
-		return
-	
-	animated_sprite.play("default")
-	velocity.y += GlobalValues.gravity
-	_flip()
+	velocity.y+= gravity*delta
 	move_and_slide()

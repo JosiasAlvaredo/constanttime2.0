@@ -1,7 +1,7 @@
 extends State_base
 func on_physics_process(delta: float) -> void:
 	controlled_node.velocity.x=0
-	controlled_node.animated_sprite_2d.play("Idle")
+	controlled_node.animated_sprite_2d.play(controlled_node.animations["idle"])
 
 func on_input(event: InputEvent) -> void:
 	if (Input.is_action_pressed("Left") or Input.is_action_pressed("Right")) and  not Input.is_action_pressed("Crouch"):

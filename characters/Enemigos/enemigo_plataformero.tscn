@@ -1,7 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxpbdg01bqmir"]
+[gd_scene format=3 uid="uid://bxpbdg01bqmir"]
 
 [ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/enemigo_plataformero.gd" id="1_3cvo5"]
 [ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/New Piskel (5).png" id="2_3cvo5"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_4mhw6"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_l52n8"]
+[ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_23h16"]
+[ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_oyeg2"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_ufid7"]
+[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_3vbi6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxx27"]
 atlas = ExtResource("2_3cvo5")
@@ -14,43 +20,63 @@ animations = [{
 "texture": SubResource("AtlasTexture_vxx27")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Default",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
 size = Vector2(26, 22)
 
-[node name="Enemigo_plat" type="CharacterBody2D"]
+[node name="Enemigo_plat" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
 collision_layer = 4
 script = ExtResource("1_3cvo5")
+live = 2
+speed = 100
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_3cvo5")
+animation = &"Default"
 
-[node name="FloorDetection" type="RayCast2D" parent="AnimatedSprite2D"]
-position = Vector2(0, -7.6293945e-06)
+[node name="FloorDetection" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1792058697]
+position = Vector2(6, 0)
 target_position = Vector2(0, 20.000004)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Crouch_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=281147657]
+position = Vector2(0, 2)
+scale = Vector2(2.3200002, 1)
+target_position = Vector2(0, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
 position = Vector2(0, 0.87999916)
 shape = SubResource("RectangleShape2D_vxx27")
 
-[node name="LeftRay" type="RayCast2D" parent="."]
+[node name="LeftRay" type="RayCast2D" parent="." unique_id=243814735]
 position = Vector2(0, 0.87999916)
 target_position = Vector2(-20, 0)
 
-[node name="RightRay" type="RayCast2D" parent="."]
+[node name="RightRay" type="RayCast2D" parent="." unique_id=1646522929]
 position = Vector2(0, 0.87999916)
 target_position = Vector2(20, 0)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=322673326]
 position = Vector2(-88, -6.120001)
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1869173775]
 position = Vector2(88, 7)
 shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_4mhw6")]
+default_state = NodePath("Move")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_l52n8")]
+
+[node name="Move" parent="State_Machine" unique_id=453338450 instance=ExtResource("5_23h16")]
+
+[node name="Fall" parent="State_Machine" unique_id=1275433795 instance=ExtResource("6_oyeg2")]
+
+[node name="Recoil" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_ufid7")]
+script = ExtResource("8_3vbi6")

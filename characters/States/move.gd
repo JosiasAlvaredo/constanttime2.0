@@ -2,21 +2,25 @@ extends State_base
 var direction
 
 func on_physics_process(delta: float) -> void:
+	
 	direction=controlled_node.direction
 	if direction!=0: 
 		controlled_node.FLIP()
 	
-	controlled_node.animated_sprite_2d.play("Run")
+	controlled_node.animated_sprite_2d.play(controlled_node.animations["move"])
 	
 	controlled_node.velocity.x=direction*controlled_node.speed
 
 	if controlled_node.velocity==Vector2(0,0):
+		
 		state_machine.change_to("Idle")
 			
 	if controlled_node.velocity.y>0:
-			state_machine.change_to("Fall")
 		
+		state_machine.change_to("Fall")
+	
 func on_input(event: InputEvent) -> void:
+	
 	if Input.is_action_pressed("Jump"):
 		state_machine.change_to("Jump")
 		

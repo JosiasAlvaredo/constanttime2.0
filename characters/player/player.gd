@@ -25,11 +25,10 @@ class_name Player
 
 @onready var state_machine: State_Machine = $State_Machine
 
+var animations={ "idle":"Idle", "move":"Run", "jump":"Jump","fall":"Fall"}
 
 var is_inmunity=false
 var hand_using=""
-
-var gravity:float= ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction=1
 var direction_y=0
@@ -84,7 +83,8 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		else:
 			death_timer.start(time-10)
 		
-		velocity.x=sign(enemy.position.x-position.x)
+		velocity.x=sign(enemy.global_position.x-global_position.x)
+		velocity.y=sign(enemy.global_position.y-global_position.y)
 		inmunity()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:

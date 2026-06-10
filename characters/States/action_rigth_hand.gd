@@ -6,8 +6,8 @@ func start():
 			controlled_node.Right_hand=controlled_node.Right_hand.use()
 			var target=controlled_node.bullet.get_collider()
 			if target:
-				if target.has_method("dead"):
-					target.dead()
+				if target.has_method("damage"):
+					target.damage()
 			state_machine.change_to("Idle")
 		if controlled_node.Right_hand:			
 			if controlled_node.Right_hand.kind=="Mele":
