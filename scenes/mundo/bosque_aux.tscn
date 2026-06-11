@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="11_lh441"]
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/objets/door/door.tscn" id="12_4g8ro"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="13_dv5nu"]
-[ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="14_glptd"]
+[ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/Rock.tscn" id="14_glptd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqdhd"]
 size = Vector2(30, 13)
@@ -414,9 +414,6 @@ autoplay = &"move"
 
 [node name="Enemigo_plat" parent="Enemigos" unique_id=1513898474 instance=ExtResource("7_duas4")]
 position = Vector2(1388, 464)
-Jump_stength = null
-Climb_velocity = null
-roll_velocity = null
 
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 0)
@@ -426,13 +423,6 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vacio" unique_id=408755710]
 position = Vector2(1470.5, 653)
 shape = SubResource("RectangleShape2D_3pvrp")
-
-[node name="player" parent="." unique_id=33429142 node_paths=PackedStringArray("Left_hand") instance=ExtResource("9_b342g")]
-position = Vector2(1146, 420)
-Left_hand = NodePath("../Rock")
-
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=842960540]
-zoom = Vector2(1.5, 1.5)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=917846253]
 stream = ExtResource("10_p4tci")
@@ -453,5 +443,11 @@ key_name = "LLave_del_bosque"
 [node name="Pausa" parent="." unique_id=2057402927 instance=ExtResource("13_dv5nu")]
 
 [node name="Rock" parent="." unique_id=274988526 instance=ExtResource("14_glptd")]
-position = Vector2(113, 338)
-kind = "Bullet"
+position = Vector2(105, 344)
+
+[node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
+position = Vector2(59, 331)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
+position = Vector2(26, 2)
+zoom = Vector2(1.5, 1.5)

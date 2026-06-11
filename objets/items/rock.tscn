@@ -1,9 +1,28 @@
 [gd_scene format=3 uid="uid://dkqv2s6wv6vun"]
 
-[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Itema_base.gd" id="1_vswh6"]
-[ext_resource type="PackedScene" uid="uid://c8m7uxcscjgpo" path="res://objets/items/item.tscn" id="2_lc80n"]
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_vswh6"]
+[ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/wepons/Rock.png" id="2_4kxl1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
+radius = 91.00137
 
 [node name="Rock" type="Node2D" unique_id=274988526]
 script = ExtResource("1_vswh6")
+durability = 3
+kind = "Bullet"
 
-[node name="Item" parent="." unique_id=1435743609 instance=ExtResource("2_lc80n")]
+[node name="Rock" type="Sprite2D" parent="." unique_id=61698275]
+position = Vector2(0, -1)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_4kxl1")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729557036]
+position = Vector2(0, -1)
+scale = Vector2(0.08, 0.08)
+shape = SubResource("CircleShape2D_vswh6")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

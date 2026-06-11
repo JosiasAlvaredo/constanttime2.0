@@ -14,10 +14,10 @@ tile_map_data = PackedByteArray("AAD//wAAAQADAAAAAAD+/wAAAQADAAAAAAD9/wAAAQADAAA
 [node name="Mago_comienzo" parent="." unique_id=1038074551 instance=ExtResource("3_kavb4")]
 position = Vector2(56, -31)
 
-[node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_23wfk")]
+[node name="player" parent="." unique_id=294110880 instance=ExtResource("2_23wfk")]
 position = Vector2(-103, -30)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2076875252]
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=2076875252]
 zoom = Vector2(1.5, 1.5)
 
 [node name="change_node_to" parent="." unique_id=6333840 instance=ExtResource("4_cqq27")]

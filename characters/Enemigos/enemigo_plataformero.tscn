@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bxpbdg01bqmir"]
 
 [ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/enemigo_plataformero.gd" id="1_3cvo5"]
-[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/New Piskel (5).png" id="2_3cvo5"]
+[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/New Piskel (5).png" id="2_3cvo5"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_4mhw6"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_l52n8"]
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_23h16"]
@@ -33,6 +33,7 @@ collision_layer = 4
 script = ExtResource("1_3cvo5")
 live = 2
 speed = 100
+recoil_factor = -360
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
 position = Vector2(0, -2)
@@ -40,7 +41,7 @@ sprite_frames = SubResource("SpriteFrames_3cvo5")
 animation = &"Default"
 
 [node name="FloorDetection" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1792058697]
-position = Vector2(6, 0)
+position = Vector2(13, 0)
 target_position = Vector2(0, 20.000004)
 
 [node name="Crouch_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=281147657]

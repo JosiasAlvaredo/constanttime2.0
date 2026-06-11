@@ -8,7 +8,7 @@ func on_physics_process(delta: float) -> void:
 		controlled_node.FLIP()
 	
 	controlled_node.animated_sprite_2d.play(controlled_node.animations["move"])
-	
+
 	controlled_node.velocity.x=direction*controlled_node.speed
 
 	if controlled_node.velocity==Vector2(0,0):

@@ -4,6 +4,8 @@ class_name Stats
 @export var live=1
 
 @export var speed=300
+@export var recoil_factor=-300
+
 @export var Jump_stength=-300
 
 @export var Climb_velocity=-150

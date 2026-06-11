@@ -116,10 +116,10 @@ scale = Vector2(0.5839844, 0.5839843)
 texture = ExtResource("2_5sjug")
 
 [node name="ColorRect2" type="ColorRect" parent="." unique_id=1090312879]
-offset_left = 139.0
-offset_top = 83.0
-offset_right = 1338.0
-offset_bottom = 816.0
+offset_left = -27.0
+offset_top = -38.0
+offset_right = 1172.0
+offset_bottom = 695.0
 color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=660708362]

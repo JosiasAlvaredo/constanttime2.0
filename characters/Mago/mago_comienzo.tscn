@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cn1gykrd1riwo"]
 
 [ext_resource type="Script" uid="uid://cnam503c5rn8t" path="res://characters/Mago/mago_comienzo.gd" id="1_2bu08"]
-[ext_resource type="Texture2D" uid="uid://y2hhiqttdi8" path="res://assets/image (1).png" id="3_1we4b"]
+[ext_resource type="Texture2D" uid="uid://y2hhiqttdi8" path="res://assets/characters/image (1).png" id="3_1we4b"]
 [ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="3_s3hxq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1we4b"]

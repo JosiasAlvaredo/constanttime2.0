@@ -8,6 +8,9 @@ var has_met_npc = false
 
 var hechizo=false
 
+var Left_hand:Item_base=null
+var Right_hand:Item_base=null
+
 #Bosque
 var Bosque={
 	"LLave_del_bosque":true,

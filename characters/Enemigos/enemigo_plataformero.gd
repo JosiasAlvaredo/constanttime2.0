@@ -7,8 +7,9 @@ extends Stats
 
 var fliping=false
 var direction=1
-var animations={ "idle":"Default", "move":"Default", "jump":"Default","fall":"Default"}
+var last_direction=1
 
+var animations={ "idle":"Default", "move":"Default", "jump":"Default","fall":"Default"}
 
 func _next_to_left_wall() -> bool:
 	return $LeftRay.is_colliding()
@@ -25,6 +26,8 @@ func FLIP():
 		$AnimatedSprite2D.scale.x *= -1
 
 func damage(enemy):
+	last_direction=direction
+	direction=0
 	velocity.x=sign(enemy.global_position.x-global_position.x)
 	velocity.y=sign(enemy.global_position.y-global_position.y)
 	live-=1
@@ -37,4 +40,10 @@ func dead():
 
 func _physics_process(delta):
 	velocity.y+= gravity*delta
+
+	if state_machine.current_state==$State_Machine/Idle:
+		direction=last_direction
+		state_machine.change_to("Move")
+		
+	
 	move_and_slide()

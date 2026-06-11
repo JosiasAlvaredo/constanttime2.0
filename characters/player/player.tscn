@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bok7xc6alf50f"]
 
 [ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://characters/player/player.gd" id="1_5y5mg"]
-[ext_resource type="Texture2D" uid="uid://d08fvkvmnbfsf" path="res://assets/constime.png" id="2_on558"]
+[ext_resource type="Texture2D" uid="uid://d08fvkvmnbfsf" path="res://assets/characters/constime.png" id="2_on558"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_yklsb"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_d4e2f"]
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_cdgnk"]
@@ -185,21 +185,38 @@ height = 24.0
 [node name="Player" type="CharacterBody2D" unique_id=294110880]
 collision_layer = 2
 script = ExtResource("1_5y5mg")
+recoil_factor = -360
 Jump_stength = -360
 
-[node name="timer" type="Node2D" parent="." unique_id=711565415]
+[node name="interfas" type="Node2D" parent="." unique_id=1051874925]
 
-[node name="Timer" type="Timer" parent="timer" unique_id=311554083]
+[node name="timer" type="Node2D" parent="interfas" unique_id=711565415]
+
+[node name="Timer" type="Timer" parent="interfas/timer" unique_id=311554083]
 wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="Time_bar" type="ColorRect" parent="timer" unique_id=1403899849]
+[node name="Time_bar" type="ColorRect" parent="interfas/timer" unique_id=1403899849]
 offset_left = -209.0
 offset_top = 86.0
 offset_right = -108.0
 offset_bottom = 98.0
 color = Color(0.36705732, 0.62493634, 0, 1)
+
+[node name="Rigth_hand_sprite" type="Sprite2D" parent="interfas" unique_id=2124653398]
+position = Vector2(110, 90)
+
+[node name="Durability" type="Label" parent="interfas/Rigth_hand_sprite" unique_id=1221008634]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Left_hand_sprite" type="Sprite2D" parent="interfas" unique_id=690040186]
+position = Vector2(170, 90)
+
+[node name="Durability" type="Label" parent="interfas/Left_hand_sprite" unique_id=34668574]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1086233672]
 sprite_frames = SubResource("SpriteFrames_qho3q")
@@ -220,7 +237,6 @@ position = Vector2(0, 11)
 target_position = Vector2(11, 0)
 
 [node name="Mele" type="Area2D" parent="AnimatedSprite2D" unique_id=971655938]
-visible = false
 collision_layer = 32
 collision_mask = 12
 
