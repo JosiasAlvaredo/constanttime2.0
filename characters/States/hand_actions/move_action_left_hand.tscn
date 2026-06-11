@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dlbbly7sd80t5"]
+
+[ext_resource type="Script" uid="uid://cx8gumrvvokhy" path="res://characters/States/hand_actions/move_action_left_hand.gd" id="1_q3cpm"]
+
+[node name="Move_action_Left_Hand" type="Node" unique_id=1370897508]
+script = ExtResource("1_q3cpm")

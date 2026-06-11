@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c68a4ykexvgjn"]
+
+[ext_resource type="Script" uid="uid://c5b4cv4pd4di1" path="res://characters/States/hand_actions/climb_action_rigth_hand.gd" id="1_7tal0"]
+
+[node name="Climb_action_Right_Hand" type="Node" unique_id=1852861513]
+script = ExtResource("1_7tal0")

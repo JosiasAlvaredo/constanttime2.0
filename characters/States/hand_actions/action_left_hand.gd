@@ -1,6 +1,6 @@
 extends State_base
 
-func start():
+func action_start(State,controlled_node,state_machine):
 	controlled_node.hand_using="Left"
 	if GlobalValues.Left_hand:
 		
@@ -11,7 +11,7 @@ func start():
 			if target:
 				if target.has_method("damage"):
 					target.damage(controlled_node)
-			state_machine.change_to("Idle")
+			state_machine.change_to(State)
 			
 		if GlobalValues.Left_hand:
 			
@@ -20,7 +20,7 @@ func start():
 				controlled_node.mele_collision.disabled=false
 				await get_tree().create_timer(0.2).timeout
 				controlled_node.mele_collision.disabled=true
-				state_machine.change_to("Idle")
+				state_machine.change_to(State)
 		controlled_node.hand_using=""
 	else:
 		controlled_node.hand_using="Left"
@@ -28,4 +28,4 @@ func start():
 		await get_tree().create_timer(0.2).timeout
 		controlled_node.hand_using=""
 		controlled_node.Interactive_Box_collition.disabled=true
-		state_machine.change_to("Idle")
+		state_machine.change_to(State)

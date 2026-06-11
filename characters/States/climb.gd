@@ -54,6 +54,11 @@ func on_input(event: InputEvent) -> void:
 	if direction_x!=init_direction_x and direction_x!=0:
 		controlled_node.velocity.y=controlled_node.Jump_stength
 		state_machine.change_to("Fall")
+		
+	if Input.is_action_just_pressed("Left_hand"):
+		state_machine.change_to("Climb_action_Left_Hand")
+	elif Input.is_action_just_pressed("Right_hand"):
+		state_machine.change_to("Climb_action_Right_Hand")
 
 		
 
