@@ -180,7 +180,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lxq0"]
-size = Vector2(27, 30)
+size = Vector2(49.5, 39)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgn4q"]
 radius = 8.0
@@ -246,12 +246,37 @@ target_position = Vector2(11, 0)
 position = Vector2(0, 11)
 target_position = Vector2(11, 0)
 
-[node name="Mele" type="Area2D" parent="AnimatedSprite2D" unique_id=971655938]
+[node name="Mele_front" type="Area2D" parent="AnimatedSprite2D" unique_id=971655938]
+visible = false
 collision_layer = 32
 collision_mask = 12
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele" unique_id=101775075]
-position = Vector2(14, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele_front" unique_id=101775075]
+position = Vector2(25.25, -2.5)
+shape = SubResource("RectangleShape2D_1lxq0")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Mele_down" type="Area2D" parent="AnimatedSprite2D" unique_id=1875470951]
+visible = false
+position = Vector2(-24, 23)
+collision_layer = 32
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele_down" unique_id=621069966]
+position = Vector2(25.25, -2.5)
+shape = SubResource("RectangleShape2D_1lxq0")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Mele_up" type="Area2D" parent="AnimatedSprite2D" unique_id=1304770467]
+visible = false
+position = Vector2(-24, -31)
+collision_layer = 32
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele_up" unique_id=160438710]
+position = Vector2(25.25, -2.5)
 shape = SubResource("RectangleShape2D_1lxq0")
 disabled = true
 debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
@@ -338,5 +363,11 @@ script = ExtResource("14_58jvb")
 
 [node name="Move_action_Right_Hand" parent="State_Machine" unique_id=763676078 instance=ExtResource("24_0mbv2")]
 
+[connection signal="area_entered" from="AnimatedSprite2D/Mele_front" to="." method="_on_mele_front_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/Mele_front" to="." method="_on_mele_front_body_entered"]
+[connection signal="area_entered" from="AnimatedSprite2D/Mele_down" to="." method="_on_mele_down_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/Mele_down" to="." method="_on_mele_down_body_entered"]
+[connection signal="area_entered" from="AnimatedSprite2D/Mele_up" to="." method="_on_mele_up_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/Mele_up" to="." method="_on_mele_up_body_entered"]
 [connection signal="area_entered" from="Hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Hit_box" to="." method="_on_hit_box_body_entered"]

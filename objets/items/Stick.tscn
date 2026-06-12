@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://da5otd0or2vki"]
+
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_8m08i"]
+[ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/wepons/Stick.png" id="2_8m08i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
+radius = 91.00137
+
+[node name="Stick" type="Node2D" unique_id=274988526]
+script = ExtResource("1_8m08i")
+_name = "Stick"
+durability = 3
+kind = "Mele"
+
+[node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
+position = Vector2(1.1920929e-07, -1)
+scale = Vector2(0.039345242, 0.045297623)
+texture = ExtResource("2_8m08i")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729557036]
+position = Vector2(0, -1)
+scale = Vector2(0.08, 0.08)
+shape = SubResource("CircleShape2D_vswh6")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

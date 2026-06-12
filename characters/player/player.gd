@@ -10,8 +10,12 @@ class_name Player
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var bullet: RayCast2D = $Bullet
-@onready var mele_collision: CollisionShape2D = $AnimatedSprite2D/Mele/CollisionShape2D
+@onready var bullet_ray: RayCast2D = $Bullet
+
+@onready var mele_front_collition: CollisionShape2D = $AnimatedSprite2D/Mele_front/CollisionShape2D
+@onready var mele_down_collition: CollisionShape2D = $AnimatedSprite2D/Mele_down/CollisionShape2D
+@onready var mele_up_collition: CollisionShape2D = $AnimatedSprite2D/Mele_up/CollisionShape2D
+
 
 @onready var hit_box: Area2D = $Hit_box
 
@@ -50,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	direction=-Input.get_axis("Right","Left")
 	direction_y=-Input.get_axis("Up","Crouch")
 	
-	bullet.target_position=get_local_mouse_position()
+	bullet_ray.target_position=get_local_mouse_position()
 	
 	velocity.y+= gravity*delta
 	move_and_slide()
@@ -101,3 +105,38 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 func coyote_timer():
 	await get_tree().create_timer(0.2).timeout
 	return true
+
+
+
+
+func _on_mele_down_area_entered(area: Area2D) -> void:
+	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+
+
+func _on_mele_down_body_entered(body: Node2D) -> void:
+	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+	
+
+
+func _on_mele_up_area_entered(area: Area2D) -> void:
+	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+
+
+func _on_mele_up_body_entered(body: Node2D) -> void:
+	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+
+
+func _on_interactive_box_area_entered(area: Area2D) -> void:
+	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+
+
+func _on_interactive_box_body_entered(body: Node2D) -> void:
+	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+
+
+func _on_mele_front_area_entered(area: Area2D) -> void:
+	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+
+
+func _on_mele_front_body_entered(body: Node2D) -> void:
+	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)

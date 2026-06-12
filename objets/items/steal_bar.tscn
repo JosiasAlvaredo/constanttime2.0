@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://do85pg3dcvjr7"]
-
-[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_mi44n"]
-[ext_resource type="PackedScene" uid="uid://c8m7uxcscjgpo" path="res://objets/items/item.tscn" id="2_wdotl"]
-
-[node name="Steal_bar" type="Node2D" unique_id=1988179142]
-script = ExtResource("1_mi44n")
-
-[node name="Item" parent="." unique_id=1435743609 instance=ExtResource("2_wdotl")]
