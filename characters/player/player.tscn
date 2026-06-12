@@ -192,7 +192,7 @@ height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_waxq6"]
 
-[node name="Player" type="CharacterBody2D" unique_id=294110880]
+[node name="Player" type="CharacterBody2D" unique_id=294110880 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_5y5mg")
 recoil_factor = -360
