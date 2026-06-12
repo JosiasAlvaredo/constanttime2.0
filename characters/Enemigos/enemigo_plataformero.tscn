@@ -29,7 +29,7 @@ size = Vector2(26, 22)
 
 [node name="Enemigo_plat" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
-collision_layer = 4
+collision_layer = 0
 script = ExtResource("1_3cvo5")
 live = 2
 speed = 100
@@ -61,12 +61,12 @@ target_position = Vector2(-20, 0)
 position = Vector2(0, 0.87999916)
 target_position = Vector2(20, 0)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=322673326]
+[node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
 position = Vector2(-88, -6.120001)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 32
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=1869173775]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1869173775]
 position = Vector2(88, 7)
 shape = SubResource("RectangleShape2D_vxx27")
 
@@ -81,3 +81,5 @@ default_state = NodePath("Move")
 
 [node name="Recoil" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_ufid7")]
 script = ExtResource("8_3vbi6")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

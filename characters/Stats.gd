@@ -11,6 +11,8 @@ class_name Stats
 @export var Climb_velocity=-150
 @export var roll_velocity=600
 
+@export var Knockback=300
+
 var can_roll=true
 var can_jump=true
 

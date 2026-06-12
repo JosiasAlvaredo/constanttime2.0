@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/objets/door/door.tscn" id="12_4g8ro"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="13_dv5nu"]
 [ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/Rock.tscn" id="14_glptd"]
+[ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick.tscn" id="14_stg21"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqdhd"]
 size = Vector2(30, 13)
@@ -443,7 +444,7 @@ key_name = "LLave_del_bosque"
 [node name="Pausa" parent="." unique_id=2057402927 instance=ExtResource("13_dv5nu")]
 
 [node name="Rock" parent="." unique_id=274988526 instance=ExtResource("14_glptd")]
-position = Vector2(105, 344)
+position = Vector2(275, 435)
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
 position = Vector2(59, 331)
@@ -451,3 +452,6 @@ position = Vector2(59, 331)
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
 position = Vector2(26, 2)
 zoom = Vector2(1.5, 1.5)
+
+[node name="Stick" parent="." unique_id=1989495425 instance=ExtResource("14_stg21")]
+position = Vector2(101, 338)
