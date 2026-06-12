@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://c118aug7ylesj"]
+
+[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/New Piskel (5).png" id="2_ja2cr"]
+[ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="2_l6v1w"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_emyth"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_le4r4"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="4_rvcmr"]
+[ext_resource type="Texture2D" uid="uid://h878ib1eo730" path="res://assets/three.png" id="5_2jxyw"]
+[ext_resource type="Script" uid="uid://d0katch4e6wrs" path="res://characters/Bosses/teleport.gd" id="7_l6v1w"]
+[ext_resource type="Script" uid="uid://bfq5fjt01chyh" path="res://characters/Bosses/stomp.gd" id="8_rvcmr"]
+[ext_resource type="Script" uid="uid://84iv5crqeyrd" path="res://characters/Bosses/chain.gd" id="9_2jxyw"]
+[ext_resource type="Script" uid="uid://cn5rsgwvllr1w" path="res://characters/Bosses/short_sword.gd" id="10_sy5h4"]
+[ext_resource type="Script" uid="uid://cou2me6rpq5to" path="res://characters/Bosses/large_sword.gd" id="11_c0ugp"]
+[ext_resource type="PackedScene" uid="uid://dce8swdubkj2q" path="res://characters/States/animation.tscn" id="12_rvcmr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy5h4"]
+atlas = ExtResource("2_l6v1w")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxx27"]
+atlas = ExtResource("2_ja2cr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0ugp"]
+atlas = ExtResource("4_rvcmr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pgew"]
+atlas = ExtResource("5_2jxyw")
+region = Rect2(20, 60, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cvo5"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Chain",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy5h4")
+}],
+"loop": true,
+"name": &"Chain_charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxx27")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Large_sword_attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Short_sword_attack",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0ugp")
+}],
+"loop": false,
+"name": &"Short_sword_charge",
+"speed": 0.3
+}, {
+"frames": [],
+"loop": true,
+"name": &"Stomp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pgew")
+}],
+"loop": true,
+"name": &"teleport_charge",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
+size = Vector2(50, 83.12)
+
+[node name="Enemigo_plat" type="CharacterBody2D" unique_id=1513898474]
+position = Vector2(-87, -8)
+collision_layer = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_3cvo5")
+animation = &"Default"
+autoplay = "Default"
+
+[node name="body" type="ColorRect" parent="AnimatedSprite2D" unique_id=631929854]
+offset_left = -28.0
+offset_top = 4.0
+offset_right = 27.0
+offset_bottom = 22.0
+color = Color(0.22868049, 0.00017601416, 0.29492173, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="AnimatedSprite2D/body" unique_id=1823613561]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 17.0
+offset_right = 39.0
+offset_bottom = 35.0
+color = Color(0.22868049, 0.00017601416, 0.29492173, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="AnimatedSprite2D/body" unique_id=1542291275]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 34.0
+offset_right = 26.0
+offset_bottom = 75.0
+color = Color(0.22868049, 0.00017601416, 0.29492173, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="AnimatedSprite2D/body" unique_id=1523497111]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 35.0
+offset_right = 39.0
+offset_bottom = 76.0
+color = Color(0.22868049, 0.00017601416, 0.29492173, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
+position = Vector2(-1, 36)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
+position = Vector2(-88, -6.120001)
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1869173775]
+position = Vector2(87, 42.120003)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_emyth")]
+default_state = NodePath("")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_le4r4")]
+
+[node name="Teleport" type="Node" parent="State_Machine" unique_id=1818068539]
+script = ExtResource("7_l6v1w")
+
+[node name="Stomp" type="Node" parent="State_Machine" unique_id=461211021]
+script = ExtResource("8_rvcmr")
+
+[node name="Chain" type="Node" parent="State_Machine" unique_id=1877933160]
+script = ExtResource("9_2jxyw")
+
+[node name="Short_sword" type="Node" parent="State_Machine" unique_id=1400905928]
+script = ExtResource("10_sy5h4")
+
+[node name="Large_sword" type="Node" parent="State_Machine" unique_id=1079850141]
+script = ExtResource("11_c0ugp")
+
+[node name="Animation" parent="State_Machine" unique_id=431374382 instance=ExtResource("12_rvcmr")]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

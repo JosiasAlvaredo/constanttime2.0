@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://da5otd0or2vki"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_8m08i"]
-[ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/wepons/Stick.png" id="2_8m08i"]
+[ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/Weapons/Stick.png" id="2_8m08i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 91.00137

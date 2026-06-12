@@ -11,6 +11,8 @@ var last_direction=1
 
 var animations={ "idle":"Default", "move":"Default", "jump":"Default","fall":"Default"}
 
+var recoil=0
+
 func _next_to_left_wall() -> bool:
 	return $LeftRay.is_colliding()
 
@@ -31,6 +33,7 @@ func damage(enemy):
 	velocity.x=sign(enemy.global_position.x-global_position.x)
 	velocity.y=sign(enemy.global_position.y-global_position.y)
 	live-=1
+	recoil=enemy.recoil_factor
 	state_machine.change_to("Recoil")
 	if live<=0:
 		dead()

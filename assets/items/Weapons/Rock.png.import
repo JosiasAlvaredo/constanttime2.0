@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fb8rtlxh1og3"
-path="res://.godot/imported/Stick.png-e2073f3e4f470b062ad4c934b87fcd7f.ctex"
+uid="uid://b6jxjkkmi8i6p"
+path="res://.godot/imported/Rock.png-540267a119aa234578d84fe853d6e777.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/wepons/Stick.png"
-dest_files=["res://.godot/imported/Stick.png-e2073f3e4f470b062ad4c934b87fcd7f.ctex"]
+source_file="res://assets/items/Weapons/Rock.png"
+dest_files=["res://.godot/imported/Rock.png-540267a119aa234578d84fe853d6e777.ctex"]
 
 [params]
 

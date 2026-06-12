@@ -4,8 +4,8 @@ func start():
 
 	controlled_node.can_jump=false
 	controlled_node.animated_sprite_2d.play(controlled_node.animations["jump"])
-	controlled_node.velocity.y*=controlled_node.recoil_factor * (1/2**0.5)
-	controlled_node.velocity.x*=controlled_node.recoil_factor * (1/2**0.5)
+	controlled_node.velocity.y*=controlled_node.recoil * (1/2**0.5)
+	controlled_node.velocity.x*=controlled_node.recoil * (1/2**0.5)
 	
 	if controlled_node.is_on_floor() and sign(controlled_node.velocity.y)==1:
 		controlled_node.velocity.y=-controlled_node.velocity.y

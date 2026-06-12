@@ -37,6 +37,8 @@ var hand_using=""
 var direction=1
 var direction_y=0
 
+var recoil=0
+
 func _ready() -> void:
 	death_timer.start(GlobalValues.time)
 	
@@ -91,7 +93,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 			dead()
 		else:
 			death_timer.start(time-10)
-		
+		recoil=enemy.recoil_factor
 		velocity.x=sign(enemy.global_position.x-global_position.x)
 		velocity.y=sign(enemy.global_position.y-global_position.y)
 		inmunity()
