@@ -7,12 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/chenge_node_to/chaenge_node.tscn" id="3_3pvrp"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="3_ddlmk"]
 [ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="4_pgh1i"]
-[ext_resource type="PackedScene" uid="uid://bi5ds31rc0pj3" path="res://characters/Enemigos/enemigo_volador.tscn" id="5_euxkv"]
 [ext_resource type="Texture2D" uid="uid://c5hggt18nb6y7" path="res://assets/plataformas.png" id="6_s8ca8"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="7_euxkv"]
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="8_gihg5"]
+[ext_resource type="PackedScene" uid="uid://diodtoejshdv1" path="res://characters/Enemigos/enemigovoladorV2.tscn" id="8_yqdhd"]
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/objets/door/door.tscn" id="11_0i6q2"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="12_htf8p"]
+[ext_resource type="Script" uid="uid://cqmdr68l70q0t" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqdhd"]
 size = Vector2(30, 13)
@@ -152,98 +153,11 @@ _data = {
 &"move": SubResource("Animation_diag3")
 }
 
-[sub_resource type="Animation" id="Animation_dwpfe"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_xgvh0"]
-resource_name = "move"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../Enemigos/Enemigo Volador2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3, 4.5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(2855, 417), Vector2(2826, 312), Vector2(2834, 420), Vector2(2854, 543), Vector2(2855, 417)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxve1"]
-_data = {
-&"RESET": SubResource("Animation_dwpfe"),
-&"move": SubResource("Animation_xgvh0")
-}
-
-[sub_resource type="Animation" id="Animation_et63w"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_yqdhd"]
-resource_name = "fly"
-length = 6.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../../Enemigos/Enemigo Volador3:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 3, 4.5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(2356, 248), Vector2(2473, 386), Vector2(2581, 305), Vector2(2467, 222), Vector2(2356, 248)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xgvh0"]
-_data = {
-&"RESET": SubResource("Animation_et63w"),
-&"fly": SubResource("Animation_yqdhd")
-}
-
-[sub_resource type="Animation" id="Animation_s8ca8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(536, 333)]
-}
-
-[sub_resource type="Animation" id="Animation_htf8p"]
-resource_name = "fly"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.13333344, 1.5, 2.8333333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(536, 333), Vector2(659, 418), Vector2(737, 325)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yqdhd"]
-_data = {
-&"RESET": SubResource("Animation_s8ca8"),
-&"fly": SubResource("Animation_htf8p")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pvrp"]
 size = Vector2(4847, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ca8"]
+size = Vector2(1571, 603)
 
 [node name="Cueva" type="Node2D" unique_id=421176710]
 
@@ -505,30 +419,11 @@ autoplay = &"move"
 [node name="Enemigo_plat" parent="Enemigos" unique_id=806170197 instance=ExtResource("4_pgh1i")]
 position = Vector2(2122, 237)
 
-[node name="Enemigo Volador2" parent="Enemigos" unique_id=1240216643 instance=ExtResource("5_euxkv")]
-position = Vector2(535.0204, 332.32306)
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Enemigos/Enemigo Volador2" unique_id=213759490]
-root_node = NodePath("../../Enemigo Volador4")
-libraries/ = SubResource("AnimationLibrary_cxve1")
-autoplay = &"move"
-
 [node name="Enemigo_plat2" parent="Enemigos" unique_id=1187281574 instance=ExtResource("4_pgh1i")]
 position = Vector2(1383, 465)
 
-[node name="Enemigo Volador3" parent="Enemigos" unique_id=721499444 instance=ExtResource("5_euxkv")]
-position = Vector2(691, 258)
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Enemigos/Enemigo Volador3" unique_id=181786025]
-root_node = NodePath("../../Enemigo Volador4")
-libraries/ = SubResource("AnimationLibrary_xgvh0")
-autoplay = &"fly"
-
-[node name="Enemigo Volador4" parent="Enemigos" unique_id=975318411 instance=ExtResource("5_euxkv")]
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Enemigos/Enemigo Volador4" unique_id=1706208182]
-libraries/ = SubResource("AnimationLibrary_yqdhd")
-autoplay = &"fly"
+[node name="Enemy_fly" parent="Enemigos" unique_id=971750251 instance=ExtResource("8_yqdhd")]
+position = Vector2(659, 289)
 
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 0)
@@ -563,3 +458,18 @@ _name = "Puerta_del_bosque"
 key_name = "LLave_del_bosque"
 
 [node name="Pausa" parent="." unique_id=2057402927 instance=ExtResource("12_htf8p")]
+
+[node name="ChasesZones" type="Node2D" parent="." unique_id=229783279]
+
+[node name="ChaseZone" type="Area2D" parent="ChasesZones" unique_id=1407910623 node_paths=PackedStringArray("enemy")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("13_s8ca8")
+enemy = NodePath("../../Enemigos/Enemy_fly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChasesZones/ChaseZone" unique_id=600862626]
+position = Vector2(1055.5, 284.5)
+shape = SubResource("RectangleShape2D_s8ca8")
+
+[connection signal="body_entered" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_entered"]
+[connection signal="body_exited" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_exited"]
