@@ -157,7 +157,7 @@ _data = {
 size = Vector2(4847, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ca8"]
-size = Vector2(1571, 603)
+size = Vector2(1354, 603)
 
 [node name="Cueva" type="Node2D" unique_id=421176710]
 
@@ -423,7 +423,10 @@ position = Vector2(2122, 237)
 position = Vector2(1383, 465)
 
 [node name="Enemy_fly" parent="Enemigos" unique_id=971750251 instance=ExtResource("8_yqdhd")]
-position = Vector2(659, 289)
+position = Vector2(1356, 367)
+
+[node name="Enemy_fly2" parent="Enemigos" unique_id=1482500615 instance=ExtResource("8_yqdhd")]
+position = Vector2(785, 366)
 
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 0)
@@ -465,11 +468,23 @@ key_name = "LLave_del_bosque"
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("13_s8ca8")
-enemy = NodePath("../../Enemigos/Enemy_fly")
+enemy = NodePath("../../Enemigos/Enemy_fly2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChasesZones/ChaseZone" unique_id=600862626]
-position = Vector2(1055.5, 284.5)
+position = Vector2(1176, 284.5)
+shape = SubResource("RectangleShape2D_s8ca8")
+
+[node name="ChaseZone2" type="Area2D" parent="ChasesZones" unique_id=1329334403 node_paths=PackedStringArray("enemy")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("13_s8ca8")
+enemy = NodePath("../../Enemigos/Enemy_fly")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChasesZones/ChaseZone2" unique_id=659314112]
+position = Vector2(1176, 284.5)
 shape = SubResource("RectangleShape2D_s8ca8")
 
 [connection signal="body_entered" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_entered"]
 [connection signal="body_exited" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_exited"]
+[connection signal="body_entered" from="ChasesZones/ChaseZone2" to="ChasesZones/ChaseZone2" method="_on_body_entered"]
+[connection signal="body_exited" from="ChasesZones/ChaseZone2" to="ChasesZones/ChaseZone2" method="_on_body_exited"]
