@@ -111,32 +111,27 @@ func coyote_timer():
 
 func _on_mele_down_area_entered(area: Area2D) -> void:
 	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
-
+	velocity.y=-Knockback
 
 func _on_mele_down_body_entered(body: Node2D) -> void:
 	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
-	
+	velocity.y=-Knockback
 
 
 func _on_mele_up_area_entered(area: Area2D) -> void:
 	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+	velocity.y=Knockback
 
 
 func _on_mele_up_body_entered(body: Node2D) -> void:
 	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
-
-
-func _on_interactive_box_area_entered(area: Area2D) -> void:
-	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
-
-
-func _on_interactive_box_body_entered(body: Node2D) -> void:
-	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+	velocity.y=Knockback
 
 
 func _on_mele_front_area_entered(area: Area2D) -> void:
 	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
-
+	velocity.x=Knockback* -sign(animated_sprite_2d.scale.x)
 
 func _on_mele_front_body_entered(body: Node2D) -> void:
 	GlobalValues.Left_hand=GlobalValues.Left_hand.use(self)
+	velocity.x=Knockback* -sign(animated_sprite_2d.scale.x)

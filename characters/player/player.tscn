@@ -180,7 +180,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lxq0"]
-size = Vector2(49.5, 39)
+size = Vector2(53.5, 64)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cgn4q"]
 radius = 8.0
@@ -191,12 +191,15 @@ radius = 7.0
 height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_waxq6"]
+radius = 8.0
+height = 26.0
 
 [node name="Player" type="CharacterBody2D" unique_id=294110880 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_5y5mg")
 recoil_factor = -360
 Jump_stength = -360
+Knockback = 400
 
 [node name="interfas" type="Node2D" parent="." unique_id=1051874925]
 
@@ -252,7 +255,8 @@ collision_layer = 32
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele_front" unique_id=101775075]
-position = Vector2(25.25, -2.5)
+visible = false
+position = Vector2(27.25, -2.5)
 shape = SubResource("RectangleShape2D_1lxq0")
 disabled = true
 debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
@@ -264,7 +268,7 @@ collision_layer = 32
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele_down" unique_id=621069966]
-position = Vector2(25.25, -2.5)
+position = Vector2(25.25, 10)
 shape = SubResource("RectangleShape2D_1lxq0")
 disabled = true
 debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
@@ -312,7 +316,7 @@ collision_layer = 2
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_box" unique_id=1744116180]
-visible = false
+position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_waxq6")
 
 [node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_yklsb")]
