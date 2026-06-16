@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhqrajh4ryanm"]
+[gd_scene load_steps=8 format=3 uid="uid://bhqrajh4ryanm"]
 
 [ext_resource type="Script" uid="uid://cby0bq2fmhq61" path="res://interface/pausa.gd" id="1_r4l3d"]
 [ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="2_2gy7s"]
+[ext_resource type="Shader" uid="uid://d216cdu5lntpp" path="res://interface/pausa.gdshader" id="2_x51mt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qtnot"]
+shader = ExtResource("2_x51mt")
 
 [sub_resource type="Animation" id="Animation_x51mt"]
 length = 0.001
@@ -40,12 +44,13 @@ _data = {
 &"pausa": SubResource("Animation_2gy7s")
 }
 
-[node name="Pausa" type="CanvasLayer"]
+[node name="Pausa" type="CanvasLayer" unique_id=1289478724]
 process_mode = 3
 script = ExtResource("1_r4l3d")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2039499020]
 visible = false
+material = SubResource("ShaderMaterial_qtnot")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.3529412, 0.3529412, 0.3529412, 0.8392157)
 
-[node name="regresar" type="Button" parent="."]
+[node name="regresar" type="Button" parent="." unique_id=821835972]
 visible = false
 offset_left = 460.5
 offset_top = 259.0
@@ -63,7 +68,7 @@ theme_override_fonts/font = ExtResource("2_2gy7s")
 theme_override_font_sizes/font_size = 40
 text = "Reanudar"
 
-[node name="menu" type="Button" parent="."]
+[node name="menu" type="Button" parent="." unique_id=76767240]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -80,7 +85,7 @@ theme_override_fonts/font = ExtResource("2_2gy7s")
 theme_override_font_sizes/font_size = 40
 text = "Salir del juego"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1402786147]
 libraries = {
 &"": SubResource("AnimationLibrary_qtnot")
 }
