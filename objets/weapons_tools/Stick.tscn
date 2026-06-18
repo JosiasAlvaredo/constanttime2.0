@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bn61gsdv4ot0j"]
+
+[ext_resource type="Script" uid="uid://6e3gqrji1cfh" path="res://objets/weapons_tools/scripts/stick.gd" id="1_vmc3n"]
+[ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/Weapons/Stick.png" id="2_8m08i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfxby"]
+size = Vector2(53.5, 64)
+
+[node name="Stick" type="Node2D" unique_id=274988526]
+script = ExtResource("1_vmc3n")
+damage = 3
+durability = 5
+recoil = 400
+
+[node name="Mele_front" type="Area2D" parent="." unique_id=1595088100]
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_front" unique_id=1659102205]
+position = Vector2(27.25, -2.5)
+shape = SubResource("RectangleShape2D_mfxby")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Mele_down" type="Area2D" parent="." unique_id=763419899]
+position = Vector2(-24, 23)
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_down" unique_id=1972204308]
+position = Vector2(25.25, 10)
+shape = SubResource("RectangleShape2D_mfxby")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Mele_up" type="Area2D" parent="." unique_id=243561041]
+position = Vector2(-24, -31)
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_up" unique_id=925908374]
+position = Vector2(25.25, -2.5)
+shape = SubResource("RectangleShape2D_mfxby")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Stick" type="Sprite2D" parent="." unique_id=1095544918]
+visible = false
+position = Vector2(1.1920929e-07, -1)
+scale = Vector2(0.039345242, 0.045297623)
+texture = ExtResource("2_8m08i")
+
+[connection signal="area_entered" from="Mele_front" to="." method="_on_mele_front_area_entered"]
+[connection signal="body_entered" from="Mele_front" to="." method="_on_mele_front_body_entered"]
+[connection signal="area_entered" from="Mele_down" to="." method="_on_mele_down_area_entered"]
+[connection signal="body_entered" from="Mele_down" to="." method="_on_mele_down_body_entered"]
+[connection signal="area_entered" from="Mele_up" to="." method="_on_mele_up_area_entered"]
+[connection signal="body_entered" from="Mele_up" to="." method="_on_mele_up_body_entered"]

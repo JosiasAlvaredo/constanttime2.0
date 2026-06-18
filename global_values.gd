@@ -8,8 +8,8 @@ var has_met_npc = false
 
 var hechizo=false
 
-var Left_hand:Item_base=null
-var Right_hand:Item_base=null
+var Left_hand={"name":"","durability":""}
+var Right_hand={"name":"","durability":""}
 
 #Bosque
 var Bosque={

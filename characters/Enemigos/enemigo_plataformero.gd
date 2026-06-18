@@ -1,17 +1,13 @@
-extends Stats
+extends enemy_base
 
-@onready var state_machine: State_Machine = $State_Machine
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
 
 
 var fliping=false
-var direction=1
-var last_direction=1
 
 var animations={ "idle":"Default", "move":"Default", "jump":"Default","fall":"Default"}
-
-var recoil=0
 
 func _next_to_left_wall() -> bool:
 	return $LeftRay.is_colliding()
@@ -27,20 +23,6 @@ func FLIP():
 		direction *= -1
 		$AnimatedSprite2D.scale.x *= -1
 
-func damage(enemy):
-	last_direction=direction
-	direction=0
-	velocity.x=sign(enemy.global_position.x-global_position.x)
-	velocity.y=sign(enemy.global_position.y-global_position.y)
-	live-=1
-	recoil=enemy.recoil_factor
-	state_machine.change_to("Recoil")
-	if live<=0:
-		dead()
-
-func dead():
-	queue_free()
-
 func _physics_process(delta):
 	velocity.y+= gravity*delta
 
@@ -53,4 +35,4 @@ func _physics_process(delta):
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	damage(area.owner)
+	enemy_damage(area.get_parent())

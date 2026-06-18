@@ -2,39 +2,33 @@ extends Node
 class_name Item_base
 
 @export var _name="Rock"
-@export var durability=1
 
 @export_enum("Bullet", "Mele") var kind: String
-func use(player):
-	durability-=1
-	if player.hand_using=="Left":
-		player.left_hand_sprite.get_child(0).text=str(durability)
-	if player.hand_using=="Right":
-		player.rigth_hand_sprite.get_child(0).text=str(durability)
-	if durability<=0:
-		if player.hand_using=="Left":
-			player.left_hand_sprite.texture=null
-			player.left_hand_sprite.get_child(0).text=""
-		if player.hand_using=="Right":
-			player.rigth_hand_sprite.texture=null
-			player.rigth_hand_sprite.get_child(0).text=""
-		return null
-	else:
-		return self
 
+var item 
+var item_scene
+
+func _ready() -> void:
+	item_scene = load("res://objets/weapons_tools/%s.tscn" % _name)
+	
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	var item_scene = load("res://objets/items/%s.tscn" % _name)
-	var item = item_scene.instantiate()
-	var player=area.get_parent().get_parent()
+	var player=area.owner
+	
+	item = item_scene.instantiate()
+	
+	player.animated_sprite_2d.add_child(item)
 	
 	if player.hand_using=="Left":
-		GlobalValues.Left_hand=item
-		player.left_hand_sprite.texture=item.get_child(0).texture
-		player.left_hand_sprite.get_child(0).text=str(durability)
+		GlobalValues.Left_hand={"name":_name,"durability":item.durability}
+		player.left_hand_sprite.texture=item.item_texture
+		player.left_hand_sprite.get_child(0).text=str(item.durability)
+		player.left_hand_item=item
 		self.queue_free()
 		
+		
 	if player.hand_using=="Right":
-		GlobalValues.Right_hand=item
-		player.rigth_hand_sprite.texture=item.get_child(0).texture
-		player.rigth_hand_sprite.get_child(0).text=str(durability)
+		GlobalValues.Right_hand={"name":_name,"durability":item.durability}
+		player.right_hand_sprite.texture=item.item_texture
+		player.right_hand_sprite.get_child(0).text=str(item.durability)
+		player.right_hand_item=item
 		self.queue_free()

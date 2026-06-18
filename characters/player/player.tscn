@@ -13,9 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c2ax1oj1xg2s4" path="res://characters/States/hand_actions/action_rigth_hand.tscn" id="12_artkk"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="13_icpky"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="14_58jvb"]
-[ext_resource type="PackedScene" uid="uid://b0hvt6mj6f7m7" path="res://characters/States/hand_actions/climb_action_left_hand.tscn" id="15_jgd8i"]
 [ext_resource type="PackedScene" uid="uid://kdplfgigr5o6" path="res://characters/States/climb.tscn" id="16_1lxq0"]
-[ext_resource type="PackedScene" uid="uid://c68a4ykexvgjn" path="res://characters/States/hand_actions/climb_action_right_hand.tscn" id="16_7b6hw"]
 [ext_resource type="PackedScene" uid="uid://e3mb4qg8erpy" path="res://characters/States/hand_actions/fall_action_left_hand.tscn" id="17_4cx7u"]
 [ext_resource type="PackedScene" uid="uid://b38c65g0tskw5" path="res://characters/States/hand_actions/fall_action_right_hand.tscn" id="18_w53g3"]
 [ext_resource type="PackedScene" uid="uid://cnaljngvaj1lu" path="res://characters/States/hand_actions/idle_action_left_hand.tscn" id="19_e0pgg"]
@@ -197,9 +195,7 @@ height = 26.0
 [node name="Player" type="CharacterBody2D" unique_id=294110880 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_5y5mg")
-recoil_factor = -360
 Jump_stength = -360
-Knockback = 400
 
 [node name="interfas" type="Node2D" parent="." unique_id=1051874925]
 
@@ -217,10 +213,10 @@ offset_right = -108.0
 offset_bottom = 98.0
 color = Color(0.36705732, 0.62493634, 0, 1)
 
-[node name="Rigth_hand_sprite" type="Sprite2D" parent="interfas" unique_id=2124653398]
+[node name="Right_hand_sprite" type="Sprite2D" parent="interfas" unique_id=2124653398]
 position = Vector2(110, 90)
 
-[node name="Durability" type="Label" parent="interfas/Rigth_hand_sprite" unique_id=1221008634]
+[node name="Durability" type="Label" parent="interfas/Right_hand_sprite" unique_id=1221008634]
 offset_right = 40.0
 offset_bottom = 23.0
 
@@ -249,42 +245,6 @@ target_position = Vector2(11, 0)
 position = Vector2(0, 11)
 target_position = Vector2(11, 0)
 
-[node name="Mele_front" type="Area2D" parent="AnimatedSprite2D" unique_id=971655938]
-visible = false
-collision_layer = 32
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele_front" unique_id=101775075]
-visible = false
-position = Vector2(27.25, -2.5)
-shape = SubResource("RectangleShape2D_1lxq0")
-disabled = true
-debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
-
-[node name="Mele_down" type="Area2D" parent="AnimatedSprite2D" unique_id=1875470951]
-visible = false
-position = Vector2(-24, 23)
-collision_layer = 32
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele_down" unique_id=621069966]
-position = Vector2(25.25, 10)
-shape = SubResource("RectangleShape2D_1lxq0")
-disabled = true
-debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
-
-[node name="Mele_up" type="Area2D" parent="AnimatedSprite2D" unique_id=1304770467]
-visible = false
-position = Vector2(-24, -31)
-collision_layer = 32
-collision_mask = 12
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Mele_up" unique_id=160438710]
-position = Vector2(25.25, -2.5)
-shape = SubResource("RectangleShape2D_1lxq0")
-disabled = true
-debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
-
 [node name="Interactive_Box" type="Area2D" parent="AnimatedSprite2D" unique_id=1044144888]
 visible = false
 collision_layer = 128
@@ -295,10 +255,6 @@ position = Vector2(14, 0)
 shape = SubResource("RectangleShape2D_1lxq0")
 disabled = true
 debug_color = Color(2.4065375e-08, 0.5417988, 0.17373273, 0.41960785)
-
-[node name="Bullet" type="RayCast2D" parent="." unique_id=1720135397]
-target_position = Vector2(-59, 0)
-collision_mask = 13
 
 [node name="Stand_up_collition" type="CollisionShape2D" parent="." unique_id=183105663]
 visible = false
@@ -336,7 +292,7 @@ default_state = NodePath("Idle")
 
 [node name="Climb" parent="State_Machine" unique_id=29894792 instance=ExtResource("16_1lxq0")]
 
-[node name="Recoil" parent="State_Machine" unique_id=959375226 instance=ExtResource("13_icpky")]
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("13_icpky")]
 script = ExtResource("14_58jvb")
 
 [node name="Action_Left_Hand" parent="State_Machine" unique_id=520815838 instance=ExtResource("11_blik6")]
@@ -346,10 +302,6 @@ script = ExtResource("14_58jvb")
 [node name="Action_Left_Hand2" parent="State_Machine" unique_id=401679401 instance=ExtResource("11_blik6")]
 
 [node name="Action_Rigth_Hand" parent="State_Machine" unique_id=1892942195 instance=ExtResource("12_artkk")]
-
-[node name="Climb_action_Left_Hand" parent="State_Machine" unique_id=472140593 instance=ExtResource("15_jgd8i")]
-
-[node name="Climb_action_Right_Hand" parent="State_Machine" unique_id=1852861513 instance=ExtResource("16_7b6hw")]
 
 [node name="Fall_action_Left_Hand" parent="State_Machine" unique_id=1795967884 instance=ExtResource("17_4cx7u")]
 
@@ -367,11 +319,5 @@ script = ExtResource("14_58jvb")
 
 [node name="Move_action_Right_Hand" parent="State_Machine" unique_id=763676078 instance=ExtResource("24_0mbv2")]
 
-[connection signal="area_entered" from="AnimatedSprite2D/Mele_front" to="." method="_on_mele_front_area_entered"]
-[connection signal="body_entered" from="AnimatedSprite2D/Mele_front" to="." method="_on_mele_front_body_entered"]
-[connection signal="area_entered" from="AnimatedSprite2D/Mele_down" to="." method="_on_mele_down_area_entered"]
-[connection signal="body_entered" from="AnimatedSprite2D/Mele_down" to="." method="_on_mele_down_body_entered"]
-[connection signal="area_entered" from="AnimatedSprite2D/Mele_up" to="." method="_on_mele_up_area_entered"]
-[connection signal="body_entered" from="AnimatedSprite2D/Mele_up" to="." method="_on_mele_up_body_entered"]
 [connection signal="area_entered" from="Hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Hit_box" to="." method="_on_hit_box_body_entered"]

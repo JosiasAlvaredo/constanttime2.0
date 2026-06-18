@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bxpbdg01bqmir"]
+[gd_scene format=3 uid="uid://bkppvqw050ppw"]
 
 [ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/enemigo_plataformero.gd" id="1_3cvo5"]
 [ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/New Piskel (5).png" id="2_3cvo5"]
@@ -33,7 +33,6 @@ collision_layer = 0
 script = ExtResource("1_3cvo5")
 live = 2
 speed = 100
-recoil_factor = -360
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
 position = Vector2(0, -2)
@@ -63,7 +62,7 @@ target_position = Vector2(20, 0)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
 position = Vector2(-88, -6.120001)
-collision_layer = 4
+collision_layer = 132
 collision_mask = 32
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1869173775]
@@ -79,7 +78,7 @@ default_state = NodePath("Move")
 
 [node name="Fall" parent="State_Machine" unique_id=1275433795 instance=ExtResource("6_oyeg2")]
 
-[node name="Recoil" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_ufid7")]
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_ufid7")]
 script = ExtResource("8_3vbi6")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

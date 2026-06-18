@@ -1,33 +1,44 @@
 [gd_scene format=3 uid="uid://c118aug7ylesj"]
 
-[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/New Piskel (5).png" id="2_ja2cr"]
-[ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="2_l6v1w"]
+[ext_resource type="Script" uid="uid://dux0uhlehosu8" path="res://characters/Bosses/vartime.gd" id="1_l6v1w"]
+[ext_resource type="Texture2D" uid="uid://b3qy7akwcpi3i" path="res://assets/characters/Bosses/vartime.png" id="2_yj7hd"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_emyth"]
-[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_le4r4"]
-[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="4_rvcmr"]
-[ext_resource type="Texture2D" uid="uid://h878ib1eo730" path="res://assets/three.png" id="5_2jxyw"]
+[ext_resource type="Script" uid="uid://b1efhws5pgvje" path="res://characters/Bosses/idle_vartime.gd" id="5_rvcmr"]
 [ext_resource type="Script" uid="uid://d0katch4e6wrs" path="res://characters/Bosses/teleport.gd" id="7_l6v1w"]
+[ext_resource type="Script" uid="uid://djf3hq21636x6" path="res://characters/Bosses/waiting.gd" id="7_rvcmr"]
 [ext_resource type="Script" uid="uid://bfq5fjt01chyh" path="res://characters/Bosses/stomp.gd" id="8_rvcmr"]
 [ext_resource type="Script" uid="uid://84iv5crqeyrd" path="res://characters/Bosses/chain.gd" id="9_2jxyw"]
 [ext_resource type="Script" uid="uid://cn5rsgwvllr1w" path="res://characters/Bosses/short_sword.gd" id="10_sy5h4"]
 [ext_resource type="Script" uid="uid://cou2me6rpq5to" path="res://characters/Bosses/large_sword.gd" id="11_c0ugp"]
 [ext_resource type="PackedScene" uid="uid://dce8swdubkj2q" path="res://characters/States/animation.tscn" id="12_rvcmr"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sy5h4"]
-atlas = ExtResource("2_l6v1w")
-region = Rect2(16, 8, 8, 8)
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6v1w"]
+atlas = ExtResource("2_yj7hd")
+region = Rect2(0, 850, 150, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vxx27"]
-atlas = ExtResource("2_ja2cr")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jxyw"]
+atlas = ExtResource("2_yj7hd")
+region = Rect2(0, 700, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvcmr"]
+atlas = ExtResource("2_yj7hd")
+region = Rect2(150, 700, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0ugp"]
-atlas = ExtResource("4_rvcmr")
-region = Rect2(0, 0, 128, 128)
+atlas = ExtResource("2_yj7hd")
+region = Rect2(150, 850, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pgew"]
-atlas = ExtResource("5_2jxyw")
-region = Rect2(20, 60, 20, 20)
+atlas = ExtResource("2_yj7hd")
+region = Rect2(300, 850, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpdmx"]
+atlas = ExtResource("2_yj7hd")
+region = Rect2(150, 850, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7x6v"]
+atlas = ExtResource("2_yj7hd")
+region = Rect2(0, 550, 150, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3cvo5"]
 animations = [{
@@ -38,116 +49,157 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sy5h4")
-}],
-"loop": true,
-"name": &"Chain_charge",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vxx27")
+"texture": SubResource("AtlasTexture_l6v1w")
 }],
 "loop": true,
 "name": &"Default",
 "speed": 5.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"Large_sword_attack",
-"speed": 5.0
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jxyw")
 }, {
-"frames": [],
-"loop": true,
-"name": &"Short_sword_attack",
-"speed": 1.0
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jxyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jxyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvcmr")
+}],
+"loop": false,
+"name": &"Large_sword",
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c0ugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0ugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pgew")
 }],
 "loop": false,
-"name": &"Short_sword_charge",
-"speed": 0.3
+"name": &"Short_sword",
+"speed": 4.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpdmx")
+}],
 "loop": true,
 "name": &"Stomp",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6pgew")
+"texture": SubResource("AtlasTexture_k7x6v")
 }],
-"loop": true,
+"loop": false,
 "name": &"teleport_charge",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
-size = Vector2(50, 83.12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qdwpp"]
+size = Vector2(30, 117)
 
-[node name="Enemigo_plat" type="CharacterBody2D" unique_id=1513898474]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jogk"]
+size = Vector2(58, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrv1u"]
+size = Vector2(36, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
+size = Vector2(31, 83.12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvcmr"]
+size = Vector2(658, 449.75)
+
+[node name="Vartime_boss" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
 collision_layer = 0
+script = ExtResource("1_l6v1w")
+stomp_velocity = 300
+live = 15
+Knockback_resistence = 100
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=645263024]
+offset_left = -79.0
+offset_top = -53.0
+offset_right = 73.0
+offset_bottom = 78.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1854306948]
 position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_3cvo5")
-animation = &"Default"
+animation = &"Short_sword"
 autoplay = "Default"
 
-[node name="body" type="ColorRect" parent="AnimatedSprite2D" unique_id=631929854]
-offset_left = -28.0
-offset_top = 4.0
-offset_right = 27.0
-offset_bottom = 22.0
-color = Color(0.22868049, 0.00017601416, 0.29492173, 1)
+[node name="Short_sword" type="Area2D" parent="AnimatedSprite2D" unique_id=756716883]
+position = Vector2(3.5, 28.000002)
+collision_layer = 4
+collision_mask = 0
 
-[node name="ColorRect2" type="ColorRect" parent="AnimatedSprite2D/body" unique_id=1823613561]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 17.0
-offset_right = 39.0
-offset_bottom = 35.0
-color = Color(0.22868049, 0.00017601416, 0.29492173, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Short_sword" unique_id=1204793982]
+position = Vector2(30.5, -17.500002)
+shape = SubResource("RectangleShape2D_qdwpp")
+disabled = true
+debug_color = Color(0.35789433, 0.48169816, 1, 0.41960785)
 
-[node name="ColorRect3" type="ColorRect" parent="AnimatedSprite2D/body" unique_id=1542291275]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 34.0
-offset_right = 26.0
-offset_bottom = 75.0
-color = Color(0.22868049, 0.00017601416, 0.29492173, 1)
+[node name="Large_sword" type="Area2D" parent="AnimatedSprite2D" unique_id=1083671211]
+collision_layer = 4
+collision_mask = 0
 
-[node name="ColorRect4" type="ColorRect" parent="AnimatedSprite2D/body" unique_id=1523497111]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 35.0
-offset_right = 39.0
-offset_bottom = 76.0
-color = Color(0.22868049, 0.00017601416, 0.29492173, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Large_sword" unique_id=1248548953]
+position = Vector2(44, 10.5)
+shape = SubResource("RectangleShape2D_5jogk")
+disabled = true
+debug_color = Color(0.98601323, 0, 0.33268535, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/Large_sword/CollisionShape2D" unique_id=1011417141]
+position = Vector2(-67, 44.5)
+shape = SubResource("RectangleShape2D_yrv1u")
+disabled = true
+debug_color = Color(0.98601323, 0, 0.33268535, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
+visible = false
 position = Vector2(-1, 36)
 shape = SubResource("RectangleShape2D_vxx27")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
+visible = false
 position = Vector2(-88, -6.120001)
-collision_layer = 4
+collision_layer = 132
 collision_mask = 32
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1869173775]
-position = Vector2(87, 42.120003)
+position = Vector2(91.5, 32.120003)
 shape = SubResource("RectangleShape2D_vxx27")
 
-[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_emyth")]
-default_state = NodePath("")
+[node name="Start_figth" type="Area2D" parent="." unique_id=872111246]
+visible = false
+collision_layer = 0
+collision_mask = 2
 
-[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_le4r4")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_figth" unique_id=2103500909]
+position = Vector2(7, -147.125)
+shape = SubResource("RectangleShape2D_rvcmr")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_emyth")]
+default_state = NodePath("Waiting")
+
+[node name="Idle_vartime" type="Node" parent="State_Machine" unique_id=1771804212]
+script = ExtResource("5_rvcmr")
 
 [node name="Teleport" type="Node" parent="State_Machine" unique_id=1818068539]
 script = ExtResource("7_l6v1w")
+
+[node name="Waiting" type="Node" parent="State_Machine" unique_id=753190298]
+script = ExtResource("7_rvcmr")
 
 [node name="Stomp" type="Node" parent="State_Machine" unique_id=461211021]
 script = ExtResource("8_rvcmr")
@@ -164,3 +216,4 @@ script = ExtResource("11_c0ugp")
 [node name="Animation" parent="State_Machine" unique_id=431374382 instance=ExtResource("12_rvcmr")]
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Start_figth" to="." method="_on_start_figth_body_entered"]

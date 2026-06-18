@@ -2,18 +2,18 @@
 
 [ext_resource type="Texture2D" uid="uid://h878ib1eo730" path="res://assets/three.png" id="1_xs72f"]
 [ext_resource type="Texture2D" uid="uid://bsgfeauiidfhh" path="res://assets/forest_ground.png" id="2_glptd"]
-[ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="3_stg21"]
-[ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/Map/chenge_node_to/chaenge_node.tscn" id="4_jjkde"]
+[ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/tiles/tile_map.tscn" id="3_stg21"]
+[ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/chenge_node_to/chaenge_node.tscn" id="4_jjkde"]
 [ext_resource type="Texture2D" uid="uid://c5hggt18nb6y7" path="res://assets/plataformas.png" id="5_qiarc"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="6_snx3b"]
-[ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="7_duas4"]
+[ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="7_duas4"]
 [ext_resource type="PackedScene" uid="uid://bok7xc6alf50f" path="res://characters/player/player.tscn" id="9_b342g"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="10_p4tci"]
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="11_lh441"]
-[ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/Map/door/door.tscn" id="12_4g8ro"]
+[ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/objets/door/door.tscn" id="12_4g8ro"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="13_dv5nu"]
 [ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/Rock.tscn" id="14_glptd"]
-[ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="14_stg21"]
+[ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick.tscn" id="14_stg21"]
 [ext_resource type="PackedScene" uid="uid://c118aug7ylesj" path="res://characters/Bosses/Vartime.tscn" id="15_stg21"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqdhd"]
@@ -416,6 +416,11 @@ autoplay = &"move"
 
 [node name="Enemigo_plat" parent="Enemigos" unique_id=1513898474 instance=ExtResource("7_duas4")]
 position = Vector2(1388, 464)
+Jump_stength = null
+Climb_velocity = null
+roll_velocity = null
+Knockback = null
+damage = null
 
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 0)
@@ -452,11 +457,17 @@ position = Vector2(53, -43)
 stomp_velocity = 600
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
-position = Vector2(-388, -3)
+position = Vector2(-402, 15)
+live = null
+speed = null
+recoil_factor = null
+Climb_velocity = null
+roll_velocity = null
+damage = null
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
 position = Vector2(26, 2)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Stick" parent="." unique_id=1989495425 instance=ExtResource("14_stg21")]
-position = Vector2(-308, 17)
+position = Vector2(-372, 17)

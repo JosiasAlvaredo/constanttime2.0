@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 91.00137
 
-[node name="Stick" type="Node2D" unique_id=274988526]
+[node name="Stick_item" type="Node2D" unique_id=274988526]
 script = ExtResource("1_8m08i")
 _name = "Stick"
 durability = 3

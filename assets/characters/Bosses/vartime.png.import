@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhg03r4n35nd5"
-path="res://.godot/imported/portrait.png-74652baa15dff30d145c35da296026d3.ctex"
+uid="uid://b3qy7akwcpi3i"
+path="res://.godot/imported/vartime.png-582a5f485de45cdb49f8a32b1b929a90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/Mago/portrait.png"
-dest_files=["res://.godot/imported/portrait.png-74652baa15dff30d145c35da296026d3.ctex"]
+source_file="res://assets/characters/Bosses/vartime.png"
+dest_files=["res://.godot/imported/vartime.png-582a5f485de45cdb49f8a32b1b929a90.ctex"]
 
 [params]
 
