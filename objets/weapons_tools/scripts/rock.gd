@@ -13,5 +13,6 @@ func use(State):
 	worn_out()
 	
 func _physics_process(delta: float) -> void:
+	scale.x=abs(scale.x)*sign(get_parent().scale.x)
 	bullet_ray.target_position=player.get_local_mouse_position()
 	

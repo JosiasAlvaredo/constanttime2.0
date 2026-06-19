@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name Item_base
 
 @export var _name="Rock"
@@ -32,3 +32,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		player.right_hand_sprite.get_child(0).text=str(item.durability)
 		player.right_hand_item=item
 		self.queue_free()
+		
+
+	

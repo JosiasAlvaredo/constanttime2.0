@@ -9,7 +9,6 @@ radius = 91.00137
 [node name="Stick_item" type="Node2D" unique_id=274988526]
 script = ExtResource("1_8m08i")
 _name = "Stick"
-durability = 3
 kind = "Mele"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
@@ -18,8 +17,8 @@ scale = Vector2(0.039345242, 0.045297623)
 texture = ExtResource("2_8m08i")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
-collision_layer = 64
-collision_mask = 128
+collision_layer = 0
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729557036]
 position = Vector2(0, -1)

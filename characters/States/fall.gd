@@ -9,7 +9,7 @@ func on_physics_process(delta: float) -> void:
 	
 	controlled_node.animated_sprite_2d.play(controlled_node.animations["fall"])
 	
-	controlled_node.velocity.x=direction*controlled_node.speed
+	controlled_node.velocity.x=move_toward(controlled_node.velocity.x,direction*controlled_node.speed,controlled_node.aceleration)
 	
 	if controlled_node.velocity.y==0 and controlled_node.velocity.x==0:
 		state_machine.change_to("Idle")

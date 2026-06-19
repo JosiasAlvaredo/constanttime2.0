@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name  weapond_item_base_class
 
 @export var _name="Stick"

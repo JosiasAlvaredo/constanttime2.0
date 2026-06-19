@@ -17,7 +17,8 @@ func enemy_damage(weapond):
 	live-=weapond.damage
 	recoil=weapond.knockback*Knockback_resistence
 	
-	if Knockback_resistence==0:
+	if Knockback_resistence!=0:
+		print(Knockback_resistence,"xfds")
 		state_machine.change_to("Knockback")
 		
 	if live<=0:

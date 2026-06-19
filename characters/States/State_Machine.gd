@@ -15,7 +15,7 @@ func _state_default_start():
 	_state_start()
 	
 func _state_start():
-
+	
 	current_state.controlled_node=controlled_node
 	current_state.state_machine=self
 	current_state.start()

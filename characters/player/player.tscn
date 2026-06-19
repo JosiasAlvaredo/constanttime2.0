@@ -247,8 +247,8 @@ target_position = Vector2(11, 0)
 
 [node name="Interactive_Box" type="Area2D" parent="AnimatedSprite2D" unique_id=1044144888]
 visible = false
-collision_layer = 128
-collision_mask = 68
+collision_layer = 64
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Interactive_Box" unique_id=1636351570]
 position = Vector2(14, 0)
