@@ -4,12 +4,13 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eeixg"]
 
-[node name="change_node_to" type="Area2D"]
+[node name="change_node_to" type="Area2D" unique_id=1608374224]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_tbde8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1199842219]
+position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_eeixg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

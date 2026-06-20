@@ -1,5 +1,7 @@
 extends Node
 
+var start_door=""
+
 var gravity=980
 var is_dialogue_active=false
 var time=60
