@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://byt0amktrjpga"]
+
+[ext_resource type="Script" uid="uid://be106nwxsiaw2" path="res://objets/weapons_tools/scripts/bomb.gd" id="1_00d70"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tnupp"]
+radius = 9.0
+
+[node name="Bomb" type="CharacterBody2D" unique_id=1735950871]
+script = ExtResource("1_00d70")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1532231956]
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2145909962]
+shape = SubResource("CircleShape2D_tnupp")
+disabled = true
+
+[node name="Explote_area" type="Area2D" parent="." unique_id=1780921005]
+collision_layer = 0
+collision_mask = 191
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explote_area" unique_id=2143512174]
+shape = SubResource("CircleShape2D_tnupp")
+
+[connection signal="area_entered" from="Explote_area" to="." method="_on_explote_area_area_entered"]
+[connection signal="body_entered" from="Explote_area" to="." method="_on_explote_area_body_entered"]

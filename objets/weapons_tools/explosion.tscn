@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cngrquu7146rf"]
+
+[ext_resource type="Script" uid="uid://dlh4tmupcirqx" path="res://objets/weapons_tools/scripts/explosion.gd" id="1_it5s7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jw8yt"]
+radius = 19.235384
+
+[node name="Explosion" type="CharacterBody2D" unique_id=440292335]
+script = ExtResource("1_it5s7")
+knockback = Vector2(-300, -300)
+damage = 15
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1877749109]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1664312166]
+shape = SubResource("CircleShape2D_jw8yt")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=490035097]
+offset_left = -11.0
+offset_top = -15.0
+offset_right = 12.0
+offset_bottom = 16.0
+color = Color(0.7647059, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=505136074]
+offset_left = 16.0
+offset_top = -11.0
+offset_right = 39.0
+offset_bottom = 20.0
+rotation = 1.5707964
+color = Color(0.7647059, 0, 0, 1)
