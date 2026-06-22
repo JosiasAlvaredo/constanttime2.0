@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://d3euk0iohp5hu"]
+[gd_scene load_steps=20 format=4 uid="uid://d3euk0iohp5hu"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_et63w"]
@@ -7,152 +7,20 @@
 [ext_resource type="Texture2D" uid="uid://h878ib1eo730" path="res://assets/three.png" id="2_diag3"]
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/Map/chenge_node_to/chaenge_node.tscn" id="3_3pvrp"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="3_ddlmk"]
-[ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="4_pgh1i"]
+[ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="4_pgh1i"]
 [ext_resource type="Texture2D" uid="uid://c5hggt18nb6y7" path="res://assets/plataformas.png" id="6_s8ca8"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="7_euxkv"]
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="8_gihg5"]
-[ext_resource type="PackedScene" path="res://characters/Enemigos/enemigovoladorV2.tscn" id="8_yqdhd"]
+[ext_resource type="PackedScene" uid="uid://diodtoejshdv1" path="res://characters/Enemigos/enemigovoladorV2.tscn" id="8_yqdhd"]
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/Map/door/door.tscn" id="11_0i6q2"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="12_htf8p"]
-[ext_resource type="Script" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
+[ext_resource type="Script" uid="uid://cqmdr68l70q0t" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqdhd"]
 size = Vector2(30, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgh1i"]
 size = Vector2(80, 18)
-
-[sub_resource type="Animation" id="Animation_euxkv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(556, 457)]
-}
-
-[sub_resource type="Animation" id="Animation_lvklr"]
-resource_name = "move1"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(556, 457), Vector2(753, 457)]
-}
-
-[sub_resource type="Animation" id="Animation_gihg5"]
-resource_name = "move2"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1043, 457), Vector2(844, 457)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hsv7o"]
-_data = {
-&"RESET": SubResource("Animation_euxkv"),
-&"move1": SubResource("Animation_lvklr"),
-&"move2": SubResource("Animation_gihg5")
-}
-
-[sub_resource type="Animation" id="Animation_hsv7o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2332, 301)]
-}
-
-[sub_resource type="Animation" id="Animation_pgh1i"]
-resource_name = "move1"
-length = 2.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2332, 301), Vector2(2332, 539)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_diag3"]
-_data = {
-&"RESET": SubResource("Animation_hsv7o"),
-&"move1": SubResource("Animation_pgh1i")
-}
-
-[sub_resource type="Animation" id="Animation_0i6q2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2475, 539)]
-}
-
-[sub_resource type="Animation" id="Animation_diag3"]
-resource_name = "move"
-length = 2.5
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.4666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(2793, 538), Vector2(2475, 539)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_htf8p"]
-_data = {
-&"RESET": SubResource("Animation_0i6q2"),
-&"move": SubResource("Animation_diag3")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pvrp"]
 size = Vector2(4847, 20)
@@ -348,7 +216,6 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pgh1i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plataformas/Plataforma" unique_id=1244817030]
-libraries/ = SubResource("AnimationLibrary_hsv7o")
 autoplay = &"move1"
 
 [node name="Plataforma2" type="AnimatableBody2D" parent="Plataformas" unique_id=569055746]
@@ -364,7 +231,6 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pgh1i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plataformas/Plataforma2" unique_id=2012547801]
-libraries/ = SubResource("AnimationLibrary_hsv7o")
 autoplay = &"move2"
 
 [node name="Plataforma3" type="AnimatableBody2D" parent="Plataformas" unique_id=990187352]
@@ -392,7 +258,6 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pgh1i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plataformas/Plataforma4" unique_id=1361204373]
-libraries/ = SubResource("AnimationLibrary_diag3")
 autoplay = &"move1"
 
 [node name="Plataforma5" type="AnimatableBody2D" parent="Plataformas" unique_id=1233037649]
@@ -408,7 +273,6 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_pgh1i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Plataformas/Plataforma5" unique_id=404719055]
-libraries/ = SubResource("AnimationLibrary_htf8p")
 autoplay = &"move"
 
 [node name="Enemigos" type="Node2D" parent="." unique_id=1084383353]
