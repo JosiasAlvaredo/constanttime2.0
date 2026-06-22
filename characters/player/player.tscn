@@ -1,7 +1,6 @@
-[gd_scene load_steps=47 format=3 uid="uid://dbahbix74qof1"]
+[gd_scene load_steps=46 format=3 uid="uid://dbahbix74qof1"]
 
 [ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://characters/player/player.gd" id="1_5y5mg"]
-[ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="2_lv4bx"]
 [ext_resource type="Texture2D" uid="uid://d08fvkvmnbfsf" path="res://assets/characters/constime.png" id="2_on558"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_yklsb"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_d4e2f"]
@@ -213,13 +212,6 @@ offset_top = 86.0
 offset_right = -108.0
 offset_bottom = 98.0
 color = Color(0.36705732, 0.62493634, 0, 1)
-
-[node name="PointLight2D" type="PointLight2D" parent="interfas/timer/Time_bar" unique_id=115074888]
-position = Vector2(209, -86)
-energy = 0.6
-shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0.85490197)
-texture = ExtResource("2_lv4bx")
 
 [node name="Right_hand_sprite" type="Sprite2D" parent="interfas" unique_id=2124653398]
 position = Vector2(110, 90)
