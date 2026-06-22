@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://byps7l87bpjvm"]
+
+[ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/Scripts/enemigo_plataformero.gd" id="1_7ckfr"]
+[ext_resource type="Texture2D" uid="uid://bokaml2ql7a5r" path="res://assets/characters/SpikeSlime.png" id="2_7ckfr"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_afi3v"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_n4od1"]
+[ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_rwpts"]
+[ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_nvwv6"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_kxfef"]
+[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_0ynbe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2yyc"]
+atlas = ExtResource("2_7ckfr")
+region = Rect2(0, 0, 134, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cvo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2yyc")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ckfr"]
+size = Vector2(35, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
+size = Vector2(35.03125, 40.5)
+
+[node name="SpikeSlime" type="CharacterBody2D" unique_id=1513898474]
+position = Vector2(-87, -8)
+collision_layer = 0
+script = ExtResource("1_7ckfr")
+live = 3
+speed = 20
+knockback = Vector2(-600, 0)
+damage = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
+position = Vector2(-11, -5)
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_3cvo5")
+animation = &"Default"
+offset = Vector2(28, -14.666666)
+
+[node name="FloorDetection" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1792058697]
+position = Vector2(21.333332, 21.333332)
+target_position = Vector2(0, 20.000004)
+
+[node name="Crouch_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=281147657]
+position = Vector2(-1.3333334, -6.666667)
+scale = Vector2(2.3200002, 1)
+target_position = Vector2(0, -17)
+
+[node name="attack_box" type="Area2D" parent="AnimatedSprite2D" unique_id=1472627294]
+position = Vector2(12, -1.333334)
+scale = Vector2(1.3333334, 1.3333334)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/attack_box" unique_id=1620743533]
+position = Vector2(25.5, 13.5)
+shape = SubResource("RectangleShape2D_7ckfr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/attack_box" unique_id=1476662757]
+position = Vector2(9, -6)
+shape = SubResource("RectangleShape2D_7ckfr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
+position = Vector2(-13, 2)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="LeftRay" type="RayCast2D" parent="." unique_id=243814735]
+position = Vector2(-12, 1)
+target_position = Vector2(-20, 0)
+
+[node name="RightRay" type="RayCast2D" parent="." unique_id=1646522929]
+position = Vector2(8, 1)
+target_position = Vector2(20, 0)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
+position = Vector2(-88, -6.120001)
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1869173775]
+position = Vector2(75, 8.120001)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_afi3v")]
+default_state = NodePath("Move")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_n4od1")]
+
+[node name="Move" parent="State_Machine" unique_id=453338450 instance=ExtResource("5_rwpts")]
+
+[node name="Fall" parent="State_Machine" unique_id=1275433795 instance=ExtResource("6_nvwv6")]
+
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_kxfef")]
+script = ExtResource("8_0ynbe")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

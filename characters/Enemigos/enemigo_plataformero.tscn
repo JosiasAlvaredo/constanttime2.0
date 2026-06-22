@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bkppvqw050ppw"]
 
-[ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/enemigo_plataformero.gd" id="1_3cvo5"]
+[ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/Scripts/enemigo_plataformero.gd" id="1_3cvo5"]
 [ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/New Piskel (5).png" id="2_3cvo5"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_4mhw6"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_l52n8"]

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/Map/chenge_node_to/chaenge_node.tscn" id="4_jjkde"]
 [ext_resource type="Texture2D" uid="uid://c5hggt18nb6y7" path="res://assets/plataformas.png" id="5_qiarc"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="6_snx3b"]
-[ext_resource type="PackedScene" uid="uid://bxpbdg01bqmir" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="7_duas4"]
+[ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Enemigos/enemigo_plataformero.tscn" id="7_duas4"]
 [ext_resource type="PackedScene" uid="uid://c0f1kxl6kv1rr" path="res://characters/Enemigos/ExploteEye.tscn" id="8_qiarc"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="9_b342g"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="10_p4tci"]
@@ -450,14 +450,14 @@ position = Vector2(53, -43)
 stomp_velocity = 600
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
-position = Vector2(1663, 457)
+position = Vector2(3438, 430)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
 position = Vector2(26, 2)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Stick" parent="." unique_id=1989495425 instance=ExtResource("14_stg21")]
-position = Vector2(-308, 17)
+position = Vector2(3407, 447)
 
 [node name="Doors" type="Node2D" parent="." unique_id=900253682]
 
@@ -469,5 +469,5 @@ target_door = "Cave_exit"
 kind = "go_right"
 
 [node name="Eye_enemy" parent="." unique_id=2081935825 instance=ExtResource("8_qiarc")]
-position = Vector2(1434, 465)
+position = Vector2(2052, 234)
 shoot_velocity = 650

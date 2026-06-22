@@ -4,9 +4,10 @@ func start():
 
 	controlled_node.can_jump=false
 	controlled_node.animated_sprite_2d.play(controlled_node.animations["jump"])
+	print(controlled_node.recoil)
 	controlled_node.velocity.y*=controlled_node.recoil.y*controlled_node.Knockback_resistence
 	controlled_node.velocity.x*=controlled_node.recoil.x*controlled_node.Knockback_resistence
-	print(controlled_node.Knockback_resistence)
+	
 	if controlled_node.is_on_floor() and sign(controlled_node.velocity.y)==-1:
 		controlled_node.velocity.y=-controlled_node.velocity.y
 		

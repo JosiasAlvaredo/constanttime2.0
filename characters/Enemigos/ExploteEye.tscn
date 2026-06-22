@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0f1kxl6kv1rr"]
 
-[ext_resource type="Script" uid="uid://c8ipstwnsqk6b" path="res://characters/Enemigos/explote_eye.gd" id="1_pwgth"]
+[ext_resource type="Script" uid="uid://c8ipstwnsqk6b" path="res://characters/Enemigos/Scripts/explote_eye.gd" id="1_pwgth"]
 [ext_resource type="Texture2D" uid="uid://b2i8krgqn6uk8" path="res://assets/characters/ExploteEye.png" id="2_pwgth"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_qig0w"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_7qnyu"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_a7jko"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_r13pp"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_mv2um"]
-[ext_resource type="Script" uid="uid://dyuqhp4g0el5w" path="res://characters/Enemigos/shoot_gravity_objets.gd" id="9_jnhsf"]
+[ext_resource type="Script" uid="uid://dyuqhp4g0el5w" path="res://characters/Enemigos/Scripts/shoot_gravity_objets.gd" id="9_jnhsf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jnhsf"]
 atlas = ExtResource("2_pwgth")
@@ -25,11 +25,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnhsf"]
+size = Vector2(334, 318.25)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
 size = Vector2(26, 44)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jnhsf"]
-size = Vector2(506, 318.25)
 
 [node name="Eye_enemy" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
@@ -59,6 +59,15 @@ position = Vector2(0, 2)
 scale = Vector2(2.3200002, 1)
 target_position = Vector2(0, -17)
 
+[node name="Watch_area" type="Area2D" parent="AnimatedSprite2D" unique_id=365640883]
+position = Vector2(0, 22)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Watch_area" unique_id=1447652236]
+position = Vector2(125, -11)
+shape = SubResource("RectangleShape2D_jnhsf")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
 position = Vector2(2, -11)
 shape = SubResource("RectangleShape2D_vxx27")
@@ -80,14 +89,6 @@ collision_mask = 32
 position = Vector2(90, -4.879999)
 shape = SubResource("RectangleShape2D_vxx27")
 
-[node name="Watch_area" type="Area2D" parent="." unique_id=365640883]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Watch_area" unique_id=1447652236]
-position = Vector2(-1, 4)
-shape = SubResource("RectangleShape2D_jnhsf")
-
 [node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_qig0w")]
 default_state = NodePath("Move")
 
@@ -103,6 +104,6 @@ script = ExtResource("8_mv2um")
 [node name="Shoot_gravity_objets" type="Node" parent="State_Machine" unique_id=1194251383]
 script = ExtResource("9_jnhsf")
 
+[connection signal="body_entered" from="AnimatedSprite2D/Watch_area" to="." method="_on_watch_area_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite2D/Watch_area" to="." method="_on_watch_area_body_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="body_entered" from="Watch_area" to="." method="_on_watch_area_body_entered"]
-[connection signal="body_exited" from="Watch_area" to="." method="_on_watch_area_body_exited"]

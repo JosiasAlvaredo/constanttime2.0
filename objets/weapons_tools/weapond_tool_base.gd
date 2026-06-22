@@ -5,7 +5,7 @@ class_name  weapond_item_base_class
 @export var damage=1
 @export var durability=1
 @export var recoil=100
-@export var knockback=100
+@export var knockback=Vector2(-100,-100)
 @export var item_texture:Sprite2D
 
 var player

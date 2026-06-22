@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://q1yyl02rkr83"]
+
+[ext_resource type="Script" uid="uid://b005kl7ml7ix7" path="res://characters/Enemigos/Scripts/drunked_fly.gd" id="1_myk5x"]
+[ext_resource type="Texture2D" uid="uid://g0w10hqxdyyd" path="res://assets/characters/DrunkedFly.png" id="2_akp1l"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_mk4f3"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_hc6yh"]
+[ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_kn1y3"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_efdfd"]
+[ext_resource type="Script" uid="uid://7y4t31m48meq" path="res://characters/States/fly.gd" id="8_myk5x"]
+[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_sna5r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myk5x"]
+atlas = ExtResource("2_akp1l")
+region = Rect2(0, 0, 102, 76)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cvo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myk5x")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
+size = Vector2(26, 22)
+
+[node name="DrunkedFly" type="CharacterBody2D" unique_id=1513898474]
+position = Vector2(-87, -8)
+collision_layer = 0
+script = ExtResource("1_myk5x")
+speed = 150
+Knockback_resistence = -25
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
+position = Vector2(0, -2)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_3cvo5")
+animation = &"Default"
+
+[node name="FloorDetection" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1792058697]
+position = Vector2(0, 14)
+target_position = Vector2(0, 16)
+
+[node name="Crouch_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=281147657]
+position = Vector2(0, -6)
+scale = Vector2(2.3200002, 1)
+target_position = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
+position = Vector2(0, 0.87999916)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="LeftRay" type="RayCast2D" parent="." unique_id=243814735]
+position = Vector2(0, 0.87999916)
+target_position = Vector2(-14, 0.12000084)
+
+[node name="RightRay" type="RayCast2D" parent="." unique_id=1646522929]
+position = Vector2(0, 0.87999916)
+target_position = Vector2(14, 0.12000084)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
+position = Vector2(-88, -6.120001)
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1869173775]
+position = Vector2(88, 7)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_mk4f3")]
+default_state = NodePath("Fly")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_hc6yh")]
+
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_efdfd")]
+script = ExtResource("8_sna5r")
+
+[node name="Fly" type="Node" parent="State_Machine" unique_id=484868844]
+script = ExtResource("8_myk5x")
+
+[node name="Fall" parent="State_Machine" unique_id=1275433795 instance=ExtResource("6_kn1y3")]
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

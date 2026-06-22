@@ -85,7 +85,7 @@ func inmunity():
 	if get_tree():
 		is_inmunity=true
 		state_machine.change_to("Knockback")
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(0.75).timeout
 		is_inmunity=false
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
@@ -93,7 +93,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer_value(3) and not is_inmunity:
 		var time=death_timer.time_left
 		var enemy=area.owner
-		
+		print(enemy)
 		death_timer.stop()
 		if time-enemy.damage<=0:
 			dead()
