@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0f1kxl6kv1rr"]
 
 [ext_resource type="Script" uid="uid://c8ipstwnsqk6b" path="res://characters/Enemigos/Scripts/explote_eye.gd" id="1_pwgth"]
-[ext_resource type="Texture2D" uid="uid://b2i8krgqn6uk8" path="res://assets/characters/ExploteEye.png" id="2_pwgth"]
+[ext_resource type="Texture2D" uid="uid://b2i8krgqn6uk8" path="res://assets/characters/enemies/ExploteEye.png" id="2_pwgth"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_qig0w"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_7qnyu"]
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_57ty6"]

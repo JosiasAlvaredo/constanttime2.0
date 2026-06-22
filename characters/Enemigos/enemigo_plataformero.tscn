@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkppvqw050ppw"]
 
 [ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/Scripts/enemigo_plataformero.gd" id="1_3cvo5"]
-[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/New Piskel (5).png" id="2_3cvo5"]
+[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/enemies/New Piskel (5).png" id="2_3cvo5"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_4mhw6"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_l52n8"]
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_23h16"]
@@ -48,17 +48,14 @@ position = Vector2(0, 2)
 scale = Vector2(2.3200002, 1)
 target_position = Vector2(0, -17)
 
+[node name="Front_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=464346437]
+position = Vector2(1.9073486e-06, 3.000001)
+scale = Vector2(1.3333334, 1.3333334)
+target_position = Vector2(14.249996, -4.7683716e-07)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
 position = Vector2(0, 0.87999916)
 shape = SubResource("RectangleShape2D_vxx27")
-
-[node name="LeftRay" type="RayCast2D" parent="." unique_id=243814735]
-position = Vector2(0, 0.87999916)
-target_position = Vector2(-20, 0)
-
-[node name="RightRay" type="RayCast2D" parent="." unique_id=1646522929]
-position = Vector2(0, 0.87999916)
-target_position = Vector2(20, 0)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
 position = Vector2(-88, -6.120001)

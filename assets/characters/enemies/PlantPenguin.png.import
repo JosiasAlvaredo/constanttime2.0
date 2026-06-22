@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g0w10hqxdyyd"
-path="res://.godot/imported/DrunkedFly.png-963138c1ec1c4871a667766dd310f3a2.ctex"
+uid="uid://ywoujkh3yu4k"
+path="res://.godot/imported/PlantPenguin.png-495ad3de9d3c9e7c9a13a3c038cc477b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/DrunkedFly.png"
-dest_files=["res://.godot/imported/DrunkedFly.png-963138c1ec1c4871a667766dd310f3a2.ctex"]
+source_file="res://assets/characters/enemies/PlantPenguin.png"
+dest_files=["res://.godot/imported/PlantPenguin.png-495ad3de9d3c9e7c9a13a3c038cc477b.ctex"]
 
 [params]
 

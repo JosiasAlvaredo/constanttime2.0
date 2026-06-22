@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://diodtoejshdv1"]
 
 [ext_resource type="Script" uid="uid://dr3qd554qbnye" path="res://character_body_2d.gd" id="1_28xps"]
-[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/New Piskel (5).png" id="2_4ne7v"]
+[ext_resource type="Texture2D" uid="uid://bp2yky8tf7beb" path="res://assets/characters/enemies/New Piskel (5).png" id="2_4ne7v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_010q2"]
 radius = 14.3178215

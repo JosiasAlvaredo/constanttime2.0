@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://c6hngsj3kv6de"]
+
+[ext_resource type="Script" uid="uid://puo5ny0wy15l" path="res://characters/Enemigos/Scripts/plant_penguin.gd" id="1_cj8ew"]
+[ext_resource type="Texture2D" uid="uid://ywoujkh3yu4k" path="res://assets/characters/enemies/PlantPenguin.png" id="2_cj8ew"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtmgt"]
+atlas = ExtResource("2_cj8ew")
+region = Rect2(0, 0, 448, 277)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnnyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtmgt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_010q2"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cj8ew"]
+radius = 257.2353
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtmgt"]
+size = Vector2(20, 22.78)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=971750251]
+script = ExtResource("1_cj8ew")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=574869929]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_qnnyr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723008877]
+position = Vector2(3, 7)
+shape = SubResource("CircleShape2D_010q2")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=402045716]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=447427522]
+position = Vector2(-1, 4)
+shape = SubResource("CircleShape2D_cj8ew")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=385186210]
+position = Vector2(-88, -6.120001)
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1917449877]
+position = Vector2(95, 7.120001)
+shape = SubResource("RectangleShape2D_dtmgt")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1580496135]
+position = Vector2(8, -5)
+target_position = Vector2(244, 2)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

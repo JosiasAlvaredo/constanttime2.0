@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://q1yyl02rkr83"]
 
 [ext_resource type="Script" uid="uid://b005kl7ml7ix7" path="res://characters/Enemigos/Scripts/drunked_fly.gd" id="1_myk5x"]
-[ext_resource type="Texture2D" uid="uid://g0w10hqxdyyd" path="res://assets/characters/DrunkedFly.png" id="2_akp1l"]
+[ext_resource type="Texture2D" uid="uid://g0w10hqxdyyd" path="res://assets/characters/enemies/DrunkedFly.png" id="2_akp1l"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_mk4f3"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_hc6yh"]
 [ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_kn1y3"]

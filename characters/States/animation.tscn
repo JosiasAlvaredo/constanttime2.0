@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dce8swdubkj2q"]
 
-[ext_resource type="Script" uid="uid://cn45le7cc7i6u" path="res://characters/Bosses/animation.gd" id="1_6m5d4"]
+[ext_resource type="Script" uid="uid://cn45le7cc7i6u" path="res://characters/States/Bosses/Vartime/animation.gd" id="1_6m5d4"]
 
 [node name="Animation" type="Node" unique_id=431374382]
 script = ExtResource("1_6m5d4")

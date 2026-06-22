@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byps7l87bpjvm"]
 
 [ext_resource type="Script" uid="uid://bijgwhcrsn5f7" path="res://characters/Enemigos/Scripts/enemigo_plataformero.gd" id="1_7ckfr"]
-[ext_resource type="Texture2D" uid="uid://bokaml2ql7a5r" path="res://assets/characters/SpikeSlime.png" id="2_7ckfr"]
+[ext_resource type="Texture2D" uid="uid://bokaml2ql7a5r" path="res://assets/characters/enemies/SpikeSlime.png" id="2_7ckfr"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_afi3v"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_n4od1"]
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_rwpts"]
@@ -69,17 +69,14 @@ shape = SubResource("RectangleShape2D_7ckfr")
 position = Vector2(9, -6)
 shape = SubResource("RectangleShape2D_7ckfr")
 
+[node name="Front_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1646522929]
+position = Vector2(25.333336, 8)
+scale = Vector2(1.3333334, 1.3333334)
+target_position = Vector2(35, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
 position = Vector2(-13, 2)
 shape = SubResource("RectangleShape2D_vxx27")
-
-[node name="LeftRay" type="RayCast2D" parent="." unique_id=243814735]
-position = Vector2(-12, 1)
-target_position = Vector2(-20, 0)
-
-[node name="RightRay" type="RayCast2D" parent="." unique_id=1646522929]
-position = Vector2(8, 1)
-target_position = Vector2(20, 0)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
 position = Vector2(-88, -6.120001)

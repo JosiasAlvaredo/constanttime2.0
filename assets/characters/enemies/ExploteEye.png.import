@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2i8krgqn6uk8"
-path="res://.godot/imported/ExploteEye.png-c68fc3998c025a94ab374f8e0021d10a.ctex"
+path="res://.godot/imported/ExploteEye.png-815a77a2ff46c9344f7e068829b08d54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/ExploteEye.png"
-dest_files=["res://.godot/imported/ExploteEye.png-c68fc3998c025a94ab374f8e0021d10a.ctex"]
+source_file="res://assets/characters/enemies/ExploteEye.png"
+dest_files=["res://.godot/imported/ExploteEye.png-815a77a2ff46c9344f7e068829b08d54.ctex"]
 
 [params]
 
