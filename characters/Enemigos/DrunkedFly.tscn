@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://q1yyl02rkr83"]
+[gd_scene load_steps=13 format=3 uid="uid://q1yyl02rkr83"]
 
 [ext_resource type="Script" uid="uid://b005kl7ml7ix7" path="res://characters/Enemigos/Scripts/drunked_fly.gd" id="1_myk5x"]
 [ext_resource type="Texture2D" uid="uid://g0w10hqxdyyd" path="res://assets/characters/DrunkedFly.png" id="2_akp1l"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_efdfd"]
 [ext_resource type="Script" uid="uid://7y4t31m48meq" path="res://characters/States/fly.gd" id="8_myk5x"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_sna5r"]
+[ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="9_8k55u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myk5x"]
 atlas = ExtResource("2_akp1l")
@@ -82,5 +83,13 @@ script = ExtResource("8_sna5r")
 script = ExtResource("8_myk5x")
 
 [node name="Fall" parent="State_Machine" unique_id=1275433795 instance=ExtResource("6_kn1y3")]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=2105805969]
+position = Vector2(1, -11)
+scale = Vector2(0.1200003, 0.1200003)
+energy = 0.5
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.85490197)
+texture = ExtResource("9_8k55u")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
