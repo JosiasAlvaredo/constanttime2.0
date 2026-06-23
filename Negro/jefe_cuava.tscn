@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ukiokohjwqdt"]
+
+[ext_resource type="Script" uid="uid://dl824n7mo56a" path="res://Negro/jefe_cuava.gd" id="1_87fth"]
+[ext_resource type="PackedScene" uid="uid://kb8rsdfafgnm" path="res://Negro/proyectil.tscn" id="2_gfnxl"]
+[ext_resource type="Texture2D" uid="uid://bdihe3shfwb38" path="res://Negro/duende.jpeg" id="3_gfnxl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_87fth"]
+size = Vector2(46.5, 53.75)
+
+[node name="jefeCuava" type="CharacterBody2D" unique_id=1124134172 groups=["boss"]]
+script = ExtResource("1_87fth")
+projectile_scene = ExtResource("2_gfnxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=762598225]
+position = Vector2(44.000004, 19)
+scale = Vector2(0.2510846, 0.26694915)
+texture = ExtResource("3_gfnxl")
+region_enabled = true
+region_rect = Rect2(273.13727, 84.24342, 461.86273, 354.43335)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=23925666]
+position = Vector2(-2, 0)
+target_position = Vector2(2, 100)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1227839729]
+position = Vector2(62, 37.875)
+shape = SubResource("RectangleShape2D_87fth")
+
+[node name="Timer" type="Timer" parent="." unique_id=1731208449 groups=["player"]]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
