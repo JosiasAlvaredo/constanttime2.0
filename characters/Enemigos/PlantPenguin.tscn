@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://puo5ny0wy15l" path="res://characters/Enemigos/Scripts/plant_penguin.gd" id="1_cj8ew"]
 [ext_resource type="Texture2D" uid="uid://ywoujkh3yu4k" path="res://assets/characters/enemies/PlantPenguin.png" id="2_cj8ew"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_hblm0"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_udrav"]
+[ext_resource type="Script" uid="uid://dtquteg7sgjcj" path="res://characters/States/enemies/tongue.gd" id="5_8tglo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtmgt"]
 atlas = ExtResource("2_cj8ew")
@@ -27,8 +30,12 @@ radius = 257.2353
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtmgt"]
 size = Vector2(20, 22.78)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=971750251]
+[node name="PlantPenguin" type="CharacterBody2D" unique_id=971750251]
 script = ExtResource("1_cj8ew")
+live = 9
+aceleration = 0
+speed = 0
+Knockback_resistence = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=574869929]
 scale = Vector2(0.1, 0.1)
@@ -55,10 +62,27 @@ collision_mask = 32
 position = Vector2(95, 7.120001)
 shape = SubResource("RectangleShape2D_dtmgt")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1580496135]
-position = Vector2(8, -5)
-target_position = Vector2(244, 2)
+[node name="Tongue_ray" type="RayCast2D" parent="." unique_id=1580496135]
+position = Vector2(9, -5)
+target_position = Vector2(244, 0)
+collision_mask = 3
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_detection_area_body_exited"]
+[node name="TongueToSolid_ray" type="RayCast2D" parent="." unique_id=418997768]
+position = Vector2(9, -5)
+target_position = Vector2(245, 0)
+
+[node name="Tongue_line" type="Line2D" parent="." unique_id=547243716]
+width = 5.0
+default_color = Color(0.75686276, 0, 0, 1)
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_hblm0")]
+default_state = NodePath("Idle")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_udrav")]
+
+[node name="Tongue" type="Node" parent="State_Machine" unique_id=1339252893]
+script = ExtResource("5_8tglo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -8,6 +8,7 @@ var last_direction=1
 
 var recoil=0
 
+var player
 func enemy_damage(weapond):
 	print(live)
 	var enemy=weapond.player
