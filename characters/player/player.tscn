@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dbahbix74qof1"]
+[gd_scene format=3 uid="uid://dbahbix74qof1"]
 
 [ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://characters/player/player.gd" id="1_5y5mg"]
 [ext_resource type="Texture2D" uid="uid://d08fvkvmnbfsf" path="res://assets/characters/constime.png" id="2_on558"]
@@ -7,21 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_cdgnk"]
 [ext_resource type="PackedScene" uid="uid://djikhfs38ii0w" path="res://characters/States/jump.tscn" id="7_artkk"]
 [ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="7_tbqdr"]
-[ext_resource type="PackedScene" uid="uid://o5y7bwwxch8g" path="res://characters/States/crouched.tscn" id="8_tbqdr"]
-[ext_resource type="PackedScene" uid="uid://dp6i4nd3sbtyb" path="res://characters/States/roll.tscn" id="10_1lxq0"]
-[ext_resource type="PackedScene" uid="uid://nbdce5ors7ng" path="res://characters/States/hand_actions/action_left_hand.tscn" id="11_blik6"]
-[ext_resource type="PackedScene" uid="uid://c2ax1oj1xg2s4" path="res://characters/States/hand_actions/action_rigth_hand.tscn" id="12_artkk"]
+[ext_resource type="PackedScene" uid="uid://o5y7bwwxch8g" path="res://characters/States/player/crouched.tscn" id="8_tbqdr"]
+[ext_resource type="PackedScene" uid="uid://dp6i4nd3sbtyb" path="res://characters/States/player/roll.tscn" id="10_1lxq0"]
+[ext_resource type="PackedScene" uid="uid://nbdce5ors7ng" path="res://characters/States/player/hand_actions/action_left_hand.tscn" id="11_blik6"]
+[ext_resource type="PackedScene" uid="uid://c2ax1oj1xg2s4" path="res://characters/States/player/hand_actions/action_rigth_hand.tscn" id="12_artkk"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="13_icpky"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="14_58jvb"]
-[ext_resource type="PackedScene" uid="uid://kdplfgigr5o6" path="res://characters/States/climb.tscn" id="16_1lxq0"]
-[ext_resource type="PackedScene" uid="uid://e3mb4qg8erpy" path="res://characters/States/hand_actions/fall_action_left_hand.tscn" id="17_4cx7u"]
-[ext_resource type="PackedScene" uid="uid://b38c65g0tskw5" path="res://characters/States/hand_actions/fall_action_right_hand.tscn" id="18_w53g3"]
-[ext_resource type="PackedScene" uid="uid://cnaljngvaj1lu" path="res://characters/States/hand_actions/idle_action_left_hand.tscn" id="19_e0pgg"]
-[ext_resource type="PackedScene" uid="uid://baykmhwwac8ao" path="res://characters/States/hand_actions/idle_action_right_hand.tscn" id="20_sbttr"]
-[ext_resource type="PackedScene" uid="uid://37w4u0b6mvsx" path="res://characters/States/hand_actions/jump_action_left_hand.tscn" id="21_6pj1p"]
-[ext_resource type="PackedScene" uid="uid://f8s5la4j7ujb" path="res://characters/States/hand_actions/jump_action_right_hand.tscn" id="22_3a7m8"]
-[ext_resource type="PackedScene" uid="uid://dlbbly7sd80t5" path="res://characters/States/hand_actions/move_action_left_hand.tscn" id="23_y3et5"]
-[ext_resource type="PackedScene" uid="uid://cnw5y2el00sa3" path="res://characters/States/hand_actions/move_action_right_hand.tscn" id="24_0mbv2"]
+[ext_resource type="PackedScene" uid="uid://kdplfgigr5o6" path="res://characters/States/player/climb.tscn" id="16_1lxq0"]
+[ext_resource type="PackedScene" uid="uid://e3mb4qg8erpy" path="res://characters/States/player/hand_actions/fall_action_left_hand.tscn" id="17_4cx7u"]
+[ext_resource type="PackedScene" uid="uid://b38c65g0tskw5" path="res://characters/States/player/hand_actions/fall_action_right_hand.tscn" id="18_w53g3"]
+[ext_resource type="PackedScene" uid="uid://cnaljngvaj1lu" path="res://characters/States/player/hand_actions/idle_action_left_hand.tscn" id="19_e0pgg"]
+[ext_resource type="PackedScene" uid="uid://baykmhwwac8ao" path="res://characters/States/player/hand_actions/idle_action_right_hand.tscn" id="20_sbttr"]
+[ext_resource type="PackedScene" uid="uid://37w4u0b6mvsx" path="res://characters/States/player/hand_actions/jump_action_left_hand.tscn" id="21_6pj1p"]
+[ext_resource type="PackedScene" uid="uid://f8s5la4j7ujb" path="res://characters/States/player/hand_actions/jump_action_right_hand.tscn" id="22_3a7m8"]
+[ext_resource type="Script" uid="uid://bhddlr5vbedjw" path="res://characters/States/player/trapped.gd" id="23_jgd8i"]
+[ext_resource type="PackedScene" uid="uid://dce8swdubkj2q" path="res://characters/States/animation.tscn" id="23_lv4bx"]
+[ext_resource type="PackedScene" uid="uid://dlbbly7sd80t5" path="res://characters/States/player/hand_actions/move_action_left_hand.tscn" id="23_y3et5"]
+[ext_resource type="PackedScene" uid="uid://cnw5y2el00sa3" path="res://characters/States/player/hand_actions/move_action_right_hand.tscn" id="24_0mbv2"]
+[ext_resource type="Script" uid="uid://bdf46xnhiqq6i" path="res://characters/States/player/hand_actions/trapped_action_left_hand.gd" id="25_4cx7u"]
+[ext_resource type="Script" uid="uid://mfye63qw1mcq" path="res://characters/States/player/hand_actions/trapped_action_right_hand.gd" id="26_w53g3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_on558"]
 atlas = ExtResource("2_on558")
@@ -194,8 +198,10 @@ height = 26.0
 
 [node name="Player" type="CharacterBody2D" unique_id=294110880 groups=["player"]]
 collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_5y5mg")
 Jump_stength = -360
+damage = 0
 
 [node name="interfas" type="Node2D" parent="." unique_id=1051874925]
 
@@ -295,6 +301,11 @@ default_state = NodePath("Idle")
 [node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("13_icpky")]
 script = ExtResource("14_58jvb")
 
+[node name="Trapped" type="Node" parent="State_Machine" unique_id=1052634462]
+script = ExtResource("23_jgd8i")
+
+[node name="Animation" parent="State_Machine" unique_id=431374382 instance=ExtResource("23_lv4bx")]
+
 [node name="Action_Left_Hand" parent="State_Machine" unique_id=520815838 instance=ExtResource("11_blik6")]
 
 [node name="Action_Right_Hand" parent="State_Machine" unique_id=824303545 instance=ExtResource("12_artkk")]
@@ -318,6 +329,12 @@ script = ExtResource("14_58jvb")
 [node name="Move_action_Left_Hand" parent="State_Machine" unique_id=1370897508 instance=ExtResource("23_y3et5")]
 
 [node name="Move_action_Right_Hand" parent="State_Machine" unique_id=763676078 instance=ExtResource("24_0mbv2")]
+
+[node name="Trapped_action_Left_Hand" type="Node" parent="State_Machine" unique_id=2116339730]
+script = ExtResource("25_4cx7u")
+
+[node name="Trapped_action_Right_Hand" type="Node" parent="State_Machine" unique_id=674283739]
+script = ExtResource("26_w53g3")
 
 [connection signal="area_entered" from="Hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="Hit_box" to="." method="_on_hit_box_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://q1yyl02rkr83"]
+[gd_scene format=3 uid="uid://q1yyl02rkr83"]
 
 [ext_resource type="Script" uid="uid://b005kl7ml7ix7" path="res://characters/Enemigos/Scripts/drunked_fly.gd" id="1_myk5x"]
 [ext_resource type="Texture2D" uid="uid://g0w10hqxdyyd" path="res://assets/characters/enemies/DrunkedFly.png" id="2_akp1l"]
@@ -32,7 +32,7 @@ size = Vector2(26, 22)
 position = Vector2(-87, -8)
 collision_layer = 0
 script = ExtResource("1_myk5x")
-speed = 150
+speed = 100
 Knockback_resistence = -25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]

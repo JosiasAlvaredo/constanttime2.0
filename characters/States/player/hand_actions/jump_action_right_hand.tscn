@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://f8s5la4j7ujb"]
 
-[ext_resource type="Script" uid="uid://cbicsmmbrhcen" path="res://characters/States/hand_actions/jump_action_rigth_hand.gd" id="1_8dyp8"]
+[ext_resource type="Script" uid="uid://cbicsmmbrhcen" path="res://characters/States/player/hand_actions/jump_action_rigth_hand.gd" id="1_8dyp8"]
 
 [node name="Jump_action_Right_Hand" type="Node" unique_id=36779916]
 script = ExtResource("1_8dyp8")

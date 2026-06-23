@@ -1,4 +1,4 @@
 extends State_base
 func start():
-	pass
+	controlled_node.velocity=Vector2.ZERO
 	

@@ -28,7 +28,10 @@ radius = 4.0
 radius = 257.2353
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtmgt"]
-size = Vector2(20, 22.78)
+size = Vector2(42, 44.755)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hblm0"]
+size = Vector2(1, 2)
 
 [node name="PlantPenguin" type="CharacterBody2D" unique_id=971750251]
 script = ExtResource("1_cj8ew")
@@ -36,13 +39,16 @@ live = 9
 aceleration = 0
 speed = 0
 Knockback_resistence = 100
+knockback = Vector2(-100, -100)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=574869929]
-scale = Vector2(0.1, 0.1)
+position = Vector2(-3.000002, 9)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_qnnyr")
+offset = Vector2(-89.99999, 5.000019)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723008877]
-position = Vector2(3, 7)
+position = Vector2(-11, 25)
 shape = SubResource("CircleShape2D_010q2")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=402045716]
@@ -54,21 +60,29 @@ position = Vector2(-1, 4)
 shape = SubResource("CircleShape2D_cj8ew")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=385186210]
-position = Vector2(-88, -6.120001)
+position = Vector2(-105, 13)
 collision_layer = 132
 collision_mask = 32
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1917449877]
-position = Vector2(95, 7.120001)
+position = Vector2(102, -4.3775005)
 shape = SubResource("RectangleShape2D_dtmgt")
 
+[node name="Tongue_area" type="Area2D" parent="." unique_id=967700453]
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tongue_area" unique_id=1845459013]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_hblm0")
+
 [node name="Tongue_ray" type="RayCast2D" parent="." unique_id=1580496135]
-position = Vector2(9, -5)
+visible = false
 target_position = Vector2(244, 0)
 collision_mask = 3
 
 [node name="TongueToSolid_ray" type="RayCast2D" parent="." unique_id=418997768]
-position = Vector2(9, -5)
+visible = false
 target_position = Vector2(245, 0)
 
 [node name="Tongue_line" type="Line2D" parent="." unique_id=547243716]
@@ -86,3 +100,5 @@ script = ExtResource("5_8tglo")
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Tongue_area" to="." method="_on_tongue_area_area_entered"]
+[connection signal="body_entered" from="Tongue_area" to="." method="_on_tongue_area_body_entered"]

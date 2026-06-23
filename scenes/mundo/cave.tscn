@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://byps7l87bpjvm" path="res://characters/Enemigos/SpikeSlime.tscn" id="3_0cxct"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="4_kttud"]
 [ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="5_pf63c"]
-[ext_resource type="Shader" path="res://scenes/mundo/bruma.gdshader" id="6_sohtu"]
+[ext_resource type="Shader" uid="uid://vdmljgm7mn5a" path="res://scenes/mundo/bruma.gdshader" id="6_sohtu"]
 [ext_resource type="PackedScene" uid="uid://q1yyl02rkr83" path="res://characters/Enemigos/DrunkedFly.tscn" id="7_k4co8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xkgdy"]
