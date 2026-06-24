@@ -39,7 +39,7 @@ animation = &"Default"
 offset = Vector2(5, -1)
 
 [node name="FloorDetection" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1792058697]
-position = Vector2(18, -1)
+position = Vector2(16, -1)
 target_position = Vector2(0, 20.000004)
 
 [node name="Crouch_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=281147657]
