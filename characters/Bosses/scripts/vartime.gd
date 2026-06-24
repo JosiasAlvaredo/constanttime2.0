@@ -13,8 +13,6 @@ extends enemy_base
 @onready var collision_short_sword: CollisionShape2D = $AnimatedSprite2D/Short_sword/CollisionShape2D
 @onready var collision_large_sword: CollisionShape2D = $AnimatedSprite2D/Large_sword/CollisionShape2D
 
-var player=null
-
 
 var distance=0
 var animations={ "idle":"Default", "large_sword":"Large_sword", "short_sword":"Short_sword","teleport":"teleport_charge"}

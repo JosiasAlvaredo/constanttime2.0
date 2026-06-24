@@ -14,6 +14,10 @@ class_name Stats
 
 @export var damage=5
 
+@export var activate_Gravity=true
+@export var solid=true
+
+var trapped=false
 
 var can_roll=true
 var can_jump=true
@@ -28,3 +32,9 @@ func delay_roll():
 	await get_tree().create_timer(0.4).timeout
 	can_roll=true
 	
+func _process(delta: float) -> void:
+		
+	if solid:
+		set_collision_mask_value(1,true)
+	else:
+		set_collision_mask_value(1,false)

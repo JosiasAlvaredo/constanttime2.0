@@ -436,7 +436,7 @@ zona = "Bosque"
 _name = "LLave_del_bosque"
 
 [node name="Puerta_del_bosque" parent="." unique_id=54625952 instance=ExtResource("12_4g8ro")]
-position = Vector2(242, 459)
+position = Vector2(362, 434)
 zona = "Bosque"
 _name = "Puerta_del_bosque"
 key_name = "LLave_del_bosque"
@@ -451,7 +451,7 @@ position = Vector2(53, -43)
 stomp_velocity = 600
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
-position = Vector2(78, 320)
+position = Vector2(86, 331)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
 position = Vector2(26, 2)

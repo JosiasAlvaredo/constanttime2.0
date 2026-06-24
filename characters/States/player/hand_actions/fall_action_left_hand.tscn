@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://e3mb4qg8erpy"]
 
-[ext_resource type="Script" uid="uid://d16l7ngak2a3p" path="res://characters/States/hand_actions/fall_action_left_hand.gd" id="1_s0cfh"]
+[ext_resource type="Script" uid="uid://d16l7ngak2a3p" path="res://characters/States/player/hand_actions/fall_action_left_hand.gd" id="1_s0cfh"]
 
 [node name="Fall_action_Left_Hand" type="Node" unique_id=1795967884]
 script = ExtResource("1_s0cfh")

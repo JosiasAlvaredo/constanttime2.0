@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="11_lh441"]
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/Map/door/door.tscn" id="12_4g8ro"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="13_dv5nu"]
-[ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/Rock.tscn" id="14_glptd"]
+[ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="14_glptd"]
 [ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="14_stg21"]
 [ext_resource type="PackedScene" uid="uid://c118aug7ylesj" path="res://characters/Bosses/Vartime.tscn" id="15_stg21"]
 [ext_resource type="PackedScene" uid="uid://c6hngsj3kv6de" path="res://characters/Enemigos/PlantPenguin.tscn" id="19_duas4"]
@@ -436,7 +436,7 @@ zona = "Bosque"
 _name = "LLave_del_bosque"
 
 [node name="Puerta_del_bosque" parent="." unique_id=54625952 instance=ExtResource("12_4g8ro")]
-position = Vector2(242, 459)
+position = Vector2(362, 434)
 zona = "Bosque"
 _name = "Puerta_del_bosque"
 key_name = "LLave_del_bosque"
@@ -451,7 +451,7 @@ position = Vector2(53, -43)
 stomp_velocity = 600
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
-position = Vector2(78, 320)
+position = Vector2(82, 331)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
 position = Vector2(26, 2)
@@ -474,4 +474,4 @@ position = Vector2(2052, 234)
 shoot_velocity = 650
 
 [node name="Enemy" parent="." unique_id=971750251 instance=ExtResource("19_duas4")]
-position = Vector2(443, 424)
+position = Vector2(443, 436)

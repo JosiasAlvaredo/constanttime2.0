@@ -64,7 +64,18 @@ func _physics_process(delta: float) -> void:
 	direction=-Input.get_axis("Right","Left")
 	direction_y=-Input.get_axis("Up","Crouch")
 	
-	velocity.y+= gravity*delta
+	if activate_Gravity:
+		velocity.y+= gravity*delta
+		
+	if trapped:
+		activate_Gravity=false
+		solid=false
+		state_machine.change_to("Trapped")
+	elif state_machine.current_state==$State_Machine/Trapped:
+		state_machine.change_to("Idle")
+		activate_Gravity=true
+		solid=true
+		
 	move_and_slide()
 	
 func FLIP():

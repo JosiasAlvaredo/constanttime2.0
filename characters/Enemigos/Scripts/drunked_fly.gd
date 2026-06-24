@@ -8,28 +8,21 @@ extends enemy_base
 @onready var left_ray: RayCast2D = $LeftRay
 @onready var right_ray: RayCast2D = $RightRay
 
-var directions=Vector2.ZERO
+var directions=Vector2(1,1)
 var fliping=false
 var boing=[false,false]
 var animations={ "idle":"Default", "move":"Default", "jump":"Default","fall":"Default"}
 
-
 func _physics_process(delta):
-	if not fliping:
-		fliping=true
-		await  get_tree().create_timer(randf_range(0.1,0.8)).timeout
-		directions=Vector2(randf_range(-1,1),randf_range(-1,1))
-		fliping=false
-		
-	
+
 	if (floor_detection.is_colliding() or crouch_ray.is_colliding()) and not boing[0]:
-		directions.y*=-2
+		directions.y*=-1
 		boing[0]=true
 	else:
 		boing[0]=false
 		
 	if (left_ray.is_colliding() or right_ray.is_colliding()) and not boing[1]:
-		directions.x*=-2
+		directions.x*=-1
 		boing[1]=true
 	else:
 		boing[1]=false

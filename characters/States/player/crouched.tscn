@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://o5y7bwwxch8g"]
 
-[ext_resource type="Script" uid="uid://oo0amkpikplk" path="res://Objets/Characters/States/crouched.gd" id="1_751vx"]
+[ext_resource type="Script" uid="uid://oo0amkpikplk" path="res://characters/States/player/crouched.gd" id="1_751vx"]
 
 [node name="Crouched" type="Node" unique_id=1474639818]
 script = ExtResource("1_751vx")
