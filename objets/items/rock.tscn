@@ -6,7 +6,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 91.00137
 
-[node name="Rock" type="Node2D" unique_id=274988526]
+[sub_resource type="CircleShape2D" id="CircleShape2D_lc80n"]
+radius = 4.0
+
+[node name="Rock" type="RigidBody2D" unique_id=926426869]
+collision_layer = 0
 script = ExtResource("1_vswh6")
 kind = "Bullet"
 
@@ -23,5 +27,8 @@ collision_mask = 64
 position = Vector2(0, -1)
 scale = Vector2(0.08, 0.08)
 shape = SubResource("CircleShape2D_vswh6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1753255336]
+shape = SubResource("CircleShape2D_lc80n")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
