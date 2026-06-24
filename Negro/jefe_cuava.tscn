@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bdihe3shfwb38" path="res://Negro/duende.jpeg" id="3_gfnxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87fth"]
-size = Vector2(46.5, 53.75)
+size = Vector2(42.25, 24.75)
 
 [node name="jefeCuava" type="CharacterBody2D" unique_id=1124134172 groups=["boss"]]
 script = ExtResource("1_87fth")
@@ -24,7 +24,7 @@ target_position = Vector2(2, 100)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1227839729]
-position = Vector2(62, 37.875)
+position = Vector2(64.125, 52.375)
 shape = SubResource("RectangleShape2D_87fth")
 
 [node name="Timer" type="Timer" parent="." unique_id=1731208449 groups=["player"]]
