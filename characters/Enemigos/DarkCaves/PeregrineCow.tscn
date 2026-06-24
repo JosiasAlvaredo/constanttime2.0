@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://drs0lb03xidf0"]
+
+[ext_resource type="Script" uid="uid://cn4gpsqu7fr0g" path="res://characters/Enemigos/Scripts/peregrine_cow.gd" id="1_s8bov"]
+[ext_resource type="Texture2D" uid="uid://du4m10stsf7pf" path="res://assets/characters/enemies/PeregrineCow.png" id="2_j6835"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_sgmsk"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_t38u8"]
+[ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_ft7r3"]
+[ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_7xjde"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_qa3wd"]
+[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_e4v0i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8tto"]
+atlas = ExtResource("2_j6835")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cvo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8tto")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
+size = Vector2(26, 25)
+
+[node name="PeregrineCow" type="CharacterBody2D" unique_id=1513898474]
+position = Vector2(-87, -8)
+collision_layer = 0
+script = ExtResource("1_s8bov")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
+position = Vector2(-5, -1)
+sprite_frames = SubResource("SpriteFrames_3cvo5")
+animation = &"Default"
+offset = Vector2(5, -1)
+
+[node name="FloorDetection" type="RayCast2D" parent="AnimatedSprite2D" unique_id=1792058697]
+position = Vector2(18, -1)
+target_position = Vector2(0, 20.000004)
+
+[node name="Crouch_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=281147657]
+position = Vector2(5, 1)
+scale = Vector2(2.3200002, 1)
+target_position = Vector2(0, -17)
+
+[node name="Front_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=464346437]
+position = Vector2(5.0000014, 2.000001)
+scale = Vector2(1.3333334, 1.3333334)
+target_position = Vector2(14.249996, -4.7683716e-07)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
+position = Vector2(-3, 3)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
+position = Vector2(-91, -3)
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1869173775]
+position = Vector2(88, 6)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_sgmsk")]
+default_state = NodePath("Move")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_t38u8")]
+
+[node name="Move" parent="State_Machine" unique_id=453338450 instance=ExtResource("5_ft7r3")]
+
+[node name="Fall" parent="State_Machine" unique_id=1275433795 instance=ExtResource("6_7xjde")]
+
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_qa3wd")]
+script = ExtResource("8_e4v0i")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
