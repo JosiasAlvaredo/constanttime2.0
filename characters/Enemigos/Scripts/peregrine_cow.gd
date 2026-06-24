@@ -1,25 +1,38 @@
-extends CharacterBody2D
+extends enemy_base
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
+@onready var front_ray: RayCast2D = $AnimatedSprite2D/Front_ray
+@onready var floor_detection: RayCast2D = $AnimatedSprite2D/FloorDetection
+
+var dashing=false
+var fliping=false
+
+var animations={ "idle":"Default", "move":"Default", "jump":"Default","fall":"Default"}
 
 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+func FLIP():
+	if (front_ray.is_colliding() or !floor_detection.is_colliding()) and not dashing:
+		direction *= -1
+		$AnimatedSprite2D.scale.x *= -1
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+func _physics_process(delta):
+	velocity.y+= gravity*delta
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	if state_machine.current_state==$State_Machine/Idle:
+		direction=last_direction
+		state_machine.change_to("Move")
+		
+	
 	move_and_slide()
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if state_machine.current_state!=$State_Machine/Charge:
+		state_machine.change_to("Charge")
+	

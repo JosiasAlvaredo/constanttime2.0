@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="14_stg21"]
 [ext_resource type="PackedScene" uid="uid://c118aug7ylesj" path="res://characters/Bosses/Vartime.tscn" id="15_stg21"]
 [ext_resource type="PackedScene" uid="uid://c6hngsj3kv6de" path="res://characters/Enemigos/Forest/PlantPenguin.tscn" id="19_duas4"]
+[ext_resource type="PackedScene" uid="uid://drs0lb03xidf0" path="res://characters/Enemigos/DarkCaves/PeregrineCow.tscn" id="19_pymhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqdhd"]
 size = Vector2(30, 13)
@@ -415,6 +416,7 @@ autoplay = &"move"
 
 [node name="Enemigo_plat" parent="Enemigos" unique_id=1513898474 instance=ExtResource("7_duas4")]
 position = Vector2(1964, 233)
+live = 20
 
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 0)
@@ -458,7 +460,7 @@ position = Vector2(26, 2)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Stick" parent="." unique_id=1989495425 instance=ExtResource("14_stg21")]
-position = Vector2(103, 312)
+position = Vector2(3224, 415)
 
 [node name="Doors" type="Node2D" parent="." unique_id=900253682]
 
@@ -472,6 +474,10 @@ kind = "go_right"
 [node name="Eye_enemy" parent="." unique_id=2081935825 instance=ExtResource("8_qiarc")]
 position = Vector2(2052, 234)
 shoot_velocity = 650
+live = 12
 
 [node name="Enemy" parent="." unique_id=971750251 instance=ExtResource("19_duas4")]
 position = Vector2(443, 424)
+
+[node name="PeregrineCow" parent="." unique_id=1788486631 instance=ExtResource("19_pymhh")]
+position = Vector2(3084, 490)

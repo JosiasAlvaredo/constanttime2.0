@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_7xjde"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_qa3wd"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_e4v0i"]
+[ext_resource type="Script" uid="uid://bja215uwsnfit" path="res://characters/Enemigos/DarkCaves/charge.gd" id="9_j6835"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8tto"]
 atlas = ExtResource("2_j6835")
@@ -24,6 +25,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8bov"]
+size = Vector2(113.5, 25)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
 size = Vector2(26, 25)
 
@@ -31,6 +35,8 @@ size = Vector2(26, 25)
 position = Vector2(-87, -8)
 collision_layer = 0
 script = ExtResource("1_s8bov")
+live = 12
+speed = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
 position = Vector2(-5, -1)
@@ -51,6 +57,15 @@ target_position = Vector2(0, -17)
 position = Vector2(5.0000014, 2.000001)
 scale = Vector2(1.3333334, 1.3333334)
 target_position = Vector2(14.249996, -4.7683716e-07)
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D" unique_id=161575637]
+position = Vector2(5, 1)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D" unique_id=1475293223]
+position = Vector2(55, 3)
+shape = SubResource("RectangleShape2D_s8bov")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
 position = Vector2(-3, 3)
@@ -77,4 +92,8 @@ default_state = NodePath("Move")
 [node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_qa3wd")]
 script = ExtResource("8_e4v0i")
 
+[node name="Charge" type="Node" parent="State_Machine" unique_id=360321042]
+script = ExtResource("9_j6835")
+
+[connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
