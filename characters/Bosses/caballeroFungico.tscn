@@ -1,0 +1,116 @@
+[gd_scene load_steps=14 format=3 uid="uid://ycgb05jjuxef"]
+
+[ext_resource type="Script" uid="uid://dlr7fule1e7ud" path="res://characters/Bosses/caballero_fungico.gd" id="1_fj5yo"]
+[ext_resource type="Texture2D" uid="uid://dydwb01ws4wty" path="res://assets/characters/Bosses/pixilart-sprite.png" id="2_fj5yo"]
+[ext_resource type="Script" uid="uid://b0pkxmnksv7qv" path="res://characters/States/State_Machine.gd" id="3_fj5yo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnxiw"]
+atlas = ExtResource("2_fj5yo")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cm11s"]
+atlas = ExtResource("2_fj5yo")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11emv"]
+atlas = ExtResource("2_fj5yo")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ncb5"]
+atlas = ExtResource("2_fj5yo")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xwpi"]
+atlas = ExtResource("2_fj5yo")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo76k"]
+atlas = ExtResource("2_fj5yo")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnxiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnxiw")
+}],
+"loop": true,
+"name": &"Basic",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cm11s")
+}],
+"loop": true,
+"name": &"Petrified",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11emv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ncb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xwpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo76k")
+}],
+"loop": true,
+"name": &"Transform",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3h3v"]
+size = Vector2(38, 51.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fj5yo"]
+radius = 13.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gaffu"]
+size = Vector2(66, 84)
+
+[node name="CaballeroFungico" type="CharacterBody2D" unique_id=2077228986]
+script = ExtResource("1_fj5yo")
+live = null
+aceleration = null
+Jump_stength = null
+speed = null
+Climb_velocity = null
+roll_velocity = null
+Knockback_resistence = null
+knockback = null
+damage = null
+activate_Gravity = null
+solid = null
+metadata/_custom_type_script = "uid://fxcax2j2bcgv"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=300559539]
+sprite_frames = SubResource("SpriteFrames_qnxiw")
+animation = &"Basic"
+autoplay = "Petrified"
+
+[node name="State_Machine" type="Node" parent="." unique_id=1395601721]
+script = ExtResource("3_fj5yo")
+metadata/_custom_type_script = "uid://b0pkxmnksv7qv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1649498393]
+position = Vector2(8, 24)
+shape = SubResource("RectangleShape2D_k3h3v")
+debug_color = Color(0.2331554, 0.57148397, 0.76491034, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=783074826]
+position = Vector2(-11, -14)
+shape = SubResource("CircleShape2D_fj5yo")
+debug_color = Color(0.92236626, 0.18839383, 0.5182549, 0.41960785)
+
+[node name="Start_figth" type="Area2D" parent="." unique_id=1385655867]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_figth" unique_id=343810635]
+position = Vector2(-49, 9)
+shape = SubResource("RectangleShape2D_gaffu")

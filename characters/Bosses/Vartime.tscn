@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c118aug7ylesj"]
+[gd_scene load_steps=25 format=3 uid="uid://c118aug7ylesj"]
 
 [ext_resource type="Script" uid="uid://dux0uhlehosu8" path="res://characters/Bosses/scripts/vartime.gd" id="1_l6v1w"]
 [ext_resource type="Texture2D" uid="uid://b3qy7akwcpi3i" path="res://assets/characters/Bosses/vartime.png" id="2_yj7hd"]
@@ -127,6 +127,7 @@ live = 15
 Knockback_resistence = 100
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=645263024]
+visible = false
 offset_left = -79.0
 offset_top = -53.0
 offset_right = 73.0
@@ -171,7 +172,6 @@ position = Vector2(-1, 36)
 shape = SubResource("RectangleShape2D_vxx27")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
-visible = false
 position = Vector2(-88, -6.120001)
 collision_layer = 132
 collision_mask = 32

@@ -23,7 +23,7 @@ size = Vector2(30, 13)
 size = Vector2(80, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pvrp"]
-size = Vector2(4847, 20)
+size = Vector2(4847, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ca8"]
 size = Vector2(1354, 603)
@@ -295,11 +295,11 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vacio" unique_id=408755710]
-position = Vector2(1470.5, 653)
+position = Vector2(1455, 727)
 shape = SubResource("RectangleShape2D_3pvrp")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_3pvrp")]
-position = Vector2(59, 331)
+position = Vector2(388, 253)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=842960540]
 position = Vector2(26, 2)
@@ -353,6 +353,20 @@ scale = Vector2(1, 5)
 nodeName = "Mapa1"
 target_door = "Cave_exit"
 kind = "go_right"
+
+[node name="dark_cave" parent="Doors" unique_id=871736689 instance=ExtResource("3_3pvrp")]
+position = Vector2(868.99994, 696)
+scale = Vector2(48.944763, 0.94243306)
+nodeName = "cave"
+target_door = "caveIn"
+kind = "go_down"
+
+[node name="dark_caveOut" parent="Doors" unique_id=1600425697 instance=ExtResource("3_3pvrp")]
+position = Vector2(198, 695)
+scale = Vector2(7.7999983, 1.2399998)
+nodeName = "cave"
+target_door = "caveOut"
+kind = "go_up"
 
 [connection signal="body_entered" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_entered"]
 [connection signal="body_exited" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_exited"]
