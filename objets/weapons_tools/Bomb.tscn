@@ -21,7 +21,7 @@ disabled = true
 
 [node name="Explote_area" type="Area2D" parent="." unique_id=1780921005]
 collision_layer = 0
-collision_mask = 191
+collision_mask = 43
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Explote_area" unique_id=2143512174]
 shape = SubResource("CircleShape2D_tnupp")

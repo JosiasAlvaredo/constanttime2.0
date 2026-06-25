@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://cot11hi4v6y30"]
+
+[ext_resource type="Script" uid="uid://bor8apj7640fr" path="res://characters/Enemigos/Scripts/funfi_flour.gd" id="1_vfn3j"]
+[ext_resource type="Texture2D" uid="uid://bcwfcs805iy6k" path="res://assets/pixil-frame-2.png" id="2_wkg1u"]
+[ext_resource type="Texture2D" uid="uid://dtrbja08cvcp2" path="res://assets/pixil-frame-0.png" id="3_043t3"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_x1lai"]
+[ext_resource type="Texture2D" uid="uid://dlsi756nvsktc" path="res://assets/pixil-frame-1.png" id="4_xtq3f"]
+[ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_ylk41"]
+[ext_resource type="Script" uid="uid://b8r6hkba68ku3" path="res://characters/States/enemies/attack.gd" id="7_3wcel"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wus1"]
+atlas = ExtResource("2_wkg1u")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqjwu"]
+atlas = ExtResource("4_xtq3f")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dooi5"]
+atlas = ExtResource("3_043t3")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8eiy"]
+atlas = ExtResource("3_043t3")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cvo5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wus1")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqjwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dooi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqjwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dooi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqjwu")
+}],
+"loop": false,
+"name": &"Charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8eiy")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxx27"]
+size = Vector2(44, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfn3j"]
+size = Vector2(44, 6)
+
+[node name="FungiFlour" type="CharacterBody2D" unique_id=1513898474]
+position = Vector2(-87, -8)
+collision_layer = 0
+script = ExtResource("1_vfn3j")
+knockback = Vector2(-100, -500)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]
+position = Vector2(1, -13)
+sprite_frames = SubResource("SpriteFrames_3cvo5")
+animation = &"Charge"
+autoplay = "Default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=721560786]
+visible = false
+position = Vector2(0, 0.87999916)
+shape = SubResource("RectangleShape2D_vxx27")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=322673326]
+position = Vector2(-88, -6.120001)
+collision_layer = 132
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1869173775]
+position = Vector2(86, 4.120001)
+shape = SubResource("RectangleShape2D_vxx27")
+disabled = true
+
+[node name="Start_Attack" type="Area2D" parent="." unique_id=1323878029]
+position = Vector2(-88, -6.120001)
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start_Attack" unique_id=1705006178]
+position = Vector2(86, 15.120001)
+shape = SubResource("RectangleShape2D_vfn3j")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_x1lai")]
+default_state = NodePath("Idle")
+
+[node name="Idle" parent="State_Machine" unique_id=137508918 instance=ExtResource("4_ylk41")]
+
+[node name="Attack" type="Node" parent="State_Machine" unique_id=988623030]
+script = ExtResource("7_3wcel")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Start_Attack" to="." method="_on_start_attack_area_entered"]
+[connection signal="body_entered" from="Start_Attack" to="." method="_on_start_attack_body_entered"]

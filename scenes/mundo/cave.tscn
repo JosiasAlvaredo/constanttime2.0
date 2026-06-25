@@ -3,12 +3,23 @@
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_0cxct"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="1_tb6df"]
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="2_k4co8"]
-[ext_resource type="PackedScene" uid="uid://byps7l87bpjvm" path="res://characters/Enemigos/SpikeSlime.tscn" id="3_0cxct"]
+[ext_resource type="PackedScene" uid="uid://byps7l87bpjvm" path="res://characters/Enemigos/DarkCaves/SpikeSlime.tscn" id="3_0cxct"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="4_kttud"]
 [ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="5_pf63c"]
 [ext_resource type="Shader" uid="uid://vdmljgm7mn5a" path="res://scenes/mundo/bruma.gdshader" id="6_sohtu"]
+<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/Map/chenge_node_to/chaenge_node.tscn" id="8_kttud"]
 [ext_resource type="PackedScene" uid="uid://q1yyl02rkr83" path="res://characters/Enemigos/DrunkedFly.tscn" id="9_kttud"]
+=======
+=======
+[ext_resource type="Shader" uid="uid://vdmljgm7mn5a" path="res://scenes/mundo/bruma.gdshader" id="6_sohtu"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://q1yyl02rkr83" path="res://characters/Enemigos/DarkCaves/DrunkedFly.tscn" id="7_k4co8"]
+=======
+[ext_resource type="PackedScene" uid="uid://q1yyl02rkr83" path="res://characters/Enemigos/DrunkedFly.tscn" id="7_k4co8"]
+>>>>>>> 49da9c4e1d3a51a9f146c1fc185631f14a23644b
+>>>>>>> 599a0d1633f7751a86661b490fc8abe1ed4d8771
+>>>>>>> 24ccb7bf081b6d893bfe75906ad6f8bfacf41a6a
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xkgdy"]
 texture = ExtResource("1_tb6df")

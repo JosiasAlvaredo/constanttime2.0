@@ -30,7 +30,7 @@ size = Vector2(26, 22)
 
 [node name="DrunkedFly" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
-collision_layer = 0
+collision_layer = 128
 script = ExtResource("1_myk5x")
 speed = 100
 Knockback_resistence = -25

@@ -5,12 +5,13 @@ class_name Ray_shoot_class
 	
 func use(State):
 	var target=bullet_ray.get_collider()
+	worn_out()
 	if target:
 		if target.has_method("enemy_damage"):
 			target.enemy_damage(self)
 	player.state_machine.change_to(State)
 	player.hand_using=""
-	worn_out()
+	
 	
 func _physics_process(delta: float) -> void:
 	scale.x=abs(scale.x)*sign(get_parent().scale.x)
