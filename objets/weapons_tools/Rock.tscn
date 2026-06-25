@@ -3,13 +3,12 @@
 [ext_resource type="Script" uid="uid://bk27nbee5otc7" path="res://objets/weapons_tools/scripts/rock.gd" id="1_tqsnb"]
 [ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/Weapons/Rock.png" id="2_tqv41"]
 
-[node name="rock" type="Node2D" unique_id=274988526]
+[node name="rock" type="Node2D" unique_id=274988526 node_paths=PackedStringArray("item_texture")]
 script = ExtResource("1_tqsnb")
-_name = null
-damage = null
-durability = null
-recoil = null
-knockback = null
+_name = "Rock"
+durability = 3
+knockback = Vector2(-151, -150)
+item_texture = NodePath("rock")
 
 [node name="rock" type="Sprite2D" parent="." unique_id=1095544918]
 visible = false

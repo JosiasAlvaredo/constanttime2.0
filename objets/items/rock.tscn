@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dkqv2s6wv6vun"]
+[gd_scene format=3 uid="uid://tihwv5yhmgib"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_vswh6"]
 [ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/Weapons/Rock.png" id="2_4kxl1"]

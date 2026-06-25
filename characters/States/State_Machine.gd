@@ -21,6 +21,7 @@ func _state_start():
 	current_state.start()
 	
 func change_to(new_state:String):
+
 	if current_state and current_state.has_method("end"): current_state.end()
 	current_state= get_node(new_state)
 	_state_start()

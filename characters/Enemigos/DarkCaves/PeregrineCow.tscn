@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_7xjde"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_qa3wd"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_e4v0i"]
-[ext_resource type="Script" uid="uid://bja215uwsnfit" path="res://characters/Enemigos/DarkCaves/charge.gd" id="9_j6835"]
+[ext_resource type="Script" uid="uid://bja215uwsnfit" path="res://characters/States/enemies/charge.gd" id="9_j6835"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8tto"]
 atlas = ExtResource("2_j6835")
@@ -33,7 +33,7 @@ size = Vector2(26, 25)
 
 [node name="PeregrineCow" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
-collision_layer = 0
+collision_layer = 128
 script = ExtResource("1_s8bov")
 live = 12
 speed = 50

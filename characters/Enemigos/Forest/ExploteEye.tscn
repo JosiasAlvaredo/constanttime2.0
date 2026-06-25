@@ -33,7 +33,7 @@ size = Vector2(26, 44)
 
 [node name="Eye_enemy" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
-collision_layer = 0
+collision_layer = 128
 script = ExtResource("1_pwgth")
 shoot_velocity = 750
 speed = 50

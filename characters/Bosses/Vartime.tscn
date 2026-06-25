@@ -120,7 +120,7 @@ size = Vector2(658, 449.75)
 
 [node name="Vartime_boss" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
-collision_layer = 0
+collision_layer = 128
 script = ExtResource("1_l6v1w")
 stomp_velocity = 300
 live = 15

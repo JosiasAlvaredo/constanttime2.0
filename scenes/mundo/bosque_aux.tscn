@@ -8,17 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://c5hggt18nb6y7" path="res://assets/plataformas.png" id="5_qiarc"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="6_snx3b"]
 [ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Enemigos/Forest/enemigo_plataformero.tscn" id="7_duas4"]
+[ext_resource type="PackedScene" uid="uid://cx6p0pacib8wk" path="res://characters/Enemigos/DarkCaves/Funji_beast.tscn" id="8_duas4"]
 [ext_resource type="PackedScene" uid="uid://c0f1kxl6kv1rr" path="res://characters/Enemigos/Forest/ExploteEye.tscn" id="8_qiarc"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="9_b342g"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="10_p4tci"]
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="11_lh441"]
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/Map/door/door.tscn" id="12_4g8ro"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="13_dv5nu"]
-[ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/Rock.tscn" id="14_glptd"]
+[ext_resource type="PackedScene" uid="uid://tihwv5yhmgib" path="res://objets/items/rock.tscn" id="14_glptd"]
 [ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="14_stg21"]
 [ext_resource type="PackedScene" uid="uid://c118aug7ylesj" path="res://characters/Bosses/Vartime.tscn" id="15_stg21"]
 [ext_resource type="PackedScene" uid="uid://c6hngsj3kv6de" path="res://characters/Enemigos/Forest/PlantPenguin.tscn" id="19_duas4"]
-[ext_resource type="PackedScene" uid="uid://drs0lb03xidf0" path="res://characters/Enemigos/DarkCaves/PeregrineCow.tscn" id="19_pymhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqdhd"]
 size = Vector2(30, 13)
@@ -415,11 +415,14 @@ autoplay = &"move"
 [node name="Enemigos" type="Node2D" parent="." unique_id=1084383353]
 
 [node name="Enemigo_plat" parent="Enemigos" unique_id=1513898474 instance=ExtResource("7_duas4")]
-position = Vector2(1964, 233)
+position = Vector2(1891, 242)
 live = 20
 
+[node name="Funji_beast" parent="Enemigos" unique_id=1187064391 instance=ExtResource("8_duas4")]
+position = Vector2(2957, 487)
+
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
-position = Vector2(3, 0)
+position = Vector2(3, 100)
 collision_layer = 8
 collision_mask = 8
 
@@ -446,14 +449,14 @@ key_name = "LLave_del_bosque"
 [node name="Pausa" parent="." unique_id=2057402927 instance=ExtResource("13_dv5nu")]
 
 [node name="Rock" parent="." unique_id=274988526 instance=ExtResource("14_glptd")]
-position = Vector2(275, 435)
+position = Vector2(3270, 389)
 
 [node name="Enemigo_plat" parent="." unique_id=1126647977 instance=ExtResource("15_stg21")]
 position = Vector2(53, -43)
 stomp_velocity = 600
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
-position = Vector2(3269, 426)
+position = Vector2(69, 337)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
 position = Vector2(26, 2)
@@ -478,6 +481,3 @@ live = 12
 
 [node name="Enemy" parent="." unique_id=971750251 instance=ExtResource("19_duas4")]
 position = Vector2(443, 424)
-
-[node name="PeregrineCow" parent="." unique_id=1788486631 instance=ExtResource("19_pymhh")]
-position = Vector2(3084, 490)

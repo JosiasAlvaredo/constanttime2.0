@@ -32,7 +32,7 @@ size = Vector2(35.03125, 40.5)
 
 [node name="SpikeSlime" type="CharacterBody2D" unique_id=1513898474]
 position = Vector2(-87, -8)
-collision_layer = 0
+collision_layer = 128
 script = ExtResource("1_7ckfr")
 live = 3
 speed = 20
