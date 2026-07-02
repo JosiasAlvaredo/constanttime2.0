@@ -25,7 +25,8 @@ var can_jump=true
 var gravity:float= ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _enter_tree() -> void:
-	Knockback_resistence=1-(Knockback_resistence/100)
+	pass
+	
 	
 func delay_roll():
 	can_roll=false

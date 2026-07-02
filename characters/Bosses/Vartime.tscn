@@ -186,6 +186,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Start_figth" unique_id=2103500909]
+visible = false
 position = Vector2(7, -147.125)
 shape = SubResource("RectangleShape2D_rvcmr")
 

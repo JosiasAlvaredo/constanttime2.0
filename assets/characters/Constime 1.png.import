@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3mspshbqvtdr"
-path="res://.godot/imported/pixilart-sprite.png-28ff673714d6d47392fb6a1bdca0a74e.ctex"
+uid="uid://cia3b2fdcc5ks"
+path="res://.godot/imported/Constime 1.png-d905f4b5eabaefa60c69548f44e3ecef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/Bosses/pixilart-sprite.png"
-dest_files=["res://.godot/imported/pixilart-sprite.png-28ff673714d6d47392fb6a1bdca0a74e.ctex"]
+source_file="res://assets/characters/Constime 1.png"
+dest_files=["res://.godot/imported/Constime 1.png-d905f4b5eabaefa60c69548f44e3ecef.ctex"]
 
 [params]
 

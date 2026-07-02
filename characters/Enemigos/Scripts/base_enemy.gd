@@ -8,9 +8,8 @@ var last_direction=1
 
 var recoil=0
 
-var player
+var player: Player = null
 func enemy_damage(weapond):
-	print(live)
 	var enemy=weapond.player
 	last_direction=direction
 	direction=0
