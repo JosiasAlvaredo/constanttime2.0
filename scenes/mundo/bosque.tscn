@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://d3euk0iohp5hu"]
+[gd_scene load_steps=21 format=4 uid="uid://d3euk0iohp5hu"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_et63w"]
@@ -27,6 +27,19 @@ size = Vector2(4847, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ca8"]
 size = Vector2(1354, 603)
+
+[sub_resource type="Environment" id="Environment_et63w"]
+background_mode = 3
+glow_enabled = true
+glow_levels/2 = 0.0
+glow_levels/3 = 0.0
+glow_levels/4 = 16.0
+glow_levels/5 = 3.35
+glow_levels/6 = 16.0
+glow_hdr_threshold = 0.1
+adjustment_enabled = true
+adjustment_contrast = 1.1
+adjustment_saturation = 1.6
 
 [node name="Cueva" type="Node2D" unique_id=421176710]
 script = ExtResource("1_et63w")
@@ -367,6 +380,9 @@ scale = Vector2(7.7999983, 1.2399998)
 nodeName = "cave"
 target_door = "caveOut"
 kind = "go_up"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=915721148]
+environment = SubResource("Environment_et63w")
 
 [connection signal="body_entered" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_entered"]
 [connection signal="body_exited" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_exited"]
