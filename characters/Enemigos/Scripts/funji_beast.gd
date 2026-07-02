@@ -1,5 +1,7 @@
 extends enemy_base
 
+@export var run_speed=200
+@export var run_knockback=Vector2(-300,-100)
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
@@ -16,16 +18,21 @@ func FLIP():
 	if (front_ray.is_colliding() or !floor_detection.is_colliding()) and not player:
 		direction *= -1
 		animated_sprite_2d.scale.x *= -1
+		
 	if player!=null:
-		direction = sign(player.global_position.x-global_position.x)
-		animated_sprite_2d.scale.x = abs(animated_sprite_2d.scale.x)*direction
+		if abs(player.global_position.x-global_position.x)>25 and is_on_floor():
+			direction = sign(player.global_position.x-global_position.x)
+			animated_sprite_2d.scale.x = abs(animated_sprite_2d.scale.x)*direction
 
 func _physics_process(delta):
 	velocity.y+= gravity*delta
 	
 	if state_machine.current_state==$State_Machine/Idle:
 		direction=last_direction
-		state_machine.change_to("Move")
+		if not player:
+			state_machine.change_to("Move")
+		else:
+			state_machine.change_to("Follow")
 		
 	
 	move_and_slide()
@@ -37,5 +44,5 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	player=body
-	speed=400
+	state_machine.change_to("Follow")
 	

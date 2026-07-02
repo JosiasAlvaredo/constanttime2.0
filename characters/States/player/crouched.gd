@@ -1,8 +1,11 @@
 extends State_base
 
+func start():
+	controlled_node.animated_sprite_2d.play(controlled_node.animations["crouched"])
+
+
 func on_physics_process(delta: float) -> void:
 	controlled_node.velocity.x=0
-	controlled_node.animated_sprite_2d.play("Crouched")
 	controlled_node.stand_up_collition.disabled=true
 	
 func on_input(event: InputEvent) -> void:

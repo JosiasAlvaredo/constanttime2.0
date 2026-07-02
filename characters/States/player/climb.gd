@@ -12,7 +12,11 @@ func start():
 
 func on_physics_process(delta: float) -> void:
 	direction_y=controlled_node.direction_y
-	controlled_node.animated_sprite_2d.play("Climb")
+	
+	if direction_y==-1:
+		controlled_node.animated_sprite_2d.play("ClimbUp")
+	if direction_y==1:
+		controlled_node.animated_sprite_2d.play("ClimbDown")
 
 	if controlled_node.velocity==Vector2(0,0):
 		controlled_node.animated_sprite_2d.pause()

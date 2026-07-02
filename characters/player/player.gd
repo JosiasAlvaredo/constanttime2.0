@@ -27,7 +27,7 @@ class_name Player
 var right_hand_item=null
 var left_hand_item=null
 
-var animations={ "idle":"Idle", "move":"Run", "jump":"Jump","fall":"Jump"}
+var animations={ "idle":"Idle", "move":"Run", "jump":"Jump","fall":"Jump", "crouched":"Crouched", "roll":"Roll", "climbUp":"ClimbUp", "climbDown":"ClimbDown"}
 
 var is_inmunity=false
 var hand_using=""
@@ -113,6 +113,7 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		recoil=enemy.knockback
 		velocity.x=sign(enemy.global_position.x-global_position.x)
 		velocity.y=sign(enemy.global_position.y-global_position.y)
+		print(velocity.x)
 		inmunity()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:

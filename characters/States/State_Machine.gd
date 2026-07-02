@@ -29,22 +29,14 @@ func _state_start():
 
 func change_to(new_state: String):
 
-	print("Cambio solicitado:", new_state)
-
 	if current_state and current_state.has_method("end"):
 		current_state.end()
-
 	var next = get_node_or_null(new_state)
-
-	print("Nodo encontrado:", next)
 
 	if next == null:
 		push_error("No existe " + new_state)
 		return
-
 	current_state = next
-
-	print("Estado actual:", current_state.name)
 
 	_state_start()
 
