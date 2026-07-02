@@ -26,7 +26,6 @@ func FLIP():
 func _physics_process(delta):
 	if player!=null:
 		distance=player.global_position-global_position
-	
 	move_and_slide()
 
 

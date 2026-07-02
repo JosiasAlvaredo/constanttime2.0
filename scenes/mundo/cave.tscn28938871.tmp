@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cwb0a7qleclna"]
+[gd_scene load_steps=18 format=4 uid="uid://cwb0a7qleclna"]
 
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_0cxct"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="1_tb6df"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://urq6ft5052gl" path="res://assets/no tocar.jpg" id="7_sohtu"]
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/Map/chenge_node_to/chaenge_node.tscn" id="8_kttud"]
 [ext_resource type="PackedScene" uid="uid://ycgb05jjuxef" path="res://characters/Bosses/caballeroFungico.tscn" id="10_pf63c"]
+[ext_resource type="PackedScene" uid="uid://cot11hi4v6y30" path="res://characters/Enemigos/DarkCaves/FunfiFlour.tscn" id="12_8pngn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xkgdy"]
 texture = ExtResource("1_tb6df")
@@ -270,4 +271,21 @@ position = Vector2(114, 881)
 
 [node name="CaballeroFungico2" parent="." unique_id=2077228986 instance=ExtResource("10_pf63c")]
 position = Vector2(1453, 486)
+melee_distance = 60
+summon_distance = 150
+summon_cooldown = 5.0
 attack_damage = 20
+attack_knockback = Vector2(250, -250)
+attack_cooldown = 1.0
+funfi_flour_scene = ExtResource("12_8pngn")
+live = 1
+aceleration = 50
+Jump_stength = -300
+speed = 300
+Climb_velocity = -150
+roll_velocity = 600
+Knockback_resistence = 0
+knockback = Vector2(-200, -100)
+damage = 5
+activate_Gravity = true
+solid = true

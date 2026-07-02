@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://d3euk0iohp5hu"]
+[gd_scene load_steps=20 format=4 uid="uid://d3euk0iohp5hu"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_et63w"]
@@ -299,7 +299,7 @@ position = Vector2(1455, 727)
 shape = SubResource("RectangleShape2D_3pvrp")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_3pvrp")]
-position = Vector2(388, 253)
+position = Vector2(70, 282)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=842960540]
 position = Vector2(26, 2)

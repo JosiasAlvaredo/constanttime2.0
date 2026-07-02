@@ -1,9 +1,9 @@
 extends Node
 class_name State_base
 
-var controlled_node:Node=self.owner
+var controlled_node: Node = self.owner
 
-var state_machine:State_Machine
+var state_machine: Node
 
 func start():
 	pass
