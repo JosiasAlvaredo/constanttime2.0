@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://dbahbix74qof1"]
+[gd_scene format=3 uid="uid://dbahbix74qof1"]
 
 [ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://characters/player/player.gd" id="1_5y5mg"]
 [ext_resource type="Texture2D" uid="uid://cia3b2fdcc5ks" path="res://assets/characters/Constime 1.png" id="2_w53g3"]
@@ -271,34 +271,6 @@ Jump_stength = -400
 damage = 0
 
 [node name="interfas" type="Node2D" parent="." unique_id=1051874925]
-
-[node name="timer" type="Node2D" parent="interfas" unique_id=711565415]
-
-[node name="Timer" type="Timer" parent="interfas/timer" unique_id=311554083]
-wait_time = 60.0
-one_shot = true
-autostart = true
-
-[node name="Time_bar" type="ColorRect" parent="interfas/timer" unique_id=1403899849]
-offset_left = -209.0
-offset_top = 86.0
-offset_right = -108.0
-offset_bottom = 98.0
-color = Color(0.36705732, 0.62493634, 0, 1)
-
-[node name="Right_hand_sprite" type="Sprite2D" parent="interfas" unique_id=2124653398]
-position = Vector2(110, 90)
-
-[node name="Durability" type="Label" parent="interfas/Right_hand_sprite" unique_id=1221008634]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Left_hand_sprite" type="Sprite2D" parent="interfas" unique_id=690040186]
-position = Vector2(170, 90)
-
-[node name="Durability" type="Label" parent="interfas/Left_hand_sprite" unique_id=34668574]
-offset_right = 40.0
-offset_bottom = 23.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1086233672]
 sprite_frames = SubResource("SpriteFrames_qho3q")

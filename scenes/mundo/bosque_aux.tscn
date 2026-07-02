@@ -421,6 +421,18 @@ live = 20
 [node name="Funji_beast" parent="Enemigos" unique_id=1187064391 instance=ExtResource("8_duas4")]
 position = Vector2(2957, 487)
 
+[node name="Enemigo_plat2" parent="Enemigos" unique_id=1126647977 instance=ExtResource("15_stg21")]
+position = Vector2(53, -43)
+stomp_velocity = 600
+
+[node name="Eye_enemy" parent="Enemigos" unique_id=2081935825 instance=ExtResource("8_qiarc")]
+position = Vector2(2052, 234)
+shoot_velocity = 650
+live = 12
+
+[node name="Enemy" parent="Enemigos" unique_id=971750251 instance=ExtResource("19_duas4")]
+position = Vector2(443, 424)
+
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 100)
 collision_layer = 8
@@ -446,14 +458,41 @@ zona = "Bosque"
 _name = "Puerta_del_bosque"
 key_name = "LLave_del_bosque"
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=389714753]
+
+[node name="timer" type="Node2D" parent="CanvasLayer" unique_id=1295216993]
+position = Vector2(273, 501)
+
+[node name="Timer" type="Timer" parent="CanvasLayer/timer" unique_id=295761070]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Time_bar" type="ColorRect" parent="CanvasLayer/timer" unique_id=249350057]
+offset_left = -209.0
+offset_top = 86.0
+offset_right = -108.0
+offset_bottom = 98.0
+color = Color(0.36705732, 0.62493634, 0, 1)
+
+[node name="Right_hand_sprite" type="Sprite2D" parent="CanvasLayer" unique_id=1488407617]
+position = Vector2(383, 591)
+
+[node name="Durability" type="Label" parent="CanvasLayer/Right_hand_sprite" unique_id=456574463]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Left_hand_sprite" type="Sprite2D" parent="CanvasLayer" unique_id=2100715823]
+position = Vector2(443, 591)
+
+[node name="Durability" type="Label" parent="CanvasLayer/Left_hand_sprite" unique_id=1446582569]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [node name="Pausa" parent="." unique_id=2057402927 instance=ExtResource("13_dv5nu")]
 
 [node name="Rock" parent="." unique_id=274988526 instance=ExtResource("14_glptd")]
 position = Vector2(3270, 389)
-
-[node name="Enemigo_plat" parent="." unique_id=1126647977 instance=ExtResource("15_stg21")]
-position = Vector2(53, -43)
-stomp_velocity = 600
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
 position = Vector2(3244, 416)
@@ -474,11 +513,3 @@ scale = Vector2(1, 5)
 nodeName = "Mapa1"
 target_door = "Cave_exit"
 kind = "go_right"
-
-[node name="Eye_enemy" parent="." unique_id=2081935825 instance=ExtResource("8_qiarc")]
-position = Vector2(2052, 234)
-shoot_velocity = 650
-live = 12
-
-[node name="Enemy" parent="." unique_id=971750251 instance=ExtResource("19_duas4")]
-position = Vector2(443, 424)

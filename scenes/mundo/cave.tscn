@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://cwb0a7qleclna"]
+[gd_scene format=4 uid="uid://cwb0a7qleclna"]
 
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_0cxct"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="1_tb6df"]
@@ -285,3 +285,34 @@ position = Vector2(114, 881)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1351399300]
 environment = SubResource("Environment_sohtu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=309801045]
+
+[node name="timer" type="Node2D" parent="CanvasLayer" unique_id=1527290200]
+position = Vector2(273, 501)
+
+[node name="Timer" type="Timer" parent="CanvasLayer/timer" unique_id=1225212639]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Time_bar" type="ColorRect" parent="CanvasLayer/timer" unique_id=221353154]
+offset_left = -209.0
+offset_top = 86.0
+offset_right = -108.0
+offset_bottom = 98.0
+color = Color(0.36705732, 0.62493634, 0, 1)
+
+[node name="Right_hand_sprite" type="Sprite2D" parent="CanvasLayer" unique_id=506195973]
+position = Vector2(383, 591)
+
+[node name="Durability" type="Label" parent="CanvasLayer/Right_hand_sprite" unique_id=202025098]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Left_hand_sprite" type="Sprite2D" parent="CanvasLayer" unique_id=1634956964]
+position = Vector2(443, 591)
+
+[node name="Durability" type="Label" parent="CanvasLayer/Left_hand_sprite" unique_id=539545700]
+offset_right = 40.0
+offset_bottom = 23.0

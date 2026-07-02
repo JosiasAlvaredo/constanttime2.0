@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://qgjopaex8axv"]
+[gd_scene format=4 uid="uid://qgjopaex8axv"]
 
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_0led5"]
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_23wfk"]
@@ -41,6 +41,37 @@ position = Vector2(-83, -19)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2076875252]
 zoom = Vector2(1.5, 1.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1282031391]
+
+[node name="timer" type="Node2D" parent="CanvasLayer" unique_id=1129327584]
+position = Vector2(273, 501)
+
+[node name="Timer" type="Timer" parent="CanvasLayer/timer" unique_id=2015454980]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Time_bar" type="ColorRect" parent="CanvasLayer/timer" unique_id=756185745]
+offset_left = -209.0
+offset_top = 86.0
+offset_right = -108.0
+offset_bottom = 98.0
+color = Color(0.36705732, 0.62493634, 0, 1)
+
+[node name="Right_hand_sprite" type="Sprite2D" parent="CanvasLayer" unique_id=1048396248]
+position = Vector2(383, 591)
+
+[node name="Durability" type="Label" parent="CanvasLayer/Right_hand_sprite" unique_id=1032755822]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Left_hand_sprite" type="Sprite2D" parent="CanvasLayer" unique_id=1462294377]
+position = Vector2(443, 591)
+
+[node name="Durability" type="Label" parent="CanvasLayer/Left_hand_sprite" unique_id=1286788163]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="Pausa" parent="." unique_id=2012336149 instance=ExtResource("5_bmwt8")]
 

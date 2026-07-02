@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://do1cayurqvi0x"]
+
+[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="1_oxijl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qt60"]
+size = Vector2(3064, 20)
+
+[node name="Node2D" type="Node2D" unique_id=834759577]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=266170564]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=329586508]
+offset_left = 3117.9998
+offset_top = -10.0
+offset_right = 3157.9998
+offset_bottom = 30.0
+scale = Vector2(-76.823875, 1)
+color = Color(0.93746245, 0, 0.051119857, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2147017420]
+position = Vector2(1577, 0)
+shape = SubResource("RectangleShape2D_7qt60")
+
+[node name="Player" parent="." unique_id=294110880 instance=ExtResource("1_oxijl")]
+position = Vector2(85, -115)
+Jump_stength = -360
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2112655481]
+position = Vector2(-1, 2)
+zoom = Vector2(1.5, 1.5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1172186631]
+
+[node name="timer" type="Node2D" parent="CanvasLayer" unique_id=443907027]
+position = Vector2(273, 501)
+
+[node name="Timer" type="Timer" parent="CanvasLayer/timer" unique_id=1161303585]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Time_bar" type="ColorRect" parent="CanvasLayer/timer" unique_id=133379875]
+offset_left = -209.0
+offset_top = 86.0
+offset_right = -108.0
+offset_bottom = 98.0
+color = Color(0.36705732, 0.62493634, 0, 1)
+
+[node name="Right_hand_sprite" type="Sprite2D" parent="CanvasLayer" unique_id=1909538329]
+position = Vector2(383, 591)
+
+[node name="Durability" type="Label" parent="CanvasLayer/Right_hand_sprite" unique_id=1919560557]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Left_hand_sprite" type="Sprite2D" parent="CanvasLayer" unique_id=31160661]
+position = Vector2(443, 591)
+
+[node name="Durability" type="Label" parent="CanvasLayer/Left_hand_sprite" unique_id=1237368755]
+offset_right = 40.0
+offset_bottom = 23.0
