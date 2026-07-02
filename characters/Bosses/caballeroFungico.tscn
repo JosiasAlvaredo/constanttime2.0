@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ycgb05jjuxef"]
+[gd_scene format=3 uid="uid://ycgb05jjuxef"]
 
 [ext_resource type="Script" uid="uid://dlr7fule1e7ud" path="res://characters/Bosses/caballero_fungico.gd" id="1_fj5yo"]
 [ext_resource type="Texture2D" uid="uid://dydwb01ws4wty" path="res://assets/characters/Bosses/pixilart-sprite.png" id="2_fj5yo"]

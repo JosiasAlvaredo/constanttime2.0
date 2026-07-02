@@ -17,7 +17,7 @@ func FLIP():
 		direction *= -1
 		animated_sprite_2d.scale.x *= -1
 	if player!=null:
-		direction = sign(player.global_position-global_position)
+		direction = sign(player.global_position.x-global_position.x)
 		animated_sprite_2d.scale.x = abs(animated_sprite_2d.scale.x)*direction
 
 func _physics_process(delta):
