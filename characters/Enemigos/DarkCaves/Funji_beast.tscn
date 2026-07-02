@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_5ije2"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_akvpy"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_j352o"]
+[ext_resource type="Script" uid="uid://b4tnv84i5fse7" path="res://characters/Enemigos/DarkCaves/follow.gd" id="9_6o1hr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o1hr"]
 atlas = ExtResource("2_jb4d0")
@@ -90,6 +91,9 @@ default_state = NodePath("Move")
 
 [node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_akvpy")]
 script = ExtResource("8_j352o")
+
+[node name="Follow" type="Node" parent="State_Machine" unique_id=1657142342]
+script = ExtResource("9_6o1hr")
 
 [connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

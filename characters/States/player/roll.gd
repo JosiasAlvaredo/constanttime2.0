@@ -13,7 +13,7 @@ func start():
 func on_physics_process(delta: float) -> void:
 	
 	
-	controlled_node.animated_sprite_2d.play("Crouched")
+	controlled_node.animated_sprite_2d.play(controlled_node.animations["roll"])
 	
 	
 	if controlled_node.velocity.x==0:

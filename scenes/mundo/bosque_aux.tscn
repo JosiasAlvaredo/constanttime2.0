@@ -456,14 +456,15 @@ position = Vector2(53, -43)
 stomp_velocity = 600
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
-position = Vector2(3302, 423)
+position = Vector2(3244, 416)
+Jump_stength = -360
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
 position = Vector2(26, 2)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Stick" parent="." unique_id=1989495425 instance=ExtResource("14_stg21")]
-position = Vector2(3224, 415)
+position = Vector2(3320, 398)
 
 [node name="Doors" type="Node2D" parent="." unique_id=900253682]
 
