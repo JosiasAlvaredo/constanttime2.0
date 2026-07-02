@@ -16,13 +16,13 @@ class_name Player
 
 @onready var Interactive_Box_collition: CollisionShape2D = $AnimatedSprite2D/Interactive_Box/CollisionShape2D
 
-@onready var death_timer: Timer = $"../CanvasLayer/timer/Timer"
-@onready var time_bar: ColorRect = $"../CanvasLayer/timer/Time_bar"
+@onready var death_timer: Timer = $"../User_Interface/timer/Timer"
+@onready var time_bar: ColorRect = $"../User_Interface/timer/Time_bar"
 
 @onready var state_machine: State_Machine = $State_Machine
 
-@onready var right_hand_sprite: Sprite2D = $"../CanvasLayer/Right_hand_sprite"
-@onready var left_hand_sprite: Sprite2D = $"../CanvasLayer/Left_hand_sprite"
+@onready var right_hand_sprite: Sprite2D = $"../User_Interface/Right_hand_sprite"
+@onready var left_hand_sprite: Sprite2D = $"../User_Interface/Left_hand_sprite"
 
 var right_hand_item=null
 var left_hand_item=null

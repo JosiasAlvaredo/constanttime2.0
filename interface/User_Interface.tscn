@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://6d1qmnjmmsa4"]
+
+[node name="User_Interface" type="CanvasLayer" unique_id=192385077]
+
+[node name="timer" type="Node2D" parent="." unique_id=2011046253]
+position = Vector2(273, 501)
+
+[node name="Timer" type="Timer" parent="timer" unique_id=280305451]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Time_bar" type="ColorRect" parent="timer" unique_id=1212482407]
+offset_left = -209.0
+offset_top = 86.0
+offset_right = -108.0
+offset_bottom = 98.0
+color = Color(0.36705732, 0.62493634, 0, 1)
+
+[node name="Right_hand_sprite" type="Sprite2D" parent="." unique_id=1124035027]
+position = Vector2(383, 591)
+
+[node name="Durability" type="Label" parent="Right_hand_sprite" unique_id=16779684]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Left_hand_sprite" type="Sprite2D" parent="." unique_id=153583614]
+position = Vector2(443, 591)
+
+[node name="Durability" type="Label" parent="Left_hand_sprite" unique_id=958392844]
+offset_right = 40.0
+offset_bottom = 23.0
