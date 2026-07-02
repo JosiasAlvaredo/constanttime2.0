@@ -20,7 +20,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	
 	if player.hand_using=="Left":
 		GlobalValues.Left_hand={"name":_name,"durability":item.durability}
-		player.left_hand_sprite.texture=item.item_texture
+		player.left_hand_sprite.texture=load("res://assets/items/Weapons/%s.png" % _name)
 		player.left_hand_sprite.get_child(0).text=str(item.durability)
 		player.left_hand_item=item
 		self.queue_free()
@@ -28,7 +28,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 	if player.hand_using=="Right":
 		GlobalValues.Right_hand={"name":_name,"durability":item.durability}
-		player.right_hand_sprite.texture=item.item_texture
+		player.right_hand_sprite.texture=load("res://assets/items/Weapons/%s.png" % _name)
 		player.right_hand_sprite.get_child(0).text=str(item.durability)
 		player.right_hand_item=item
 		self.queue_free()
