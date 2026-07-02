@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://d3euk0iohp5hu"]
+[gd_scene load_steps=22 format=4 uid="uid://d3euk0iohp5hu"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_et63w"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/Map/door/door.tscn" id="11_0i6q2"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="12_htf8p"]
 [ext_resource type="Script" uid="uid://cqmdr68l70q0t" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
+[ext_resource type="Texture2D" uid="uid://oukajnwxhwp0" path="res://assets/characters/Constime 2.png" id="16_xgvh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqdhd"]
 size = Vector2(30, 13)
@@ -312,7 +313,7 @@ position = Vector2(1455, 727)
 shape = SubResource("RectangleShape2D_3pvrp")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_3pvrp")]
-position = Vector2(70, 282)
+position = Vector2(94, 298)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=842960540]
 position = Vector2(26, 2)
@@ -383,6 +384,9 @@ kind = "go_up"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=915721148]
 environment = SubResource("Environment_et63w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1663475829]
+texture = ExtResource("16_xgvh0")
 
 [connection signal="body_entered" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_entered"]
 [connection signal="body_exited" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_exited"]
