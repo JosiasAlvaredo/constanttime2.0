@@ -370,6 +370,13 @@ nodeName = "Mapa1"
 target_door = "Cave_exit"
 kind = "go_right"
 
+[node name="Cave_boss" parent="Doors" unique_id=787949249 instance=ExtResource("3_3pvrp")]
+position = Vector2(2924, 497)
+scale = Vector2(1, 5)
+nodeName = "cueva_jefe"
+target_door = "ECave_boss"
+kind = "go_right"
+
 [node name="dark_cave" parent="Doors" unique_id=871736689 instance=ExtResource("3_3pvrp")]
 position = Vector2(868.99994, 696)
 scale = Vector2(48.944763, 0.94243306)

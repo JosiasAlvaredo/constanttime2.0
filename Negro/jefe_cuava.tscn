@@ -10,6 +10,19 @@ size = Vector2(42.25, 24.75)
 [node name="jefeCuava" type="CharacterBody2D" unique_id=1124134172 groups=["boss"]]
 script = ExtResource("1_87fth")
 projectile_scene = ExtResource("2_gfnxl")
+move_distance = null
+move_speed = null
+live = null
+aceleration = null
+Jump_stength = null
+speed = null
+Climb_velocity = null
+roll_velocity = null
+Knockback_resistence = null
+knockback = null
+damage = null
+activate_Gravity = null
+solid = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=762598225]
 position = Vector2(44.000004, 19)

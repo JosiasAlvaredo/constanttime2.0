@@ -1,8 +1,7 @@
-extends CharacterBody2D
+extends enemy_base
 
 @export var projectile_scene: PackedScene
 @export var move_distance := 200.0
-@export var move_speed := 100.0
 
 @onready var timer = $Timer
 @onready var ray_cast_2d = $RayCast2D
@@ -10,10 +9,8 @@ extends CharacterBody2D
 
 var activated = false
 var is_shooting = false
-var player
 
 var start_x : float
-var direction := 1
 
 
 func _ready():
