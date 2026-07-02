@@ -45,7 +45,7 @@ func _ready() -> void:
 		
 		item.durability=GlobalValues.Right_hand.durability
 		animated_sprite_2d.add_child(item)
-		right_hand_sprite.texture=item.item_texture
+		right_hand_sprite.texture=load("res://assets/items/Weapons/%s.png" % item._name)
 		right_hand_sprite.get_child(0).text=str(item.durability)
 		right_hand_item=item
 	if GlobalValues.Left_hand.name!="":
@@ -53,7 +53,7 @@ func _ready() -> void:
 		
 		item.durability=GlobalValues.Left_hand.durability
 		animated_sprite_2d.add_child(item)
-		left_hand_sprite.texture=item.item_texture
+		left_hand_sprite.texture=load("res://assets/items/Weapons/%s.png" % item._name)
 		left_hand_sprite.get_child(0).text=str(item.durability)
 		left_hand_item=item
 		
