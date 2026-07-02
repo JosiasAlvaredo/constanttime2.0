@@ -3,7 +3,7 @@ extends Node2D
 @onready var animation_intro = $AnimationPlayer
 
 func _ready() -> void:
-	animation_intro.play("Intro")
+	animation_intro.play("Inicio")
 	get_tree().create_timer(5).timeout.connect(start_menu)
 
 func start_menu():

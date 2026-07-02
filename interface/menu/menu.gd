@@ -6,13 +6,13 @@ extends CanvasLayer
 
 func _on_iniciar_pressed() -> void:
 	iniciar.playing = true
-	animacion.play("new_animation")
+	animacion.play("Iniciar")
 	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://scenes/mundo/Mapa1.tscn")
 
 func _on_opciones_pressed() -> void:
 	opciones.playing = true
-	animacion.play("opciones")
+	animacion.play("Opciones")
 	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://interface/menu/opciones.tscn")
 

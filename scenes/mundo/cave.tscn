@@ -224,6 +224,10 @@ tile_map_data = PackedByteArray("AAAMAA0AAQAEAAEAAAAMAA4AAQAEAAIAAAALAA0AAQADAAE
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1255490537]
 color = Color(0.123601995, 0.029555, 0.1090282, 1)
 
+[node name="CaballeroFungico2" parent="." unique_id=2077228986 instance=ExtResource("10_pf63c")]
+position = Vector2(1453, 486)
+attack_damage = 20
+
 [node name="SpikeSlime" parent="." unique_id=1513898474 instance=ExtResource("3_0cxct")]
 position = Vector2(245, 513)
 
@@ -278,10 +282,6 @@ kind = "go_down"
 
 [node name="DrunkedFly" parent="." unique_id=146558298 instance=ExtResource("7_k4co8")]
 position = Vector2(114, 881)
-
-[node name="CaballeroFungico2" parent="." unique_id=2077228986 instance=ExtResource("10_pf63c")]
-position = Vector2(1453, 486)
-attack_damage = 20
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1351399300]
 environment = SubResource("Environment_sohtu")
