@@ -139,9 +139,11 @@ size = Vector2(42.25, 33.375)
 size = Vector2(61, 47)
 
 [node name="jefeCuava" type="CharacterBody2D" unique_id=1124134172 groups=["boss"]]
-collision_layer = 4
+collision_layer = 128
 script = ExtResource("1_87fth")
 projectile_scene = ExtResource("2_gfnxl")
+live = 10
+Knockback_resistence = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1994813122]
 position = Vector2(-27, 21)

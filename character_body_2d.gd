@@ -3,7 +3,6 @@ extends enemy_base
 @export var move_speed := 120.0
 @export var acceleration := 300.0
 
-var player_in_chase_zone := false
 var origin_position: Vector2
 
 enum State {
@@ -31,7 +30,7 @@ func _physics_process(delta):
 
 		State.CHASE:
 
-			if player and player_in_chase_zone:
+			if player:
 
 				var move_direction = (player.global_position - global_position).normalized()
 
@@ -63,7 +62,16 @@ func _physics_process(delta):
 
 
 func _on_detection_area_body_entered(body):
-
 	if body.is_in_group("player"):
 		player = body
 		state = State.CHASE
+
+
+func _on_detection_area_body_exited(body):
+	if body == player:
+		player = null
+		state = State.RETURN
+
+
+func _on_daño_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
