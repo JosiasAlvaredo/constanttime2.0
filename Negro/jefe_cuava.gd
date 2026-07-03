@@ -11,6 +11,7 @@ extends enemy_base
 var activated := false
 var waking_up := false
 var is_shooting := false
+var hiding := false
 
 var start_x: float
 
@@ -27,6 +28,16 @@ func _physics_process(delta):
 	if !activated:
 		if !waking_up and animated_sprite_2d.animation != "sleep":
 			animated_sprite_2d.play("sleep")
+		return
+
+	# Mientras está escondido
+	if hiding:
+		velocity = Vector2.ZERO
+
+		if animated_sprite_2d.animation != "defense":
+			animated_sprite_2d.play("defense")
+
+		move_and_slide()
 		return
 
 	# Animación de caminar
@@ -100,3 +111,16 @@ func _on_timer_timeout():
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	enemy_damage(area.owner)
 	print(live)
+
+
+# JUGADOR ENTRA EN EL ÁREA ESCONDER
+func _on_esconder_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		hiding = true
+
+
+# JUGADOR SALE DEL ÁREA ESCONDER
+func _on_esconder_body_exited(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		hiding = false
+		animated_sprite_2d.play("walk")
