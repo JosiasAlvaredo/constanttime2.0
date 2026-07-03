@@ -43,7 +43,7 @@ shape = SubResource("CapsuleShape2D_x2sah")
 root_node = NodePath("../../Puerta2")
 
 [node name="jefeCuava" parent="." unique_id=1124134172 instance=ExtResource("4_x2sah")]
-position = Vector2(672, -57)
+position = Vector2(728, -41)
 
 [node name="BossTrigger" type="Area2D" parent="." unique_id=604333927]
 position = Vector2(303, -45)
@@ -62,7 +62,7 @@ shape = SubResource("RectangleShape2D_x2sah")
 [node name="ECave_boss" parent="Doors" unique_id=1608374224 instance=ExtResource("7_ua4cj")]
 position = Vector2(-180, 2)
 scale = Vector2(1, 5)
-nodeName = "bosque"
+nodeName = "bosque_boss"
 target_door = "Cave_boss"
 kind = "go_left"
 
