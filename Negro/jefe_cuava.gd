@@ -94,3 +94,9 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_timer_timeout():
 	is_shooting = false
+
+
+# RECIBIR DAÑO
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.owner)
+	print(live)
