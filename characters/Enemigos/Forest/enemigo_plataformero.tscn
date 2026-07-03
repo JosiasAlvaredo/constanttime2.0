@@ -31,7 +31,7 @@ size = Vector2(26, 22)
 position = Vector2(-87, -8)
 collision_layer = 128
 script = ExtResource("1_3cvo5")
-live = 2
+live = 5
 speed = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]

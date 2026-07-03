@@ -32,6 +32,7 @@ size = Vector2(26, 22)
 position = Vector2(-87, -8)
 collision_layer = 128
 script = ExtResource("1_myk5x")
+live = 5
 speed = 100
 Knockback_resistence = -25
 

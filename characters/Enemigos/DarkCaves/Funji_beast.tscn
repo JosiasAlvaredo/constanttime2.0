@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="6_5ije2"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_akvpy"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_j352o"]
-[ext_resource type="Script" uid="uid://b4tnv84i5fse7" path="res://characters/Enemigos/DarkCaves/follow.gd" id="9_6o1hr"]
+[ext_resource type="Script" uid="uid://b4tnv84i5fse7" path="res://characters/States/enemies/follow.gd" id="9_6o1hr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6o1hr"]
 atlas = ExtResource("2_jb4d0")
@@ -35,6 +35,7 @@ size = Vector2(26, 25)
 position = Vector2(-87, -8)
 collision_layer = 128
 script = ExtResource("1_jb4d0")
+live = 5
 speed = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1416467255]

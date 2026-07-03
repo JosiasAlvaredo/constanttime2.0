@@ -36,6 +36,7 @@ position = Vector2(-87, -8)
 collision_layer = 128
 script = ExtResource("1_pwgth")
 shoot_velocity = 750
+live = 7
 speed = 50
 
 [node name="eye_ray" type="RayCast2D" parent="." unique_id=1130026835]

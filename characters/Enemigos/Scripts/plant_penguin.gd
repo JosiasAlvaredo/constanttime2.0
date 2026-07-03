@@ -42,9 +42,9 @@ func _physics_process(delta: float) -> void:
 
 				body.global_position = to_global(tongue_line.get_point_position(point_index))
 			else:
-				
+				if tongue_live>0:
+					trapped[0].damage_player(damage)
 				trapped[0].trapped=false
-				trapped[0].damage_player(damage)
 				trapped_bodies.erase(trapped)
 
 				
@@ -56,6 +56,7 @@ func Flip_to(target):
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	enemy_damage(area.get_parent())
+	tongue_live=0
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

@@ -21,8 +21,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_010q2"]
-radius = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csceh"]
+size = Vector2(45.25, 44)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cj8ew"]
 radius = 257.2353
@@ -49,9 +49,8 @@ sprite_frames = SubResource("SpriteFrames_qnnyr")
 offset = Vector2(-89.99999, 5.000019)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723008877]
-visible = false
-position = Vector2(-11, 25)
-shape = SubResource("CircleShape2D_010q2")
+position = Vector2(-9.625, 10)
+shape = SubResource("RectangleShape2D_csceh")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=402045716]
 collision_layer = 0

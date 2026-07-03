@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://d3euk0iohp5hu"]
+[gd_scene format=4 uid="uid://d3euk0iohp5hu"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_et63w"]
@@ -503,6 +503,9 @@ autoplay = &"move"
 [node name="Enemigo_plat" parent="Enemigos" unique_id=806170197 instance=ExtResource("4_pgh1i")]
 position = Vector2(2122, 237)
 
+[node name="Enemigo_plat3" parent="Enemigos" unique_id=1513898474 instance=ExtResource("4_pgh1i")]
+position = Vector2(436, 427)
+
 [node name="Enemigo_plat2" parent="Enemigos" unique_id=1187281574 instance=ExtResource("4_pgh1i")]
 position = Vector2(1383, 465)
 
@@ -518,8 +521,11 @@ position = Vector2(785, 366)
 [node name="Enemy" parent="Enemigos" unique_id=1663048985 instance=ExtResource("8_yqdhd")]
 position = Vector2(-578, -126)
 
-[node name="Eye_enemy" parent="Enemigos" unique_id=1513898474 instance=ExtResource("17_cxve1")]
+[node name="Eye_enemy" parent="Enemigos" unique_id=1291325897 instance=ExtResource("17_cxve1")]
 position = Vector2(-3271, 480)
+
+[node name="Eye_enemy3" parent="Enemigos" unique_id=1441347619 instance=ExtResource("17_cxve1")]
+position = Vector2(-347, 16)
 
 [node name="Eye_enemy2" parent="Enemigos" unique_id=237860665 instance=ExtResource("17_cxve1")]
 position = Vector2(-3136, 130)
@@ -540,7 +546,7 @@ position = Vector2(1329.5, 733.75)
 shape = SubResource("RectangleShape2D_3pvrp")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_3pvrp")]
-position = Vector2(81, 309)
+position = Vector2(65, 323)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=842960540]
 position = Vector2(26, 2)
@@ -599,10 +605,10 @@ environment = SubResource("Environment_et63w")
 position = Vector2(1328, 498)
 
 [node name="Stick_item" parent="items" unique_id=1052939088 instance=ExtResource("15_dwpfe")]
-position = Vector2(-26, 14)
+position = Vector2(-1545, 271)
 
 [node name="Rock3" parent="items" unique_id=127575593 instance=ExtResource("16_cxve1")]
-position = Vector2(-152, 17)
+position = Vector2(1946, 198)
 
 [node name="Rock" parent="items" unique_id=2118263591 instance=ExtResource("16_cxve1")]
 position = Vector2(-2892, 496)
