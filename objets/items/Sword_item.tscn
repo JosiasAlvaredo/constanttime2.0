@@ -16,7 +16,8 @@ _name = "Sword"
 kind = "Mele"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
-position = Vector2(-2, -45)
+position = Vector2(0, -21)
+scale = Vector2(0.5999994, 0.52000046)
 texture = ExtResource("2_5v8m6")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
@@ -29,7 +30,7 @@ scale = Vector2(0.08, 0.08)
 shape = SubResource("CircleShape2D_vswh6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=932852745]
-position = Vector2(-1, 12)
+position = Vector2(1, 8)
 shape = SubResource("CircleShape2D_c4pif")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
