@@ -1,8 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://6d1qmnjmmsa4"]
+[gd_scene load_steps=7 format=3 uid="uid://6d1qmnjmmsa4"]
 
 [ext_resource type="Texture2D" uid="uid://bkevpofiuqd2v" path="res://assets/ui.png" id="1_cve4c"]
+[ext_resource type="Texture2D" uid="uid://cme8ds8yefs2k" path="res://assets/ui2.png" id="1_nfcvq"]
+[ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="1_nxw7e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl7xi"]
+atlas = ExtResource("1_nfcvq")
+region = Rect2(0, 0, 55, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb0ip"]
+atlas = ExtResource("1_nfcvq")
+region = Rect2(55, 0, 55, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcv3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl7xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb0ip")
+}],
+"loop": true,
+"name": &"selected",
+"speed": 2.0
+}]
 
 [node name="User_Interface" type="CanvasLayer" unique_id=192385077]
+metadata/_edit_horizontal_guides_ = [525.0]
 
 [node name="timer" type="Node2D" parent="." unique_id=2011046253]
 position = Vector2(273, 501)
@@ -19,12 +44,28 @@ offset_right = -108.0
 offset_bottom = 98.0
 color = Color(0.36705732, 0.62493634, 0, 1)
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=344073367]
+position = Vector2(990, 497)
+sprite_frames = SubResource("SpriteFrames_xcv3c")
+animation = &"selected"
+autoplay = "selected"
+frame_progress = 0.22846141
+
 [node name="Right_hand_sprite" type="Sprite2D" parent="." unique_id=1124035027]
-position = Vector2(1050, 496)
+position = Vector2(990, 496)
 
 [node name="Durability" type="Label" parent="Right_hand_sprite" unique_id=16779684]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=594191287]
+position = Vector2(860, 497)
+sprite_frames = SubResource("SpriteFrames_xcv3c")
+animation = &"selected"
+autoplay = "selected"
+frame_progress = 0.25409937
 
 [node name="Left_hand_sprite" type="Sprite2D" parent="." unique_id=153583614]
 position = Vector2(860, 497)
@@ -32,6 +73,7 @@ position = Vector2(860, 497)
 [node name="Durability" type="Label" parent="Left_hand_sprite" unique_id=958392844]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1014816622]
 position = Vector2(54.000008, 595)
