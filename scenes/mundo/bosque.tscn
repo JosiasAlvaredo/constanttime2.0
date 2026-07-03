@@ -12,9 +12,13 @@
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="7_euxkv"]
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="8_gihg5"]
 [ext_resource type="PackedScene" uid="uid://diodtoejshdv1" path="res://characters/Enemigos/Forest/enemigovoladorV2.tscn" id="8_yqdhd"]
+[ext_resource type="PackedScene" uid="uid://c6hngsj3kv6de" path="res://characters/Enemigos/Forest/PlantPenguin.tscn" id="10_5bof4"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="12_htf8p"]
-[ext_resource type="Script" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
+[ext_resource type="Script" uid="uid://cqmdr68l70q0t" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="13_xgvh0"]
+[ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="15_dwpfe"]
+[ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="16_cxve1"]
+[ext_resource type="PackedScene" uid="uid://c0f1kxl6kv1rr" path="res://characters/Enemigos/Forest/ExploteEye.tscn" id="17_cxve1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_et63w"]
 texture = ExtResource("3_ddlmk")
@@ -473,6 +477,12 @@ position = Vector2(785, 366)
 [node name="Enemy" parent="Enemigos" unique_id=1663048985 instance=ExtResource("8_yqdhd")]
 position = Vector2(-578, -126)
 
+[node name="Eye_enemy" parent="Enemigos" unique_id=1513898474 instance=ExtResource("17_cxve1")]
+position = Vector2(-2469, 365)
+
+[node name="PlantPenguin" parent="Enemigos" unique_id=1735399430 instance=ExtResource("10_5bof4")]
+position = Vector2(-1856, 352)
+
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 0)
 collision_layer = 8
@@ -483,7 +493,7 @@ position = Vector2(1329.5, 733.75)
 shape = SubResource("RectangleShape2D_3pvrp")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_3pvrp")]
-position = Vector2(55, 322)
+position = Vector2(-1641, 325)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=842960540]
 position = Vector2(26, 2)
@@ -514,6 +524,12 @@ enemy = NodePath("../../Enemigos/Enemy_fly2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChasesZones/ChaseZone" unique_id=600862626]
 position = Vector2(1176, 284.5)
 shape = SubResource("RectangleShape2D_s8ca8")
+
+[node name="Stick_item" parent="ChasesZones/ChaseZone" unique_id=1284734035 instance=ExtResource("15_dwpfe")]
+position = Vector2(2942, 484)
+
+[node name="Rock" parent="ChasesZones/ChaseZone" unique_id=926426869 instance=ExtResource("16_cxve1")]
+position = Vector2(2191, 273)
 
 [node name="ChaseZone2" type="Area2D" parent="ChasesZones" unique_id=1329334403 node_paths=PackedStringArray("enemy")]
 position = Vector2(1009, -6)
@@ -558,7 +574,7 @@ target_door = "Cave_exit"
 kind = "go_right"
 
 [node name="Cave_boss" parent="Doors" unique_id=787949249 instance=ExtResource("3_3pvrp")]
-position = Vector2(2999, 503)
+position = Vector2(2996, 502)
 scale = Vector2(1, 5)
 nodeName = "cueva_jefe"
 target_door = "ECave_boss"
@@ -580,6 +596,17 @@ kind = "go_up"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=915721148]
 environment = SubResource("Environment_et63w")
+
+[node name="items" type="Node2D" parent="." unique_id=817018335]
+
+[node name="Rock2" parent="items" unique_id=181726375 instance=ExtResource("16_cxve1")]
+position = Vector2(1328, 498)
+
+[node name="Stick_item" parent="items" unique_id=1052939088 instance=ExtResource("15_dwpfe")]
+position = Vector2(-103, 16)
+
+[node name="Rock3" parent="items" unique_id=127575593 instance=ExtResource("16_cxve1")]
+position = Vector2(-124, 119)
 
 [connection signal="body_entered" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_entered"]
 [connection signal="body_exited" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_exited"]

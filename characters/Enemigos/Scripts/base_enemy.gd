@@ -31,8 +31,6 @@ func dead():
 	
 func damage_efect():
 	var default_modulate=modulate
-	print(default_modulate)
 	modulate = Color(1, 0, 0) 
-	await get_tree().create_timer(0.25)
-	print(default_modulate)
-	modulate = default_modulate 
+	await get_tree().create_timer(0.25).timeout
+	modulate = Color(1, 1, 1)  

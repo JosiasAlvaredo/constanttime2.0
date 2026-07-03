@@ -8,10 +8,10 @@ var start_position = Vector2.ZERO
 
 func _ready() -> void:
 	if kind == "go_left":
-		start_position = global_position - Vector2(20, 0)
+		start_position = global_position - Vector2(50, 0)
 
 	elif kind == "go_right":
-		start_position = global_position + Vector2(20, 0)
+		start_position = global_position + Vector2(50, 0)
 
 	elif kind == "go_up":
 		start_position = global_position - Vector2(-50, 100)
