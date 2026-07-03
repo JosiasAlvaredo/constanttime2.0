@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://d3euk0iohp5hu"]
+[gd_scene load_steps=25 format=4 uid="uid://d3euk0iohp5hu"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_et63w"]
@@ -201,7 +201,7 @@ adjustment_enabled = true
 adjustment_contrast = 1.1
 adjustment_saturation = 1.6
 
-[node name="Cueva" type="Node2D" unique_id=421176710]
+[node name="Cueva2" type="Node2D" unique_id=421176710]
 script = ExtResource("1_et63w")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=609807151]
