@@ -1,9 +1,8 @@
-extends CharacterBody2D
+extends enemy_base
 
-@export var speed := 120.0
+@export var move_speed := 120.0
 @export var acceleration := 300.0
 
-var player: Node2D = null
 var player_in_chase_zone := false
 var origin_position: Vector2
 
@@ -15,8 +14,10 @@ enum State {
 
 var state := State.IDLE
 
+
 func _ready():
 	origin_position = global_position
+
 
 func _physics_process(delta):
 
@@ -29,33 +30,27 @@ func _physics_process(delta):
 			)
 
 		State.CHASE:
+
 			if player and player_in_chase_zone:
 
-				var direction = (
-					player.global_position - global_position
-				).normalized()
+				var move_direction = (player.global_position - global_position).normalized()
 
 				velocity = velocity.move_toward(
-					direction * speed,
+					move_direction * move_speed,
 					acceleration * delta
 				)
+
 			else:
 				state = State.RETURN
 
 		State.RETURN:
 
-			var distance = global_position.distance_to(
-				origin_position
-			)
+			if global_position.distance_to(origin_position) > 5:
 
-			if distance > 5:
-
-				var direction = (
-					origin_position - global_position
-				).normalized()
+				var move_direction = (origin_position - global_position).normalized()
 
 				velocity = velocity.move_toward(
-					direction * speed,
+					move_direction * move_speed,
 					acceleration * delta
 				)
 
@@ -69,11 +64,6 @@ func _physics_process(delta):
 
 func _on_detection_area_body_entered(body):
 
-	if body.name == "Player" and player_in_chase_zone:
-
+	if body.is_in_group("player"):
 		player = body
 		state = State.CHASE
-
-
-func _on_detection_area_body_exited(body):
-	pass

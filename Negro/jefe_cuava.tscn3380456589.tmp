@@ -108,7 +108,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_nskc8")
 }],
 "loop": false,
-"name": &"wake_up",
+"name": &"wake up",
 "speed": 6.0
 }, {
 "frames": [{
@@ -133,10 +133,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_87fth"]
-size = Vector2(42.25, 33.375)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfnxl"]
-size = Vector2(61, 47)
+size = Vector2(42.25, 24.75)
 
 [node name="jefeCuava" type="CharacterBody2D" unique_id=1124134172 groups=["boss"]]
 collision_layer = 4
@@ -144,12 +141,9 @@ script = ExtResource("1_87fth")
 projectile_scene = ExtResource("2_gfnxl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1994813122]
-position = Vector2(-27, 21)
 sprite_frames = SubResource("SpriteFrames_er0hm")
-animation = &"wake_up"
+animation = &"walk"
 autoplay = "sleep"
-frame = 5
-frame_progress = 1.0
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=23925666]
 position = Vector2(-2, 0)
@@ -157,18 +151,9 @@ target_position = Vector2(2, 100)
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1227839729]
-position = Vector2(-45, 26.6875)
+position = Vector2(-17, 11)
 shape = SubResource("RectangleShape2D_87fth")
 
 [node name="Timer" type="Timer" parent="." unique_id=1731208449 groups=["player"]]
 
-[node name="hitbox" type="Area2D" parent="." unique_id=1333238740]
-collision_layer = 128
-collision_mask = 32
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1119179903]
-position = Vector2(-42.5, 20.5)
-shape = SubResource("RectangleShape2D_gfnxl")
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
