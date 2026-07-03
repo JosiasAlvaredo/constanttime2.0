@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="9_b342g"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="10_p4tci"]
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="11_lh441"]
+[ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="11_pymhh"]
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/Map/door/door.tscn" id="12_4g8ro"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="13_dv5nu"]
 [ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="14_glptd"]
@@ -430,6 +431,9 @@ live = 12
 [node name="Enemy" parent="Enemigos" unique_id=971750251 instance=ExtResource("19_duas4")]
 position = Vector2(3692, 418)
 knockback = Vector2(300, 0)
+
+[node name="Stick_item" parent="Enemigos" unique_id=1284734035 instance=ExtResource("11_pymhh")]
+position = Vector2(3395, 427)
 
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 100)

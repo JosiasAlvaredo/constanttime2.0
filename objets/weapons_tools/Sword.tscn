@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dtcx0sojt1qwj"]
+
+[ext_resource type="Script" uid="uid://6e3gqrji1cfh" path="res://objets/weapons_tools/scripts/stick.gd" id="1_g3mrp"]
+[ext_resource type="Texture2D" uid="uid://by0ycskrweplk" path="res://assets/effets/attack_mele.png" id="2_fdl2d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfxby"]
+size = Vector2(68.5, 72.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl2r2"]
+atlas = ExtResource("2_fdl2d")
+region = Rect2(0, 0, 128, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmc3n"]
+atlas = ExtResource("2_fdl2d")
+region = Rect2(112, 0, 16, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75dc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl2r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmc3n")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sword" type="Node2D" unique_id=274988526]
+script = ExtResource("1_g3mrp")
+_name = "Sword"
+damage = 5
+durability = 100
+recoil = 400
+knockback = Vector2(-200, -200)
+
+[node name="Mele_front" type="Area2D" parent="." unique_id=1595088100]
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_front" unique_id=1659102205]
+position = Vector2(36, -2)
+shape = SubResource("RectangleShape2D_mfxby")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Mele_down" type="Area2D" parent="." unique_id=763419899]
+position = Vector2(-24, 23)
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_down" unique_id=1972204308]
+position = Vector2(24, 13)
+shape = SubResource("RectangleShape2D_mfxby")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Mele_up" type="Area2D" parent="." unique_id=243561041]
+position = Vector2(-24, -31)
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_up" unique_id=925908374]
+position = Vector2(24, -5)
+shape = SubResource("RectangleShape2D_mfxby")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Animated_front" type="AnimatedSprite2D" parent="." unique_id=1859139579]
+modulate = Color(1, 1, 0.8352941, 1)
+position = Vector2(41, -2)
+scale = Vector2(0.66296875, 0.6023622)
+sprite_frames = SubResource("SpriteFrames_75dc7")
+autoplay = "default"
+
+[node name="Animated_down" type="AnimatedSprite2D" parent="." unique_id=1411354806]
+modulate = Color(1, 1, 0.8352941, 1)
+position = Vector2(3.8146973e-06, 39.999996)
+rotation = 1.5707964
+scale = Vector2(0.7029681, 0.6023622)
+sprite_frames = SubResource("SpriteFrames_75dc7")
+autoplay = "default"
+
+[node name="Animated_up" type="AnimatedSprite2D" parent="." unique_id=991015272]
+modulate = Color(1, 1, 0.8352941, 1)
+position = Vector2(3, -39.999996)
+rotation = -1.5707964
+scale = Vector2(0.66296875, 0.6023622)
+sprite_frames = SubResource("SpriteFrames_75dc7")
+autoplay = "default"
+
+[connection signal="area_entered" from="Mele_front" to="." method="_on_mele_front_area_entered"]
+[connection signal="body_entered" from="Mele_front" to="." method="_on_mele_front_body_entered"]
+[connection signal="area_entered" from="Mele_down" to="." method="_on_mele_down_area_entered"]
+[connection signal="body_entered" from="Mele_down" to="." method="_on_mele_down_body_entered"]
+[connection signal="area_entered" from="Mele_up" to="." method="_on_mele_up_area_entered"]
+[connection signal="body_entered" from="Mele_up" to="." method="_on_mele_up_body_entered"]

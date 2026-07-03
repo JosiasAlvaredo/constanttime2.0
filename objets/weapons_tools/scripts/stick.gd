@@ -9,6 +9,8 @@ class_name Mele_base
 @onready var animated_down: AnimatedSprite2D = $Animated_down
 @onready var animated_up: AnimatedSprite2D = $Animated_up
 
+var using=false
+
 var current_state
 func use(State):
 	current_state=State
@@ -37,26 +39,32 @@ func use(State):
 		
 func _on_mele_down_area_entered(area: Area2D) -> void:
 	worn_out()
+	using=true
 	player.velocity.y=-recoil
 
 func _on_mele_down_body_entered(body: Node2D) -> void:
-	worn_out()
-	player.velocity.y=-recoil
+	if not using:
+		worn_out()
+		player.velocity.y=-recoil
 
 
 func _on_mele_up_area_entered(area: Area2D) -> void:
 	worn_out()
+	using=true
 	player.velocity.y=-recoil
 
 
 func _on_mele_up_body_entered(body: Node2D) -> void:
-	worn_out()
-	player.velocity.y=-recoil
+	if not using:
+		worn_out()
+		player.velocity.y=-recoil
 
 func _on_mele_front_area_entered(area: Area2D) -> void:
 	worn_out()
+	using=true
 	player.velocity.x=recoil* -sign(player.animated_sprite_2d.scale.x)
 
 func _on_mele_front_body_entered(body: Node2D) -> void:
-	worn_out()
-	player.velocity.x=recoil* -sign(player.animated_sprite_2d.scale.x)
+	if not using:
+		worn_out()
+		player.velocity.x=recoil* -sign(player.animated_sprite_2d.scale.x)
