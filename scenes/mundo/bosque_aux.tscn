@@ -419,7 +419,7 @@ position = Vector2(1891, 242)
 live = 20
 
 [node name="Enemigo_plat2" parent="Enemigos" unique_id=1126647977 instance=ExtResource("15_stg21")]
-position = Vector2(53, -43)
+position = Vector2(-270, -43)
 stomp_velocity = 600
 
 [node name="Eye_enemy" parent="Enemigos" unique_id=2081935825 instance=ExtResource("8_qiarc")]
@@ -428,7 +428,8 @@ shoot_velocity = 650
 live = 12
 
 [node name="Enemy" parent="Enemigos" unique_id=971750251 instance=ExtResource("19_duas4")]
-position = Vector2(443, 424)
+position = Vector2(3692, 418)
+knockback = Vector2(300, 0)
 
 [node name="Vacio" type="StaticBody2D" parent="." unique_id=745535146]
 position = Vector2(3, 100)
@@ -450,7 +451,7 @@ zona = "Bosque"
 _name = "LLave_del_bosque"
 
 [node name="Puerta_del_bosque" parent="." unique_id=54625952 instance=ExtResource("12_4g8ro")]
-position = Vector2(242, 459)
+position = Vector2(222, 458)
 zona = "Bosque"
 _name = "Puerta_del_bosque"
 key_name = "LLave_del_bosque"
@@ -463,7 +464,7 @@ key_name = "LLave_del_bosque"
 position = Vector2(3270, 389)
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("9_b342g")]
-position = Vector2(3244, 416)
+position = Vector2(3483, 413)
 Jump_stength = -360
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1649959106]
