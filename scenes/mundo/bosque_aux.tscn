@@ -8,14 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://c5hggt18nb6y7" path="res://assets/plataformas.png" id="5_qiarc"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="6_snx3b"]
 [ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Enemigos/Forest/enemigo_plataformero.tscn" id="7_duas4"]
-[ext_resource type="PackedScene" uid="uid://cx6p0pacib8wk" path="res://characters/Enemigos/DarkCaves/Funji_beast.tscn" id="8_duas4"]
 [ext_resource type="PackedScene" uid="uid://c0f1kxl6kv1rr" path="res://characters/Enemigos/Forest/ExploteEye.tscn" id="8_qiarc"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="9_b342g"]
 [ext_resource type="AudioStream" uid="uid://c11kkcdkyxl5w" path="res://assets/sonidos/lv_0_20251016162238.mp3" id="10_p4tci"]
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="11_lh441"]
 [ext_resource type="PackedScene" uid="uid://c3086cgc4hb6k" path="res://objets/Map/door/door.tscn" id="12_4g8ro"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="13_dv5nu"]
-[ext_resource type="PackedScene" uid="uid://tihwv5yhmgib" path="res://objets/items/rock.tscn" id="14_glptd"]
+[ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="14_glptd"]
 [ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="14_stg21"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="15_pymhh"]
 [ext_resource type="PackedScene" uid="uid://c118aug7ylesj" path="res://characters/Bosses/Vartime.tscn" id="15_stg21"]
@@ -418,9 +417,6 @@ autoplay = &"move"
 [node name="Enemigo_plat" parent="Enemigos" unique_id=1513898474 instance=ExtResource("7_duas4")]
 position = Vector2(1891, 242)
 live = 20
-
-[node name="Funji_beast" parent="Enemigos" unique_id=1187064391 instance=ExtResource("8_duas4")]
-position = Vector2(2957, 487)
 
 [node name="Enemigo_plat2" parent="Enemigos" unique_id=1126647977 instance=ExtResource("15_stg21")]
 position = Vector2(53, -43)

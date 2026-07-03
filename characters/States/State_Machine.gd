@@ -22,7 +22,7 @@ func _state_start():
 	if current_state == null:
 		push_error("El estado actual es null.")
 		return
-		
+	print(current_state," ",controlled_node.name)
 	current_state.controlled_node = controlled_node
 	current_state.state_machine = self
 	current_state.start()

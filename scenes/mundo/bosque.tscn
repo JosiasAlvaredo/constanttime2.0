@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://d3euk0iohp5hu"]
+[gd_scene format=4 uid="uid://d3euk0iohp5hu"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_4076m"]
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_et63w"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="8_gihg5"]
 [ext_resource type="PackedScene" uid="uid://diodtoejshdv1" path="res://characters/Enemigos/Forest/enemigovoladorV2.tscn" id="8_yqdhd"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="12_htf8p"]
-[ext_resource type="Script" uid="uid://cqmdr68l70q0t" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
+[ext_resource type="Script" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="13_xgvh0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_et63w"]
