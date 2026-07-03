@@ -12,6 +12,7 @@ var player: Player = null
 
 func enemy_damage(weapond):
 	var enemy=weapond.player
+	damage_efect()
 	last_direction=direction
 	direction=0
 	velocity.x=sign(enemy.global_position.x-global_position.x)
@@ -20,7 +21,6 @@ func enemy_damage(weapond):
 	recoil=weapond.knockback*Knockback_resistence
 	
 	if Knockback_resistence!=0:
-		print(Knockback_resistence,"xfds")
 		state_machine.change_to("Knockback")
 		
 	if live<=0:
@@ -28,3 +28,9 @@ func enemy_damage(weapond):
 
 func dead():
 	queue_free()
+	
+func damage_efect():
+	var default_modulate=modulate
+	modulate = Color(1, 0, 0) 
+	await get_tree().create_timer(0.25).timeout
+	modulate = Color(1, 1, 1)  
