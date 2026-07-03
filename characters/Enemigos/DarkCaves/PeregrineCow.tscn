@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://drs0lb03xidf0"]
+[gd_scene load_steps=15 format=3 uid="uid://drs0lb03xidf0"]
 
 [ext_resource type="Script" uid="uid://cn4gpsqu7fr0g" path="res://characters/Enemigos/Scripts/peregrine_cow.gd" id="1_s8bov"]
 [ext_resource type="Texture2D" uid="uid://du4m10stsf7pf" path="res://assets/characters/enemies/PeregrineCow.png" id="2_j6835"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_qa3wd"]
 [ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="8_e4v0i"]
 [ext_resource type="Script" uid="uid://bja215uwsnfit" path="res://characters/States/enemies/charge.gd" id="9_j6835"]
+[ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="10_c8tto"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8tto"]
 atlas = ExtResource("2_j6835")
@@ -94,6 +95,14 @@ script = ExtResource("8_e4v0i")
 
 [node name="Charge" type="Node" parent="State_Machine" unique_id=360321042]
 script = ExtResource("9_j6835")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1915999460]
+position = Vector2(4, -9)
+scale = Vector2(0.1796875, 0.16796875)
+energy = 0.8
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.85490197)
+texture = ExtResource("10_c8tto")
 
 [connection signal="body_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
