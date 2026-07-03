@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="15_dwpfe"]
 [ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="16_cxve1"]
 [ext_resource type="PackedScene" uid="uid://c0f1kxl6kv1rr" path="res://characters/Enemigos/Forest/ExploteEye.tscn" id="17_cxve1"]
+[ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="19_5bof4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_et63w"]
 texture = ExtResource("3_ddlmk")
@@ -624,3 +625,6 @@ position = Vector2(-2437, 360)
 
 [node name="Rock6" parent="items" unique_id=926426869 instance=ExtResource("16_cxve1")]
 position = Vector2(404, 430)
+
+[node name="Stick_item" parent="." unique_id=1284734035 instance=ExtResource("19_5bof4")]
+position = Vector2(70, 299)

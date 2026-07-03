@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhg03r4n35nd5"
-path="res://.godot/imported/portrait.png-35a66ed092eacb2c081f5a2e3d792fb5.ctex"
+uid="uid://dk26w4libmf10"
+path="res://.godot/imported/portrait.png-4141ebfa2733b19d2e4a6511ed4bfbf7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/npcs/Mago/portrait.png"
-dest_files=["res://.godot/imported/portrait.png-35a66ed092eacb2c081f5a2e3d792fb5.ctex"]
+source_file="res://characters/Constantime/portrait.png"
+dest_files=["res://.godot/imported/portrait.png-4141ebfa2733b19d2e4a6511ed4bfbf7.ctex"]
 
 [params]
 
