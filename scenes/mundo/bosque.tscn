@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://diodtoejshdv1" path="res://characters/Enemigos/Forest/enemigovoladorV2.tscn" id="8_yqdhd"]
 [ext_resource type="PackedScene" uid="uid://c6hngsj3kv6de" path="res://characters/Enemigos/Forest/PlantPenguin.tscn" id="10_5bof4"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="12_htf8p"]
-[ext_resource type="Script" uid="uid://cqmdr68l70q0t" path="res://scenes/mundo/chase_zone.gd" id="13_s8ca8"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="13_xgvh0"]
 [ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="15_dwpfe"]
 [ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="16_cxve1"]
@@ -188,9 +187,6 @@ size = Vector2(80, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pvrp"]
 size = Vector2(7663, 30.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8ca8"]
-size = Vector2(1354, 603)
 
 [sub_resource type="Environment" id="Environment_et63w"]
 background_mode = 3
@@ -564,57 +560,6 @@ _name = "LLave_del_bosque"
 
 [node name="Pausa" parent="." unique_id=2057402927 instance=ExtResource("12_htf8p")]
 
-[node name="ChasesZones" type="Node2D" parent="." unique_id=229783279]
-
-[node name="ChaseZone" type="Area2D" parent="ChasesZones" unique_id=1407910623 node_paths=PackedStringArray("enemy")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("13_s8ca8")
-enemy = NodePath("../../Enemigos/Enemy_fly2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChasesZones/ChaseZone" unique_id=600862626]
-position = Vector2(1176, 284.5)
-shape = SubResource("RectangleShape2D_s8ca8")
-
-[node name="Stick_item" parent="ChasesZones/ChaseZone" unique_id=1284734035 instance=ExtResource("15_dwpfe")]
-position = Vector2(2942, 484)
-
-[node name="Rock" parent="ChasesZones/ChaseZone" unique_id=926426869 instance=ExtResource("16_cxve1")]
-position = Vector2(2191, 273)
-
-[node name="ChaseZone2" type="Area2D" parent="ChasesZones" unique_id=1329334403 node_paths=PackedStringArray("enemy")]
-position = Vector2(1009, -6)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("13_s8ca8")
-enemy = NodePath("../../Enemigos/Enemy_fly")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChasesZones/ChaseZone2" unique_id=659314112]
-position = Vector2(1176, 284.5)
-shape = SubResource("RectangleShape2D_s8ca8")
-
-[node name="ChaseZone3" type="Area2D" parent="ChasesZones" unique_id=1505368187 node_paths=PackedStringArray("enemy")]
-position = Vector2(-2032, -295)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("13_s8ca8")
-enemy = NodePath("../../Enemigos/Enemy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChasesZones/ChaseZone3" unique_id=1586719083]
-position = Vector2(1176, 284.5)
-shape = SubResource("RectangleShape2D_s8ca8")
-
-[node name="ChaseZone4" type="Area2D" parent="ChasesZones" unique_id=1618304353 node_paths=PackedStringArray("enemy")]
-position = Vector2(-2032, -295)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("13_s8ca8")
-enemy = NodePath("../../Enemigos/Enemy_fly4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChasesZones/ChaseZone4" unique_id=1104319312]
-position = Vector2(1176, 284.5)
-shape = SubResource("RectangleShape2D_s8ca8")
-
 [node name="Doors" type="Node2D" parent="." unique_id=1679210173]
 
 [node name="Cave_exit" parent="Doors" unique_id=1608374224 instance=ExtResource("3_3pvrp")]
@@ -671,11 +616,5 @@ position = Vector2(-1764, 363)
 [node name="Stick_item2" parent="items" unique_id=1069215383 instance=ExtResource("15_dwpfe")]
 position = Vector2(-2437, 360)
 
-[connection signal="body_entered" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_entered"]
-[connection signal="body_exited" from="ChasesZones/ChaseZone" to="ChasesZones/ChaseZone" method="_on_body_exited"]
-[connection signal="body_entered" from="ChasesZones/ChaseZone2" to="ChasesZones/ChaseZone2" method="_on_body_entered"]
-[connection signal="body_exited" from="ChasesZones/ChaseZone2" to="ChasesZones/ChaseZone2" method="_on_body_exited"]
-[connection signal="body_entered" from="ChasesZones/ChaseZone3" to="ChasesZones/ChaseZone3" method="_on_body_entered"]
-[connection signal="body_exited" from="ChasesZones/ChaseZone3" to="ChasesZones/ChaseZone3" method="_on_body_exited"]
-[connection signal="body_entered" from="ChasesZones/ChaseZone4" to="ChasesZones/ChaseZone4" method="_on_body_entered"]
-[connection signal="body_exited" from="ChasesZones/ChaseZone4" to="ChasesZones/ChaseZone4" method="_on_body_exited"]
+[node name="Rock6" parent="items" unique_id=926426869 instance=ExtResource("16_cxve1")]
+position = Vector2(404, 430)
