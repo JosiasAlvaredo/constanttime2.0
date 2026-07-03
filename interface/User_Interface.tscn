@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://6d1qmnjmmsa4"]
+[gd_scene load_steps=2 format=3 uid="uid://6d1qmnjmmsa4"]
+
+[ext_resource type="Texture2D" uid="uid://bkevpofiuqd2v" path="res://assets/ui.png" id="1_cve4c"]
 
 [node name="User_Interface" type="CanvasLayer" unique_id=192385077]
 
@@ -30,3 +32,8 @@ position = Vector2(860, 497)
 [node name="Durability" type="Label" parent="Left_hand_sprite" unique_id=958392844]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1014816622]
+position = Vector2(54.000008, 595)
+scale = Vector2(1.5363636, 1.5363636)
+texture = ExtResource("1_cve4c")
