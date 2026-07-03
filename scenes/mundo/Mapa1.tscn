@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://qgjopaex8axv"]
+[gd_scene load_steps=13 format=4 uid="uid://qgjopaex8axv"]
 
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_0led5"]
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_23wfk"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/Map/chenge_node_to/chaenge_node.tscn" id="4_cqq27"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="5_bmwt8"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="5_gea1q"]
+[ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="9_aao4b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aao4b"]
 texture = ExtResource("2_f37jf")
@@ -223,3 +224,7 @@ offset_top = -509.0
 offset_right = 1162.0
 offset_bottom = -418.0
 color = Color(0, 0.90659565, 0.23528641, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1789257898]
+position = Vector2(86, -74)
+texture = ExtResource("9_aao4b")
