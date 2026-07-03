@@ -40,7 +40,7 @@ live = 9
 aceleration = 0
 speed = 0
 Knockback_resistence = 100
-knockback = Vector2(-100, -100)
+knockback = Vector2(-300, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=574869929]
 position = Vector2(-3.000002, 9)
@@ -49,6 +49,7 @@ sprite_frames = SubResource("SpriteFrames_qnnyr")
 offset = Vector2(-89.99999, 5.000019)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723008877]
+visible = false
 position = Vector2(-11, 25)
 shape = SubResource("CircleShape2D_010q2")
 
@@ -62,7 +63,7 @@ shape = SubResource("CircleShape2D_cj8ew")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=385186210]
 position = Vector2(-105, 13)
-collision_layer = 132
+collision_layer = 128
 collision_mask = 32
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" unique_id=1917449877]

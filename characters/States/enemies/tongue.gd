@@ -36,7 +36,7 @@ func on_physics_process(delta: float) -> void:
 			
 			await get_tree().create_timer(tongue_velocity*20).timeout
 			
-			for i in range(50):
+			for i in range(51):
 				await get_tree().create_timer(tongue_velocity*3).timeout
 				controlled_node.tongue_line.remove_point( controlled_node.tongue_line.get_point_count() - 1 )
 			controlled_node.tongue_line.clear_points()

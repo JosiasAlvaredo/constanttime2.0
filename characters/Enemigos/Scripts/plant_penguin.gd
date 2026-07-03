@@ -14,7 +14,9 @@ var animations={ "idle":"default", "move":"Default", "jump":"Default","fall":"De
 var current_tongue_size=0
 
 var tongue_velocity=0.00001
+
 var tongue_live=6
+
 func _physics_process(delta: float) -> void:
 	var new_size = tongue_line.get_point_count()
 	
@@ -42,7 +44,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				
 				trapped[0].trapped=false
-
+				trapped[0].damage_player(damage)
 				trapped_bodies.erase(trapped)
 
 				
@@ -73,20 +75,21 @@ func _on_tongue_area_body_entered(body: Node2D) -> void:
 	var tongue_point=0
 	var line_at_the_moment=tongue_line
 	
-	body.trapped=true
 	
-	for i in range(line_at_the_moment.get_point_count()):
-		var dist = (to_local(body.global_position)- line_at_the_moment.get_point_position(i)).length()
+	if current_tongue_size>5:
+		body.trapped=true
+		for i in range(line_at_the_moment.get_point_count()):
+			var dist = (to_local(body.global_position)- line_at_the_moment.get_point_position(i)).length()
 
-		if dist < current_distance:
-			current_distance = dist
-			tongue_point_pos = line_at_the_moment.get_point_position(tongue_point)
-			tongue_point=i
+			if dist < current_distance:
+				current_distance = dist
+				tongue_point_pos = line_at_the_moment.get_point_position(tongue_point)
+				tongue_point=i
 
-	body.global_position = to_global(tongue_point_pos)
-	current_tongue_size=line_at_the_moment.get_point_count()
-	trapped_bodies.append([body,tongue_point])
-	
+		body.global_position = to_global(tongue_point_pos)
+		current_tongue_size=line_at_the_moment.get_point_count()
+		trapped_bodies.append([body,tongue_point])
+		
 
 
 func _on_tongue_area_area_entered(area: Area2D) -> void:

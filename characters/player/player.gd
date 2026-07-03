@@ -63,7 +63,6 @@ func _ready() -> void:
 		
 func _physics_process(delta: float) -> void:
 	timer()
-	
 	direction=-Input.get_axis("Right","Left")
 	direction_y=-Input.get_axis("Up","Crouch")
 	
@@ -88,6 +87,13 @@ func dead():
 	GlobalValues.time=60
 	get_tree().change_scene_to_file("res://scenes/mundo/Mapa1.tscn")
 
+func damage_player(_damage):
+	var time=death_timer.time_left
+	death_timer.stop()
+	if time-_damage<=0:
+		dead()
+	else:
+		death_timer.start(time-_damage)
 
 func timer():
 	time_bar.size.x=(death_timer.time_left)*17
@@ -103,20 +109,13 @@ func inmunity():
 		is_inmunity=false
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-
 	if area.get_collision_layer_value(3) and not is_inmunity:
-		var time=death_timer.time_left
 		var enemy=area.owner
-		print(enemy)
-		death_timer.stop()
-		if time-enemy.damage<=0:
-			dead()
-		else:
-			death_timer.start(time-enemy.damage)
+		damage_player(enemy.damage)
+		
 		recoil=enemy.knockback
 		velocity.x=sign(enemy.global_position.x-global_position.x)
 		velocity.y=sign(enemy.global_position.y-global_position.y)
-		print(velocity.x)
 		inmunity()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
@@ -140,3 +139,4 @@ func _on_secret_body_exited(body: Node2D) -> void:
 	if body is TileMap:
 		if body.get_tileset().get_physics_layer_collision_layer(0) == 2:
 			secret_area_out.emit()
+			
