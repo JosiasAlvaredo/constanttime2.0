@@ -1,6 +1,9 @@
 extends Stats
 class_name Player
 
+signal secret_area_in
+signal secret_area_out
+
 @onready var body_up: RayCast2D = $AnimatedSprite2D/Body_up
 @onready var body_down: RayCast2D = $AnimatedSprite2D/Body_Down
 @onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
@@ -125,3 +128,15 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 func coyote_timer():
 	await get_tree().create_timer(0.2).timeout
 	return true
+
+
+func _on_secret_body_entered(body: Node2D) -> void:
+	if body is TileMap:
+		if body.get_tileset().get_physics_layer_collision_layer(0) == 2:
+			secret_area_in.emit()
+
+
+func _on_secret_body_exited(body: Node2D) -> void:
+	if body is TileMap:
+		if body.get_tileset().get_physics_layer_collision_layer(0) == 2:
+			secret_area_out.emit()
