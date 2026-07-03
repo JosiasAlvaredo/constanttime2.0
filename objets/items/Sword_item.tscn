@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cqqnprcg0nxol"]
+
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_5v8m6"]
+[ext_resource type="Texture2D" uid="uid://cph2khcq1qfgf" path="res://assets/items/Weapons/Sword_item.png" id="2_5v8m6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
+radius = 375.20828
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4pif"]
+radius = 4.0
+
+[node name="Stick_item" type="RigidBody2D" unique_id=1284734035]
+collision_layer = 0
+script = ExtResource("1_5v8m6")
+_name = "Sword"
+kind = "Mele"
+
+[node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
+position = Vector2(-2, -45)
+texture = ExtResource("2_5v8m6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729557036]
+position = Vector2(0, -14)
+scale = Vector2(0.08, 0.08)
+shape = SubResource("CircleShape2D_vswh6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=932852745]
+position = Vector2(-1, 12)
+shape = SubResource("CircleShape2D_c4pif")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
