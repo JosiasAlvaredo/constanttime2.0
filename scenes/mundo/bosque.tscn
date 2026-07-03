@@ -507,7 +507,7 @@ position = Vector2(2122, 237)
 position = Vector2(1383, 465)
 
 [node name="Enemy_fly" parent="Enemigos" unique_id=971750251 instance=ExtResource("8_yqdhd")]
-position = Vector2(1805, 165)
+position = Vector2(1992, 114)
 
 [node name="Enemy_fly4" parent="Enemigos" unique_id=1531053895 instance=ExtResource("8_yqdhd")]
 position = Vector2(-1081, 76)
@@ -540,7 +540,7 @@ position = Vector2(1329.5, 733.75)
 shape = SubResource("RectangleShape2D_3pvrp")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_3pvrp")]
-position = Vector2(59, 314)
+position = Vector2(81, 309)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=842960540]
 position = Vector2(26, 2)
@@ -574,7 +574,7 @@ position = Vector2(2996, 502)
 scale = Vector2(1, 5)
 nodeName = "cueva_jefe"
 target_door = "ECave_boss"
-kind = "go_right"
+kind = "go_left"
 
 [node name="dark_cave" parent="Doors" unique_id=871736689 instance=ExtResource("3_3pvrp")]
 position = Vector2(868.99994, 696)
