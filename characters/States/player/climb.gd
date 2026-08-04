@@ -6,20 +6,15 @@ var can_roll=true
 var corner_up=false
 var corner_down=false
 func start():
-	init_direction_x=-sign(controlled_node.animated_sprite_2d.scale.x)
+	init_direction_x=-sign(controlled_node.body.scale.x)
 	corner_up=false
 	corner_down=false
 
 func on_physics_process(delta: float) -> void:
 	direction_y=controlled_node.direction_y
-	
-	if direction_y==-1:
-		controlled_node.animated_sprite_2d.play("ClimbUp")
-	if direction_y==1:
-		controlled_node.animated_sprite_2d.play("ClimbDown")
+
 
 	if controlled_node.velocity==Vector2(0,0):
-		controlled_node.animated_sprite_2d.pause()
 		
 		if controlled_node.is_on_floor():
 			state_machine.change_to("Idle")

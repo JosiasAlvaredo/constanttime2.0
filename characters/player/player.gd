@@ -4,28 +4,17 @@ class_name Player
 signal secret_area_in
 signal secret_area_out
 
-@onready var body_up: RayCast2D = $AnimatedSprite2D/Body_up
-@onready var body_down: RayCast2D = $AnimatedSprite2D/Body_Down
-@onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
-
-@onready var stand_up_collition: CollisionShape2D = $Stand_up_collition
-@onready var crouched_collition: CollisionShape2D = $Crouched_collition
-
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-
-
-
-@onready var hit_box: Area2D = $Hit_box
-
-@onready var Interactive_Box_collition: CollisionShape2D = $AnimatedSprite2D/Interactive_Box/CollisionShape2D
-
-@onready var death_timer: Timer = $"../User_Interface/timer/Timer"
-@onready var time_bar: ColorRect = $"../User_Interface/timer/Time_bar"
+@onready var body: Node2D = $body
 
 @onready var state_machine: State_Machine = $State_Machine
 
 @onready var right_hand_sprite: Sprite2D = $"../User_Interface/Right_hand_sprite"
 @onready var left_hand_sprite: Sprite2D = $"../User_Interface/Left_hand_sprite"
+
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+
+var body_up: RayCast2D 
+var body_down: RayCast2D 
 
 var right_hand_item=null
 var left_hand_item=null
@@ -40,14 +29,18 @@ var direction_y=0
 
 var recoil=0
 
+var body_botton=0
+
 func _ready() -> void:
-	death_timer.start(GlobalValues.time)
-		
+	
+	collision_shape_2d.scale.y=abs(body_botton-collision_shape_2d.global_position.y)
+	collision_shape_2d.position.y=(collision_shape_2d.scale.y/2)- 8
+	
 	if GlobalValues.Right_hand.name!="":
 		var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.Right_hand.name).instantiate()
-		
+
 		item.durability=GlobalValues.Right_hand.durability
-		animated_sprite_2d.add_child(item)
+		body.add_child(item)
 		right_hand_sprite.texture=load("res://assets/items/Weapons/%s.png" % item._name)
 		right_hand_sprite.get_child(0).text=str(item.durability)
 		right_hand_item=item
@@ -55,14 +48,13 @@ func _ready() -> void:
 		var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.Left_hand.name).instantiate()
 		
 		item.durability=GlobalValues.Left_hand.durability
-		animated_sprite_2d.add_child(item)
+		body.add_child(item)
 		left_hand_sprite.texture=load("res://assets/items/Weapons/%s.png" % item._name)
 		left_hand_sprite.get_child(0).text=str(item.durability)
 		left_hand_item=item
 		
 		
 func _physics_process(delta: float) -> void:
-	timer()
 	direction=-Input.get_axis("Right","Left")
 	direction_y=-Input.get_axis("Up","Crouch")
 	
@@ -81,26 +73,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func FLIP():
-	animated_sprite_2d.scale.x=abs(animated_sprite_2d.scale.x)*direction
+	body.scale.x=abs(body.scale.x)*direction
 
 func dead():
 	GlobalValues.time=60
 	get_tree().change_scene_to_file("res://scenes/mundo/Mapa1.tscn")
 
 func damage_player(_damage):
-	var time=death_timer.time_left
-	death_timer.stop()
-	if time-_damage<=0:
-		dead()
-	else:
-		death_timer.start(time-_damage)
+	pass
 
-func timer():
-	time_bar.size.x=(death_timer.time_left)*17
-	GlobalValues.time=death_timer.time_left
-	if death_timer.time_left == 0:
-		dead()
-		
 func inmunity():
 	if get_tree():
 		is_inmunity=true

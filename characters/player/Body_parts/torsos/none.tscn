@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://47fm10gt6och"]
+
+[ext_resource type="Script" uid="uid://dk7i25fxniar1" path="res://characters/player/Body_parts/torsos/torso.gd" id="1_p6gju"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5c42q"]
+radius = 8.0
+height = 26.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1lxq0"]
+size = Vector2(38.75, 38)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g0sqg"]
+radius = 1.4142135
+
+[node name="None" type="Node2D" unique_id=1888509634]
+script = ExtResource("1_p6gju")
+
+[node name="Hit_box" type="Area2D" parent="." unique_id=31934649]
+visible = false
+position = Vector2(2, -2)
+scale = Vector2(1, 1.3999988)
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_box" unique_id=1116147777]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_5c42q")
+
+[node name="Interactive_Box" type="Area2D" parent="." unique_id=1893239209]
+visible = false
+collision_layer = 64
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive_Box" unique_id=1295745314]
+position = Vector2(11, -9)
+shape = SubResource("RectangleShape2D_1lxq0")
+disabled = true
+debug_color = Color(2.4065375e-08, 0.5417988, 0.17373273, 0.41960785)
+
+[node name="Body_up" type="RayCast2D" parent="." unique_id=1123851503]
+position = Vector2(2, -9)
+target_position = Vector2(11, 0)
+
+[node name="Body_Down" type="RayCast2D" parent="." unique_id=815405816]
+position = Vector2(2, 14)
+target_position = Vector2(11, 0)
+
+[node name="right_arm_position" type="Node2D" parent="." unique_id=1537930880]
+position = Vector2(-7, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_arm_position" unique_id=616460]
+position = Vector2(7, 5)
+shape = SubResource("CircleShape2D_g0sqg")
+
+[node name="left_arm_position" type="Node2D" parent="." unique_id=1823336891]
+position = Vector2(7, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="left_arm_position" unique_id=1950212104]
+shape = SubResource("CircleShape2D_g0sqg")
+debug_color = Color(0.9956085, 0, 0.21029541, 0.41960785)
+
+[node name="legs_position" type="Node2D" parent="." unique_id=826483778]
+position = Vector2(0, 5)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="legs_position" unique_id=1718920350]
+position = Vector2(-7, -5)
+shape = SubResource("CircleShape2D_g0sqg")
+debug_color = Color(0.6242576, 0.53344774, 1.92523e-07, 0.41960785)

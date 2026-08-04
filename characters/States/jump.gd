@@ -3,7 +3,7 @@ var direction
 
 func start():
 	controlled_node.can_jump=false
-	controlled_node.animated_sprite_2d.play(controlled_node.animations["jump"])
+
 	if controlled_node.velocity.y==0:
 		controlled_node.velocity.y=controlled_node.Jump_stength
 

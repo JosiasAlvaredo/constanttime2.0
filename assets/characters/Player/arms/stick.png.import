@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d08fvkvmnbfsf"
-path="res://.godot/imported/constime.png-b1e554053a7735e6aaa0824a70fe9e02.ctex"
+uid="uid://oko1txt8sr2q"
+path="res://.godot/imported/stick.png-511d91cbd77dbca12449fe3973716a04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/constime.png"
-dest_files=["res://.godot/imported/constime.png-b1e554053a7735e6aaa0824a70fe9e02.ctex"]
+source_file="res://assets/characters/Player/arms/stick.png"
+dest_files=["res://.godot/imported/stick.png-511d91cbd77dbca12449fe3973716a04.ctex"]
 
 [params]
 

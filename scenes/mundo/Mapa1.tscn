@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://qgjopaex8axv"]
+[gd_scene format=4 uid="uid://qgjopaex8axv"]
 
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_0led5"]
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_23wfk"]
@@ -197,7 +197,7 @@ tile_map_data = PackedByteArray("AAD//wAAAQADAAAAAAD+/wAAAQADAAAAAAD9/wAAAQADAAA
 position = Vector2(56, -31)
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_23wfk")]
-position = Vector2(-89, -30)
+position = Vector2(-83, -158)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2076875252]
 zoom = Vector2(2, 2)
