@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @onready var inventory: ColorRect = $inventory
-@onready var near_objets_node: Node = $inventory/near_objets
+@onready var near_objets_node: GridContainer = $inventory/near_objets
 
 var near_objets=[]
 var save_near_objets=[]
@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 			var new_slot_item=load("res://objets/slot_items/slot_item.tscn").instantiate()
 			
 			near_objets_node.add_child(new_slot_item)
-			new_slot_item.item_sprite.texture=near_objet.item_sprite.texture
+			new_slot_item.icon=near_objet.item_sprite.texture
 			new_slot_item.durability.text=str(near_objet.durability)
+			new_slot_item.custom_minimum_size = Vector2(120, 120)
 		save_near_objets=near_objets

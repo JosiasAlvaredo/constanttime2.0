@@ -33,7 +33,6 @@ script = ExtResource("1_jb0ip")
 metadata/_edit_horizontal_guides_ = [525.0]
 
 [node name="inventory" type="ColorRect" parent="." unique_id=1309112418]
-visible = false
 offset_left = 805.0
 offset_top = 108.0
 offset_right = 1067.0
@@ -151,12 +150,19 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("1_nxw7e")
 
-[node name="near_objets" type="BoxContainer" parent="inventory" unique_id=2091477776]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 260.0
-offset_right = 228.0
-offset_bottom = 363.0
+[node name="near_objets" type="GridContainer" parent="inventory" unique_id=1689070127]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10700001
+anchor_top = 0.53000003
+anchor_right = 0.87000006
+anchor_bottom = 0.74100006
+offset_left = -0.034002304
+offset_top = -0.23001099
+offset_right = 0.0599823
+offset_bottom = 0.16897583
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="timer" type="Node2D" parent="." unique_id=2011046253]
 position = Vector2(273, 501)
