@@ -50,7 +50,7 @@ offset = Vector2(28, -14.666666)
 position = Vector2(21.333332, 21.333332)
 target_position = Vector2(0, 20.000004)
 
-[node name="Crouch_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=281147657]
+[node name="Head_ray" type="RayCast2D" parent="AnimatedSprite2D" unique_id=281147657]
 position = Vector2(-1.3333334, -6.666667)
 scale = Vector2(2.3200002, 1)
 target_position = Vector2(0, -17)

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://clh5piyfkct3"]
+
+[ext_resource type="Texture2D" uid="uid://oko1txt8sr2q" path="res://assets/characters/Player/arms/stick.png" id="1_n1s80"]
+
+[node name="stick_arm" type="Node2D" unique_id=1126278460]
+
+[node name="Stick" type="Sprite2D" parent="." unique_id=147274010]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(0, 10)
+texture = ExtResource("1_n1s80")

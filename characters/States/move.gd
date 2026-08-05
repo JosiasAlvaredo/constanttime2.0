@@ -23,11 +23,6 @@ func on_input(event: InputEvent) -> void:
 	
 	if Input.is_action_pressed("Jump"):
 		state_machine.change_to("Jump")
-		
-	if Input.is_action_pressed("Crouch"):
-		if controlled_node.can_roll:
-			state_machine.change_to("Roll")
-			controlled_node.delay_roll()
 			
 
 	if controlled_node.body_up.is_colliding() and (Input.is_action_pressed("Up") or Input.is_action_pressed("Crouch")):

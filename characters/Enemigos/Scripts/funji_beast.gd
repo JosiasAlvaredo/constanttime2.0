@@ -4,7 +4,7 @@ extends enemy_base
 @export var run_knockback=Vector2(-300,-100)
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
+@onready var head_ray: RayCast2D = $AnimatedSprite2D/Head_ray
 @onready var front_ray: RayCast2D = $AnimatedSprite2D/Front_ray
 @onready var floor_detection: RayCast2D = $AnimatedSprite2D/FloorDetection
 

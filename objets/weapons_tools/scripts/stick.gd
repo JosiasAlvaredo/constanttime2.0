@@ -62,9 +62,9 @@ func _on_mele_up_body_entered(body: Node2D) -> void:
 func _on_mele_front_area_entered(area: Area2D) -> void:
 	worn_out()
 	using=true
-	player.velocity.x=recoil* -sign(player.animated_sprite_2d.scale.x)
+	player.velocity.x=recoil* -sign(player.body.scale.x)
 
 func _on_mele_front_body_entered(body: Node2D) -> void:
 	if not using:
 		worn_out()
-		player.velocity.x=recoil* -sign(player.animated_sprite_2d.scale.x)
+		player.velocity.x=recoil* -sign(player.body.scale.x)

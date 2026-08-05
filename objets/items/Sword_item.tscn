@@ -13,7 +13,6 @@ radius = 4.0
 collision_layer = 0
 script = ExtResource("1_5v8m6")
 _name = "Sword"
-kind = "Mele"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
 position = Vector2(0, -21)
@@ -21,7 +20,7 @@ scale = Vector2(0.5999994, 0.52000046)
 texture = ExtResource("2_5v8m6")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
-collision_layer = 0
+collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729557036]

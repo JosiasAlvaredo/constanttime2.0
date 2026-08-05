@@ -16,7 +16,7 @@ func start():
 
 func on_physics_process(delta: float) -> void:
 	
-	if controlled_node.crouch_ray.is_colliding():
+	if controlled_node.head_ray.is_colliding():
 		controlled_node.velocity.y=-recoil_velocity.y
 	if controlled_node.is_on_wall():
 		controlled_node.velocity.x=-recoil_velocity.x

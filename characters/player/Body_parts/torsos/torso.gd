@@ -5,7 +5,7 @@ extends Node2D
 
 
 func _ready() -> void:
-
+	var parent=get_parent().get_parent()
 	var right_arm=load(GlobalValues.bodies_parts.right_arm).instantiate()
 	right_arm.position=right_arm_position.position
 	right_arm.z_index=1
@@ -19,6 +19,8 @@ func _ready() -> void:
 	add_child(right_arm)
 	add_child(left_arm)
 	add_child(legs)
-	owner.body_botton=legs.foot_position.global_position.y
-	owner.body_up=$Body_up
-	owner.body_down=$Body_Down
+	
+	parent.body_botton=legs.foot_position.global_position.y
+	parent.body_up=$Body_up
+	parent.body_down=$Body_Down
+	parent.Interactive_Box_collition=$Interactive_Box/CollisionShape2D

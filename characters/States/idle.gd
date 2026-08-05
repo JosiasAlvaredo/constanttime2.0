@@ -5,10 +5,6 @@ func on_physics_process(delta: float) -> void:
 func on_input(event: InputEvent) -> void:
 	if (Input.is_action_pressed("Left") or Input.is_action_pressed("Right")) and  not Input.is_action_pressed("Crouch"):
 		state_machine.change_to("Move")
-	elif not (Input.is_action_pressed("Left") or Input.is_action_pressed("Right")) and Input.is_action_pressed("Crouch"):
-		state_machine.change_to("Crouched")
-	elif (Input.is_action_pressed("Left") or Input.is_action_pressed("Right")) and Input.is_action_pressed("Run") and Input.is_action_pressed("Crouch"):
-		state_machine.change_to("Roll")
 	
 	if Input.is_action_pressed("Jump"):
 		state_machine.change_to("Jump")

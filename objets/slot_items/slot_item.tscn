@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cfcdji554poyy"]
+
+[ext_resource type="Script" uid="uid://djgp6gpevln8f" path="res://objets/slot_items/slot_item.gd" id="1_kaq4b"]
+[ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/Weapons/Rock.png" id="2_biexj"]
+[ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="3_1f8gm"]
+
+[node name="slot_item" type="Button" unique_id=1360031931]
+scale = Vector2(2.5, 2.5)
+theme_override_constants/h_separation = 0
+icon = ExtResource("2_biexj")
+script = ExtResource("1_kaq4b")
+
+[node name="Durability" type="Label" parent="." unique_id=601155958]
+layout_mode = 0
+offset_left = 19.999998
+offset_top = 22.399998
+offset_right = 60.0
+offset_bottom = 45.399998
+theme_override_fonts/font = ExtResource("3_1f8gm")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]

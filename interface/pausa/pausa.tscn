@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhqrajh4ryanm"]
+[gd_scene format=3 uid="uid://bhqrajh4ryanm"]
 
-[ext_resource type="Script" uid="uid://cby0bq2fmhq61" path="res://interface/pausa.gd" id="1_r4l3d"]
+[ext_resource type="Script" uid="uid://cby0bq2fmhq61" path="res://interface/pausa/pausa.gd" id="1_r4l3d"]
 [ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="2_2gy7s"]
-[ext_resource type="Shader" uid="uid://d216cdu5lntpp" path="res://interface/pausa.gdshader" id="2_x51mt"]
+[ext_resource type="Shader" uid="uid://d216cdu5lntpp" path="res://interface/pausa/pausa.gdshader" id="2_x51mt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qtnot"]
 shader = ExtResource("2_x51mt")

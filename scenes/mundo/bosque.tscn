@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://f8u74yligeut" path="res://objets/items/key/key.tscn" id="8_gihg5"]
 [ext_resource type="PackedScene" uid="uid://diodtoejshdv1" path="res://characters/Enemigos/Forest/enemigovoladorV2.tscn" id="8_yqdhd"]
 [ext_resource type="PackedScene" uid="uid://c6hngsj3kv6de" path="res://characters/Enemigos/Forest/PlantPenguin.tscn" id="10_5bof4"]
-[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="12_htf8p"]
+[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="12_htf8p"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="13_xgvh0"]
 [ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="15_dwpfe"]
 [ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="16_cxve1"]

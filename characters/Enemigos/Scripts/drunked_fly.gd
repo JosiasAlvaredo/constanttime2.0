@@ -4,7 +4,8 @@ extends enemy_base
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 @onready var floor_detection: RayCast2D = $AnimatedSprite2D/FloorDetection
-@onready var crouch_ray: RayCast2D = $AnimatedSprite2D/Crouch_ray
+@onready var head_ray: RayCast2D = $AnimatedSprite2D/Head_ray
+
 @onready var left_ray: RayCast2D = $LeftRay
 @onready var right_ray: RayCast2D = $RightRay
 
@@ -15,7 +16,7 @@ var animations={ "idle":"Default", "move":"Default", "jump":"Default","fall":"De
 
 func _physics_process(delta):
 
-	if (floor_detection.is_colliding() or crouch_ray.is_colliding()) and not boing[0]:
+	if (floor_detection.is_colliding() or head_ray.is_colliding()) and not boing[0]:
 		directions.y*=-1
 		boing[0]=true
 	else:

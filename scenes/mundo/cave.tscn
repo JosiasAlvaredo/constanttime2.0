@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cwb0a7qleclna"]
+[gd_scene format=4 uid="uid://cwb0a7qleclna"]
 
 [ext_resource type="Script" uid="uid://7058npwbhk65" path="res://scenes/mundo/Sences.gd" id="1_0cxct"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="1_tb6df"]
@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="12_8pngn"]
 [ext_resource type="PackedScene" uid="uid://cx6p0pacib8wk" path="res://characters/Enemigos/DarkCaves/Funji_beast.tscn" id="13_wkaam"]
 [ext_resource type="PackedScene" uid="uid://drs0lb03xidf0" path="res://characters/Enemigos/DarkCaves/PeregrineCow.tscn" id="14_4g5vv"]
-[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa.tscn" id="14_wkaam"]
+[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="14_wkaam"]
 [ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="15_4g5vv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uejgb"]
