@@ -1,0 +1,289 @@
+[gd_scene format=3 uid="uid://6d1qmnjmmsa4"]
+
+[ext_resource type="Texture2D" uid="uid://bkevpofiuqd2v" path="res://assets/ui.png" id="1_cve4c"]
+[ext_resource type="Script" uid="uid://pgcfxqwu4aje" path="res://interface/User_interfece/user_interface.gd" id="1_jb0ip"]
+[ext_resource type="Texture2D" uid="uid://cme8ds8yefs2k" path="res://assets/ui2.png" id="1_nfcvq"]
+[ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="1_nxw7e"]
+[ext_resource type="Texture2D" uid="uid://b5iduyxx6cd7b" path="res://assets/characters/Player/head.png" id="4_bl7xi"]
+[ext_resource type="PackedScene" uid="uid://big02625jvs1k" path="res://interface/User_interfece/slot.tscn" id="4_xcv3c"]
+
+[sub_resource type="Animation" id="Animation_xcv3c"]
+resource_name = "Info_close"
+length = 0.6666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333336, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(84, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rph0m"]
+resource_name = "Info_open"
+length = 1.1333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333337),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(84, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_big31"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(84, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_84lj5"]
+_data = {
+&"Info_close": SubResource("Animation_xcv3c"),
+&"Info_open": SubResource("Animation_rph0m"),
+&"RESET": SubResource("Animation_big31")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl7xi"]
+atlas = ExtResource("1_nfcvq")
+region = Rect2(0, 0, 55, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jb0ip"]
+atlas = ExtResource("1_nfcvq")
+region = Rect2(55, 0, 55, 55)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcv3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bl7xi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jb0ip")
+}],
+"loop": true,
+"name": &"selected",
+"speed": 2.0
+}]
+
+[node name="User_Interface" type="CanvasLayer" unique_id=192385077]
+script = ExtResource("1_jb0ip")
+metadata/_edit_horizontal_guides_ = [525.0]
+
+[node name="inventory" type="ColorRect" parent="." unique_id=1309112418]
+offset_left = 805.0
+offset_top = 108.0
+offset_right = 1067.0
+offset_bottom = 599.0
+color = Color(0, 0, 0, 1)
+
+[node name="info" type="Node2D" parent="inventory" unique_id=1646273436]
+position = Vector2(84, 0)
+
+[node name="back_ground" type="ColorRect" parent="inventory/info" unique_id=274178625]
+offset_left = 721.0
+offset_top = 107.0
+offset_right = 808.0
+offset_bottom = 338.0
+
+[node name="ColorRect" type="ColorRect" parent="inventory/info/back_ground" unique_id=1971425481]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 84.0
+offset_bottom = 228.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="inventory/info" unique_id=2008671110]
+libraries/ = SubResource("AnimationLibrary_84lj5")
+autoplay = &"Info_open"
+
+[node name="text" type="Label" parent="inventory/info" unique_id=207948556]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.56
+anchor_right = 0.5
+anchor_bottom = 0.56
+offset_left = 729.0
+offset_top = 115.0
+offset_right = 799.0
+offset_bottom = 150.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+text = "Name:
+"
+
+[node name="lines" type="ColorRect" parent="inventory" unique_id=774172309]
+layout_mode = 0
+offset_top = 227.0
+offset_right = 262.0
+offset_bottom = 230.0
+
+[node name="ColorRect2" type="ColorRect" parent="inventory/lines" unique_id=2016842082]
+layout_mode = 0
+offset_top = 157.0
+offset_right = 262.0
+offset_bottom = 160.0
+
+[node name="ColorRect3" type="ColorRect" parent="inventory/lines" unique_id=1170992665]
+layout_mode = 0
+offset_top = 261.0
+offset_right = 262.0
+offset_bottom = 264.0
+
+[node name="ColorRect5" type="ColorRect" parent="inventory/lines" unique_id=414384601]
+layout_mode = 0
+offset_top = -228.0
+offset_right = 262.0
+offset_bottom = -225.0
+
+[node name="ColorRect6" type="ColorRect" parent="inventory/lines" unique_id=62461252]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.067
+anchor_bottom = 13.023001
+offset_top = -225.0
+offset_right = -14.554001
+offset_bottom = 221.931
+
+[node name="ColorRect7" type="ColorRect" parent="inventory/lines" unique_id=1966940320]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.067
+anchor_bottom = 13.023001
+offset_left = 259.0
+offset_top = -225.0
+offset_right = 244.446
+offset_bottom = 222.931
+
+[node name="Bodies_parts" type="Node2D" parent="inventory" unique_id=1980076886]
+position = Vector2(-804, -125)
+
+[node name="slots_sprites" type="Node2D" parent="inventory/Bodies_parts" unique_id=1576390517]
+
+[node name="torso_slot" type="AnimatedSprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=959913171]
+position = Vector2(934.5, 226.5)
+sprite_frames = SubResource("SpriteFrames_xcv3c")
+animation = &"selected"
+autoplay = "selected"
+frame_progress = 0.25409937
+
+[node name="legs_slot" type="AnimatedSprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=1349041481]
+position = Vector2(934.5, 289.5)
+sprite_frames = SubResource("SpriteFrames_xcv3c")
+animation = &"selected"
+autoplay = "selected"
+frame_progress = 0.25409937
+
+[node name="right_arm_slot" type="AnimatedSprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=972694207]
+position = Vector2(863.5, 226.5)
+sprite_frames = SubResource("SpriteFrames_xcv3c")
+animation = &"selected"
+autoplay = "selected"
+frame_progress = 0.25409937
+
+[node name="left_arm_slot" type="AnimatedSprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=811036373]
+position = Vector2(1007.5, 226.5)
+sprite_frames = SubResource("SpriteFrames_xcv3c")
+animation = &"selected"
+autoplay = "selected"
+frame_progress = 0.25409937
+
+[node name="Head" type="Sprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=1836236017]
+position = Vector2(932, 173.00002)
+scale = Vector2(2.5300193, 2.379425)
+texture = ExtResource("4_bl7xi")
+
+[node name="right_arm" parent="inventory/Bodies_parts" unique_id=258069684 instance=ExtResource("4_xcv3c")]
+offset_left = 836.0
+offset_top = 199.0
+offset_right = 891.0
+offset_bottom = 254.0
+slot_part = "right_arm"
+
+[node name="torso" parent="inventory/Bodies_parts" unique_id=1192938166 instance=ExtResource("4_xcv3c")]
+offset_left = 907.0
+offset_top = 199.0
+offset_right = 962.0
+offset_bottom = 254.0
+slot_part = "torso"
+
+[node name="left_arm" parent="inventory/Bodies_parts" unique_id=1290414984 instance=ExtResource("4_xcv3c")]
+offset_left = 980.0
+offset_top = 199.0
+offset_right = 1035.0
+offset_bottom = 254.0
+slot_part = "left_arm"
+
+[node name="legs" parent="inventory/Bodies_parts" unique_id=1243198576 instance=ExtResource("4_xcv3c")]
+offset_left = 907.0
+offset_top = 262.0
+offset_right = 962.0
+offset_bottom = 317.0
+slot_part = "legs"
+
+[node name="near_objets" type="Control" parent="inventory" unique_id=168938720]
+layout_mode = 1
+anchor_left = 0.07300001
+anchor_top = 0.53400004
+anchor_right = 0.924
+anchor_bottom = 0.73700005
+offset_left = -0.12600136
+offset_top = -0.19403076
+offset_right = -0.088012695
+offset_bottom = 0.13296509
+
+[node name="timer" type="Node2D" parent="." unique_id=2011046253]
+position = Vector2(273, 501)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="timer" unique_id=344073367]
+position = Vector2(726.5, 51.5)
+sprite_frames = SubResource("SpriteFrames_xcv3c")
+animation = &"selected"
+autoplay = "selected"
+frame_progress = 0.22846141
+
+[node name="Right_hand_sprite" type="Sprite2D" parent="timer" unique_id=1124035027]
+position = Vector2(726.5, 50.5)
+
+[node name="Durability" type="Label" parent="timer/Right_hand_sprite" unique_id=16779684]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="timer" unique_id=594191287]
+position = Vector2(596.5, 51.5)
+sprite_frames = SubResource("SpriteFrames_xcv3c")
+animation = &"selected"
+autoplay = "selected"
+frame_progress = 0.25409937
+
+[node name="Left_hand_sprite" type="Sprite2D" parent="timer" unique_id=153583614]
+position = Vector2(596.5, 51.5)
+
+[node name="Durability" type="Label" parent="timer/Left_hand_sprite" unique_id=958392844]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+
+[node name="Sprite2D" type="Sprite2D" parent="timer" unique_id=1014816622]
+position = Vector2(-219, 94)
+scale = Vector2(1.5363636, 1.5363636)
+texture = ExtResource("1_cve4c")

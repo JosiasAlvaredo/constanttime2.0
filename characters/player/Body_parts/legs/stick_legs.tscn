@@ -8,20 +8,23 @@ radius = 1.4142135
 
 [node name="StickLegs" type="Node2D" unique_id=552661092]
 script = ExtResource("1_f64pi")
+durability = 4
+speed = 200
+jump_force = -300
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1698048193]
-position = Vector2(3, 10)
+position = Vector2(3.000002, 4.000002)
 rotation = -3.1415925
 texture = ExtResource("1_mut7r")
 flip_h = true
 
 [node name="Stick2" type="Sprite2D" parent="." unique_id=828325264]
-position = Vector2(-4, 10)
+position = Vector2(-3.999998, 4.000002)
 rotation = -3.1415925
 texture = ExtResource("1_mut7r")
 
 [node name="foot_position" type="Node2D" parent="." unique_id=119149150]
-position = Vector2(0, 18)
+position = Vector2(1.9073486e-06, 12.000002)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="foot_position" unique_id=1165104098]
 shape = SubResource("CircleShape2D_mut7r")

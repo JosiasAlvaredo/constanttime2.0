@@ -5,7 +5,7 @@ class_name Item_base
 
 @export var _name="Rock"
 @export var durability=5
-@export_enum("Body_part", "Item") var kind: String="Item"
+@export_enum("torso","left_arm","right_arm","legs","Item") var kind: String="Item"
 
 var item_sprite
 
@@ -14,8 +14,9 @@ var item_scene
 
 func _ready() -> void:
 	item_sprite=get_child(0)
-	item_scene = load("res://objets/weapons_tools/%s.tscn" % _name)
-	
+	if kind =="Item":
+		item_scene = load("res://objets/weapons_tools/%s.tscn" % _name)
+		
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if kind=="Item":
 		var player=area.owner.owner

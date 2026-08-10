@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://c0wndwegvj1xc"]
+[gd_scene format=3 uid="uid://cf732aoc4a0dv"]
 
-[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_wjj2a"]
-[ext_resource type="Texture2D" uid="uid://oko1txt8sr2q" path="res://assets/characters/Player/arms/stick.png" id="2_1sb7q"]
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_5nnbh"]
+[ext_resource type="Texture2D" uid="uid://ccuinfhyo3qxc" path="res://assets/items/Weapons/Sword.png" id="2_5nnbh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -11,13 +11,13 @@ radius = 4.0
 
 [node name="stick_arm" type="RigidBody2D" unique_id=926426869]
 collision_layer = 0
-script = ExtResource("1_wjj2a")
-_name = "stick_arm"
-kind = "right_arm"
+script = ExtResource("1_5nnbh")
+_name = "stick_legs"
+kind = "legs"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
 position = Vector2(0, -1)
-texture = ExtResource("2_1sb7q")
+texture = ExtResource("2_5nnbh")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
 collision_layer = 64

@@ -4,16 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_23wfk"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_23wfk"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="2_f37jf"]
-[ext_resource type="PackedScene" uid="uid://cn1gykrd1riwo" path="res://characters/Npcs/Pasificos/mago_comienzo.tscn" id="3_kavb4"]
+[ext_resource type="PackedScene" uid="uid://cn1gykrd1riwo" path="res://characters/Mago/mago_comienzo.tscn" id="3_kavb4"]
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/Map/chenge_node_to/chaenge_node.tscn" id="4_cqq27"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="5_bmwt8"]
-[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="5_gea1q"]
+[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="5_gea1q"]
 [ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="9_aao4b"]
 [ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick_arm.tscn" id="10_4d7pk"]
-[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/other_arm.tscn" id="11_3nlyl"]
-[ext_resource type="PackedScene" uid="uid://cf732aoc4a0dv" path="res://objets/body_parts/stick_legs.tscn" id="12_fyddo"]
-[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="13_58nlb"]
-[ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Npcs/Enemigos/Enemigos_viejos/Forest/enemigo_plataformero.tscn" id="14_2q7o6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aao4b"]
 texture = ExtResource("2_f37jf")
@@ -202,7 +198,7 @@ tile_map_data = PackedByteArray("AAD//wAAAQADAAAAAAD+/wAAAQADAAAAAAD9/wAAAQADAAA
 position = Vector2(56, -31)
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_23wfk")]
-position = Vector2(-11, -88)
+position = Vector2(-79, -43)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2076875252]
 zoom = Vector2(2, 2)
@@ -234,26 +230,8 @@ color = Color(0, 0.90659565, 0.23528641, 1)
 position = Vector2(86, -74)
 texture = ExtResource("9_aao4b")
 
-[node name="stick_arm" parent="." unique_id=926426869 instance=ExtResource("10_4d7pk")]
-position = Vector2(-66, -21)
+[node name="Rock" parent="." unique_id=926426869 instance=ExtResource("10_4d7pk")]
+position = Vector2(-30, -12)
 
-[node name="stick_arm5" parent="." unique_id=1570838692 instance=ExtResource("10_4d7pk")]
-position = Vector2(-66, -21)
-kind = "left_arm"
-
-[node name="stick_arm2" parent="." unique_id=1483540736 instance=ExtResource("11_3nlyl")]
-position = Vector2(-31, -22)
-kind = "left_arm"
-
-[node name="stick_arm6" parent="." unique_id=1234020750 instance=ExtResource("11_3nlyl")]
-position = Vector2(-31, -22)
-
-[node name="stick_arm3" parent="." unique_id=692060312 instance=ExtResource("12_fyddo")]
-position = Vector2(-97, -31)
-
-[node name="stick_arm4" parent="." unique_id=168672118 instance=ExtResource("13_58nlb")]
-position = Vector2(5, -30)
-
-[node name="Enemigo_plat" parent="." unique_id=1513898474 instance=ExtResource("14_2q7o6")]
-position = Vector2(107, -43)
-damage = 100
+[node name="Rock2" parent="." unique_id=1468405191 instance=ExtResource("10_4d7pk")]
+position = Vector2(-13, -13)

@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://bilfxm0j4xiox"]
+[gd_scene format=4 uid="uid://bilfxm0j4xiox"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_ugtnm"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_pw782"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="3_pw782"]
-[ext_resource type="PackedScene" uid="uid://ukiokohjwqdt" path="res://Negro/jefe_cuava.tscn" id="4_x2sah"]
+[ext_resource type="PackedScene" path="res://Negro/jefe_cuava.tscn" id="4_x2sah"]
 [ext_resource type="Script" uid="uid://cv8dju68wd5jl" path="res://scenes/mundo/boss_trigger.gd" id="5_lgmu2"]
-[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_Interface.tscn" id="6_liso3"]
+[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="6_liso3"]
 [ext_resource type="PackedScene" uid="uid://cr6jsm4tnov2m" path="res://objets/Map/chenge_node_to/chaenge_node.tscn" id="7_ua4cj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x2sah"]

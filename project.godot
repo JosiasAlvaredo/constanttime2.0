@@ -22,12 +22,12 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 DialogueManager="*uid://c3rodes2l3gxb"
-GlobalValues="*res://global_values.gd"
+GlobalValues="*res://autoloads/global_values.gd"
 GameManager="*res://autoloads/game_manager.gd"
 
 [dialogue_manager]
 
-runtime/balloon_path="res://Dialogos/balloon.tscn"
+runtime/balloon_path="res://interface/Dialogos/balloon.tscn"
 
 [display]
 
@@ -129,7 +129,7 @@ Inventory={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogos/text/Dialogo_mago.dialogue", "res://Dialogos/text/door.dialogue")
+locale/translations_pot_files=PackedStringArray("res://interface/Dialogos/text/Dialogo_mago.dialogue", "res://interface/Dialogos/text/door.dialogue")
 
 [layer_names]
 
@@ -141,6 +141,7 @@ locale/translations_pot_files=PackedStringArray("res://Dialogos/text/Dialogo_mag
 2d_physics/layer_6="attack"
 2d_physics/layer_7="Items"
 2d_physics/layer_8="enemy"
+2d_physics/layer_9="Item_slot"
 
 [rendering]
 

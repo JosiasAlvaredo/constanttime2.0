@@ -13,7 +13,7 @@ script = ExtResource("1_p6gju")
 
 [node name="Interactive_Box" type="Area2D" parent="." unique_id=1893239209]
 visible = false
-collision_layer = 64
+collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactive_Box" unique_id=1295745314]

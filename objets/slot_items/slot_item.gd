@@ -1,27 +1,64 @@
-extends Button
+extends Node2D
+
+@export var _name=""
+@export var durability=0
 
 @onready var button: Button = $Button
-@onready var durability: Label = $Durability
-@onready var item_sprite: Sprite2D = $sprite
+@onready var durability_node: Label = $Durability
 
-var follow_mouse=false
+
+
+var kind
+var path
+
 var parent
 
-var save_position=position
+var save_position=Vector2.ZERO
+var can_drop=false
+
+var link_to_original=null
+var drop=null
+
 
 func _ready() -> void:
 	parent=get_parent().get_parent().get_parent()
-
-func _physics_process(delta: float) -> void:
-	if follow_mouse:
-		global_position=get_global_mouse_position()
-	if Input.is_action_just_pressed("Right_hand"):
-		position=save_position
-		follow_mouse=false
-		parent.using_mouse=false
+	await  get_tree().create_timer(0.1).timeout
+	position=save_position
+	durability_node.text=str(durability)
+	if link_to_original!=null:
+		drop=link_to_original.duplicate()
 	
+func _physics_process(delta: float) -> void:
+	if parent.selected_body_part==self:
+		global_position=get_global_mouse_position()
+		
+	
+	if Input.is_action_just_pressed("Left_hand") and not parent.mouse_on_a_slot and can_drop:
+		position=save_position
+		can_drop=false
+		parent.selected_body_part=null
+		button.disabled=false
 
-func _on_button_down() -> void:
-	if not parent.using_mouse:
-		follow_mouse=true
-		parent.using_mouse=true
+func _on_button_button_down() -> void:
+	if parent.selected_body_part==null:
+		parent.selected_body_part=self
+		button.disabled=true
+		can_drop=false
+		timer()
+		
+func timer():
+
+	await get_tree().create_timer(0.5).timeout
+	can_drop=true
+	
+func delete():
+	if link_to_original!=null:
+		link_to_original.queue_free()
+	queue_free()
+	
+func damage(_damage):
+	durability-=_damage
+	print(durability)
+	if durability<=0:
+		delete()
+	

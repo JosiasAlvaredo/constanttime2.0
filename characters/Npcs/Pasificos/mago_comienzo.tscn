@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cn1gykrd1riwo"]
+
+[ext_resource type="Script" uid="uid://cnam503c5rn8t" path="res://characters/Npcs/Pasificos/mago_comienzo.gd" id="1_2bu08"]
+[ext_resource type="Texture2D" uid="uid://y2hhiqttdi8" path="res://assets/characters/image (1).png" id="3_1we4b"]
+[ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="3_s3hxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1we4b"]
+size = Vector2(53, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acsi4"]
+atlas = ExtResource("3_1we4b")
+region = Rect2(0, 0, 60, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hnkr0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acsi4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Mago_comienzo" type="Area2D" unique_id=1877504949]
+position = Vector2(-8, 30)
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_2bu08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=559161553]
+position = Vector2(12.5, -5.5)
+shape = SubResource("RectangleShape2D_1we4b")
+
+[node name="Exclamation" type="Sprite2D" parent="." unique_id=2131303213]
+visible = false
+position = Vector2(6, -11)
+texture = ExtResource("3_s3hxq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=28096126]
+position = Vector2(12.750001, -23.500002)
+scale = Vector2(0.6416666, 0.5729166)
+sprite_frames = SubResource("SpriteFrames_hnkr0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -34,24 +34,12 @@ var direction_y=0
 
 var recoil=0
 
-var body_botton=0
+var body_botton=15
 
-
+var save_body_part={}
+var current_torso=null
 
 func _ready() -> void:
-	#buil body
-	var torso=load(GlobalValues.bodies_parts.torso).instantiate()
-
-	body.add_child(torso)
-	body.move_child(torso, torso.get_index() - 1)
-	
-	collision_shape_2d.scale.y=abs(body_botton-collision_shape_2d.global_position.y)
-	hit_box.scale.y=abs(body_botton-collision_shape_2d.global_position.y)
-	
-	collision_shape_2d.position.y=(collision_shape_2d.scale.y/2)- 9
-	hit_box.position.y=(collision_shape_2d.scale.y/2)- 9
-	
-	############
 	#items
 	if GlobalValues.Right_hand.name!="":
 		var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.Right_hand.name).instantiate()
@@ -87,6 +75,10 @@ func _physics_process(delta: float) -> void:
 		activate_Gravity=true
 		solid=true
 		
+	if GlobalValues.bodies_parts!=save_body_part:
+		save_body_part=GlobalValues.bodies_parts.duplicate()
+		buil_body()
+		
 	move_and_slide()
 	
 func FLIP():
@@ -95,9 +87,6 @@ func FLIP():
 func dead():
 	GlobalValues.time=60
 	get_tree().change_scene_to_file("res://scenes/mundo/Mapa1.tscn")
-
-func damage_player(_damage):
-	pass
 
 func inmunity():
 	if get_tree():
@@ -113,7 +102,7 @@ func coyote_timer():
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer_value(3) and not is_inmunity:
 		var enemy=area.owner
-		damage_player(enemy.damage)
+		current_torso.torso_damage(enemy.damage)
 		
 		recoil=enemy.knockback
 		velocity.x=sign(enemy.global_position.x-global_position.x)
@@ -130,8 +119,32 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 func _on_collect_box_area_entered(area: Area2D) -> void:
 	var objet=area.get_parent()
 	user_interface.near_objets.append(objet)
-	
 
 func _on_collect_box_area_exited(area: Area2D) -> void:
 	var objet=area.get_parent()
 	user_interface.near_objets.pop_at(user_interface.near_objets.find(objet))
+
+func buil_body():
+	print(8)
+	if current_torso !=null:
+		current_torso.queue_free()
+	var torso
+	if GlobalValues.bodies_parts.torso==null:
+		torso=load("res://characters/player/Body_parts/torsos/none.tscn").instantiate()
+	else:
+		torso=load(GlobalValues.bodies_parts.torso).instantiate()
+	
+	body.add_child(torso)
+	body.move_child(torso, torso.get_index() - 1)
+	
+	collision_shape_2d.scale.y=body_botton
+	hit_box.scale.y=body_botton
+
+	collision_shape_2d.position.y=(collision_shape_2d.scale.y/2)- 9
+	hit_box.position.y=(collision_shape_2d.scale.y/2)- 9
+	current_torso=torso
+	
+	speed=torso.speed
+	aceleration=speed/6
+	Jump_stength=torso.jump_force
+	

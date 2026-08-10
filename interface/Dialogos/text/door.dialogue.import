@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://eco1ctvn6041"
+path="res://.godot/imported/door.dialogue-6ec5ba30d1917322447d126bc2e38f4b.tres"
+
+[deps]
+
+source_file="res://interface/Dialogos/text/door.dialogue"
+dest_files=["res://.godot/imported/door.dialogue-6ec5ba30d1917322447d126bc2e38f4b.tres"]
+
+[params]
+
+defaults=true
