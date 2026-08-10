@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cf732aoc4a0dv" path="res://objets/body_parts/stick_legs.tscn" id="12_fyddo"]
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="13_58nlb"]
 [ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Npcs/Enemigos/Enemigos_viejos/Forest/enemigo_plataformero.tscn" id="14_2q7o6"]
+[ext_resource type="PackedScene" uid="uid://bj64ousu087v2" path="res://objets/body_parts/stick_torso.tscn" id="15_6jkxb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aao4b"]
 texture = ExtResource("2_f37jf")
@@ -256,4 +257,6 @@ position = Vector2(5, -30)
 
 [node name="Enemigo_plat" parent="." unique_id=1513898474 instance=ExtResource("14_2q7o6")]
 position = Vector2(107, -43)
-damage = 100
+
+[node name="stick_arm7" parent="." unique_id=1297055427 instance=ExtResource("15_6jkxb")]
+position = Vector2(26, -16)

@@ -58,7 +58,9 @@ func delete():
 	
 func damage(_damage):
 	durability-=_damage
-	print(durability)
 	if durability<=0:
 		delete()
+
+		
+		
 	

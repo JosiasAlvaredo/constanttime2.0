@@ -11,6 +11,7 @@ script = ExtResource("1_f64pi")
 durability = 4
 speed = 200
 jump_force = -300
+size = 1
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1698048193]
 position = Vector2(3.000002, 4.000002)

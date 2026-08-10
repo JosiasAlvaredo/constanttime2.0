@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	if GlobalValues.bodies_parts[slot_part]!=null and (item_aux==null or not moving_thing) :
 		icon=GlobalValues.bodies_parts[slot_part].get_child(0).icon
 		durability_node.text=str(GlobalValues.bodies_parts[slot_part].durability)
-	elif moving_thing:
+	elif moving_thing or GlobalValues.bodies_parts[slot_part]==null:
 		icon=null
 		durability_node.text=""
 
@@ -60,10 +60,8 @@ func _physics_process(delta: float) -> void:
 		elif mouse_on_this_slot:
 			reset_item_aux()
 			
-			
-	if Input.is_action_just_pressed("Inventory") and  GlobalValues.bodies_parts[slot_part]!=null:
+	if Input.is_action_just_pressed("Inventory") and  GlobalValues.bodies_parts[slot_part]!=null and item_aux!=null:
 		if not moving_thing:
-			print(8)
 			drop()
 		else:
 			reset_item_aux()

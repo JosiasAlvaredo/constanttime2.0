@@ -3,6 +3,7 @@ extends body_part
 @onready var left_arm_position: Node2D = $left_arm_position
 @onready var legs_position: Node2D = $legs_position
 
+#es el porcentaje de daño q se lleva el torso
 @export var shockwave=0
 
 var total_weight=size
@@ -14,6 +15,8 @@ var parent
 func _ready() -> void:
 	parent=get_parent().get_parent()
 	body=GlobalValues.bodies_parts
+	
+	#se crean las extremidades y se definen los stats
 	if body.right_arm!=null:
 		var right_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.right_arm._name).instantiate()
 		right_arm.position=right_arm_position.position
@@ -44,10 +47,12 @@ func _ready() -> void:
 		total_weight-=legs.size*3
 		
 		add_child(legs)
-		parent.body_botton=legs.foot_position.position.y*1.5
+		parent.body_botton=legs.foot_position.position.y*(1.5)+legs.position.y
 	else:
-		parent.body_botton=10
-	
+		parent.body_botton=legs_position.position.y*1.5
+		if parent.body_botton<10:
+			parent.body_botton=10
+	parent.position.y-=parent.body_botton
 	speed-=total_weight*25
 	jump_force+=total_weight*30
 	
@@ -74,3 +79,4 @@ func torso_damage(_damage):
 		body.left_arm.damage((_damage-part_wear)/count_parts)
 	if body.legs!=null:
 		body.legs.damage((_damage-part_wear)/int(count_parts/2))
+	

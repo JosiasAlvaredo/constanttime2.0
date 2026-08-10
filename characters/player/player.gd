@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 		activate_Gravity=true
 		solid=true
 		
-	if GlobalValues.bodies_parts!=save_body_part:
+	if GlobalValues.bodies_parts != save_body_part:
 		save_body_part=GlobalValues.bodies_parts.duplicate()
 		buil_body()
 		
@@ -125,14 +125,15 @@ func _on_collect_box_area_exited(area: Area2D) -> void:
 	user_interface.near_objets.pop_at(user_interface.near_objets.find(objet))
 
 func buil_body():
-	print(8)
+	
 	if current_torso !=null:
 		current_torso.queue_free()
 	var torso
 	if GlobalValues.bodies_parts.torso==null:
 		torso=load("res://characters/player/Body_parts/torsos/none.tscn").instantiate()
 	else:
-		torso=load(GlobalValues.bodies_parts.torso).instantiate()
+		print(GlobalValues.bodies_parts.torso)
+		torso=load("res://characters/player/Body_parts/torsos/%s.tscn" % GlobalValues.bodies_parts.torso._name).instantiate()
 	
 	body.add_child(torso)
 	body.move_child(torso, torso.get_index() - 1)
