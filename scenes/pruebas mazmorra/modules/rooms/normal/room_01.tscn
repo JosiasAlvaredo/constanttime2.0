@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=4 uid="uid://113x1715qteo"]
+[gd_scene load_steps=3 format=4 uid="uid://113x1715qteo"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_fuv48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuv48"]
+size = Vector2(637, 350)
 
 [node name="Room_01" type="Node2D" unique_id=900673031]
 
@@ -22,3 +25,9 @@ position = Vector2(320, 360)
 
 [node name="SocketRight" type="Marker2D" parent="." unique_id=1239858732]
 position = Vector2(640, 180)
+
+[node name="Bounds" type="Area2D" parent="." unique_id=1796673238]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1631879316]
+position = Vector2(319.5, 177)
+shape = SubResource("RectangleShape2D_fuv48")

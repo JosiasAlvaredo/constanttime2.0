@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=4 uid="uid://bly7h0dw7bhbf"]
+[gd_scene load_steps=3 format=4 uid="uid://bly7h0dw7bhbf"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_jdxpm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdxpm"]
+size = Vector2(351, 637)
 
 [node name="CorridorH01" type="Node2D" unique_id=1800956991]
 
@@ -22,3 +25,9 @@ position = Vector2(180, 640)
 
 [node name="SocketRight" type="Marker2D" parent="." unique_id=1584239863]
 position = Vector2(360, 320)
+
+[node name="Bounds" type="Area2D" parent="." unique_id=1225054392]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=189599719]
+position = Vector2(176.5, 320.5)
+shape = SubResource("RectangleShape2D_jdxpm")
