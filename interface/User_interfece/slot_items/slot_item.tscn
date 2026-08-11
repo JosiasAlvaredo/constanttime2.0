@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfcdji554poyy"]
 
-[ext_resource type="Script" uid="uid://djgp6gpevln8f" path="res://objets/slot_items/slot_item.gd" id="1_kaq4b"]
+[ext_resource type="Script" uid="uid://djgp6gpevln8f" path="res://interface/User_interfece/slot_items/slot_item.gd" id="1_kaq4b"]
 [ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="3_1f8gm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f8gm"]
@@ -51,3 +51,5 @@ position = Vector2(28, 29.75)
 shape = SubResource("RectangleShape2D_1f8gm")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

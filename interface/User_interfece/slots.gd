@@ -1,6 +1,6 @@
 extends Button
 
-@onready var user_interface: CanvasLayer = $"../../.."
+@onready var user_interface: CanvasLayer = $"../../../.."
 @onready var durability_node: Label = $Durability
 
 @export_enum("torso","left_arm","right_arm","legs","right_hand","left_hand") var slot_part: String
@@ -23,20 +23,22 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-
+	#crear un item aux para que el jugador pueda ver que objeto esta moviendo
 	if user_interface.selected_body_part==item_aux and item_aux !=null:
 		if not taking_thing:
 			await get_tree().create_timer(0.2).timeout
 			taking_thing=true
 			get_parent().add_child(item_aux)
-
+			
+	#lo que se muestra en el slot (el objeto que esta ahi o nada)
 	if GlobalValues.bodies_parts[slot_part]!=null and (item_aux==null or not moving_thing) :
 		icon=GlobalValues.bodies_parts[slot_part].get_child(0).icon
-		durability_node.text=str(GlobalValues.bodies_parts[slot_part].durability)
+		durability_node.text=str(int(GlobalValues.bodies_parts[slot_part].durability))
 	elif moving_thing or GlobalValues.bodies_parts[slot_part]==null:
 		icon=null
 		durability_node.text=""
 
+	#agregar algo en el slot o itercambiarlo con otra cosa
 	if Input.is_action_just_pressed("Left_hand") and user_interface.selected_body_part!=null and mouse_on_this_slot and ((can_drop and GlobalValues.bodies_parts[slot_part]!=null) or  GlobalValues.bodies_parts[slot_part]==null or (GlobalValues.bodies_parts[slot_part]!=null and item_aux==null)):
 		if user_interface.selected_body_part.kind==slot_part:
 			
@@ -54,12 +56,13 @@ func _physics_process(delta: float) -> void:
 			else:
 				user_interface.selected_body_part=item_aux
 
+	#solar algo equipado o devolverlo a su lugar
 	if Input.is_action_just_pressed("Left_hand") and can_drop and  GlobalValues.bodies_parts[slot_part]!=null:
 		if not user_interface.mouse_on_a_slot:
 			drop()
 		elif mouse_on_this_slot:
 			reset_item_aux()
-			
+	#solar algo equipado o devolverlo a su lugar, por cerrar el inventario
 	if Input.is_action_just_pressed("Inventory") and  GlobalValues.bodies_parts[slot_part]!=null and item_aux!=null:
 		if not moving_thing:
 			drop()
@@ -102,7 +105,18 @@ func reset_item_aux():
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	mouse_on_this_slot=true
 	user_interface.mouse_on_a_slot=true
+	
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	user_interface.mouse_on_a_slot=false
 	mouse_on_this_slot=false
+	
+
+
+func _on_mouse_exited() -> void:
+	user_interface.timer_clouse_info()
+
+
+func _on_mouse_entered() -> void:
+	if GlobalValues.bodies_parts[slot_part]!=null:
+		user_interface.analisis(GlobalValues.bodies_parts[slot_part])

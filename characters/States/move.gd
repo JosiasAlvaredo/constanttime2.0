@@ -31,5 +31,3 @@ func on_input(event: InputEvent) -> void:
 		state_machine.change_to("Move_action_Left_Hand")
 	elif Input.is_action_just_pressed("Right_hand"):
 		state_machine.change_to("Move_action_Right_Hand")
-
-		

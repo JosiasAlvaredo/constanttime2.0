@@ -1,8 +1,13 @@
 extends CanvasLayer
 
-@onready var inventory: ColorRect = $inventory
-@onready var near_objets_node = $inventory/near_objets
+
+@onready var near_objets_node = $Inventory/inventory/near_objets
 @onready var player: Player = $"../Player"
+
+@onready var inventory: Node2D = $Inventory
+@onready var info: Node2D = $Inventory/info
+@onready var info_animations: AnimationPlayer = $Inventory/info/Info_animations
+
 
 var near_objets=[]
 var save_near_objets=[]
@@ -10,12 +15,14 @@ var save_near_objets=[]
 var selected_body_part=null
 var mouse_on_a_slot=false
 
+var checking_info=false
+
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Inventory") and not inventory.visible:
 		inventory.visible=true
 	elif Input.is_action_just_pressed("Inventory"):
 		inventory.visible=false
-	
+		info_animations.play("Info_unvisible")
 	if inventory.visible and save_near_objets!=near_objets:
 		for slot_item in near_objets_node.get_children():
 			slot_item.queue_free()
@@ -24,7 +31,7 @@ func _physics_process(delta: float) -> void:
 			if i%5==4:
 				pos_y+=50
 			var near_objet=near_objets[i]
-			var new_slot_item=load("res://objets/slot_items/slot_item.tscn").instantiate()
+			var new_slot_item=load("res://interface/User_interfece/slot_items/slot_item.tscn").instantiate()
 			near_objets_node.add_child(new_slot_item)
 			new_slot_item.button.icon=near_objet.item_sprite.texture
 			new_slot_item.durability=int(near_objet.durability)
@@ -36,3 +43,46 @@ func _physics_process(delta: float) -> void:
 			new_slot_item.link_to_original=near_objet
 		save_near_objets=near_objets.duplicate()
 		
+func rebuil_body():
+	await get_tree().create_timer(0.1).timeout
+	player.buil_body()
+		
+#muestra la info de objeto
+func analisis(obj):
+	var size_icons=[$Inventory/info/small_icon,$Inventory/info/medium_icon,$Inventory/info/big_icon]
+	checking_info=true
+	if info_animations.current_animation=="Info_unvisible":
+		info_animations.play("Info_open")
+	var skills=load("res://objets/body_parts/skills/%s.tres" % obj._name)
+	$Inventory/info/name.text=obj._name
+	$Inventory/info/durability.text=str(obj.durability)
+	
+	if skills.damage!=0:
+		$Inventory/info/strength.visible=true
+		$Inventory/info/strength.text=str(skills.damage)
+	else:
+		$Inventory/info/strength.visible=false
+		
+	if skills.jump_force!=0:
+		$Inventory/info/jump.visible=true
+		$Inventory/info/jump.text=str(float(abs(skills.jump_force))/100)
+	else:
+		$Inventory/info/jump.visible=false
+		
+	if skills.speed!=0:
+		$Inventory/info/velocity.visible=true
+		$Inventory/info/velocity.text=str(float(skills.speed)/100)
+	else:
+		$Inventory/info/velocity.visible=false
+	
+	for size_icon in size_icons:
+		if skills.size-1==size_icons.find(size_icon):
+			size_icon.visible=true
+		else:
+			size_icon.visible=false
+	
+func timer_clouse_info():
+	checking_info=false
+	await get_tree().create_timer(0.5).timeout
+	if not checking_info:
+		info_animations.play("Info_close")

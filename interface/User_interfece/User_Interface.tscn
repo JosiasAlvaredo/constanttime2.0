@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://pgcfxqwu4aje" path="res://interface/User_interfece/user_interface.gd" id="1_jb0ip"]
 [ext_resource type="Texture2D" uid="uid://cme8ds8yefs2k" path="res://assets/ui2.png" id="1_nfcvq"]
 [ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="1_nxw7e"]
+[ext_resource type="PackedScene" uid="uid://82ylv8267kb4" path="res://assets/icons/icons.tscn" id="3_p4rts"]
 [ext_resource type="Texture2D" uid="uid://b5iduyxx6cd7b" path="res://assets/characters/Player/head.png" id="4_bl7xi"]
 [ext_resource type="PackedScene" uid="uid://big02625jvs1k" path="res://interface/User_interfece/slot.tscn" id="4_xcv3c"]
 
@@ -22,6 +23,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(84, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Info_animations:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.46666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Info_unvisible"]
+}
 
 [sub_resource type="Animation" id="Animation_rph0m"]
 resource_name = "Info_open"
@@ -38,6 +51,50 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(84, 0), Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Info_animations:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Info_visible"]
+}
+
+[sub_resource type="Animation" id="Animation_oixlu"]
+resource_name = "Info_unvisible"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(84, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p4rts"]
+resource_name = "Info_visible"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_big31"]
 length = 0.001
@@ -53,11 +110,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(84, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Info_animations:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&""]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_84lj5"]
 _data = {
 &"Info_close": SubResource("Animation_xcv3c"),
 &"Info_open": SubResource("Animation_rph0m"),
+&"Info_unvisible": SubResource("Animation_oixlu"),
+&"Info_visible": SubResource("Animation_p4rts"),
 &"RESET": SubResource("Animation_big31")
 }
 
@@ -87,23 +158,18 @@ animations = [{
 script = ExtResource("1_jb0ip")
 metadata/_edit_horizontal_guides_ = [525.0]
 
-[node name="inventory" type="ColorRect" parent="." unique_id=1309112418]
-offset_left = 805.0
-offset_top = 108.0
-offset_right = 1067.0
-offset_bottom = 599.0
-color = Color(0, 0, 0, 1)
+[node name="Inventory" type="Node2D" parent="." unique_id=1474233795]
 
-[node name="info" type="Node2D" parent="inventory" unique_id=1646273436]
+[node name="info" type="Node2D" parent="Inventory" unique_id=1646273436]
 position = Vector2(84, 0)
 
-[node name="back_ground" type="ColorRect" parent="inventory/info" unique_id=274178625]
+[node name="back_ground" type="ColorRect" parent="Inventory/info" unique_id=274178625]
 offset_left = 721.0
 offset_top = 107.0
 offset_right = 808.0
 offset_bottom = 338.0
 
-[node name="ColorRect" type="ColorRect" parent="inventory/info/back_ground" unique_id=1971425481]
+[node name="ColorRect" type="ColorRect" parent="Inventory/info/back_ground" unique_id=1971425481]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
@@ -111,49 +177,133 @@ offset_right = 84.0
 offset_bottom = 228.0
 color = Color(0, 0, 0, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="inventory/info" unique_id=2008671110]
-libraries/ = SubResource("AnimationLibrary_84lj5")
-autoplay = &"Info_open"
+[node name="big_icon" parent="Inventory/info" unique_id=1778083183 instance=ExtResource("3_p4rts")]
+visible = false
+position = Vector2(757.4, 118.399994)
+layer_0/tile_data = PackedInt32Array(0, 196609, 2)
 
-[node name="text" type="Label" parent="inventory/info" unique_id=207948556]
+[node name="medium_icon" parent="Inventory/info" unique_id=942784454 instance=ExtResource("3_p4rts")]
+visible = false
+position = Vector2(757.4, 118.399994)
+layer_0/tile_data = PackedInt32Array(0, 65537, 0)
+
+[node name="small_icon" parent="Inventory/info" unique_id=433265980 instance=ExtResource("3_p4rts")]
+visible = false
+position = Vector2(757.4, 118.399994)
+layer_0/tile_data = PackedInt32Array(0, 262145, 2)
+
+[node name="name" type="Label" parent="Inventory/info" unique_id=2059363215]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.56
 anchor_right = 0.5
 anchor_bottom = 0.56
-offset_left = 729.0
-offset_top = 115.0
-offset_right = 799.0
+offset_left = 726.0
+offset_top = 134.0
+offset_right = 798.0
 offset_bottom = 150.0
 theme_override_fonts/font = ExtResource("1_nxw7e")
-text = "Name:
-"
 
-[node name="lines" type="ColorRect" parent="inventory" unique_id=774172309]
+[node name="durability" type="Label" parent="Inventory/info" unique_id=1261529160]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.56
+anchor_right = 0.5
+anchor_bottom = 0.56
+offset_left = 742.0
+offset_top = 182.0
+offset_right = 794.0
+offset_bottom = 198.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+
+[node name="icon" parent="Inventory/info/durability" unique_id=613666362 instance=ExtResource("3_p4rts")]
+position = Vector2(-18, 3.8146973e-06)
+layer_0/tile_data = PackedInt32Array(0, 131073, 2)
+
+[node name="strength" type="Label" parent="Inventory/info" unique_id=1729347429]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.56
+anchor_right = 0.5
+anchor_bottom = 0.56
+offset_left = 742.0
+offset_top = 213.0
+offset_right = 794.0
+offset_bottom = 229.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+
+[node name="icon" parent="Inventory/info/strength" unique_id=11283988 instance=ExtResource("3_p4rts")]
+position = Vector2(-18, 3.8146973e-06)
+layer_0/tile_data = PackedInt32Array(0, 262145, 5)
+
+[node name="jump" type="Label" parent="Inventory/info" unique_id=250601429]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.56
+anchor_right = 0.5
+anchor_bottom = 0.56
+offset_left = 742.0
+offset_top = 244.0
+offset_right = 794.0
+offset_bottom = 260.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+
+[node name="icon" parent="Inventory/info/jump" unique_id=1551241134 instance=ExtResource("3_p4rts")]
+position = Vector2(-18, 3.8146973e-06)
+layer_0/tile_data = PackedInt32Array(0, 196609, 5)
+
+[node name="velocity" type="Label" parent="Inventory/info" unique_id=1770699944]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.56
+anchor_right = 0.5
+anchor_bottom = 0.56
+offset_left = 742.0
+offset_top = 273.0
+offset_right = 794.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+
+[node name="icon" parent="Inventory/info/velocity" unique_id=1521025057 instance=ExtResource("3_p4rts")]
+position = Vector2(-18, 3.8146973e-06)
+layer_0/tile_data = PackedInt32Array(0, 131073, 7)
+
+[node name="Info_animations" type="AnimationPlayer" parent="Inventory/info" unique_id=2008671110]
+libraries/ = SubResource("AnimationLibrary_84lj5")
+autoplay = &"Info_unvisible"
+
+[node name="inventory" type="ColorRect" parent="Inventory" unique_id=1309112418]
+offset_left = 805.0
+offset_top = 108.0
+offset_right = 1067.0
+offset_bottom = 599.0
+color = Color(0, 0, 0, 1)
+
+[node name="lines" type="ColorRect" parent="Inventory/inventory" unique_id=774172309]
 layout_mode = 0
 offset_top = 227.0
 offset_right = 262.0
 offset_bottom = 230.0
 
-[node name="ColorRect2" type="ColorRect" parent="inventory/lines" unique_id=2016842082]
+[node name="ColorRect2" type="ColorRect" parent="Inventory/inventory/lines" unique_id=2016842082]
 layout_mode = 0
 offset_top = 157.0
 offset_right = 262.0
 offset_bottom = 160.0
 
-[node name="ColorRect3" type="ColorRect" parent="inventory/lines" unique_id=1170992665]
+[node name="ColorRect3" type="ColorRect" parent="Inventory/inventory/lines" unique_id=1170992665]
 layout_mode = 0
 offset_top = 261.0
 offset_right = 262.0
 offset_bottom = 264.0
 
-[node name="ColorRect5" type="ColorRect" parent="inventory/lines" unique_id=414384601]
+[node name="ColorRect5" type="ColorRect" parent="Inventory/inventory/lines" unique_id=414384601]
 layout_mode = 0
 offset_top = -228.0
 offset_right = 262.0
 offset_bottom = -225.0
 
-[node name="ColorRect6" type="ColorRect" parent="inventory/lines" unique_id=62461252]
+[node name="ColorRect6" type="ColorRect" parent="Inventory/inventory/lines" unique_id=62461252]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.067
@@ -162,7 +312,7 @@ offset_top = -225.0
 offset_right = -14.554001
 offset_bottom = 221.931
 
-[node name="ColorRect7" type="ColorRect" parent="inventory/lines" unique_id=1966940320]
+[node name="ColorRect7" type="ColorRect" parent="Inventory/inventory/lines" unique_id=1966940320]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.067
@@ -172,73 +322,73 @@ offset_top = -225.0
 offset_right = 244.446
 offset_bottom = 222.931
 
-[node name="Bodies_parts" type="Node2D" parent="inventory" unique_id=1980076886]
+[node name="Bodies_parts" type="Node2D" parent="Inventory/inventory" unique_id=1980076886]
 position = Vector2(-804, -125)
 
-[node name="slots_sprites" type="Node2D" parent="inventory/Bodies_parts" unique_id=1576390517]
+[node name="slots_sprites" type="Node2D" parent="Inventory/inventory/Bodies_parts" unique_id=1576390517]
 
-[node name="torso_slot" type="AnimatedSprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=959913171]
+[node name="torso_slot" type="AnimatedSprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=959913171]
 position = Vector2(934.5, 226.5)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="legs_slot" type="AnimatedSprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=1349041481]
+[node name="legs_slot" type="AnimatedSprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=1349041481]
 position = Vector2(934.5, 289.5)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="right_arm_slot" type="AnimatedSprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=972694207]
+[node name="right_arm_slot" type="AnimatedSprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=972694207]
 position = Vector2(863.5, 226.5)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="left_arm_slot" type="AnimatedSprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=811036373]
+[node name="left_arm_slot" type="AnimatedSprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=811036373]
 position = Vector2(1007.5, 226.5)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="Head" type="Sprite2D" parent="inventory/Bodies_parts/slots_sprites" unique_id=1836236017]
+[node name="Head" type="Sprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=1836236017]
 position = Vector2(932, 173.00002)
 scale = Vector2(2.5300193, 2.379425)
 texture = ExtResource("4_bl7xi")
 
-[node name="right_arm" parent="inventory/Bodies_parts" unique_id=258069684 instance=ExtResource("4_xcv3c")]
+[node name="right_arm" parent="Inventory/inventory/Bodies_parts" unique_id=258069684 instance=ExtResource("4_xcv3c")]
 offset_left = 836.0
 offset_top = 199.0
 offset_right = 891.0
 offset_bottom = 254.0
 slot_part = "right_arm"
 
-[node name="torso" parent="inventory/Bodies_parts" unique_id=1192938166 instance=ExtResource("4_xcv3c")]
+[node name="torso" parent="Inventory/inventory/Bodies_parts" unique_id=1192938166 instance=ExtResource("4_xcv3c")]
 offset_left = 907.0
 offset_top = 199.0
 offset_right = 962.0
 offset_bottom = 254.0
 slot_part = "torso"
 
-[node name="left_arm" parent="inventory/Bodies_parts" unique_id=1290414984 instance=ExtResource("4_xcv3c")]
+[node name="left_arm" parent="Inventory/inventory/Bodies_parts" unique_id=1290414984 instance=ExtResource("4_xcv3c")]
 offset_left = 980.0
 offset_top = 199.0
 offset_right = 1035.0
 offset_bottom = 254.0
 slot_part = "left_arm"
 
-[node name="legs" parent="inventory/Bodies_parts" unique_id=1243198576 instance=ExtResource("4_xcv3c")]
+[node name="legs" parent="Inventory/inventory/Bodies_parts" unique_id=1243198576 instance=ExtResource("4_xcv3c")]
 offset_left = 907.0
 offset_top = 262.0
 offset_right = 962.0
 offset_bottom = 317.0
 slot_part = "legs"
 
-[node name="near_objets" type="Control" parent="inventory" unique_id=168938720]
+[node name="near_objets" type="Control" parent="Inventory/inventory" unique_id=168938720]
 layout_mode = 1
 anchor_left = 0.07300001
 anchor_top = 0.53400004
