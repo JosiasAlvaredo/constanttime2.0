@@ -1,537 +1,584 @@
 extends Node2D
 
-
-# ============================================================
 # CONFIGURACIÓN
-# ============================================================
+const MODULES_TO_GENERATE: int = 25
+const MAX_ATTEMPTS: int = 40
 
-const MODULES_TO_GENERATE: int = 15
-
-# Probabilidad aproximada de elegir cada tipo.
-const ROOM_WEIGHT: int = 10
-const CORRIDOR_H_WEIGHT: int = 3
-const CORRIDOR_V_WEIGHT: int = 2
-const TREASURE_WEIGHT: int = 5
-
-
-# ============================================================
 # MÓDULOS
-# ============================================================
-
 const ROOM_MODULES: Array[PackedScene] = [
 	preload("res://scenes/pruebas mazmorra/modules/rooms/normal/room_01.tscn"),
 	preload("res://scenes/pruebas mazmorra/modules/rooms/normal/room_02.tscn"),
 	preload("res://scenes/pruebas mazmorra/modules/rooms/normal/room_03.tscn")
 ]
 
-
 const CORRIDOR_H_MODULES: Array[PackedScene] = [
 	preload("res://scenes/pruebas mazmorra/modules/corridors/horizontal/corridorH_01.tscn")
 ]
 
-
 const CORRIDOR_V_MODULES: Array[PackedScene] = [
 	preload("res://scenes/pruebas mazmorra/modules/corridors/vertical/corridorV_01.tscn")
 ]
-
 
 const TREASURE_MODULES: Array[PackedScene] = [
 	preload("res://scenes/pruebas mazmorra/modules/treasure/treasure_01.tscn"),
 	preload("res://scenes/pruebas mazmorra/modules/treasure/treasure_02.tscn")
 ]
 
-
 const BOSS_MODULES: Array[PackedScene] = [
 	preload("res://scenes/pruebas mazmorra/modules/boss/boss_01.tscn")
 ]
 
 
-# ============================================================
-# ESCENA
-# ============================================================
-
+# NODO DE LA MAZMORRA
 @onready var dungeon: Node2D = $Dungeon
 
 
-# ============================================================
-# DATOS
-# ============================================================
-
+# DATOS DE GENERACIÓN
+# Todos los módulos que fueron aceptados.
 var generated_modules: Array[Node2D] = []
 
-var used_positions: Array[Vector2] = []
+# Rectángulos ocupados por los módulos.
+var occupied_rects: Array[Rect2] = []
 
+# Salidas que todavía pueden utilizarse.
+var pending_sockets: Array[Marker2D] = []
+
+# Controla si ya existe una sala de tesoro.
 var treasure_created: bool = false
 
-
-# ============================================================
 # INICIO
-# ============================================================
-
 func _ready():
-
 	randomize()
-
 	generate_dungeon()
 
-
-# ============================================================
 # GENERAR MAZMORRA
-# ============================================================
-
 func generate_dungeon():
-
 	clear_dungeon()
-
-	# --------------------------------------------------------
+	
 	# SALA INICIAL
-	# --------------------------------------------------------
-
 	var start: Node2D = ROOM_MODULES[0].instantiate()
-
 	dungeon.add_child(start)
-
 	start.position = Vector2.ZERO
-
 	generated_modules.append(start)
-
-	print("START creada")
-
-
-	# --------------------------------------------------------
-	# PRIMERA SALIDA
-	# --------------------------------------------------------
-
-	var current_socket: Marker2D = get_socket(
+	register_module(start)
+	
+	# SOCKET DERECHO DE LA SALA INICIAL
+	var start_socket: Marker2D = get_socket(
 		start,
 		"SocketRight"
 	)
-
-	if current_socket == null:
-
+	if start_socket == null:
 		push_error(
-			"Room_01 no tiene SocketRight."
+			"Room_01 necesita un SocketRight"
 		)
-
 		return
-
-
-	# --------------------------------------------------------
+	pending_sockets.append(start_socket)
+	
 	# GENERACIÓN
-	# --------------------------------------------------------
-
-	for i in range(MODULES_TO_GENERATE):
-
-		var result = create_next_module(
-			current_socket
+	var attempts: int = 0
+	while (
+		generated_modules.size() < MODULES_TO_GENERATE
+		and not pending_sockets.is_empty()
+		and attempts < MAX_ATTEMPTS
+	):
+		attempts += 1
+		
+		# ELEGIR UNA SALIDA
+		var socket_index: int = randi_range(
+			0,
+			pending_sockets.size() - 1
 		)
-
-		if result.is_empty():
-
-			print("No se pudo continuar la generación.")
-
-			break
-
-
-		var new_module: Node2D = result["module"]
-
-		var next_socket: Marker2D = result["socket"]
-
-
-		if new_module == null:
-
-			break
-
-
-		# El siguiente módulo continúa desde
-		# una de sus salidas.
-
-		current_socket = next_socket
-
-
-	# --------------------------------------------------------
+		
+		var socket: Marker2D = pending_sockets[
+			socket_index
+		]
+		
+		pending_sockets.remove_at(
+			socket_index
+		)
+		
+		# INTENTAR CREAR MÓDULO
+		var created: bool = create_from_socket(
+			socket
+		)
+		
+		if created:
+			print(
+				"Módulos: ",
+				generated_modules.size(),
+				" | Salidas: ",
+				pending_sockets.size()
+			)
+			
+	
+	# TESORO
+	if not treasure_created:
+		create_treasure()
+	
 	# BOSS
-	# --------------------------------------------------------
+	create_boss()
+	print("Módulos: ", generated_modules.size())
+	print("Salidas restantes: ", pending_sockets.size())
 
-	create_boss(current_socket)
-
-
-# ============================================================
-# CREAR SIGUIENTE MÓDULO
-# ============================================================
-
-func create_next_module(
-	connection_socket: Marker2D
-) -> Dictionary:
-
-	var direction := get_socket_direction(
+# CREAR MÓDULO DESDE SOCKET
+func create_from_socket(connection_socket: Marker2D) -> bool:
+	var direction: String = get_socket_direction(
 		connection_socket
 	)
-
+	
+	if direction == "":
+		return false
+	
+	# CANDIDATOS
 	var candidates: Array[Dictionary] = []
-
-
-	# ========================================================
-	# BUSCAR MÓDULOS COMPATIBLES
-	# ========================================================
-
-	# --------------------------------------------------------
-	# HACIA LA DERECHA
-	# --------------------------------------------------------
-
+	
+	# DERECHA
 	if direction == "right":
-
-		for scene in ROOM_MODULES:
-
-			candidates.append({
-				"scene": scene,
-				"input": "SocketLeft"
-			})
-
-
-		for scene in CORRIDOR_H_MODULES:
-
-			candidates.append({
-				"scene": scene,
-				"input": "SocketLeft"
-			})
-
-
-	# --------------------------------------------------------
-	# HACIA LA IZQUIERDA
-	# --------------------------------------------------------
-
+		add_candidates(
+			candidates,
+			ROOM_MODULES,
+			"SocketLeft"
+		)
+		
+		add_candidates(
+			candidates,
+			CORRIDOR_H_MODULES,
+			"SocketLeft"
+		)
+	
+	# IZQUIERDA
 	elif direction == "left":
-
-		for scene in ROOM_MODULES:
-
-			candidates.append({
-				"scene": scene,
-				"input": "SocketRight"
-			})
-
-
-		for scene in CORRIDOR_H_MODULES:
-
-			candidates.append({
-				"scene": scene,
-				"input": "SocketRight"
-			})
-
-
-	# --------------------------------------------------------
-	# HACIA ABAJO
-	# --------------------------------------------------------
-
+		add_candidates(
+			candidates,
+			ROOM_MODULES,
+			"SocketRight"
+		)
+	
+		add_candidates(
+			candidates,
+			CORRIDOR_H_MODULES,
+			"SocketRight"
+		)
+	
+	# ABAJO
 	elif direction == "down":
-
-		for scene in ROOM_MODULES:
-
-			candidates.append({
-				"scene": scene,
-				"input": "SocketUp"
-			})
-
-
-		for scene in CORRIDOR_V_MODULES:
-
-			candidates.append({
-				"scene": scene,
-				"input": "SocketUp"
-			})
-
-
-		for scene in TREASURE_MODULES:
-
-			if not treasure_created:
-
-				candidates.append({
-					"scene": scene,
-					"input": "SocketUp"
-				})
-
-
-	# --------------------------------------------------------
-	# HACIA ARRIBA
-	# --------------------------------------------------------
-
+		add_candidates(
+			candidates,
+			ROOM_MODULES,
+			"SocketUp"
+		)
+	
+		add_candidates(
+			candidates,
+			CORRIDOR_V_MODULES,
+			"SocketUp"
+		)
+	
+		if not treasure_created:
+			add_candidates(
+				candidates,
+				TREASURE_MODULES,
+				"SocketUp"
+			)
+	
+	# ARRIBA
 	elif direction == "up":
-
-		for scene in ROOM_MODULES:
-
-			candidates.append({
-				"scene": scene,
-				"input": "SocketDown"
-			})
-
-
-		for scene in CORRIDOR_V_MODULES:
-
-			candidates.append({
-				"scene": scene,
-				"input": "SocketDown"
-			})
-
-
-	# ========================================================
-	# NO HAY MÓDULOS
-	# ========================================================
-
+		add_candidates(
+			candidates,
+			ROOM_MODULES,
+			"SocketDown"
+		)
+	
+		add_candidates(
+			candidates,
+			CORRIDOR_V_MODULES,
+			"SocketDown"
+		)
+	
+	# NO HAY CANDIDATOS
 	if candidates.is_empty():
+		return false
+	
+	# RANDOMIZAR
+	candidates.shuffle()
+	# PROBAR CANDIDATOS
+	for candidate in candidates:
+		var scene: PackedScene = candidate["scene"]
+		var input_socket_name: String = candidate["input"]
+		
+		var module: Node2D = scene.instantiate()
+		dungeon.add_child(module)
+		
+		var input_socket: Marker2D = get_socket(
+			module,
+			input_socket_name
+		)
+	
+		if input_socket == null:
+			push_warning(
+				module.name
+				+ " no tiene "
+				+ input_socket_name
+			)
+			module.queue_free()
+			continue
+		
+		align_module(
+			module,
+			input_socket,
+			connection_socket
+		)
+	
+		if module_overlaps(module):
+			module.queue_free()
+			continue
+		
+		generated_modules.append(module)
+		register_module(module)
+		
+		if is_treasure(module):
+			treasure_created = true
+		
+		add_next_sockets(
+			module,
+			input_socket_name
+		)
+		
+		print(
+			"CREADO: ",
+			module.name,
+			" | entrada: ",
+			input_socket_name
+		)
+		
+		return true
+	return false
+	
+func add_candidates(candidates: Array[Dictionary], scenes: Array[PackedScene], input_socket: String):
+	for scene in scenes:
+		candidates.append({
+			"scene": scene,
+			"input": input_socket
+		})
 
-		return {}
-
-
-	# ========================================================
-	# ELEGIR MÓDULO
-	# ========================================================
-
-	var candidate: Dictionary = candidates.pick_random()
-
-	var scene: PackedScene = candidate["scene"]
-
-	var input_name: String = candidate["input"]
-
-
-	# ========================================================
-	# INSTANCIAR
-	# ========================================================
-
-	var module: Node2D = scene.instantiate()
-
-	dungeon.add_child(module)
-
-
-	# ========================================================
-	# BUSCAR SOCKET DE ENTRADA
-	# ========================================================
-
-	var input_socket: Marker2D = get_socket(
-		module,
-		input_name
-	)
-
-	if input_socket == null:
-
-		module.queue_free()
-
-		return {}
-
-
-	# ========================================================
-	# CONECTAR SOCKETS
-	# ========================================================
-
+func align_module(module: Node2D, module_socket: Marker2D, target_socket: Marker2D):
 	var offset: Vector2 = (
-		connection_socket.global_position
-		- input_socket.global_position
+		target_socket.global_position
+		- module_socket.global_position
 	)
-
 	module.global_position += offset
 
-
-	# ========================================================
-	# TESORO
-	# ========================================================
-
-	if module.scene_file_path.contains("treasure"):
-
-		treasure_created = true
-
-
-	# ========================================================
-	# GUARDAR
-	# ========================================================
-
-	generated_modules.append(module)
-
-
-	print(
-		"Nuevo módulo: ",
-		module.name,
-		" | Dirección: ",
-		direction
-	)
-
-
-	# ========================================================
-	# BUSCAR UNA SALIDA PARA CONTINUAR
-	# ========================================================
-
-	var next_socket := choose_next_socket(
-		module,
-		input_name
-	)
-
-
-	return {
-		"module": module,
-		"socket": next_socket
-	}
-
-
-# ============================================================
-# ELEGIR SIGUIENTE SOCKET
-# ============================================================
-
-func choose_next_socket(
-	module: Node2D,
-	input_socket_name: String
-) -> Marker2D:
-
-	var sockets: Array[Marker2D] = []
-
-
+func add_next_sockets(module: Node2D, used_socket: String):
+	if is_horizontal_corridor(module):
+		add_horizontal_corridor_output(
+			module,
+			used_socket
+		)
+		return
+	
+	if is_vertical_corridor(module):
+		add_vertical_corridor_output(
+			module,
+			used_socket
+		)
+		return
+	
 	for child in module.get_children():
+		if not child is Marker2D:
+			continue
+			
+		var socket: Marker2D = child as Marker2D
+		
+		if socket.name == used_socket:
+			continue
+		
+		pending_sockets.append(socket)
+	
 
-		if child is Marker2D:
+func add_horizontal_corridor_output(module: Node2D, used_socket: String):
+	if used_socket == "SocketLeft":
+		var output: Marker2D = get_socket(
+			module,
+			"SocketRight"
+		)
+		
+		if output != null:
+			pending_sockets.append(output)
+			
+	elif used_socket == "SocketRight":
+		var output: Marker2D = get_socket(
+			module,
+			"SocketLeft"
+		)
+		
+		if output != null:
+			pending_sockets.append(output)
+	
+	var down: Marker2D = get_socket(
+		module,
+		"SocketDown"
+	)
+	if down != null:
+		pending_sockets.append(down)
+	
 
-			var socket: Marker2D = child
+func add_vertical_corridor_output(module: Node2D, used_socket: String):
+	if used_socket == "SocketUp":
+		var output: Marker2D = get_socket(
+			module,
+			"SocketDown"
+		)
+	
+		if output != null:
+			pending_sockets.append(output)
+		
+	elif used_socket == "SocketDown":
+		var output: Marker2D = get_socket(
+			module,
+			"SocketUp"
+		)
+		
+		if output != null:
+			pending_sockets.append(output)
+			
+		
+	
 
-			if socket.name != input_socket_name:
-
-				sockets.append(socket)
-
-
-	if sockets.is_empty():
-
-		return null
-
-
-	# --------------------------------------------------------
-	# Prioridad horizontal
-	# --------------------------------------------------------
-
-	var horizontal: Array[Marker2D] = []
-
-	for socket in sockets:
-
-		if (
-			socket.name == "SocketRight"
-			or socket.name == "SocketLeft"
+func module_overlaps(module: Node2D) -> bool:
+	var new_rect: Rect2 = get_module_rect(
+		module
+	)
+	
+	if new_rect.size == Vector2.ZERO:
+		push_error(
+			module.name
+			+ " tiene un Bounds inválido"
+		)
+		return true
+	for existing_rect in occupied_rects:
+		var expanded_rect: Rect2 = existing_rect.grow(2.0)
+		
+		if new_rect.intersects(
+			expanded_rect,
+			false
 		):
+			return true
+	return false
 
-			horizontal.append(socket)
+func get_module_rect(module: Node2D) -> Rect2:
+	var bounds: CollisionShape2D = (
+		module.get_node_or_null(
+			"Bounds/CollisionShape2D"
+		)
+		as CollisionShape2D
+	)
+	
+	if bounds == null:
+		push_error(module.name + " no tiene Bounds/CollisionShape2D")
+		return Rect2()
+		
+	var shape: Shape2D = bounds.shape
+	
+	if shape == null:
+		push_error(
+			module.name
+			+ " tiene un CollisionShape2D sin Shape2D"
+		)
+		return Rect2()
+	if shape is RectangleShape2D:
+		var rectangle: RectangleShape2D = (
+			shape as RectangleShape2D
+		)
+		var size: Vector2 = rectangle.size
+		return Rect2(
+			bounds.global_position - size / 2.0,
+			size
+		)
+	
+	push_error(
+		module.name
+		+ " necesita un RectangleShape2D"
+	)
+	
+	return Rect2()
 
+func register_module(module: Node2D):
+	var rect: Rect2 = get_module_rect(
+		module
+	)
+	occupied_rects.append(
+		rect
+	)
 
-	if not horizontal.is_empty():
-
-		# 70% de las veces continuamos horizontalmente.
-
-		if randf() < 0.7:
-
-			return horizontal.pick_random()
-
-
-	# --------------------------------------------------------
-	# Cualquier salida
-	# --------------------------------------------------------
-
-	return sockets.pick_random()
-
-
-# ============================================================
-# OBTENER SOCKET
-# ============================================================
-
-func get_socket(
-	module: Node2D,
-	socket_name: String
-) -> Marker2D:
-
+func get_socket(module: Node2D, socket_name: String) -> Marker2D:
 	return module.get_node_or_null(
 		socket_name
 	) as Marker2D
 
-
-# DETERMINAR DIRECCIÓN
-
-func get_socket_direction(
-	socket: Marker2D
-) -> String:
-
+func get_socket_direction(socket: Marker2D) -> String:
 	match socket.name:
-
 		"SocketRight":
 			return "right"
-
 		"SocketLeft":
 			return "left"
-
 		"SocketUp":
 			return "up"
-
 		"SocketDown":
 			return "down"
-
-
 	return ""
 
+func is_horizontal_corridor(module: Node2D) -> bool:
+	return module.scene_file_path.contains(
+		"/corridors/horizontal/"
+	)
 
-# CREAR BOSS
+func is_vertical_corridor(module: Node2D) -> bool:
+	return module.scene_file_path.contains(
+		"/corridors/vertical/"
+	)
 
-func create_boss(
-	connection_socket: Marker2D
-):
+func is_treasure(module: Node2D) -> bool:
+	return module.scene_file_path.contains(
+		"/treasure/"
+	)
 
-	if connection_socket == null:
-
+func create_treasure():
+	if treasure_created:
 		return
-
-
-	# --------------------------------------------------------
-	# Elegir Boss
-	# --------------------------------------------------------
-
-	var boss_scene: PackedScene = (
-		BOSS_MODULES.pick_random()
-	)
-
-	var boss: Node2D = boss_scene.instantiate()
-
-	dungeon.add_child(boss)
-
-
-	# Boss entra por SocketLeft
-
-	var boss_socket: Marker2D = get_socket(
-		boss,
-		"SocketLeft"
-	)
-
-
-	if boss_socket == null:
-
-		push_error(
-			"El Boss necesita un SocketLeft."
+	if pending_sockets.is_empty():
+		return
+	var sockets: Array[Marker2D] = pending_sockets.duplicate()
+	sockets.shuffle()
+	for connection_socket in sockets:
+		var scene: PackedScene = (
+			TREASURE_MODULES.pick_random()
 		)
-		boss.queue_free()
+		
+		var treasure: Node2D = scene.instantiate()
+		dungeon.add_child(treasure)
+		
+		var direction: String = (
+			get_socket_direction(
+				connection_socket
+			)
+		)
+		var input_name: String = ""
+		match direction:
+			"right":
+				input_name = "SocketLeft"
+			"left":
+				input_name = "SocketRight"
+			"down":
+				input_name = "SocketUp"
+			"up":
+				input_name = "SocketDown"
+		
+		var input_socket: Marker2D = get_socket(
+			treasure,
+			input_name
+		)
+		
+		if input_socket == null:
+			treasure.queue_free()
+			continue
+		
+		align_module(
+			treasure,
+			input_socket,
+			connection_socket
+		)
+		
+		if module_overlaps(treasure):
+			treasure.queue_free()
+			continue
+			
+		generated_modules.append(
+			treasure
+		)
+		
+		register_module(
+			treasure
+		)
+		
+		treasure_created = true
+		print("TESORO creado")
 		return
 
-	# Conectar
-
-	var offset: Vector2 = (
-		connection_socket.global_position
-		- boss_socket.global_position
+func create_boss():
+	if pending_sockets.is_empty():
+		print("No hay salida disponible para Boss")
+		return
+		
+	var sockets: Array[Marker2D] = (
+		pending_sockets.duplicate()
 	)
-
-	boss.global_position += offset
-
-
-	print("BOSS creado")
-
-
-# LIMPIAR
+	
+	sockets.shuffle()
+	for connection_socket in sockets:
+		var scene: PackedScene = (
+			BOSS_MODULES.pick_random()
+		)
+		
+		var boss: Node2D = scene.instantiate()
+		dungeon.add_child(boss)
+		
+		var direction: String = (
+			get_socket_direction(
+				connection_socket
+			)
+		)
+		
+		var input_name: String = ""
+		match direction:
+			"right":
+				input_name = "SocketLeft"
+			"left":
+				input_name = "SocketRight"
+			"down":
+				input_name = "SocketUp"
+			"up":
+				input_name = "SocketDown"
+			
+		
+		var boss_socket: Marker2D = get_socket(
+			boss,
+			input_name
+		)
+		
+		if boss_socket == null:
+			boss.queue_free()
+			continue
+		
+		align_module(
+			boss,
+			boss_socket,
+			connection_socket
+		)
+		
+		if module_overlaps(boss):
+			boss.queue_free()
+			continue
+			
+		generated_modules.append(
+			boss
+		)
+		
+		register_module(
+			boss
+		)
+		
+		print("BOSS creado")
+		return
+		
+	print(
+		"No se encontró una posición válida para Boss"
+	)
 
 func clear_dungeon():
-
 	for child in dungeon.get_children():
-
 		child.queue_free()
-
-
+		
 	generated_modules.clear()
-
-	used_positions.clear()
-
+	occupied_rects.clear()
+	pending_sockets.clear()
 	treasure_created = false
