@@ -3,16 +3,12 @@ extends Node2D
 @export var _name=""
 @export var durability=0
 @export var parent=null
+@export var kind=[]
 
 @onready var button: Button = $Button
 @onready var durability_node: Label = $Durability
 
-
-
-var kind
 var path
-
-
 
 var save_position=Vector2.ZERO
 var can_drop=false
@@ -32,18 +28,17 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if parent.selected_body_part==self:
 		global_position=get_global_mouse_position()
-		
-	
+		button.mouse_filter=Control.MOUSE_FILTER_IGNORE
+	else:
+		button.mouse_filter=Control.MOUSE_FILTER_PASS
 	if Input.is_action_just_pressed("Left_hand") and not parent.mouse_on_a_slot and can_drop:
 		position=save_position
 		can_drop=false
 		parent.selected_body_part=null
-		button.disabled=false
 
 func _on_button_button_down() -> void:
 	if parent.selected_body_part==null:
 		parent.selected_body_part=self
-		button.disabled=true
 		can_drop=false
 		timer()
 		
@@ -63,10 +58,8 @@ func damage(_damage):
 		parent.rebuil_body()
 		delete()
 
-
 func _on_button_mouse_entered() -> void:
 	parent.analisis(self)
-
 
 func _on_button_mouse_exited() -> void:
 	parent.timer_clouse_info()

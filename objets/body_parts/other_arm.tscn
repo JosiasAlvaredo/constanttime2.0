@@ -13,7 +13,7 @@ radius = 4.0
 collision_layer = 0
 script = ExtResource("1_klahn")
 _name = "other_arm"
-kind = "right_arm"
+number_kinds = Array[int]([1, 2])
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
 modulate = Color(0.92395884, 4.861206e-06, 1.347661e-06, 1)

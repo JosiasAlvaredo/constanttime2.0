@@ -16,6 +16,10 @@ var skills
 var _name=""
 
 func _ready() -> void:
+	parent=get_parent().get_parent()
+	for hability in parent.habilities_states.get_children():
+		hability.queue_free()
+	
 	body=GlobalValues.bodies_parts
 	
 	if body.torso !=null:
@@ -25,10 +29,8 @@ func _ready() -> void:
 		
 	skills=load("res://objets/body_parts/skills/%s.tres" % _name).duplicate()
 	total_weight=skills.size
-	parent=get_parent().get_parent()
 	
-	
-	#se crean las extremidades y se definen los stats
+	#se crean las extremidades, se definen los stats y habilidades
 	if body.right_arm!=null:
 		var right_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.right_arm._name).instantiate()
 		var right_armSkills=load("res://objets/body_parts/skills/%s.tres" %  body.right_arm._name)
@@ -39,6 +41,11 @@ func _ready() -> void:
 		count_parts+=1
 		total_weight+=right_armSkills.size
 		
+		for number_hability in right_armSkills.number_habilities:
+			var hability=skills.Habilities.keys()[number_hability]
+			var hability_node=load("res://characters/States/player/habilities/%s.tscn" % hability).instantiate()
+			parent.habilities_states.add_child(hability_node)
+
 		add_child(right_arm)
 
 	if body.left_arm!=null:
@@ -49,7 +56,13 @@ func _ready() -> void:
 		
 		count_parts+=1
 		total_weight+=left_armSkills.size
-		
+		print(parent.habilities_states.get_children())
+		for number_hability in left_armSkills.number_habilities:
+			var hability=skills.Habilities.keys()[number_hability]
+			var hability_node=load("res://characters/States/player/habilities/%s.tscn" % hability).instantiate()
+			parent.habilities_states.add_child(hability_node)
+		print(parent.habilities_states.get_children())
+
 		add_child(left_arm)
 		
 	if body.legs!=null:
@@ -64,12 +77,18 @@ func _ready() -> void:
 		count_parts+=2
 		total_weight-=legsSkills.size*3
 		
+		for number_hability in legsSkills.number_habilities:
+			var hability=skills.Habilities.keys()[number_hability]
+			var hability_node=load("res://characters/States/player/habilities/%s.tscn" % hability).instantiate()
+			parent.habilities_states.add_child(hability_node)
+		
 		add_child(legs)
 		parent.body_botton=legs.foot_position.position.y*(1.5)+legs.position.y
 	else:
 		parent.body_botton=legs_position.position.y*1.5
 		if parent.body_botton<10:
 			parent.body_botton=10
+	
 	skills.speed-=total_weight*25
 	skills.jump_force+=total_weight*30
 	
@@ -77,7 +96,7 @@ func _ready() -> void:
 		skills.speed=0
 	if skills.jump_force>0:
 		skills.jump_force=0
-
+	
 	var shockwave=float(skills.shockwave)/100.0
 	
 	parent.body_up=$Body_up

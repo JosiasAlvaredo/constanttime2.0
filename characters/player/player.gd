@@ -16,6 +16,10 @@ class_name Player
 
 @onready var user_interface: CanvasLayer = $"../User_Interface"
 
+@onready var habilities_states: Node = $State_Machine/habilities_states
+
+
+
 var Interactive_Box_collition
 
 var body_up: RayCast2D 
@@ -71,7 +75,7 @@ func _physics_process(delta: float) -> void:
 		activate_Gravity=false
 		solid=false
 		state_machine.change_to("Trapped")
-	elif state_machine.current_state==$State_Machine/Trapped:
+	elif state_machine.current_state==$State_Machine/default_states/Trapped:
 		state_machine.change_to("Idle")
 		activate_Gravity=true
 		solid=true

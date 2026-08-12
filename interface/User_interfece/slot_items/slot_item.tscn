@@ -8,14 +8,17 @@ size = Vector2(74.5, 75.5)
 
 [node name="slot_item" type="Node2D" unique_id=1747009124]
 script = ExtResource("1_kaq4b")
+_name = null
+durability = null
+kind = null
 
 [node name="Button" type="Button" parent="." unique_id=1668584708]
 offset_left = -36.0
-offset_top = -43.0
+offset_top = -40.0
 offset_right = 39.0
-offset_bottom = 32.0
+offset_bottom = 35.0
 focus_mode = 0
-mouse_filter = 1
+mouse_filter = 2
 flat = true
 expand_icon = true
 

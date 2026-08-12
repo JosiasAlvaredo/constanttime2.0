@@ -9,7 +9,9 @@ var time=60
 var bodies_parts={"torso":null,
 				"right_arm":null,
 				"left_arm":null,
-				"legs":null}
+				"legs":null,
+				"right_hand":null,
+				"left_hand":null}
 
 var has_met_npc = false
 

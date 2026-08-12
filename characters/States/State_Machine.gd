@@ -32,9 +32,12 @@ func change_to(new_state: String):
 	if current_state and current_state.has_method("end"):
 		current_state.end()
 	var next = get_node_or_null(new_state)
-
+	
 	if next == null:
-		push_error("No existe " + new_state)
+		next =$default_states.get_node_or_null(new_state)
+	if next == null:
+		next =$habilities_states.get_node_or_null(new_state)
+	if next == null:
 		return
 	current_state = next
 

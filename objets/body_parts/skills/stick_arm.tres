@@ -8,4 +8,5 @@ _name = "stick_arm"
 durability = 5
 damage = 5
 size = 1
+number_habilities = Array[int]([1])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

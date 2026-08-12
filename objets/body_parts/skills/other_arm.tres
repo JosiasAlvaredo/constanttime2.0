@@ -8,4 +8,5 @@ _name = "other_arm"
 durability = 5
 damage = 10
 size = 2
+number_habilities = Array[int]([0])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

@@ -3,7 +3,8 @@ extends Button
 @onready var user_interface: CanvasLayer = $"../../../.."
 @onready var durability_node: Label = $Durability
 
-@export_enum("torso","left_arm","right_arm","legs","right_hand","left_hand") var slot_part: String
+@export_enum("torso","left_arm","right_arm","legs","right_hand","left_hand" ) var slot_part: String
+
 var kind
 var path=["res://objets/body_parts/%s.tscn", name]
 
@@ -39,10 +40,10 @@ func _physics_process(delta: float) -> void:
 		durability_node.text=""
 
 	#agregar algo en el slot o itercambiarlo con otra cosa
-	if Input.is_action_just_pressed("Left_hand") and user_interface.selected_body_part!=null and mouse_on_this_slot and ((can_drop and GlobalValues.bodies_parts[slot_part]!=null) or  GlobalValues.bodies_parts[slot_part]==null or (GlobalValues.bodies_parts[slot_part]!=null and item_aux==null)):
-		if user_interface.selected_body_part.kind==slot_part:
-			
-			if GlobalValues.bodies_parts[slot_part]!=null and item_aux==null:
+	if Input.is_action_just_pressed("Left_hand") and user_interface.selected_body_part!=null and mouse_on_this_slot and ((can_drop and item_aux!=null) or item_aux==null):
+		if slot_part in user_interface.selected_body_part.kind:
+			if GlobalValues.bodies_parts[slot_part]!=null:
+				taking_thing=false
 				item_aux=GlobalValues.bodies_parts[slot_part].duplicate()
 				timer()
 			GlobalValues.bodies_parts[slot_part]=user_interface.selected_body_part.duplicate()
@@ -57,34 +58,44 @@ func _physics_process(delta: float) -> void:
 				user_interface.selected_body_part=item_aux
 
 	#solar algo equipado o devolverlo a su lugar
-	if Input.is_action_just_pressed("Left_hand") and can_drop and  GlobalValues.bodies_parts[slot_part]!=null:
+	if Input.is_action_just_pressed("Left_hand") and can_drop and item_aux!=null:
 		if not user_interface.mouse_on_a_slot:
 			drop()
-		elif mouse_on_this_slot:
-			reset_item_aux()
+			
 	#solar algo equipado o devolverlo a su lugar, por cerrar el inventario
 	if Input.is_action_just_pressed("Inventory") and  GlobalValues.bodies_parts[slot_part]!=null and item_aux!=null:
 		if not moving_thing:
 			drop()
 		else:
 			reset_item_aux()
-			
+
 func timer():
 	can_drop=false
 	await get_tree().create_timer(0.5).timeout
 	can_drop=true
 	
 func _on_button_down() -> void:
-	if user_interface.selected_body_part==null and GlobalValues.bodies_parts[slot_part] and item_aux==null:
+	if user_interface.selected_body_part==null and GlobalValues.bodies_parts[slot_part]!=null and item_aux==null:
 		item_aux=GlobalValues.bodies_parts[slot_part].duplicate()
+		GlobalValues.bodies_parts[slot_part]=null
 		user_interface.selected_body_part=item_aux
 		moving_thing=true
+		taking_thing=false
 		timer()
 
 func drop():
-	var drop=load("res://objets/body_parts/%s.tscn" % item_aux._name).instantiate()
+	var drop=load("res://objets/body_parts/%s.tscn" % item_aux._name)
+	
+	if drop==null:
+		drop=load("res://objets/items/%s.tscn" % item_aux._name)
+		
+	if drop==null:
+		return
+		
+	drop=drop.instantiate()
 			
 	user_interface.get_parent().add_child(drop)
+
 	drop.kind=slot_part
 	drop.global_position=user_interface.player.global_position
 	if moving_thing:
@@ -102,21 +113,13 @@ func reset_item_aux():
 	can_drop=false
 	taking_thing=false
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	mouse_on_this_slot=true
-	user_interface.mouse_on_a_slot=true
-	
-
-func _on_area_2d_area_exited(area: Area2D) -> void:
-	user_interface.mouse_on_a_slot=false
-	mouse_on_this_slot=false
-	
-
-
 func _on_mouse_exited() -> void:
 	user_interface.timer_clouse_info()
-
+	user_interface.mouse_on_a_slot=false
+	mouse_on_this_slot=false
 
 func _on_mouse_entered() -> void:
 	if GlobalValues.bodies_parts[slot_part]!=null:
 		user_interface.analisis(GlobalValues.bodies_parts[slot_part])
+	mouse_on_this_slot=true
+	user_interface.mouse_on_a_slot=true

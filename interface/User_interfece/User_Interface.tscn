@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://6d1qmnjmmsa4"]
 
-[ext_resource type="Texture2D" uid="uid://bkevpofiuqd2v" path="res://assets/ui.png" id="1_cve4c"]
 [ext_resource type="Script" uid="uid://pgcfxqwu4aje" path="res://interface/User_interfece/user_interface.gd" id="1_jb0ip"]
 [ext_resource type="Texture2D" uid="uid://cme8ds8yefs2k" path="res://assets/ui2.png" id="1_nfcvq"]
 [ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="1_nxw7e"]
@@ -322,70 +321,71 @@ offset_top = -225.0
 offset_right = 244.446
 offset_bottom = 222.931
 
-[node name="Bodies_parts" type="Node2D" parent="Inventory/inventory" unique_id=1980076886]
-position = Vector2(-804, -125)
+[node name="slots_sprites" type="Node2D" parent="Inventory/inventory/lines" unique_id=1576390517]
+position = Vector2(-804, -352)
 
-[node name="slots_sprites" type="Node2D" parent="Inventory/inventory/Bodies_parts" unique_id=1576390517]
-
-[node name="torso_slot" type="AnimatedSprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=959913171]
+[node name="torso_slot" type="AnimatedSprite2D" parent="Inventory/inventory/lines/slots_sprites" unique_id=959913171]
 position = Vector2(934.5, 226.5)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="legs_slot" type="AnimatedSprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=1349041481]
-position = Vector2(934.5, 289.5)
+[node name="legs_slot" type="AnimatedSprite2D" parent="Inventory/inventory/lines/slots_sprites" unique_id=1349041481]
+position = Vector2(935, 289)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="right_arm_slot" type="AnimatedSprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=972694207]
-position = Vector2(863.5, 226.5)
+[node name="right_arm_slot" type="AnimatedSprite2D" parent="Inventory/inventory/lines/slots_sprites" unique_id=972694207]
+position = Vector2(869, 227)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="left_arm_slot" type="AnimatedSprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=811036373]
-position = Vector2(1007.5, 226.5)
+[node name="left_arm_slot" type="AnimatedSprite2D" parent="Inventory/inventory/lines/slots_sprites" unique_id=811036373]
+position = Vector2(1000, 227)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="Head" type="Sprite2D" parent="Inventory/inventory/Bodies_parts/slots_sprites" unique_id=1836236017]
+[node name="Head" type="Sprite2D" parent="Inventory/inventory/lines/slots_sprites" unique_id=1836236017]
 position = Vector2(932, 173.00002)
 scale = Vector2(2.5300193, 2.379425)
 texture = ExtResource("4_bl7xi")
 
-[node name="right_arm" parent="Inventory/inventory/Bodies_parts" unique_id=258069684 instance=ExtResource("4_xcv3c")]
-offset_left = 836.0
+[node name="Bodies_parts_slots" type="Node2D" parent="Inventory/inventory" unique_id=1980076886]
+position = Vector2(-804, -125)
+
+[node name="right_arm" parent="Inventory/inventory/Bodies_parts_slots" unique_id=258069684 instance=ExtResource("4_xcv3c")]
+offset_left = 841.0
 offset_top = 199.0
-offset_right = 891.0
+offset_right = 896.0
 offset_bottom = 254.0
 slot_part = "right_arm"
 
-[node name="torso" parent="Inventory/inventory/Bodies_parts" unique_id=1192938166 instance=ExtResource("4_xcv3c")]
+[node name="torso" parent="Inventory/inventory/Bodies_parts_slots" unique_id=1192938166 instance=ExtResource("4_xcv3c")]
 offset_left = 907.0
 offset_top = 199.0
 offset_right = 962.0
 offset_bottom = 254.0
 slot_part = "torso"
 
-[node name="left_arm" parent="Inventory/inventory/Bodies_parts" unique_id=1290414984 instance=ExtResource("4_xcv3c")]
-offset_left = 980.0
+[node name="left_arm" parent="Inventory/inventory/Bodies_parts_slots" unique_id=1290414984 instance=ExtResource("4_xcv3c")]
+offset_left = 972.0
 offset_top = 199.0
-offset_right = 1035.0
+offset_right = 1027.0
 offset_bottom = 254.0
 slot_part = "left_arm"
 
-[node name="legs" parent="Inventory/inventory/Bodies_parts" unique_id=1243198576 instance=ExtResource("4_xcv3c")]
+[node name="legs" parent="Inventory/inventory/Bodies_parts_slots" unique_id=1243198576 instance=ExtResource("4_xcv3c")]
 offset_left = 907.0
-offset_top = 262.0
+offset_top = 261.0
 offset_right = 962.0
-offset_bottom = 317.0
+offset_bottom = 316.0
 slot_part = "legs"
 
 [node name="near_objets" type="Control" parent="Inventory/inventory" unique_id=168938720]
@@ -399,41 +399,37 @@ offset_top = -0.19403076
 offset_right = -0.088012695
 offset_bottom = 0.13296509
 
-[node name="timer" type="Node2D" parent="." unique_id=2011046253]
+[node name="hands" type="Node2D" parent="." unique_id=2011046253]
 position = Vector2(273, 501)
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="timer" unique_id=344073367]
+[node name="Node2D" type="Node2D" parent="hands" unique_id=2006150318]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="hands/Node2D" unique_id=344073367]
 position = Vector2(726.5, 51.5)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.22846141
 
-[node name="Right_hand_sprite" type="Sprite2D" parent="timer" unique_id=1124035027]
-position = Vector2(726.5, 50.5)
-
-[node name="Durability" type="Label" parent="timer/Right_hand_sprite" unique_id=16779684]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("1_nxw7e")
-metadata/_edit_use_anchors_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="timer" unique_id=594191287]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="hands/Node2D" unique_id=594191287]
 position = Vector2(596.5, 51.5)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
 animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="Left_hand_sprite" type="Sprite2D" parent="timer" unique_id=153583614]
-position = Vector2(596.5, 51.5)
+[node name="slots" type="Node2D" parent="hands/Node2D" unique_id=1497247598]
 
-[node name="Durability" type="Label" parent="timer/Left_hand_sprite" unique_id=958392844]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_fonts/font = ExtResource("1_nxw7e")
+[node name="right_hand" parent="hands/Node2D/slots" unique_id=1622941850 instance=ExtResource("4_xcv3c")]
+offset_left = 569.0
+offset_top = 24.0
+offset_right = 624.0
+offset_bottom = 79.0
+slot_part = "right_hand"
 
-[node name="Sprite2D" type="Sprite2D" parent="timer" unique_id=1014816622]
-position = Vector2(-219, 94)
-scale = Vector2(1.5363636, 1.5363636)
-texture = ExtResource("1_cve4c")
+[node name="left_hand" parent="hands/Node2D/slots" unique_id=254990390 instance=ExtResource("4_xcv3c")]
+offset_left = 699.0
+offset_top = 24.0
+offset_right = 754.0
+offset_bottom = 79.0
+slot_part = "left_hand"

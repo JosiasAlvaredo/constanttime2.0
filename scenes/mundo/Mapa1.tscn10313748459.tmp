@@ -238,18 +238,23 @@ texture = ExtResource("9_aao4b")
 
 [node name="stick_arm" parent="." unique_id=926426869 instance=ExtResource("10_4d7pk")]
 position = Vector2(-66, -21)
+kind = []
 
 [node name="stick_arm5" parent="." unique_id=1570838692 instance=ExtResource("10_4d7pk")]
 position = Vector2(-66, -21)
+kind = []
 
 [node name="stick_arm2" parent="." unique_id=1483540736 instance=ExtResource("11_3nlyl")]
 position = Vector2(-31, -22)
+kind = []
 
 [node name="stick_arm6" parent="." unique_id=1234020750 instance=ExtResource("11_3nlyl")]
 position = Vector2(-31, -22)
+kind = []
 
 [node name="stick_arm3" parent="." unique_id=692060312 instance=ExtResource("12_fyddo")]
 position = Vector2(-97, -31)
+kind = []
 
 [node name="stick_arm4" parent="." unique_id=168672118 instance=ExtResource("13_58nlb")]
 position = Vector2(5, -30)

@@ -13,7 +13,7 @@ radius = 4.0
 collision_layer = 0
 script = ExtResource("1_5nnbh")
 _name = "stick_legs"
-kind = "legs"
+number_kinds = Array[int]([3])
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
 position = Vector2(0, -1)
