@@ -22,7 +22,6 @@ func _ready() -> void:
 	save_position=position
 	await  get_tree().create_timer(0.1).timeout
 
-
 func _physics_process(delta: float) -> void:
 	#crear un item aux para que el jugador pueda ver que objeto esta moviendo
 	if user_interface.selected_body_part==item_aux and item_aux !=null:
@@ -88,11 +87,13 @@ func drop():
 	
 	if drop==null:
 		drop=load("res://objets/items/%s.tscn" % item_aux._name)
-		
 	if drop==null:
 		return
 		
 	drop=drop.instantiate()
+
+	drop.durability=item_aux.durability
+	
 			
 	user_interface.get_parent().add_child(drop)
 
@@ -123,3 +124,27 @@ func _on_mouse_entered() -> void:
 		user_interface.analisis(GlobalValues.bodies_parts[slot_part])
 	mouse_on_this_slot=true
 	user_interface.mouse_on_a_slot=true
+
+func turn(_bool):
+	get_parent().visible=_bool
+	
+	if not _bool and GlobalValues.bodies_parts[slot_part]:
+		item_aux=GlobalValues.bodies_parts[slot_part].duplicate()
+		var drop=load("res://objets/body_parts/%s.tscn" % item_aux._name)
+		
+		if drop==null:
+			drop=load("res://objets/items/%s.tscn" % item_aux._name)
+		if drop==null:
+			return
+			
+		drop=drop.instantiate()
+
+		drop.durability=item_aux.durability
+		
+				
+		user_interface.get_parent().add_child(drop)
+
+		drop.kind=slot_part
+		drop.global_position=user_interface.player.global_position
+		item_aux.queue_free()
+		GlobalValues.bodies_parts[slot_part]=null

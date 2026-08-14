@@ -8,9 +8,6 @@ extends CanvasLayer
 @onready var info: Node2D = $Inventory/info
 @onready var info_animations: AnimationPlayer = $Inventory/info/Info_animations
 
-@onready var bodies_parts_slots_1: Node2D = $Inventory/inventory/Bodies_parts_slots
-@onready var bodies_parts_slots_2: Node2D = $hands/Node2D/slots
-
 var near_objets=[]
 var save_near_objets=[]
 
@@ -26,7 +23,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("Inventory"):
 		inventory.visible=false
 		info_animations.play("Info_unvisible")
-	#Iteraccion del invetatio con el exterior
+	#Iteraccion del inventatio con el exterior
 	if inventory.visible and save_near_objets!=near_objets:
 		for slot_item in near_objets_node.get_children():
 			slot_item.queue_free()
@@ -47,7 +44,10 @@ func _physics_process(delta: float) -> void:
 			new_slot_item.save_position=Vector2((i%5)*50,pos_y)
 			new_slot_item.link_to_original=near_objet
 		save_near_objets=near_objets.duplicate()
-		
+	
+	$hands/Node2D/AnimatedSprite2D/right_hand.turn(player.current_torso.can_take_right_hand)
+	$hands/Node2D/AnimatedSprite2D2/left_hand.turn(player.current_torso.can_take_left_hand)
+	
 func rebuil_body():
 	await get_tree().create_timer(0.1).timeout
 	player.buil_body()
@@ -91,5 +91,5 @@ func analisis(obj):
 func timer_clouse_info():
 	checking_info=false
 	await get_tree().create_timer(0.5).timeout
-	if not checking_info:
+	if not checking_info and info_animations.current_animation=="Info_visible":
 		info_animations.play("Info_close")

@@ -411,6 +411,13 @@ animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.22846141
 
+[node name="left_hand" parent="hands/Node2D/AnimatedSprite2D2" unique_id=254990390 instance=ExtResource("4_xcv3c")]
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
+slot_part = "left_hand"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="hands/Node2D" unique_id=594191287]
 position = Vector2(596.5, 51.5)
 sprite_frames = SubResource("SpriteFrames_xcv3c")
@@ -418,18 +425,9 @@ animation = &"selected"
 autoplay = "selected"
 frame_progress = 0.25409937
 
-[node name="slots" type="Node2D" parent="hands/Node2D" unique_id=1497247598]
-
-[node name="right_hand" parent="hands/Node2D/slots" unique_id=1622941850 instance=ExtResource("4_xcv3c")]
-offset_left = 569.0
-offset_top = 24.0
-offset_right = 624.0
-offset_bottom = 79.0
+[node name="right_hand" parent="hands/Node2D/AnimatedSprite2D" unique_id=1622941850 instance=ExtResource("4_xcv3c")]
+offset_left = -27.5
+offset_top = -27.5
+offset_right = 27.5
+offset_bottom = 27.5
 slot_part = "right_hand"
-
-[node name="left_hand" parent="hands/Node2D/slots" unique_id=254990390 instance=ExtResource("4_xcv3c")]
-offset_left = 699.0
-offset_top = 24.0
-offset_right = 754.0
-offset_bottom = 79.0
-slot_part = "left_hand"

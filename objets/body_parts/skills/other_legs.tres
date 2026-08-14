@@ -9,4 +9,5 @@ durability = 5
 speed = 200
 jump_force = -300
 size = 2
+number_habilities = Array[int]([0])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

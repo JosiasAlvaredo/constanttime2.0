@@ -21,10 +21,10 @@ func on_physics_process(delta: float) -> void:
 		coyote_time()
 	
 func on_input(event: InputEvent) -> void:
-
-	if controlled_node.body_up.is_colliding() and (Input.is_action_pressed("Up") or Input.is_action_pressed("Crouch")):
-		state_machine.change_to("Climb")
-		
+	if controlled_node.current_torso!=null:
+		if controlled_node.current_torso.has_method("conect_fall"):
+			controlled_node.current_torso.conect_fall(controlled_node,state_machine)
+			
 	if Input.is_action_just_pressed("Left_hand"):
 		state_machine.change_to("Fall_action_Left_Hand")
 	elif Input.is_action_just_pressed("Right_hand"):
@@ -32,6 +32,8 @@ func on_input(event: InputEvent) -> void:
 
 	if (controlled_node.can_jump or controlled_node.velocity.y==0) and Input.is_action_pressed("Jump"):
 		state_machine.change_to("Jump")
+			
+	
 			
 func coyote_time():
 	await get_tree().create_timer(0.07).timeout

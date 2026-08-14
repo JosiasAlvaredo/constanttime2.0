@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dgcjad0iawkaj"]
+
+[ext_resource type="Script" uid="uid://cx4d05hrtt05j" path="res://characters/States/player/habilities/doble_jump.gd" id="1_4a007"]
+
+[node name="Doble_jump" type="Node" unique_id=29894792]
+script = ExtResource("1_4a007")

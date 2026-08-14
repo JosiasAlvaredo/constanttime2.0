@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 	direction_y=-Input.get_axis("Up","Crouch")
 	
 	if activate_Gravity:
-		velocity.y+= gravity*delta
+		velocity += transform.y * gravity * delta
 	#si el jugador a sido atrapado queda inmovilizado
 	if trapped:
 		activate_Gravity=false
@@ -131,6 +131,7 @@ func _on_collect_box_area_exited(area: Area2D) -> void:
 	user_interface.near_objets.pop_at(user_interface.near_objets.find(objet))
 
 func buil_body():
+	state_machine.change_to("Idle")
 	save_body_part=GlobalValues.bodies_parts.duplicate()
 	if current_torso !=null:
 		current_torso.queue_free()

@@ -3,7 +3,6 @@ extends Node2D
 @onready var left_arm_position: Node2D = $left_arm_position
 @onready var legs_position: Node2D = $legs_position
 
-#es el porcentaje de daño q se lleva el torso
 
 
 var total_weight
@@ -15,10 +14,20 @@ var skills
 
 var _name=""
 
+var current_habilities_names=[]
+
+var abilities_idle_conections=[]
+var abilities_move_conections=[]
+var abilities_jump_conections=[]
+var abilities_fall_conections=[]
+
+var can_take_right_hand=false
+var can_take_left_hand=false
+
 func _ready() -> void:
 	parent=get_parent().get_parent()
 	for hability in parent.habilities_states.get_children():
-		hability.queue_free()
+		hability.free()
 	
 	body=GlobalValues.bodies_parts
 	
@@ -29,7 +38,7 @@ func _ready() -> void:
 		
 	skills=load("res://objets/body_parts/skills/%s.tres" % _name).duplicate()
 	total_weight=skills.size
-	
+
 	#se crean las extremidades, se definen los stats y habilidades
 	if body.right_arm!=null:
 		var right_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.right_arm._name).instantiate()
@@ -41,13 +50,12 @@ func _ready() -> void:
 		count_parts+=1
 		total_weight+=right_armSkills.size
 		
-		for number_hability in right_armSkills.number_habilities:
-			var hability=skills.Habilities.keys()[number_hability]
-			var hability_node=load("res://characters/States/player/habilities/%s.tscn" % hability).instantiate()
-			parent.habilities_states.add_child(hability_node)
-
+		can_take_right_hand=right_armSkills.can_take
+		
+		load_abilities(right_armSkills.number_habilities)
+		
 		add_child(right_arm)
-
+	
 	if body.left_arm!=null:
 		var left_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.left_arm._name).instantiate()
 		var left_armSkills=load("res://objets/body_parts/skills/%s.tres" %  body.left_arm._name)
@@ -56,15 +64,12 @@ func _ready() -> void:
 		
 		count_parts+=1
 		total_weight+=left_armSkills.size
-		print(parent.habilities_states.get_children())
-		for number_hability in left_armSkills.number_habilities:
-			var hability=skills.Habilities.keys()[number_hability]
-			var hability_node=load("res://characters/States/player/habilities/%s.tscn" % hability).instantiate()
-			parent.habilities_states.add_child(hability_node)
-		print(parent.habilities_states.get_children())
-
-		add_child(left_arm)
+		can_take_left_hand=left_armSkills.can_take
 		
+		load_abilities(left_armSkills.number_habilities)
+		
+		add_child(left_arm)
+	
 	if body.legs!=null:
 		var legs=load("res://characters/player/Body_parts/legs/%s.tscn" % body.legs._name).instantiate()
 		var legsSkills=load("res://objets/body_parts/skills/%s.tres" %  body.legs._name)
@@ -77,11 +82,8 @@ func _ready() -> void:
 		count_parts+=2
 		total_weight-=legsSkills.size*3
 		
-		for number_hability in legsSkills.number_habilities:
-			var hability=skills.Habilities.keys()[number_hability]
-			var hability_node=load("res://characters/States/player/habilities/%s.tscn" % hability).instantiate()
-			parent.habilities_states.add_child(hability_node)
-		
+		load_abilities(legsSkills.number_habilities)
+
 		add_child(legs)
 		parent.body_botton=legs.foot_position.position.y*(1.5)+legs.position.y
 	else:
@@ -116,3 +118,46 @@ func torso_damage(_damage):
 		body.left_arm.damage((_damage-part_wear)/count_parts)
 	if body.legs!=null:
 		body.legs.damage((_damage-part_wear)/int(count_parts/2))
+
+
+#Carga los nodos de estado en el nodo abilities del state machine
+func load_abilities(number_habilities):
+		for number_hability in number_habilities:
+			var hability=skills.Habilities.keys()[number_hability]
+			var hability_node=load("res://characters/States/player/habilities/%s.tscn" % hability)
+			if hability_node!=null:
+				hability_node=hability_node.instantiate()
+				if not hability_node.name in current_habilities_names:
+					current_habilities_names.append(hability_node.name)
+					
+					if hability_node.has_method("conect_Idle"):
+						abilities_idle_conections.append(hability_node.conect_Idle)
+						
+					if hability_node.has_method("conect_move"):
+						abilities_move_conections.append(hability_node.conect_move)
+						
+					if hability_node.has_method("conect_fall"):
+						abilities_jump_conections.append(hability_node.conect_fall)
+						
+					if hability_node.has_method("conect_jump"):
+						abilities_fall_conections.append(hability_node.conect_jump)
+
+					parent.habilities_states.add_child(hability_node)
+
+#Guardan las conecciones de las habilidades con su respectivo estado
+func conect_Idle(controlled_node,state_machine):
+	for conection in abilities_idle_conections:
+		conection.call(controlled_node,state_machine) 
+	
+func conect_move(controlled_node,state_machine):
+	for conection in abilities_move_conections:
+		conection.call(controlled_node,state_machine) 
+	
+func conect_jump(controlled_node,state_machine):
+	for conection in abilities_jump_conections:
+		conection.call(controlled_node,state_machine) 
+	
+func conect_fall(controlled_node,state_machine):
+	for conection in abilities_fall_conections:
+		conection.call(controlled_node,state_machine) 
+#_____________________________

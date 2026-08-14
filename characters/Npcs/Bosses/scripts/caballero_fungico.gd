@@ -14,7 +14,7 @@ extends enemy_base
 @export var r_damage=15
 @export var r_knockback=Vector2(-200,-500)
 
-@export var funfi_flour_scene: PackedScene = preload("res://characters/Enemigos/DarkCaves/FunfiFlour.tscn")
+@export var funfi_flour_scene: PackedScene = preload("res://characters/Npcs/Enemigos/Enemigos_viejos/DarkCaves/FunfiFlour.tscn")
 
 var animations={ "WalkL":"WalkL", "Petrified":"Petrified", "WalkR":"WalkR", "AttackL":"AttackL", "AttackR":"AttackR", "Transform":"Transform"}
 var player_inside := false

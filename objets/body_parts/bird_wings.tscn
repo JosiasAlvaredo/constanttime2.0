@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://bj64ousu087v2"]
+[gd_scene format=3 uid="uid://c6hjwjmpk4ofw"]
 
-[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_7ek2k"]
-[ext_resource type="Texture2D" uid="uid://oko1txt8sr2q" path="res://assets/characters/Player/arms/stick.png" id="2_3whxr"]
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_q3a76"]
+[ext_resource type="Texture2D" uid="uid://ccuinfhyo3qxc" path="res://assets/items/Weapons/Sword.png" id="2_q3a76"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -9,16 +9,17 @@ radius = 375.20828
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc80n"]
 radius = 4.0
 
-[node name="stick_arm" type="RigidBody2D" unique_id=926426869]
+[node name="bird_wings" type="RigidBody2D" unique_id=926426869]
 collision_layer = 0
-script = ExtResource("1_7ek2k")
-_name = "stick_torso"
-durability = 20
-number_kinds = Array[int]([0])
+script = ExtResource("1_q3a76")
+_name = "bird_wings"
+durability = 55
+number_kinds = Array[int]([1, 2])
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
+modulate = Color(1, 0.3019608, 1, 1)
 position = Vector2(0, -1)
-texture = ExtResource("2_3whxr")
+texture = ExtResource("2_q3a76")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
 collision_layer = 64

@@ -7,6 +7,6 @@ script = ExtResource("1_r1v3w")
 _name = "other_arm"
 durability = 5
 damage = 10
+can_take = true
 size = 2
-number_habilities = Array[int]([0])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

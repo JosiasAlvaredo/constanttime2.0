@@ -60,8 +60,8 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if GlobalValues.is_dialogue_active:
 		return
-
 	if current_state and current_state.has_method("on_input") and controlled_node is Player:
+		#if not controlled_node.user_interface.inventory.visible:
 		current_state.on_input(event)
 
 
