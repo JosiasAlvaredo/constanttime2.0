@@ -22,6 +22,9 @@ var trapped=false
 var can_roll=true
 var can_jump=true
 
+# variable que guarda las variables cahe para los estados de las habilidades
+var cache={}
+
 var gravity:float= ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _enter_tree() -> void:

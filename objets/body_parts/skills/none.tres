@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://fpat084jnwtx"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_4px42"]
+
+[resource]
+script = ExtResource("1_4px42")
+_name = "none"
+metadata/_custom_type_script = "uid://c5pevm087pgoq"

@@ -9,6 +9,7 @@ func start():
 	init_direction_x=-sign(controlled_node.body.scale.x)
 	corner_up=false
 	corner_down=false
+	controlled_node.rotate_toward(controlled_node.rotation,PI/2,PI/10)
 
 func on_physics_process(delta: float) -> void:
 	direction_y=controlled_node.direction_y
@@ -48,13 +49,33 @@ func on_input(event: InputEvent) -> void:
 	var direction_x=Input.get_axis("Right","Left")
 	
 	if Input.is_action_pressed("Jump"):
+
+		controlled_node.rotate_toward(controlled_node.rotation,2*PI,PI/10)
 		state_machine.change_to("Jump")
 	
 	if direction_x!=init_direction_x and direction_x!=0:
 		controlled_node.velocity.y=controlled_node.Jump_stength
+		controlled_node.rotate_toward(controlled_node.rotation,2*PI,PI/10)
 		state_machine.change_to("Fall")
 
-
-		
+# funciones unicas de habilidades, para onectar con los estados a las habilidades
+func on_create():
+	pass
+	
+func conect_Idle (controlled_node,state_machine):
+	if controlled_node.body_up.is_colliding() and (Input.is_action_pressed("Up") or Input.is_action_pressed("Crouch")):
+			state_machine.change_to("Climb")
+			
+func conect_move (controlled_node,state_machine):
+	if controlled_node.body_up.is_colliding() and (Input.is_action_pressed("Up") or Input.is_action_pressed("Crouch")):
+			state_machine.change_to("Climb")
+	
+func conect_jump (controlled_node,state_machine):
+	if controlled_node.body_up.is_colliding() and (Input.is_action_pressed("Up") or Input.is_action_pressed("Crouch")):
+			state_machine.change_to("Climb")
+	
+func conect_fall (controlled_node,state_machine):
+	if controlled_node.body_up.is_colliding() and (Input.is_action_pressed("Up") or Input.is_action_pressed("Crouch")):
+			state_machine.change_to("Climb")
 
 		

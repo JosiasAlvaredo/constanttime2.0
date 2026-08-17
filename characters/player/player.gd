@@ -16,6 +16,10 @@ class_name Player
 
 @onready var user_interface: CanvasLayer = $"../User_Interface"
 
+@onready var habilities_states: Node = $State_Machine/habilities_states
+
+
+
 var Interactive_Box_collition
 
 var body_up: RayCast2D 
@@ -60,23 +64,25 @@ func _ready() -> void:
 	############
 		
 func _physics_process(delta: float) -> void:
+	
 	direction=-Input.get_axis("Right","Left")
 	direction_y=-Input.get_axis("Up","Crouch")
 	
 	if activate_Gravity:
-		velocity.y+= gravity*delta
-		
+		velocity += transform.y * gravity * delta
+	#si el jugador a sido atrapado queda inmovilizado
 	if trapped:
 		activate_Gravity=false
 		solid=false
 		state_machine.change_to("Trapped")
-	elif state_machine.current_state==$State_Machine/Trapped:
+	elif state_machine.current_state==$State_Machine/default_states/Trapped:
 		state_machine.change_to("Idle")
 		activate_Gravity=true
 		solid=true
-		
+	
+	#construccion del cuerpo del jugador
 	if GlobalValues.bodies_parts != save_body_part:
-		save_body_part=GlobalValues.bodies_parts.duplicate()
+		
 		buil_body()
 		
 	move_and_slide()
@@ -125,7 +131,8 @@ func _on_collect_box_area_exited(area: Area2D) -> void:
 	user_interface.near_objets.pop_at(user_interface.near_objets.find(objet))
 
 func buil_body():
-	
+	state_machine.change_to("Idle")
+	save_body_part=GlobalValues.bodies_parts.duplicate()
 	if current_torso !=null:
 		current_torso.queue_free()
 	var torso
@@ -140,12 +147,14 @@ func buil_body():
 	
 	collision_shape_2d.scale.y=body_botton
 	hit_box.scale.y=body_botton
-
+	
+	position.y-=body_botton
+	
 	collision_shape_2d.position.y=(collision_shape_2d.scale.y/2)- 9
 	hit_box.position.y=(collision_shape_2d.scale.y/2)- 9
 	current_torso=torso
 	
-	speed=torso.speed
+	speed=torso.skills.speed
 	aceleration=speed/6
-	Jump_stength=torso.jump_force
+	Jump_stength=torso.skills.jump_force
 	

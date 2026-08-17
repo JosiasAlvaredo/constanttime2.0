@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://c263ctwqrk2vj"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_f8jo4"]
+
+[resource]
+script = ExtResource("1_f8jo4")
+_name = "bird_wings"
+durability = 55
+jump_force = -50
+size = 2
+number_habilities = Array[int]([2])
+metadata/_custom_type_script = "uid://c5pevm087pgoq"

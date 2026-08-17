@@ -14,3 +14,6 @@ func on_input(event: InputEvent) -> void:
 	elif Input.is_action_just_pressed("Right_hand"):
 		state_machine.change_to("Idle_action_Right_Hand")
 	
+	if controlled_node.current_torso!=null:
+		if controlled_node.current_torso.has_method("conect_Idle"):
+			controlled_node.current_torso.conect_Idle(controlled_node,state_machine)

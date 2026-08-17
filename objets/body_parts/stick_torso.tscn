@@ -14,7 +14,7 @@ collision_layer = 0
 script = ExtResource("1_7ek2k")
 _name = "stick_torso"
 durability = 20
-kind = "torso"
+number_kinds = Array[int]([0])
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
 position = Vector2(0, -1)

@@ -24,9 +24,10 @@ func on_input(event: InputEvent) -> void:
 	
 	if Input.is_action_just_released("Jump"):
 		controlled_node.velocity.y=-100
-	
-	if controlled_node.body_up.is_colliding() and (Input.is_action_pressed("Up") or Input.is_action_pressed("Crouch")):
-		state_machine.change_to("Climb")
+		
+	if controlled_node.current_torso!=null:
+		if controlled_node.current_torso.has_method("conect_jump"):
+			controlled_node.current_torso.conect_jump(controlled_node,state_machine)
 		
 	if Input.is_action_just_pressed("Left_hand"):
 		state_machine.change_to("Jump_action_Left_Hand")

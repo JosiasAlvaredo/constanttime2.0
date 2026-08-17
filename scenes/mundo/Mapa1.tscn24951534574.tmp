@@ -15,8 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="13_58nlb"]
 [ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Npcs/Enemigos/Enemigos_viejos/Forest/enemigo_plataformero.tscn" id="14_2q7o6"]
 [ext_resource type="PackedScene" uid="uid://bj64ousu087v2" path="res://objets/body_parts/stick_torso.tscn" id="15_6jkxb"]
-[ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="16_3sorw"]
-[ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="17_1jhfv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aao4b"]
 texture = ExtResource("2_f37jf")
@@ -205,7 +203,7 @@ tile_map_data = PackedByteArray("AAD//wAAAQADAAAAAAD+/wAAAQADAAAAAAD9/wAAAQADAAA
 position = Vector2(56, -31)
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_23wfk")]
-position = Vector2(-37, -91)
+position = Vector2(-11, -88)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2076875252]
 zoom = Vector2(2, 2)
@@ -242,9 +240,11 @@ position = Vector2(-66, -21)
 
 [node name="stick_arm5" parent="." unique_id=1570838692 instance=ExtResource("10_4d7pk")]
 position = Vector2(-66, -21)
+kind = "left_arm"
 
 [node name="stick_arm2" parent="." unique_id=1483540736 instance=ExtResource("11_3nlyl")]
 position = Vector2(-31, -22)
+kind = "left_arm"
 
 [node name="stick_arm6" parent="." unique_id=1234020750 instance=ExtResource("11_3nlyl")]
 position = Vector2(-31, -22)
@@ -261,13 +261,3 @@ position = Vector2(107, -43)
 [node name="stick_arm7" parent="." unique_id=1297055427 instance=ExtResource("15_6jkxb")]
 position = Vector2(26, -16)
 durability = 5
-
-[node name="Rock" parent="." unique_id=2017573643 instance=ExtResource("16_3sorw")]
-position = Vector2(-123, -69)
-
-[node name="bird_wings" parent="." unique_id=1794513963 instance=ExtResource("17_1jhfv")]
-position = Vector2(-9, -31)
-
-[node name="slots" type="Node2D" parent="bird_wings" unique_id=1554065275]
-
-[node name="slots" type="Node2D" parent="bird_wings/slots" unique_id=1019386221]
