@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_kupbu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kupbu"]
-size = Vector2(637, 350)
+size = Vector2(640, 352)
 
 [node name="Boss01" type="Node2D" unique_id=943335602]
 
@@ -14,20 +14,36 @@ tile_map_data = PackedByteArray("AAAAAAoAAQADAAEAAAAAAAkAAQADAAEAAAAAAAgAAQADAAE
 [node name="paredes" parent="." unique_id=103776068 instance=ExtResource("1_kupbu")]
 tile_map_data = PackedByteArray("AAAAAAoAAQAJAAAAAAAAAAkAAQAEAAEAAAAAAAgAAQAEAAEAAAAAAAcAAQAEAAEAAAAAAAMAAQAEAAEAAAAAAAIAAQAEAAEAAAAAAAEAAQAEAAEAAAAAAAAAAQAJAAEAAAABAAAAAQADAAIAAAACAAAAAQADAAIAAAADAAAAAQADAAIAAAAEAAAAAQADAAIAAAAFAAAAAQADAAIAAAAGAAAAAQADAAIAAAAHAAAAAQADAAIAAAAMAAAAAQADAAIAAAANAAAAAQADAAIAAAAOAAAAAQADAAIAAAAPAAAAAQADAAIAAAAQAAAAAQADAAIAAAARAAAAAQADAAIAAAASAAAAAQADAAIAAAATAAAAAQAIAAEAAAATAAEAAQACAAEAAAATAAIAAQACAAEAAAATAAMAAQACAAEAAAATAAcAAQACAAEAAAATAAgAAQACAAEAAAATAAkAAQACAAEAAAATAAoAAQAIAAAAAAABAAoAAQADAAAAAAACAAoAAQADAAAAAAADAAoAAQADAAAAAAAGAAoAAQADAAAAAAAHAAoAAQADAAAAAAAEAAoAAQADAAAAAAAFAAoAAQADAAAAAAASAAoAAQADAAAAAAARAAoAAQADAAAAAAAQAAoAAQADAAAAAAAPAAoAAQADAAAAAAAOAAoAAQADAAAAAAANAAoAAQADAAAAAAAMAAoAAQADAAAAAAAIAAQAAQAAAAIAAAAIAAUAAQAAAAIAAAAIAAYAAQAAAAIAAAAJAAQAAQAAAAIAAAAJAAUAAQAAAAIAAAAJAAYAAQAAAAIAAAAKAAQAAQAAAAIAAAAKAAUAAQAAAAIAAAAKAAYAAQAAAAIAAAALAAQAAQAAAAIAAAALAAUAAQAAAAIAAAALAAYAAQAAAAIAAAA=")
 
-[node name="SocketDown" type="Marker2D" parent="." unique_id=488275647]
+[node name="puertaUp" parent="." unique_id=1373517405 instance=ExtResource("1_kupbu")]
+visible = false
+tile_map_data = PackedByteArray("AAAHAAAAAQADAAIAAAAJAAAAAQADAAIAAAAKAAAAAQADAAIAAAAIAAAAAQADAAIAAAALAAAAAQADAAIAAAA=")
+
+[node name="puertaDown" parent="." unique_id=1489335370 instance=ExtResource("1_kupbu")]
+visible = false
+tile_map_data = PackedByteArray("AAAIAAoAAQADAAAAAAAJAAoAAQADAAAAAAAKAAoAAQADAAAAAAALAAoAAQADAAAAAAA=")
+
+[node name="puertaLeft" parent="." unique_id=1834871567 instance=ExtResource("1_kupbu")]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAQAAQAEAAEAAAAAAAUAAQAEAAEAAAAAAAYAAQAEAAEAAAA=")
+
+[node name="puertaRigth" parent="." unique_id=2050506641 instance=ExtResource("1_kupbu")]
+visible = false
+tile_map_data = PackedByteArray("AAATAAQAAQACAAEAAAATAAUAAQACAAEAAAATAAYAAQACAAEAAAA=")
+
+[node name="SocketUp" type="Marker2D" parent="." unique_id=2124156081]
 position = Vector2(320, 0)
 
-[node name="SocketLeft" type="Marker2D" parent="." unique_id=249617599]
-position = Vector2(0, 180)
+[node name="SocketLeft" type="Marker2D" parent="." unique_id=396956270]
+position = Vector2(0, 176)
 
-[node name="SocketUp" type="Marker2D" parent="." unique_id=1389100855]
-position = Vector2(320, 360)
+[node name="SocketDown" type="Marker2D" parent="." unique_id=381882972]
+position = Vector2(320, 352)
 
-[node name="SocketRight" type="Marker2D" parent="." unique_id=666352878]
-position = Vector2(640, 180)
+[node name="SocketRight" type="Marker2D" parent="." unique_id=1183475517]
+position = Vector2(640, 176)
 
-[node name="Bounds" type="Area2D" parent="." unique_id=1925668067]
+[node name="Bounds" type="Area2D" parent="." unique_id=1546742542]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1389895615]
-position = Vector2(319.5, 177)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=315693857]
+position = Vector2(320, 176)
 shape = SubResource("RectangleShape2D_kupbu")
