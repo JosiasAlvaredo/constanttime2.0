@@ -30,6 +30,6 @@ func on_input(event: InputEvent) -> void:
 			controlled_node.current_torso.conect_jump(controlled_node,state_machine)
 		
 	if Input.is_action_just_pressed("Left_hand"):
-		state_machine.change_to("Jump_action_Left_Hand")
-	elif Input.is_action_just_pressed("Right_hand"):
 		state_machine.change_to("Jump_action_Right_Hand")
+	elif Input.is_action_just_pressed("Right_hand"):
+		state_machine.change_to("Jump_action_Left_Hand")

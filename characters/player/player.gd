@@ -25,9 +25,6 @@ var Interactive_Box_collition
 var body_up: RayCast2D 
 var body_down: RayCast2D 
 
-var right_hand_item=null
-var left_hand_item=null
-
 var animations={ "idle":"Idle", "move":"Run", "jump":"Jump","fall":"Jump", "crouched":"Crouched", "roll":"Roll", "climbUp":"ClimbUp", "climbDown":"ClimbDown"}
 
 var is_inmunity=false
@@ -43,26 +40,9 @@ var body_botton=15
 var save_body_part={}
 var current_torso=null
 
-func _ready() -> void:
-	#items
-	if GlobalValues.Right_hand.name!="":
-		var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.Right_hand.name).instantiate()
+var left_hand_action=null
+var right_hand_action=null
 
-		item.durability=GlobalValues.Right_hand.durability
-		body.add_child(item)
-		right_hand_sprite.texture=load("res://assets/items/Weapons/%s.png" % item._name)
-		right_hand_sprite.get_child(0).text=str(item.durability)
-		right_hand_item=item
-	if GlobalValues.Left_hand.name!="":
-		var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.Left_hand.name)
-		
-		item.durability=GlobalValues.Left_hand.durability
-		body.add_child(item)
-		left_hand_sprite.texture=load("res://assets/items/Weapons/%s.png" % item._name)
-		left_hand_sprite.get_child(0).text=str(item.durability)
-		left_hand_item=item
-	############
-		
 func _physics_process(delta: float) -> void:
 	
 	direction=-Input.get_axis("Right","Left")
@@ -131,15 +111,18 @@ func _on_collect_box_area_exited(area: Area2D) -> void:
 	user_interface.near_objets.pop_at(user_interface.near_objets.find(objet))
 
 func buil_body():
+	var torso 
+	
 	state_machine.change_to("Idle")
 	save_body_part=GlobalValues.bodies_parts.duplicate()
+	
 	if current_torso !=null:
 		current_torso.queue_free()
-	var torso
+		
+
 	if GlobalValues.bodies_parts.torso==null:
 		torso=load("res://characters/player/Body_parts/torsos/none.tscn").instantiate()
 	else:
-		print(GlobalValues.bodies_parts.torso)
 		torso=load("res://characters/player/Body_parts/torsos/%s.tscn" % GlobalValues.bodies_parts.torso._name).instantiate()
 	
 	body.add_child(torso)

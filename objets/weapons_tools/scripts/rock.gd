@@ -3,7 +3,7 @@ class_name Ray_shoot_class
 
 @onready var bullet_ray: RayCast2D = $Bullet
 @onready var line_2d: Line2D = $Line2D
-	
+
 func use(State):
 	var target=bullet_ray.get_collider()
 	worn_out()
@@ -11,7 +11,6 @@ func use(State):
 		if target.has_method("enemy_damage"):
 			target.enemy_damage(self)
 	player.state_machine.change_to(State)
-	player.hand_using=""
 	
 	
 func _physics_process(delta: float) -> void:

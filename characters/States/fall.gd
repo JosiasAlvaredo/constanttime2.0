@@ -26,9 +26,9 @@ func on_input(event: InputEvent) -> void:
 			controlled_node.current_torso.conect_fall(controlled_node,state_machine)
 			
 	if Input.is_action_just_pressed("Left_hand"):
-		state_machine.change_to("Fall_action_Left_Hand")
-	elif Input.is_action_just_pressed("Right_hand"):
 		state_machine.change_to("Fall_action_Right_Hand")
+	elif Input.is_action_just_pressed("Right_hand"):
+		state_machine.change_to("Fall_action_Left_Hand")
 
 	if (controlled_node.can_jump or controlled_node.velocity.y==0) and Input.is_action_pressed("Jump"):
 		state_machine.change_to("Jump")

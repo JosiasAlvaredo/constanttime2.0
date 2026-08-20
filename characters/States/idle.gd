@@ -10,9 +10,9 @@ func on_input(event: InputEvent) -> void:
 		state_machine.change_to("Jump")
 		
 	if Input.is_action_just_pressed("Left_hand"):
-		state_machine.change_to("Idle_action_Left_Hand")
-	elif Input.is_action_just_pressed("Right_hand"):
 		state_machine.change_to("Idle_action_Right_Hand")
+	elif Input.is_action_just_pressed("Right_hand"):
+		state_machine.change_to("Idle_action_Left_Hand")
 	
 	if controlled_node.current_torso!=null:
 		if controlled_node.current_torso.has_method("conect_Idle"):

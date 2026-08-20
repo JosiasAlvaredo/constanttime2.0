@@ -26,6 +26,10 @@ var can_take_left_hand=false
 
 func _ready() -> void:
 	parent=get_parent().get_parent()
+	
+	parent.right_hand_action=null
+	parent.left_hand_action=null
+	
 	for hability in parent.habilities_states.get_children():
 		hability.free()
 	
@@ -52,10 +56,20 @@ func _ready() -> void:
 		
 		can_take_right_hand=right_armSkills.can_take
 		
+		if GlobalValues.bodies_parts.right_hand!=null and can_take_right_hand:
+			var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.bodies_parts.right_hand._name).instantiate()
+			item.durability = GlobalValues.bodies_parts.right_hand.durability
+			parent.right_hand_action=item.use
+			item.slot_position=GlobalValues.bodies_parts.right_hand
+			
+			add_child(item)
+			
 		load_abilities(right_armSkills.number_habilities)
 		
 		add_child(right_arm)
-	
+		
+
+		
 	if body.left_arm!=null:
 		var left_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.left_arm._name).instantiate()
 		var left_armSkills=load("res://objets/body_parts/skills/%s.tres" %  body.left_arm._name)
@@ -66,10 +80,21 @@ func _ready() -> void:
 		total_weight+=left_armSkills.size
 		can_take_left_hand=left_armSkills.can_take
 		
+		if GlobalValues.bodies_parts.left_hand!=null and can_take_left_hand:
+			
+			var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.bodies_parts.left_hand._name).instantiate()
+			item.durability= GlobalValues.bodies_parts.left_hand.durability
+			parent.left_hand_action=item.use
+			item.slot_position=GlobalValues.bodies_parts.left_hand
+			
+			left_arm.add_child(item)
+			
 		load_abilities(left_armSkills.number_habilities)
 		
 		add_child(left_arm)
-	
+
+
+			
 	if body.legs!=null:
 		var legs=load("res://characters/player/Body_parts/legs/%s.tscn" % body.legs._name).instantiate()
 		var legsSkills=load("res://objets/body_parts/skills/%s.tres" %  body.legs._name)

@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bj64ousu087v2" path="res://objets/body_parts/stick_torso.tscn" id="15_6jkxb"]
 [ext_resource type="PackedScene" uid="uid://dkqv2s6wv6vun" path="res://objets/items/rock.tscn" id="16_3sorw"]
 [ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="17_1jhfv"]
+[ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="18_6tv0b"]
+[ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="19_he1ik"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aao4b"]
 texture = ExtResource("2_f37jf")
@@ -265,9 +267,15 @@ durability = 5
 [node name="Rock" parent="." unique_id=2017573643 instance=ExtResource("16_3sorw")]
 position = Vector2(-123, -69)
 
+[node name="Stick_item" parent="." unique_id=1284734035 instance=ExtResource("18_6tv0b")]
+position = Vector2(-44, -18)
+
 [node name="bird_wings" parent="." unique_id=1794513963 instance=ExtResource("17_1jhfv")]
 position = Vector2(-9, -31)
 
 [node name="slots" type="Node2D" parent="bird_wings" unique_id=1554065275]
 
 [node name="slots" type="Node2D" parent="bird_wings/slots" unique_id=1019386221]
+
+[node name="Stick_item2" parent="." unique_id=1055492467 instance=ExtResource("19_he1ik")]
+position = Vector2(-74, -56)

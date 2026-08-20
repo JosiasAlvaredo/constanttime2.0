@@ -73,8 +73,9 @@ func timer():
 	await get_tree().create_timer(0.5).timeout
 	can_drop=true
 	
+#agarrar el item del slot	
 func _on_button_down() -> void:
-	if user_interface.selected_body_part==null and GlobalValues.bodies_parts[slot_part]!=null and item_aux==null:
+	if user_interface.selected_body_part==null and GlobalValues.bodies_parts[slot_part]!=null and item_aux==null and user_interface.inventory.visible:
 		item_aux=GlobalValues.bodies_parts[slot_part].duplicate()
 		GlobalValues.bodies_parts[slot_part]=null
 		user_interface.selected_body_part=item_aux
