@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://dodqhuppv2s3b"]
+
+[ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/pruebas mazmorra/scripts/DungeonGenerator.gd" id="1_cu61f"]
+[ext_resource type="Texture2D" uid="uid://c5hggt18nb6y7" path="res://assets/plataformas.png" id="2_1wkap"]
+[ext_resource type="Script" uid="uid://pbafyefcwp5j" path="res://scenes/pruebas mazmorra/camera_2d.gd" id="3_8nhff"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8nhff"]
+texture = ExtResource("2_1wkap")
+1:0/0 = 0
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_or8m7"]
+sources/0 = SubResource("TileSetAtlasSource_8nhff")
+
+[node name="Mazmorra" type="Node2D" unique_id=936655814]
+script = ExtResource("1_cu61f")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1261564593]
+position = Vector2(510, 235)
+tile_set = SubResource("TileSet_or8m7")
+
+[node name="Dungeon" type="Node2D" parent="." unique_id=589111354]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=222708005]
+position = Vector2(1734, 271)
+zoom = Vector2(0.23, 0.23)
+script = ExtResource("3_8nhff")
