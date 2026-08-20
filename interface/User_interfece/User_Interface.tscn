@@ -158,6 +158,7 @@ script = ExtResource("1_jb0ip")
 metadata/_edit_horizontal_guides_ = [525.0]
 
 [node name="Inventory" type="Node2D" parent="." unique_id=1474233795]
+visible = false
 
 [node name="info" type="Node2D" parent="Inventory" unique_id=1646273436]
 position = Vector2(84, 0)

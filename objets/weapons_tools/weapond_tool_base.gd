@@ -13,7 +13,7 @@ var slot_position=null
 var player
 
 func _ready() -> void:
-	player=get_parent().get_parent().get_parent().get_parent()
+	player=get_parent().get_parent().get_parent()
 	
 
 func worn_out():
