@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b36wltqe1pgjx"]
+
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="1_0tesu"]
+[ext_resource type="Script" uid="uid://lsxepw08d3c5" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/pajarototem.gd" id="1_bdeei"]
+[ext_resource type="PackedScene" uid="uid://b51si4v42bm0k" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/Proyectil/pluma.tscn" id="2_5ewtc"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_bdeei"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ewtc"]
+size = Vector2(46, 91)
+
+[node name="Pajarototem" type="CharacterBody2D" unique_id=1624782377]
+script = ExtResource("1_bdeei")
+projectile_scene = ExtResource("2_5ewtc")
+
+[node name="State_Machine" parent="." unique_id=1059784330 instance=ExtResource("1_0tesu")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1524595309]
+position = Vector2(1, 9.536743e-07)
+scale = Vector2(0.4609375, 0.7578125)
+texture = ExtResource("2_bdeei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1347472814]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_5ewtc")
+
+[node name="PlayerRay" type="RayCast2D" parent="." unique_id=759064419]
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1634453197]

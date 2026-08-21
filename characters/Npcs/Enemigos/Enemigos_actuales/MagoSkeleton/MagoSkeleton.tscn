@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://ffsxrv0h2sji"]
+
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_8ikoc"]
+[ext_resource type="Script" uid="uid://cun046y682wp2" path="res://characters/Npcs/Enemigos/Enemigos_actuales/MagoSkeleton/mago_skeleton.gd" id="1_to86r"]
+[ext_resource type="PackedScene" uid="uid://bywkehgsxs5sh" path="res://characters/Npcs/Enemigos/Enemigos_actuales/MagoSkeleton/Proyectil/proyectil.tscn" id="2_8lirq"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_13x6i"]
+[ext_resource type="Script" uid="uid://b4dar0t7j77rv" path="res://characters/Npcs/Enemigos/Enemigos_actuales/MagoSkeleton/States/patrol(ms).gd" id="4_8lirq"]
+[ext_resource type="Script" uid="uid://c1dkbx5c07fmw" path="res://characters/Npcs/Enemigos/Enemigos_actuales/MagoSkeleton/States/shoot(ms).gd" id="5_13x6i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_to86r"]
+radius = 31.016125
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1143743863]
+script = ExtResource("1_to86r")
+projectile_scene = ExtResource("2_8lirq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1089262913]
+position = Vector2(0, -2.3841858e-07)
+scale = Vector2(0.5234375, 0.4921875)
+texture = ExtResource("1_8ikoc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1859914193]
+shape = SubResource("CircleShape2D_to86r")
+
+[node name="RayCasts" type="Node2D" parent="." unique_id=1232447014]
+
+[node name="FloorRay" type="RayCast2D" parent="RayCasts" unique_id=253507013]
+position = Vector2(35, 1)
+
+[node name="FrontRay" type="RayCast2D" parent="RayCasts" unique_id=115078959]
+target_position = Vector2(46, 0)
+
+[node name="PlayerRay" type="RayCast2D" parent="RayCasts" unique_id=1921206861]
+target_position = Vector2(-13, -69)
+collision_mask = 3
+
+[node name="Marker2D_ShootPoint" type="Marker2D" parent="." unique_id=1541936521]
+position = Vector2(27, -4)
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_13x6i")]
+default_state = NodePath("Patrol(MS)")
+
+[node name="Patrol(MS)" type="Node" parent="State_Machine" unique_id=2126851465]
+script = ExtResource("4_8lirq")
+
+[node name="Shoot(MS)" type="Node" parent="State_Machine" unique_id=1859850546]
+script = ExtResource("5_13x6i")

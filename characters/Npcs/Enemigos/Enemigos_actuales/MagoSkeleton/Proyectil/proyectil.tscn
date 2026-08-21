@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bywkehgsxs5sh"]
+
+[ext_resource type="Script" uid="uid://eitoy261lcsb" path="res://characters/Npcs/Enemigos/Enemigos_actuales/MagoSkeleton/Proyectil/proyectil.gd" id="1_w5cg8"]
+[ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="2_tmjsq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_veltu"]
+
+[node name="Proyectil" type="Area2D" unique_id=731576993]
+script = ExtResource("1_w5cg8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=873012636]
+position = Vector2(0.9999924, 2.0000076)
+scale = Vector2(0.091796875, 0.09375004)
+texture = ExtResource("2_tmjsq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1566796619]
+shape = SubResource("CircleShape2D_veltu")

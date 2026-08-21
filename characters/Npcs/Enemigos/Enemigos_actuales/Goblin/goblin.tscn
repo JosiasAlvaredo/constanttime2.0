@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dlnjjmts7p4fo"]
+
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="1_76ui1"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_hhum0"]
+
+[node name="Goblin" type="CharacterBody2D" unique_id=679533198]
+
+[node name="State_Machine" parent="." unique_id=1059784330 instance=ExtResource("1_76ui1")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=570203638]
+scale = Vector2(0.59375, 0.5546875)
+texture = ExtResource("2_hhum0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1044999715]
+
+[node name="RayCasts" type="Node2D" parent="." unique_id=1457824125]
+
+[node name="FloorRay" type="RayCast2D" parent="RayCasts" unique_id=700361979]
+
+[node name="FrontRay" type="RayCast2D" parent="RayCasts" unique_id=122940506]
+
+[node name="PlayerRay" type="RayCast2D" parent="RayCasts" unique_id=603394612]
