@@ -15,6 +15,6 @@ class_name body_part
 
 @export_enum("none","small","medium","big") var size:int
 
-enum Habilities {climb,attack, doble_jump}
+enum Habilities {climb,use,doble_jump}
 
 @export var number_habilities: Array[Habilities] = []

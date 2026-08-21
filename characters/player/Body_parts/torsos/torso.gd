@@ -63,6 +63,12 @@ func _ready() -> void:
 			item.slot_position=GlobalValues.bodies_parts.right_hand
 			
 			add_child(item)
+		elif skills.Habilities.use in right_armSkills.Habilities:
+			right_arm.player=parent
+			right_arm.slot_position=GlobalValues.bodies_parts.right_arm
+			parent.right_hand_action=right_arm.use
+			
+			
 			
 		load_abilities(right_armSkills.number_habilities)
 		
@@ -88,6 +94,11 @@ func _ready() -> void:
 			item.slot_position=GlobalValues.bodies_parts.left_hand
 			
 			left_arm.add_child(item)
+		elif skills.Habilities.use in left_armSkills.number_habilities:
+			
+			left_arm.player=parent
+			left_arm.slot_position=GlobalValues.bodies_parts.left_arm
+			parent.left_hand_action=left_arm.use
 			
 		load_abilities(left_armSkills.number_habilities)
 		

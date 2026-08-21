@@ -1,5 +1,5 @@
 extends weapond_item_base_class
-class_name arm_mele_base
+class_name Mele_base
 
 @onready var mele_front_collition: CollisionShape2D = $Mele_front/CollisionShape2D
 @onready var mele_down_collition: CollisionShape2D = $Mele_down/CollisionShape2D
@@ -32,7 +32,7 @@ func use(State):
 	animated_front.play("default")
 	animated_down.play("default")
 	animated_up.play("default")
-	
+	print(player)
 	player.state_machine.change_to(State)
 	player.hand_using=""
 

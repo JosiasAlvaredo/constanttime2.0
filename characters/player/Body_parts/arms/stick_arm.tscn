@@ -1,9 +1,104 @@
 [gd_scene format=3 uid="uid://dx53yec25iflw"]
 
+[ext_resource type="Script" uid="uid://6e3gqrji1cfh" path="res://objets/weapons_tools/scripts/stick.gd" id="1_cgd8v"]
 [ext_resource type="Texture2D" uid="uid://oko1txt8sr2q" path="res://assets/characters/Player/arms/stick.png" id="1_e85ak"]
+[ext_resource type="Texture2D" uid="uid://by0ycskrweplk" path="res://assets/effets/attack_mele.png" id="3_cgd8v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pgme"]
+size = Vector2(53.5, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wl2r2"]
+atlas = ExtResource("3_cgd8v")
+region = Rect2(0, 0, 128, 127)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmc3n"]
+atlas = ExtResource("3_cgd8v")
+region = Rect2(112, 0, 16, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ffq1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wl2r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmc3n")
+}],
+"loop": false,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="stick_arm" type="Node2D" unique_id=1126278460]
+script = ExtResource("1_cgd8v")
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=147274010]
 position = Vector2(0, 10)
 texture = ExtResource("1_e85ak")
+
+[node name="Mele_front" type="Area2D" parent="." unique_id=823626158]
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_front" unique_id=1518722356]
+position = Vector2(27.25, -2.5)
+shape = SubResource("RectangleShape2D_8pgme")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Mele_down" type="Area2D" parent="." unique_id=1915123647]
+position = Vector2(-24, 23)
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_down" unique_id=872179183]
+position = Vector2(25.25, 10)
+shape = SubResource("RectangleShape2D_8pgme")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Mele_up" type="Area2D" parent="." unique_id=1681754600]
+position = Vector2(-24, -31)
+collision_layer = 32
+collision_mask = 136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mele_up" unique_id=1471298612]
+position = Vector2(25.25, -2.5)
+shape = SubResource("RectangleShape2D_8pgme")
+disabled = true
+debug_color = Color(0.9805837, 0, 0.3824172, 0.41960785)
+
+[node name="Animated_front" type="AnimatedSprite2D" parent="." unique_id=120099002]
+modulate = Color(0.7607843, 0.3254902, 0, 1)
+position = Vector2(33, -2)
+scale = Vector2(0.54296875, 0.6023622)
+sprite_frames = SubResource("SpriteFrames_ffq1y")
+autoplay = "default"
+
+[node name="Animated_down" type="AnimatedSprite2D" parent="." unique_id=893264535]
+modulate = Color(0.7607843, 0.3254902, 0, 1)
+position = Vector2(3.8146973e-06, 39.999996)
+rotation = 1.5707964
+scale = Vector2(0.54296875, 0.6023622)
+sprite_frames = SubResource("SpriteFrames_ffq1y")
+autoplay = "default"
+
+[node name="Animated_up" type="AnimatedSprite2D" parent="." unique_id=1845536997]
+modulate = Color(0.7607843, 0.3254902, 0, 1)
+position = Vector2(3, -39.999996)
+rotation = -1.5707964
+scale = Vector2(0.54296875, 0.6023622)
+sprite_frames = SubResource("SpriteFrames_ffq1y")
+autoplay = "default"
+
+[connection signal="area_entered" from="Mele_front" to="." method="_on_mele_front_area_entered"]
+[connection signal="body_entered" from="Mele_front" to="." method="_on_mele_front_body_entered"]
+[connection signal="area_entered" from="Mele_down" to="." method="_on_mele_down_area_entered"]
+[connection signal="body_entered" from="Mele_down" to="." method="_on_mele_down_body_entered"]
+[connection signal="area_entered" from="Mele_up" to="." method="_on_mele_up_area_entered"]
+[connection signal="body_entered" from="Mele_up" to="." method="_on_mele_up_body_entered"]
