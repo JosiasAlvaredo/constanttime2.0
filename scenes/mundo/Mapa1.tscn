@@ -269,6 +269,8 @@ position = Vector2(-123, -69)
 
 [node name="Stick_item" parent="." unique_id=1284734035 instance=ExtResource("18_6tv0b")]
 position = Vector2(-44, -18)
+_name = "Torch"
+durability = 10
 
 [node name="bird_wings" parent="." unique_id=1794513963 instance=ExtResource("17_1jhfv")]
 position = Vector2(-9, -31)

@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="body_part" format=3 uid="uid://8rtslj730bw4"]
 
-[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_r1v3w"]
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://objets/body_parts/skills/body_part.gd" id="1_r1v3w"]
 
 [resource]
 script = ExtResource("1_r1v3w")
 _name = "other_arm"
-durability = 5
+max_durability = 25
+durability = 50
 damage = 10
 can_take = true
 size = 2

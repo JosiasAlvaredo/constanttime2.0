@@ -3,6 +3,7 @@ class_name body_part
 
 @export var _name=""
 
+@export var max_durability=0
 @export var durability=0
 @export var speed=0
 @export var jump_force=0

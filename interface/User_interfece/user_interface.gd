@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 		#mostrar cosas en el piso y ordenarlas
 		for i in range(len(near_objets)):
 			if i%5==4:
-				pos_y+=50
+				pos_y+=60
 			var near_objet=near_objets[i]
 			var new_slot_item=load("res://interface/User_interfece/slot_items/slot_item.tscn").instantiate()
 			near_objets_node.add_child(new_slot_item)
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			new_slot_item.path="res://objets/body_parts/%s.tscn" % near_objet._name
 			
 			new_slot_item._name=near_objet._name
-			new_slot_item.save_position=Vector2((i%5)*50,pos_y)
+			new_slot_item.save_position=Vector2((i%5)*60,pos_y)
 			new_slot_item.link_to_original=near_objet
 		save_near_objets=near_objets.duplicate()
 	

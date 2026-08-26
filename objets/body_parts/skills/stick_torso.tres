@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="body_part" format=3 uid="uid://cvlwbwwcjiat1"]
 
-[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_s1rvo"]
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://objets/body_parts/skills/body_part.gd" id="1_s1rvo"]
 
 [resource]
 script = ExtResource("1_s1rvo")
 _name = "stick_torso"
+max_durability = 25
 durability = 5
 shockwave = 10
 size = 1

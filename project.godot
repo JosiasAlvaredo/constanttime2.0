@@ -24,6 +24,7 @@ config/icon="res://assets/icon.svg"
 DialogueManager="*uid://c3rodes2l3gxb"
 GlobalValues="*res://autoloads/global_values.gd"
 GameManager="*res://autoloads/game_manager.gd"
+ActiveEffects="*uid://d3biepvntpwx0"
 
 [dialogue_manager]
 

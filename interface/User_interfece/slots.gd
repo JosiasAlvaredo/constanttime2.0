@@ -1,7 +1,8 @@
 extends Button
 
 @onready var user_interface: CanvasLayer = $"../../../.."
-@onready var durability_node: Label = $Durability
+
+@onready var durability_node: ColorRect = $Durability
 
 @export_enum("torso","left_arm","right_arm","legs","right_hand","left_hand" ) var slot_part: String
 
@@ -17,7 +18,7 @@ var taking_thing=false
 var item_aux=null
 
 var moving_thing=false
-
+var durability=0
 func _ready() -> void:
 	save_position=position
 	await  get_tree().create_timer(0.1).timeout
@@ -30,13 +31,22 @@ func _physics_process(delta: float) -> void:
 			taking_thing=true
 			get_parent().add_child(item_aux)
 			
+
 	#lo que se muestra en el slot (el objeto que esta ahi o nada)
 	if GlobalValues.bodies_parts[slot_part]!=null and (item_aux==null or not moving_thing) :
 		icon=GlobalValues.bodies_parts[slot_part].get_child(0).icon
-		durability_node.text=str(int(GlobalValues.bodies_parts[slot_part].durability))
+		var skill=load("res://objets/body_parts/skills/%s.tres" % GlobalValues.bodies_parts[slot_part]._name)
+		if skill==null:
+			skill=load("res://objets/items/skills/%s.tres" % GlobalValues.bodies_parts[slot_part]._name)
+		else:
+			skill=skill.duplicate()
+			
+		var durability_percent=float(GlobalValues.bodies_parts[slot_part].durability)/skill.max_durability
+		durability_node.size.x=durability_percent*53
+		durability_node.color=Color8(255-255*durability_percent,255*durability_percent,0)
 	elif moving_thing or GlobalValues.bodies_parts[slot_part]==null:
 		icon=null
-		durability_node.text=""
+		durability_node.size.x=0
 
 	#agregar algo en el slot o itercambiarlo con otra cosa
 	if Input.is_action_just_pressed("Left_hand") and user_interface.selected_body_part!=null and mouse_on_this_slot and ((can_drop and item_aux!=null) or item_aux==null):
@@ -135,6 +145,7 @@ func turn(_bool):
 		
 		if drop==null:
 			drop=load("res://objets/items/%s.tscn" % item_aux._name)
+			
 		if drop==null:
 			return
 			

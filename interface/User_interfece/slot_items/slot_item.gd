@@ -6,7 +6,7 @@ extends Node2D
 @export var kind=[]
 
 @onready var button: Button = $Button
-@onready var durability_node: Label = $Durability
+@onready var durability_node = $Durability
 
 var path
 
@@ -18,10 +18,22 @@ var drop=null
 
 
 func _ready() -> void:
+	var skill
+	
 	parent=get_parent().get_parent().get_parent().get_parent()
 	await  get_tree().create_timer(0.1).timeout
+	
+	skill=load("res://objets/body_parts/skills/%s.tres" % _name)
+	if skill==null:
+		skill=load("res://objets/items/skills/%s.tres" % _name)
+	else:
+		skill=skill.duplicate()
 	position=save_position
-	durability_node.text=str(int(durability))
+	
+	var durability_percent=float(durability)/skill.max_durability
+	durability_node.size.x=durability_percent*53
+		
+	durability_node.color=Color8(255-255*durability_percent,255*durability_percent,0)
 	if link_to_original!=null:
 		drop=link_to_original.duplicate()
 	
@@ -63,3 +75,7 @@ func _on_button_mouse_entered() -> void:
 
 func _on_button_mouse_exited() -> void:
 	parent.timer_clouse_info()
+	
+func check_player(user_interface):
+	if parent==null:
+		parent=user_interface

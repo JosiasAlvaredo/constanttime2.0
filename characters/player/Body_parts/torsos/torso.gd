@@ -1,9 +1,11 @@
 extends Node2D
+
+@onready var user_interface: CanvasLayer = $"../../../User_Interface"
+
+
 @onready var right_arm_position: Node2D = $right_arm_position
 @onready var left_arm_position: Node2D = $left_arm_position
 @onready var legs_position: Node2D = $legs_position
-
-
 
 var total_weight
 var body
@@ -24,6 +26,8 @@ var abilities_fall_conections=[]
 var can_take_right_hand=false
 var can_take_left_hand=false
 
+var shockwave
+
 func _ready() -> void:
 	parent=get_parent().get_parent()
 	
@@ -37,6 +41,7 @@ func _ready() -> void:
 	
 	if body.torso !=null:
 		_name=body.torso._name
+		body.torso.check_player(user_interface)
 	else:
 		_name="none"
 		
@@ -55,13 +60,14 @@ func _ready() -> void:
 		total_weight+=right_armSkills.size
 		
 		can_take_right_hand=right_armSkills.can_take
+		body.right_arm.check_player(user_interface)
 		
-		if GlobalValues.bodies_parts.right_hand!=null and can_take_right_hand:
-			var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.bodies_parts.right_hand._name).instantiate()
-			item.durability = GlobalValues.bodies_parts.right_hand.durability
+		if body.right_hand!=null and can_take_right_hand:
+			var item = load("res://objets/weapons_tools/%s.tscn" % body.right_hand._name).instantiate()
+			item.durability = body.right_hand.durability
 			parent.right_hand_action=item.use
 			item.slot_position=GlobalValues.bodies_parts.right_hand
-			
+			GlobalValues.bodies_parts.right_hand.check_player(user_interface)
 			add_child(item)
 		elif skills.Habilities.use in right_armSkills.Habilities:
 			right_arm.player=parent
@@ -85,13 +91,16 @@ func _ready() -> void:
 		count_parts+=1
 		total_weight+=left_armSkills.size
 		can_take_left_hand=left_armSkills.can_take
+		body.left_arm.check_player(user_interface)
 		
-		if GlobalValues.bodies_parts.left_hand!=null and can_take_left_hand:
+		if body.left_hand!=null and can_take_left_hand:
 			
-			var item = load("res://objets/weapons_tools/%s.tscn" % GlobalValues.bodies_parts.left_hand._name).instantiate()
-			item.durability= GlobalValues.bodies_parts.left_hand.durability
+			var item = load("res://objets/weapons_tools/%s.tscn" % body.left_hand._name).instantiate()
+			item.durability= body.left_hand.durability
 			parent.left_hand_action=item.use
 			item.slot_position=GlobalValues.bodies_parts.left_hand
+			
+			body.left_hand.check_player(user_interface)
 			
 			left_arm.add_child(item)
 		elif skills.Habilities.use in left_armSkills.number_habilities:
@@ -111,6 +120,7 @@ func _ready() -> void:
 		var legsSkills=load("res://objets/body_parts/skills/%s.tres" %  body.legs._name)
 		legs.position=legs_position.position
 		
+		body.legs.check_player(user_interface)
 		
 		skills.speed+=legsSkills.speed
 		skills.jump_force+=legsSkills.jump_force
@@ -135,7 +145,7 @@ func _ready() -> void:
 	if skills.jump_force>0:
 		skills.jump_force=0
 	
-	var shockwave=float(skills.shockwave)/100.0
+	shockwave=float(skills.shockwave)/100.0
 	
 	parent.body_up=$Body_up
 	parent.body_down=$Body_Down
@@ -143,9 +153,8 @@ func _ready() -> void:
 
 func torso_damage(_damage):
 	#desgaste del torso
-	var part_wear=skills.shockwave*_damage
+	var part_wear=shockwave*_damage
 	#daño dirigido a las partes del cuerpo
-	
 	if body.torso!=null:
 		body.torso.damage(part_wear)
 	if body.right_arm!=null:
@@ -154,7 +163,6 @@ func torso_damage(_damage):
 		body.left_arm.damage((_damage-part_wear)/count_parts)
 	if body.legs!=null:
 		body.legs.damage((_damage-part_wear)/int(count_parts/2))
-
 
 #Carga los nodos de estado en el nodo abilities del state machine
 func load_abilities(number_habilities):

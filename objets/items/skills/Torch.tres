@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Weapons" format=3 uid="uid://b31pmodwcfx6w"]
+
+[ext_resource type="Script" uid="uid://csg6c1ni2e46a" path="res://objets/items/skills/Weapons.gd" id="1_kifpi"]
+
+[resource]
+script = ExtResource("1_kifpi")
+_name = "Torch"
+max_durability = 23
+durability = 23
+damage = 1
+number_effects = Array[int]([0])
+metadata/_custom_type_script = "uid://csg6c1ni2e46a"

@@ -22,15 +22,13 @@ var trapped=false
 var can_roll=true
 var can_jump=true
 
-# variable que guarda las variables cahe para los estados de las habilidades
-var cache={}
+
 
 var gravity:float= ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _enter_tree() -> void:
 	Knockback_resistence=1-(Knockback_resistence/100)
-	
-	
+		
 func delay_roll():
 	can_roll=false
 	await get_tree().create_timer(0.4).timeout
