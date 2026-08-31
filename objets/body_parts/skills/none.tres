@@ -1,8 +1,30 @@
 [gd_resource type="Resource" script_class="body_part" format=3 uid="uid://fpat084jnwtx"]
 
-[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://objets/body_parts/skills/body_part.gd" id="1_4px42"]
+[sub_resource type="GDScript" id="GDScript_hg3sj"]
+script/source = "extends Resource
+class_name body_part
+
+@export var _name=\"\"
+
+@export var max_durability=0
+@export var durability=0
+@export var speed=0
+@export var jump_force=0
+@export var damage=0
+
+#es el porcentaje de daño q se lleva esta parte (por ahora solo funciona para el torso)
+@export var shockwave=0
+
+@export var can_take=false
+
+@export_enum(\"none\",\"small\",\"medium\",\"big\") var size:int
+
+enum Habilities {climb,use,doble_jump}
+
+@export var number_habilities: Array[Habilities] = []
+"
 
 [resource]
-script = ExtResource("1_4px42")
+script = SubResource("GDScript_hg3sj")
 _name = "none"
 metadata/_custom_type_script = "uid://c5pevm087pgoq"
