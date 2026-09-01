@@ -9,6 +9,9 @@
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_qkgah")
+speed = 150.0
+wave_amplitude = 70.0
+wave_frequency = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1971228792]
 position = Vector2(1, 1.0000019)

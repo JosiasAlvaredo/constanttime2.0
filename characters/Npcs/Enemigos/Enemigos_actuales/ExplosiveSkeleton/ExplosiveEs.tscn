@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dv63oqe8t1dw0"]
+
+[ext_resource type="Script" uid="uid://c7aed8eiu73sv" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/explosive_es.gd" id="1_jn6cw"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_qg6ew"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_o5d0m"]
+[ext_resource type="Script" uid="uid://cmwesc62wb7x1" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/patrol(explo_esqueleton).gd" id="4_mx7ti"]
+[ext_resource type="Script" uid="uid://o7ng2dwabjmi" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/chase(explo_squeleton).gd" id="5_mx7ti"]
+[ext_resource type="Script" uid="uid://dgugp6r5400l7" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/explode(explo_squeleton).gd" id="6_gsqr8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5d0m"]
+size = Vector2(57, 56)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsqr8"]
+radius = 74.24284
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=638024466]
+collision_layer = 128
+script = ExtResource("1_jn6cw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1243284924]
+position = Vector2(-1.9073486e-06, -1)
+scale = Vector2(0.515625, 0.5)
+texture = ExtResource("2_qg6ew")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528252697]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_o5d0m")
+
+[node name="RayCasts" type="Node2D" parent="." unique_id=475601368]
+
+[node name="FrontRay" type="RayCast2D" parent="RayCasts" unique_id=763930651]
+target_position = Vector2(48, 0)
+
+[node name="PlayerRay" type="RayCast2D" parent="RayCasts" unique_id=1356391452]
+position = Vector2(-1, 25)
+target_position = Vector2(254, 0)
+collision_mask = 2
+
+[node name="FloorRay" type="RayCast2D" parent="RayCasts" unique_id=1458575140]
+position = Vector2(58, -1)
+
+[node name="ExplosionArea" type="Area2D" parent="." unique_id=1542077685]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1489260104]
+shape = SubResource("CircleShape2D_gsqr8")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_o5d0m")]
+default_state = NodePath("Patrol(exploSqueleton)")
+
+[node name="Patrol(exploSqueleton)" type="Node" parent="State_Machine" unique_id=422228116]
+script = ExtResource("4_mx7ti")
+
+[node name="Chase(exploSqueleton)" type="Node" parent="State_Machine" unique_id=214762295]
+script = ExtResource("5_mx7ti")
+
+[node name="Explode(exploSqueleton)" type="Node" parent="State_Machine" unique_id=796420121]
+script = ExtResource("6_gsqr8")

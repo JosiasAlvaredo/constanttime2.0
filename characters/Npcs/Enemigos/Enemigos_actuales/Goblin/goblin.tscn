@@ -1,22 +1,49 @@
-[gd_scene format=3 uid="uid://dlnjjmts7p4fo"]
+[gd_scene format=3 uid="uid://clq514hbk7bnh"]
 
-[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="1_76ui1"]
-[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_hhum0"]
+[ext_resource type="Script" uid="uid://bt0dc8l4g3b20" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.gd" id="1_lygnl"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_y6xvf"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_gt12a"]
+[ext_resource type="Script" uid="uid://bnycfxlb6s5xf" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/states/idle_g.gd" id="4_s4rcc"]
+[ext_resource type="Script" uid="uid://gvyj3h67dvyg" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/states/chase_g.gd" id="5_vhtpj"]
+[ext_resource type="Script" uid="uid://7b6jugfi6gny" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/states/jump_g.gd" id="6_ro4jv"]
+[ext_resource type="Script" uid="uid://fp3fmne7pkmu" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/states/fall_g.gd" id="7_ro4jv"]
 
-[node name="Goblin" type="CharacterBody2D" unique_id=679533198]
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0suq"]
+radius = 22.022715
 
-[node name="State_Machine" parent="." unique_id=1059784330 instance=ExtResource("1_76ui1")]
+[node name="Goblin" type="CharacterBody2D" unique_id=1029094022]
+script = ExtResource("1_lygnl")
+speed = 200.0
+jump_force = -500.0
+follow_distance = 600.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=570203638]
-scale = Vector2(0.59375, 0.5546875)
-texture = ExtResource("2_hhum0")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=881347514]
+position = Vector2(-1, 3.8146973e-06)
+scale = Vector2(0.4140625, 0.3671875)
+texture = ExtResource("2_y6xvf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1044999715]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=543943449]
+shape = SubResource("CircleShape2D_n0suq")
 
-[node name="RayCasts" type="Node2D" parent="." unique_id=1457824125]
+[node name="RayCasts" type="Node2D" parent="." unique_id=600254767]
 
-[node name="FloorRay" type="RayCast2D" parent="RayCasts" unique_id=700361979]
+[node name="FrontRay" type="RayCast2D" parent="RayCasts" unique_id=257974828]
+target_position = Vector2(62, 0)
 
-[node name="FrontRay" type="RayCast2D" parent="RayCasts" unique_id=122940506]
+[node name="FloorRay" type="RayCast2D" parent="RayCasts" unique_id=544987316]
+position = Vector2(44, -1)
 
-[node name="PlayerRay" type="RayCast2D" parent="RayCasts" unique_id=603394612]
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_gt12a")]
+default_state = NodePath("IdleG")
+
+[node name="JumpG" type="Node" parent="State_Machine" unique_id=1844541224]
+script = ExtResource("6_ro4jv")
+
+[node name="IdleG" type="Node" parent="State_Machine" unique_id=1218357372]
+script = ExtResource("4_s4rcc")
+
+[node name="ChaseG" type="Node" parent="State_Machine" unique_id=1396031772]
+script = ExtResource("5_vhtpj")
+
+[node name="FallG" type="Node" parent="State_Machine" unique_id=984207308]
+script = ExtResource("7_ro4jv")
