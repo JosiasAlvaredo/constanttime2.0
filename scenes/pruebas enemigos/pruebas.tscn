@@ -2,7 +2,15 @@
 
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_6pp24"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="1_vvag6"]
-[ext_resource type="PackedScene" uid="uid://clq514hbk7bnh" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/Goblin.tscn" id="3_vvag6"]
+[ext_resource type="PackedScene" uid="uid://dlnjjmts7p4fo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/Goblin.tscn" id="3_vvag6"]
+[ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="4_qiklu"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/other_arm.tscn" id="5_1nmdi"]
+[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="6_w7rhc"]
+[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick_arm.tscn" id="7_1c5xe"]
+[ext_resource type="PackedScene" uid="uid://cf732aoc4a0dv" path="res://objets/body_parts/stick_legs.tscn" id="8_efm7s"]
+[ext_resource type="PackedScene" uid="uid://bj64ousu087v2" path="res://objets/body_parts/stick_torso.tscn" id="9_2f5eg"]
+[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="10_w7rhc"]
+[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="11_1c5xe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvb5p"]
 size = Vector2(799, 124)
@@ -14,6 +22,9 @@ size = Vector2(1085, 20)
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("1_vvag6")]
 position = Vector2(754, 360)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=414066125]
+zoom = Vector2(1.5, 1.5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1870115442]
 position = Vector2(247, 463)
@@ -33,3 +44,26 @@ shape = SubResource("RectangleShape2D_vvag6")
 
 [node name="Goblin" parent="." unique_id=1029094022 instance=ExtResource("3_vvag6")]
 position = Vector2(254, 255)
+collision_layer = 4
+
+[node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("4_qiklu")]
+position = Vector2(676, 357)
+
+[node name="stick_arm" parent="." unique_id=207645265 instance=ExtResource("5_1nmdi")]
+position = Vector2(639, 366)
+
+[node name="stick_arm2" parent="." unique_id=489407587 instance=ExtResource("6_w7rhc")]
+position = Vector2(797, 374)
+
+[node name="stick_arm3" parent="." unique_id=1851522366 instance=ExtResource("7_1c5xe")]
+position = Vector2(600, 368)
+
+[node name="stick_arm4" parent="." unique_id=2091530953 instance=ExtResource("8_efm7s")]
+position = Vector2(856, 370)
+
+[node name="stick_arm5" parent="." unique_id=1666670675 instance=ExtResource("9_2f5eg")]
+position = Vector2(714, 368)
+
+[node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("10_w7rhc")]
+
+[node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("11_1c5xe")]

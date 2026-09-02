@@ -25,7 +25,8 @@ func Max_height():
 	current_state=States.Starting
 	
 func Stopping():
-	scale.y=move_toward(scale.y,height_limit*2,height_limit*2/10)
+	scale.y=move_toward(scale.y,0,scale.y/200)
 	if scale.y>=height_limit*2:
-		current_state=States.Max_height
-		Max_height()
+		get_child(2)
+		queue_free()
+		
