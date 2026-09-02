@@ -43,6 +43,9 @@ var current_torso=null
 var left_hand_action=null
 var right_hand_action=null
 
+func _ready() -> void:
+	$".".z_index = 10
+	
 func _physics_process(delta: float) -> void:
 	
 	direction=-Input.get_axis("Right","Left")

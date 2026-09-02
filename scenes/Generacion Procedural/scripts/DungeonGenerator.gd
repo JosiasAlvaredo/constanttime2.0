@@ -33,34 +33,34 @@ const ALL_SOCKET_NAMES: Array[String] = [
 ]
 
 
-const START_MODULE: PackedScene = preload("res://scenes/pruebas mazmorra/modules/start/StartRoom_01.tscn")
+const START_MODULE: PackedScene = preload("res://scenes/Generacion Procedural/Cueva/start/StartRoom_01.tscn")
 
 
 const ROOM_MODULES: Array[PackedScene] = [
-	preload("res://scenes/pruebas mazmorra/modules/rooms/normal/room_01.tscn"),
-	preload("res://scenes/pruebas mazmorra/modules/rooms/normal/room_02.tscn"),
-	preload("res://scenes/pruebas mazmorra/modules/rooms/normal/room_03.tscn")
+	preload("res://scenes/Generacion Procedural/Cueva/rooms/normal/room_01.tscn"),
+	preload("res://scenes/Generacion Procedural/Cueva/rooms/normal/room_02.tscn"),
+	preload("res://scenes/Generacion Procedural/Cueva/rooms/normal/room_03.tscn")
 ]
 
 # CORREDORES HORIZONTALES
 const CORRIDOR_H_MODULES: Array[PackedScene] = [
-	preload("res://scenes/pruebas mazmorra/modules/corridors/horizontal/corridorH_01.tscn")
+	preload("res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_01.tscn")
 ]
 
 # CORREDORES VERTICALES
 const CORRIDOR_V_MODULES: Array[PackedScene] = [
-	preload("res://scenes/pruebas mazmorra/modules/corridors/vertical/corridorV_01.tscn")
+	preload("res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_01.tscn")
 ]
 
 # HABITACIONES DE TESOROS
 const TREASURE_MODULES: Array[PackedScene] = [
-	preload("res://scenes/pruebas mazmorra/modules/treasure/treasure_01.tscn"),
-	preload("res://scenes/pruebas mazmorra/modules/treasure/treasure_02.tscn")
+	preload("res://scenes/Generacion Procedural/Cueva/treasure/treasure_01.tscn"),
+	preload("res://scenes/Generacion Procedural/Cueva/treasure/treasure_02.tscn")
 ]
 
 # HABITACIONES DE JEFES
 const BOSS_MODULES: Array[PackedScene] = [
-	preload("res://scenes/pruebas mazmorra/modules/boss/boss_01.tscn")
+	preload("res://scenes/Generacion Procedural/Cueva/boss/boss_01.tscn")
 ]
 
 
@@ -73,6 +73,8 @@ var pending_sockets: Array[Marker2D] = []
 
 func _ready():
 	randomize()
+	dungeon.z_index = -10
+
 	generate_dungeon()
 
 
