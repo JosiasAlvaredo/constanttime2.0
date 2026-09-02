@@ -24,6 +24,9 @@ const SOCKET_TO_DOOR: Dictionary = {
 	"SocketDown": "puertaDown"
 }
 
+const SOCKET_TO_DECORATION: Dictionary = {
+	"SocketUp": "escaleras"
+}
 
 const ALL_SOCKET_NAMES: Array[String] = [
 	"SocketLeft",
@@ -848,20 +851,30 @@ func process_door(module: Node2D, socket_name: String, door_name: String):
 		door_name
 	)
 	
-	if door == null:
-		print("[PUERTA NO ENCONTRADA] ", module.name, " -> ", door_name)
-		return
-	
 	if socket == null:
 		return
 	
-	if pending_sockets.has(socket):
-		set_node_visible(door, true)
-		print("[PUERTA CERRADA] ", module.name, " -> ", door_name)
-	else:
-		set_node_visible(door, false)
-		print("[PUERTA ABIERTA] ", module.name, " -> ", door_name)
-
+	if door != null:
+		var is_closed: bool = pending_sockets.has(socket)
+		
+		set_node_visible(
+			door,
+			is_closed
+		)
+		
+		# ESCALERA RELACIONADA CON ESTE SOCKET
+		if SOCKET_TO_DECORATION.has(socket_name):
+			var stairs_name: String = SOCKET_TO_DECORATION[socket_name]
+			var stairs: Node = find_node(
+				module,
+				stairs_name
+			)
+			
+			if stairs == null:
+				set_node_visible(
+					stairs,
+					not is_closed
+				)
 
 
 # BUSCAR CUALQUIER NODO

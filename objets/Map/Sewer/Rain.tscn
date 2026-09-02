@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://fc1dpos8li5i"]
+[gd_scene load_steps=0 format=3 uid="uid://fc1dpos8li5i"]
 
 [ext_resource type="Script" uid="uid://msnxtpivwisv" path="res://objets/Map/Sewer/rain.gd" id="1_3i3it"]
 
