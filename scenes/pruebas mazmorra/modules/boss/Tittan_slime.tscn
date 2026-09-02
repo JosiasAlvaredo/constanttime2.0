@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dd2mm4a5yiy5p"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_u5ba2"]
+[ext_resource type="PackedScene" uid="uid://cj0ou4wf85852" path="res://objets/Map/Sewer/geiser.tscn" id="2_3ewjs"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_xw1op"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="3_x64x2"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="4_fj2j5"]
@@ -9,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="7_jmps0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kupbu"]
-size = Vector2(896, 513)
+size = Vector2(896, 672)
 
 [node name="Slime_boss" type="Node2D" unique_id=943335602]
 
@@ -37,11 +38,15 @@ position = Vector2(0, 256)
 [node name="SocketRight" type="Marker2D" parent="." unique_id=1183475517]
 position = Vector2(896, 256)
 
+[node name="Geiser" parent="." unique_id=804250531 instance=ExtResource("2_3ewjs")]
+position = Vector2(481, 261)
+scale = Vector2(3.0868597, 0.68226814)
+
 [node name="Bounds" type="Area2D" parent="." unique_id=1546742542]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=315693857]
-position = Vector2(448, 255.5)
+position = Vector2(448, 176)
 shape = SubResource("RectangleShape2D_kupbu")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_xw1op")]

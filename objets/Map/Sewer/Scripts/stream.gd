@@ -1,0 +1,29 @@
+extends Area2D
+
+@export var height_limit=0
+@export var stream_time=0
+
+enum States{Starting,Max_height,Stopping}
+
+var current_state=States.Starting
+
+func _physics_process(delta: float) -> void:
+	match current_state:
+		
+		States.Starting:Starting()
+		
+		States.Stopping:Stopping()
+	
+func Starting():
+	scale.y=move_toward(scale.y,height_limit*2,height_limit*2/10)
+	if scale.y>=height_limit*2:
+		current_state=States.Max_height
+		Max_height()
+		
+func Max_height():
+	scale.y=move_toward(scale.y,height_limit*2,height_limit*2/10)
+	if scale.y>=height_limit*2:
+		current_state=States.Max_height
+	
+func Stopping():
+	pass
