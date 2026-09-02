@@ -881,11 +881,12 @@ func find_node(root: Node, node_name: String) -> Node:
 # VISIBILIDAD
 func set_node_visible(node: Node, value: bool):
 	if node is CanvasItem:
-		var canvas_item: CanvasItem = (
-			node as CanvasItem
-		)
-		
+		var canvas_item: CanvasItem = node as CanvasItem
 		canvas_item.visible = value
+	
+	if node is TileMapLayer:
+		var tilemap: TileMapLayer = node as TileMapLayer
+		tilemap.collision_enabled = value
 
 
 # LIMPIAR
