@@ -21,9 +21,11 @@ func Starting():
 		Max_height()
 		
 func Max_height():
+	await get_tree().create_timer(stream_time).timeout
+	current_state=States.Starting
+	
+func Stopping():
 	scale.y=move_toward(scale.y,height_limit*2,height_limit*2/10)
 	if scale.y>=height_limit*2:
 		current_state=States.Max_height
-	
-func Stopping():
-	pass
+		Max_height()
