@@ -7,14 +7,14 @@
 [ext_resource type="Script" uid="uid://bit7d61a2e1ls" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Slide(BSlime).gd" id="5_wfn5g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ys45m"]
-radius = 77.16217
+radius = 22.803509
 
 [node name="BigSlime" type="CharacterBody2D" unique_id=1982467406]
 script = ExtResource("1_48nwi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1116133155]
-position = Vector2(1, 0)
-scale = Vector2(1.328125, 1.2109375)
+position = Vector2(0, -0.5)
+scale = Vector2(0.40625, 0.42968747)
 texture = ExtResource("2_wfn5g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475176251]
@@ -23,11 +23,11 @@ shape = SubResource("CircleShape2D_ys45m")
 [node name="RayCast" type="Node2D" parent="." unique_id=328842527]
 
 [node name="FloorRay" type="RayCast2D" parent="RayCast" unique_id=1538487330]
-position = Vector2(113, -1)
-target_position = Vector2(0, 105)
+position = Vector2(25, -6)
+target_position = Vector2(0, 36)
 
 [node name="FrontRay" type="RayCast2D" parent="RayCast" unique_id=224983737]
-target_position = Vector2(101, 0)
+target_position = Vector2(29, 0)
 
 [node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_tusuu")]
 default_state = NodePath("Idle(BSlime)")
