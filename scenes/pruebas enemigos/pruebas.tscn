@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bsrp2j8oajenr"]
 
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_6pp24"]
-[ext_resource type="PackedScene" uid="uid://b36wltqe1pgjx" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/pajarototem.tscn" id="1_l04ph"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="1_vvag6"]
+[ext_resource type="PackedScene" uid="uid://clq514hbk7bnh" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/Goblin.tscn" id="3_vvag6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvb5p"]
 size = Vector2(799, 124)
@@ -11,11 +11,6 @@ size = Vector2(799, 124)
 size = Vector2(1085, 20)
 
 [node name="Pruebas" type="Node2D" unique_id=1605760903]
-
-[node name="Pajarototem" parent="." unique_id=1624782377 instance=ExtResource("1_l04ph")]
-position = Vector2(610, 361)
-attack_width = 600.0
-attack_cooldown = 0.5
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("1_vvag6")]
 position = Vector2(754, 360)
@@ -35,3 +30,6 @@ texture = ExtResource("1_6pp24")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=756142402]
 position = Vector2(426, -285)
 shape = SubResource("RectangleShape2D_vvag6")
+
+[node name="Goblin" parent="." unique_id=1029094022 instance=ExtResource("3_vvag6")]
+position = Vector2(254, 255)

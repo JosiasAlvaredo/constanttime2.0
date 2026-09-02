@@ -1,45 +1,36 @@
 extends CharacterBody2D
 
 @export var projectile_scene: PackedScene
-@export var attack_width := 300.0
-@export var attack_height := 300.0
-@export var attack_cooldown := 1.5
+@export var spread_angle := 20.0
 
-var cooldown := 0.0
+var player: Node2D = null
 
-
-func _physics_process(delta):
-	cooldown -= delta
-
-	if cooldown <= 0:
-		spawn_projectile()
-		cooldown = attack_cooldown
+@onready var shoot_point: Marker2D = $ShootPoint
 
 
-func spawn_projectile():
-	var projectile = projectile_scene.instantiate()
+func shoot():
+	if player == null:
+		return
 
-	get_parent().add_child(projectile)
+	var direction = (player.global_position - shoot_point.global_position).normalized()
 
-	var random_x = randf_range(
-		global_position.x - attack_width / 2,
-		global_position.x + attack_width / 2
-	)
+	for i in range(4):
+		var projectile = projectile_scene.instantiate()
+		get_parent().add_child(projectile)
 
-	var from_top = randi() % 2 == 0
-
-	if from_top:
-		projectile.global_position = Vector2(
-			random_x,
-			global_position.y - attack_height
+		var angle = deg_to_rad(
+			-spread_angle / 2.0 + (spread_angle / 3.0) * i
 		)
 
-		projectile.direction = 1
+		projectile.global_position = shoot_point.global_position
+		projectile.direction = direction.rotated(angle)
 
-	else:
-		projectile.global_position = Vector2(
-			random_x,
-			global_position.y
-		)
 
-		projectile.direction = -1
+func _on_detection_area_body_entered(body):
+	if body.is_in_group("player"):
+		player = body
+
+
+func _on_detection_area_body_exited(body):
+	if body == player:
+		player = null

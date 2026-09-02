@@ -4,15 +4,20 @@
 [ext_resource type="Script" uid="uid://lsxepw08d3c5" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/pajarototem.gd" id="1_bdeei"]
 [ext_resource type="PackedScene" uid="uid://b51si4v42bm0k" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/Proyectil/pluma.tscn" id="2_5ewtc"]
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_bdeei"]
+[ext_resource type="Script" uid="uid://2fiw30huf5q1" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/idle(totem).gd" id="4_idmj4"]
+[ext_resource type="Script" uid="uid://yigefk4ydxvm" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/attack(totem).gd" id="6_wrqnx"]
+[ext_resource type="Script" uid="uid://cvwn0tvhbp3gn" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/cooldown(totem).gd" id="7_iadch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ewtc"]
 size = Vector2(46, 91)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idmj4"]
+size = Vector2(638, 290)
+
 [node name="Pajarototem" type="CharacterBody2D" unique_id=1624782377]
 script = ExtResource("1_bdeei")
 projectile_scene = ExtResource("2_5ewtc")
-
-[node name="State_Machine" parent="." unique_id=1059784330 instance=ExtResource("1_0tesu")]
+spread_angle = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1524595309]
 position = Vector2(1, 9.536743e-07)
@@ -25,4 +30,28 @@ shape = SubResource("RectangleShape2D_5ewtc")
 
 [node name="PlayerRay" type="RayCast2D" parent="." unique_id=759064419]
 
-[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1634453197]
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1634453197]
+position = Vector2(0, -78)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=460103693]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=786585061]
+position = Vector2(5, -98)
+shape = SubResource("RectangleShape2D_idmj4")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("1_0tesu")]
+default_state = NodePath("Idle(totem)")
+
+[node name="Idle(totem)" type="Node" parent="State_Machine" unique_id=446195159]
+script = ExtResource("4_idmj4")
+
+[node name="Attack(totem)" type="Node" parent="State_Machine" unique_id=1983615889]
+script = ExtResource("6_wrqnx")
+
+[node name="Cooldown(totem)" type="Node" parent="State_Machine" unique_id=1027172946]
+script = ExtResource("7_iadch")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
