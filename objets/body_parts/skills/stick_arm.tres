@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="body_part" format=3 uid="uid://dtnytn5x8k4iu"]
 
-[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://objets/body_parts/skills/body_part.gd" id="1_n6prf"]
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_n6prf"]
 
 [resource]
 script = ExtResource("1_n6prf")

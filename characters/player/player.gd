@@ -18,7 +18,7 @@ class_name Player
 
 @onready var habilities_states: Node = $State_Machine/habilities_states
 
-
+var save_point=Vector2.ZERO
 
 var Interactive_Box_collition
 
@@ -97,9 +97,11 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
-		dead()
+		current_torso.torso_damage(35)
+		global_position=save_point
 	elif body.get_collision_layer_value(4):
-		dead()
+		current_torso.torso_damage(35)
+		global_position=save_point
 		
 
 func _on_collect_box_area_entered(area: Area2D) -> void:
