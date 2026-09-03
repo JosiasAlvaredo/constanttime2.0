@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="7_f4gw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
-size = Vector2(607, 293.3333)
+size = Vector2(706, 639.1666)
 
 [node name="StartRoom01" type="Node2D" unique_id=1701331687]
 position = Vector2(-191, 1)
@@ -25,10 +25,9 @@ tile_map_data = PackedByteArray("AAAEAAAAAQAEAAEAAAAHAAAAAQACAAEAAAAEAAEAAQAEAAI
 position = Vector2(608, 180)
 
 [node name="Bounds" type="Area2D" parent="." unique_id=348332757]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1304408014]
-position = Vector2(304.5, 176)
+position = Vector2(255, -18.499985)
 scale = Vector2(1, 1.2)
 shape = SubResource("RectangleShape2D_e8jrh")
 
