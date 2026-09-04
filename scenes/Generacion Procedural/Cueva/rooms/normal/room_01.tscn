@@ -55,5 +55,6 @@ position = Vector2(672, 176)
 [node name="Bounds" type="Area2D" parent="." unique_id=1796673238]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1631879316]
+visible = false
 position = Vector2(336, 160)
 shape = SubResource("RectangleShape2D_fuv48")

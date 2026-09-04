@@ -20,3 +20,4 @@ position = Vector2(510, 235)
 tile_set = SubResource("TileSet_or8m7")
 
 [node name="Dungeon" type="Node2D" parent="." unique_id=589111354]
+position = Vector2(-180, 0)

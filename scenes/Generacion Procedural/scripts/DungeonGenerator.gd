@@ -870,7 +870,7 @@ func process_door(module: Node2D, socket_name: String, door_name: String):
 				stairs_name
 			)
 			
-			if stairs == null:
+			if stairs != null:
 				set_node_visible(
 					stairs,
 					not is_closed
