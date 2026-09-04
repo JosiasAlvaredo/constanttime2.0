@@ -1,21 +1,20 @@
-[gd_scene load_steps=0 format=3 uid="uid://fc1dpos8li5i"]
+[gd_scene format=3 uid="uid://fc1dpos8li5i"]
 
-[ext_resource type="Script" uid="uid://msnxtpivwisv" path="res://objets/Map/Sewer/rain.gd" id="1_3i3it"]
+[ext_resource type="Script" uid="uid://msnxtpivwisv" path="res://objets/Map/Sewer/Scripts/rain.gd" id="1_3i3it"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl8yg"]
-size = Vector2(2, 1)
+size = Vector2(1, 1)
 
-[node name="Stream" type="Area2D" unique_id=120645885]
+[node name="Rain" type="Area2D" unique_id=120645885]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_3i3it")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=111564004]
-offset_left = -1.0
 offset_top = -1.0
 offset_right = 1.0
 color = Color(0, 0.5686275, 0.24313726, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1003653450]
-position = Vector2(0, -0.5)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_bl8yg")
