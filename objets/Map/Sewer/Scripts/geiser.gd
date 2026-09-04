@@ -7,9 +7,14 @@ var wait_time=0
 
 enum State{Shot,StartWait ,Wait}
 
-var current_state=State.Shot
+var current_state=State.Wait
 
 var stream=null
+
+func _ready() -> void:
+	await get_tree().create_timer(randf_range(0,max_wait_time)).timeout
+	current_state=State.Shot
+
 func _physics_process(delta: float) -> void:
 	match current_state:
 

@@ -122,5 +122,5 @@ durability = 50
 
 [node name="SavePoint" parent="." unique_id=147022339 instance=ExtResource("12_6586s")]
 visible = false
-position = Vector2(398, 275)
+position = Vector2(396, 318)
 scale = Vector2(7.566982, 4.776169)
