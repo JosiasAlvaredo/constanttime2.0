@@ -34,7 +34,7 @@ func use(State):
 	animated_down.play("default")
 	animated_up.play("default")
 	
-	player.state_machine.change_to(State)
+a	player.state_machine.change_to(State)
 	player.hand_using=""
 
 		

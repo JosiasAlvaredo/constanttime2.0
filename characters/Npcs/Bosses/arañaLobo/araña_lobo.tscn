@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bvc4vhafegiw1"]
+
+[ext_resource type="Script" uid="uid://c4jtxxbir4tl8" path="res://characters/Npcs/Bosses/arañaLobo/araña_lobo.gd" id="1_jpim1"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_om0p2"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="2_jpim1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_876n6"]
+size = Vector2(242, 110)
+
+[node name="ArañaLobo" type="CharacterBody2D" unique_id=1384144224]
+script = ExtResource("1_jpim1")
+live = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733849900]
+position = Vector2(69.5, 0)
+scale = Vector2(2.0859375, 1)
+texture = ExtResource("1_om0p2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1774483367]
+position = Vector2(68, -2)
+shape = SubResource("RectangleShape2D_876n6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1114406880]
+
+[node name="State_Machine" parent="." unique_id=1059784330 instance=ExtResource("2_jpim1")]
+
+[node name="Attack_Manager" type="Node" parent="." unique_id=1679274540]
