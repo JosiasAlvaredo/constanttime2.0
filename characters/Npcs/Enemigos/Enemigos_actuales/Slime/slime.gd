@@ -27,3 +27,7 @@ func update_direction():
 
 	# Girar el sprite
 	sprite.flip_h = direction < 0
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())

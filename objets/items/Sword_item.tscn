@@ -9,7 +9,7 @@ radius = 375.20828
 [sub_resource type="CircleShape2D" id="CircleShape2D_c4pif"]
 radius = 4.0
 
-[node name="Stick_item" type="RigidBody2D" unique_id=1284734035]
+[node name="Sword_item" type="RigidBody2D" unique_id=1284734035]
 collision_layer = 0
 script = ExtResource("1_5v8m6")
 _name = "Sword"

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bjbg1l1nxa35i"]
+
+[ext_resource type="Script" uid="uid://3wa17vt0a8bg" path="res://objets/Map/Sewer/Scripts/droplet.gd" id="1_f8dbp"]
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_74shn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kchop"]
+size = Vector2(14, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jpfiv"]
+
+[node name="Droplet" type="RigidBody2D" unique_id=1943424840]
+collision_layer = 0
+script = ExtResource("1_f8dbp")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1579128376]
+modulate = Color(0, 0.69411767, 0, 1)
+position = Vector2(2.3841858e-07, 4.7683716e-07)
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("2_74shn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1147041506]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_kchop")
+
+[node name="Hit_box" type="Area2D" parent="." unique_id=1246614678]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_box" unique_id=946566517]
+shape = SubResource("CircleShape2D_jpfiv")
+
+[connection signal="body_entered" from="Hit_box" to="." method="_on_hit_box_body_entered"]

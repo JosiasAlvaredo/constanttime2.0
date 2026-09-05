@@ -97,7 +97,9 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		velocity.x=sign(enemy.global_position.x-global_position.x)
 		velocity.y=sign(enemy.global_position.y-global_position.y)
 		inmunity()
-
+	elif area.get_collision_layer_value(4):
+		current_torso.torso_damage(area.damage)
+		global_position=save_point
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		current_torso.torso_damage(35)
