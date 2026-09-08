@@ -43,6 +43,8 @@ var current_torso=null
 var left_hand_action=null
 var right_hand_action=null
 
+var mouse_on_menu=false
+
 func _ready() -> void:
 	$".".z_index = 10
 	

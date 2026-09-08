@@ -18,7 +18,6 @@ func FLIP():
 		$AnimatedSprite2D.scale.x *= -1
 
 func _physics_process(delta):
-	print(live)
 	
 	velocity.y+= gravity*delta
 

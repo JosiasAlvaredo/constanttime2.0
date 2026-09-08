@@ -11,7 +11,10 @@ var player
 var skills=null
 
 func _ready() -> void:
-	player=get_parent().get_parent().get_parent().get_parent()
+	player=get_parent().get_parent().get_parent()
+	if not player is Player:
+		player=get_parent().get_parent().get_parent().get_parent()
+	
 
 	skills=load("res://objets/items/skills/%s.tres" % _name)
 

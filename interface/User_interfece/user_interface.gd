@@ -93,3 +93,13 @@ func timer_clouse_info():
 	await get_tree().create_timer(0.5).timeout
 	if not checking_info and info_animations.current_animation=="Info_visible":
 		info_animations.play("Info_close")
+
+
+func _on_menu_box_mouse_entered() -> void:
+	player.mouse_on_menu=true
+	print("on")
+
+
+func _on_menu_box_mouse_exited() -> void:
+	player.mouse_on_menu=false
+	print("out")
