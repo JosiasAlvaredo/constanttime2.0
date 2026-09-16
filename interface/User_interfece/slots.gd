@@ -7,7 +7,6 @@ extends Button
 @export_enum("torso","left_arm","right_arm","legs","right_hand","left_hand" ) var slot_part: String
 
 var kind
-var path=["res://objets/body_parts/%s.tscn", name]
 
 var save_position=Vector2.ZERO
 var can_drop=false
@@ -98,6 +97,7 @@ func drop():
 	
 	if drop==null:
 		drop=load("res://objets/items/%s.tscn" % item_aux._name)
+		
 	if drop==null:
 		return
 		

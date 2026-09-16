@@ -10,6 +10,4 @@ class_name Weapons
 @export var recoil=100
 @export var knockback=Vector2(-100,-100)
 
-enum Effects {fire}
-
-@export var number_effects: Array[Effects] = []
+@export var number_effects: Array[GlobalValues.Effects] = []
