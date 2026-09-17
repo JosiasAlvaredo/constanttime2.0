@@ -17,7 +17,8 @@ var taking_thing=false
 var item_aux=null
 
 var moving_thing=false
-var durability=0
+
+var durability_percent=0 
 
 func _ready() -> void:
 	save_position=position
@@ -31,7 +32,6 @@ func _physics_process(delta: float) -> void:
 			taking_thing=true
 			get_parent().add_child(item_aux)
 			
-
 	#lo que se muestra en el slot (el objeto que esta ahi o nada)
 	if GlobalValues.bodies_parts[slot_part]!=null and (item_aux==null or not moving_thing) :
 		icon=GlobalValues.bodies_parts[slot_part].get_child(0).icon
@@ -41,12 +41,16 @@ func _physics_process(delta: float) -> void:
 		else:
 			skill=skill.duplicate()
 			
-		var durability_percent=float(GlobalValues.bodies_parts[slot_part].skills.durability)/skill.max_durability
+		durability_percent=float(GlobalValues.bodies_parts[slot_part].skills.durability)/skill.max_durability
 		durability_node.size.x=durability_percent*53
 		durability_node.color=Color8(255-255*durability_percent,255*durability_percent,0)
+	
 	elif moving_thing or GlobalValues.bodies_parts[slot_part]==null:
 		icon=null
 		durability_node.size.x=0
+
+	if durability_percent<=0 and GlobalValues.bodies_parts[slot_part]!=null:
+		GlobalValues.bodies_parts[slot_part]=null
 
 	#agregar algo en el slot o itercambiarlo con otra cosa
 	if Input.is_action_just_pressed("Left_hand") and user_interface.selected_body_part!=null and mouse_on_this_slot and ((can_drop and item_aux!=null) or item_aux==null):
@@ -75,6 +79,7 @@ func _physics_process(delta: float) -> void:
 			drop()
 		else:
 			reset_item_aux()
+
 
 func timer():
 	can_drop=false

@@ -2,8 +2,6 @@ extends Node2D
 class_name Item_base
 
 @export var _name="Rock"
-@export var durability=5
-@export var current_effects=[]
 @export_enum("body_parts","items") var origin:String
 @export var skills=null
 
@@ -14,15 +12,15 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	if skills==null:
 		skills=load("res://objets/%s/skills/%s.tres" %  [origin,_name]).duplicate()
-	skills.durability=durability
+
 	
 
 	for nro in skills.number_kinds:
 		skills.kind.append(GlobalValues.BodyParts.keys()[nro])
 	
-func suffer_damage(_damage):
-	durability-=_damage
-	if durability<=0:
-		queue_free()
+func _physics_process(delta: float) -> void:
+	if skills!=null:
+		if skills.durability<=0:
+			queue_free()
 
 	

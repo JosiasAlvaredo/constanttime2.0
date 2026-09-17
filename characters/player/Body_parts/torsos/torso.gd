@@ -154,18 +154,18 @@ func _ready() -> void:
 	parent.body_down=$Body_Down
 	parent.Interactive_Box_collition=$Interactive_Box/CollisionShape2D
 
-func suffer_damage(_damage):
+func suffer_damage(weapond):
 	#desgaste del torso
-	var part_wear=shockwave*_damage
+	var part_wear=shockwave*weapond.damage
 	#daño dirigido a las partes del cuerpo
 	if body.torso!=null:
-		body.torso.suffer_damage(part_wear)
+		body.torso.skills.body_part_damage(weapond,part_wear)
 	if body.right_arm!=null:
-		body.right_arm.suffer_damage((_damage-part_wear)/count_parts)
+		body.right_arm.skills.body_part_damage(weapond,(weapond.damage-part_wear)/count_parts)
 	if body.left_arm!=null:
-		body.left_arm.suffer_damage((_damage-part_wear)/count_parts)
+		body.left_arm.skills.body_part_damage(weapond,(weapond.damage-part_wear)/count_parts)
 	if body.legs!=null:
-		body.legs.suffer_damage((_damage-part_wear)/int(count_parts/2))
+		body.legs.skills.body_part_damage(weapond,(weapond.damage-part_wear)/int(count_parts/2))
 		
 
 

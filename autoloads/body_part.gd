@@ -24,3 +24,19 @@ enum Habilities {climb,use,doble_jump}
 @export var number_habilities: Array[Habilities] = []
 
 var current_effects=[]
+
+@export var inmune_effects:Array[GlobalValues.Effects]=[]
+@export var bulnerable_effects:Array[GlobalValues.Effects]=[]
+
+
+func suffer_damage(_damage):
+	durability-=_damage
+
+func body_part_damage(weapond,_damage):
+	suffer_damage(_damage)
+	
+	for i in weapond.number_effects:
+		var effect=ActiveEffects[GlobalValues.Effects.keys()[i]]
+		if not effect in current_effects and not i in inmune_effects:
+			current_effects.append(effect)
+			effect.call(self)

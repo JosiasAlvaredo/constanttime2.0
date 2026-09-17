@@ -30,6 +30,8 @@ func _ready() -> void:
 		drop=link_to_original.duplicate()
 	
 func _physics_process(delta: float) -> void:
+	
+	
 	if parent.selected_body_part==self:
 		global_position=get_global_mouse_position()
 		button.mouse_filter=Control.MOUSE_FILTER_IGNORE
@@ -56,11 +58,6 @@ func delete():
 		link_to_original.queue_free()
 	queue_free()
 	
-func suffer_damage(_damage):
-	skills.durability-=_damage
-	if skills.durability<=0:
-		parent.rebuil_body()
-		delete()
 
 func _on_button_mouse_entered() -> void:
 	parent.analisis(self)
