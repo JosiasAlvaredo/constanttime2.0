@@ -30,4 +30,4 @@ func _physics_process(delta):
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	suffer_damage(area.get_parent())
+	enemy_damage(area.get_parent())

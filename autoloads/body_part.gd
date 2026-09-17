@@ -12,6 +12,9 @@ class_name body_part
 #es el porcentaje de daño q se lleva esta parte (por ahora solo funciona para el torso)
 @export var shockwave=0
 
+@export var number_kinds: Array[GlobalValues.BodyParts] = [GlobalValues.BodyParts.right_hand, GlobalValues.BodyParts.left_hand]
+var kind=[]
+
 @export var can_take=false
 
 @export_enum("none","small","medium","big") var size:int
@@ -19,3 +22,5 @@ class_name body_part
 enum Habilities {climb,use,doble_jump}
 
 @export var number_habilities: Array[Habilities] = []
+
+var current_effects=[]

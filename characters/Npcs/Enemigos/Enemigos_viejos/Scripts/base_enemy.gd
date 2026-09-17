@@ -12,15 +12,13 @@ var recoil=0
 
 var player: Player = null
 
-
-func suffer_damage(weapond):
+func enemy_damage(weapond):
 	var enemy=weapond.player
-	damage_efect()
+	
 	last_direction=direction
 	direction=0
 	velocity.x=sign(enemy.global_position.x-global_position.x)
 	velocity.y=sign(enemy.global_position.y-global_position.y)
-	live-=weapond.skills.damage
 	recoil=weapond.skills.knockback*Knockback_resistence
 	
 	for i in weapond.skills.number_effects:
@@ -29,10 +27,18 @@ func suffer_damage(weapond):
 		if not effect in current_effects:
 			current_effects.append(effect)
 			effect.call(self)
-			
+
+	suffer_damage(weapond.skills.damage)
+	
 	if Knockback_resistence!=0:
 		state_machine.change_to("Knockback")
 		
+
+
+
+func suffer_damage(_damage):
+	damage_efect()
+	live-=_damage
 	if live<=0:
 		dead()
 

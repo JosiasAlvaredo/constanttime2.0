@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cf732aoc4a0dv"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_5nnbh"]
-[ext_resource type="Texture2D" uid="uid://ccuinfhyo3qxc" path="res://assets/items/Weapons/Sword.png" id="2_5nnbh"]
+[ext_resource type="Texture2D" uid="uid://ccuinfhyo3qxc" path="res://assets/items/Weapons/sword.png" id="2_5nnbh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -13,7 +13,7 @@ radius = 4.0
 collision_layer = 0
 script = ExtResource("1_5nnbh")
 _name = "stick_legs"
-number_kinds = Array[int]([3])
+origin = "body_parts"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
 position = Vector2(0, -1)

@@ -11,3 +11,7 @@ class_name Weapons
 @export var knockback=Vector2(-100,-100)
 
 @export var number_effects: Array[GlobalValues.Effects] = []
+
+
+var number_kinds: Array[GlobalValues.BodyParts] = [GlobalValues.BodyParts.right_hand, GlobalValues.BodyParts.left_hand]
+var kind=[]

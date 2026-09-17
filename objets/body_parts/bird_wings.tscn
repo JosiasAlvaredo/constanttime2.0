@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c6hjwjmpk4ofw"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_q3a76"]
-[ext_resource type="Texture2D" uid="uid://ccuinfhyo3qxc" path="res://assets/items/Weapons/Sword.png" id="2_q3a76"]
+[ext_resource type="Texture2D" uid="uid://ccuinfhyo3qxc" path="res://assets/items/Weapons/sword.png" id="2_q3a76"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -14,7 +14,7 @@ collision_layer = 0
 script = ExtResource("1_q3a76")
 _name = "bird_wings"
 durability = 55
-number_kinds = Array[int]([1, 2])
+origin = "body_parts"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
 modulate = Color(1, 0.3019608, 1, 1)

@@ -9,6 +9,7 @@ max_durability = 25
 durability = 25
 speed = 200
 jump_force = -300
+number_kinds = Array[int]([3])
 size = 2
 number_habilities = Array[int]([0])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"
