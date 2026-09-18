@@ -15,3 +15,6 @@ class_name Weapons
 
 var number_kinds: Array[GlobalValues.BodyParts] = [GlobalValues.BodyParts.right_hand, GlobalValues.BodyParts.left_hand]
 var kind=[]
+
+func suffer_damage(_damage):
+	durability-=_damage

@@ -12,6 +12,19 @@ var recoil=0
 
 var player: Player = null
 
+var aux_values={}
+
+var weight=0
+
+func _process(delta: float) -> void:
+	
+	if aux_values=={}:
+		aux_values.speed=speed
+		aux_values.Jump_stength=Jump_stength
+
+	speed=aux_values.speed-(weight*aux_values.speed/3)
+	Jump_stength=aux_values.Jump_stength-(weight*aux_values.Jump_stength/3)
+
 func enemy_damage(weapond):
 	var enemy=weapond.player
 	
@@ -33,8 +46,6 @@ func enemy_damage(weapond):
 	if Knockback_resistence!=0:
 		state_machine.change_to("Knockback")
 		
-
-
 
 func suffer_damage(_damage):
 	damage_efect()

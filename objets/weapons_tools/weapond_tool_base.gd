@@ -19,4 +19,4 @@ func _ready() -> void:
 	skills=load("res://objets/items/skills/%s.tres" % _name)
 
 func worn_out():
-	slot_position.suffer_damage(1)
+	slot_position.skills.suffer_damage(1)

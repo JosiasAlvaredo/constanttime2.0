@@ -131,8 +131,9 @@ func _ready() -> void:
 		
 		count_parts+=2
 		
-		movility=1.0-float(total_weight)/(legsSkills.size*3)
-		print(movility)
+		movility=2-float(total_weight)/(legsSkills.size*3)
+		if movility>1:
+			movility=1
 		load_abilities(legsSkills.number_habilities)
 
 		add_child(legs)
@@ -156,20 +157,23 @@ func _ready() -> void:
 	parent.body_down=$Body_Down
 	parent.Interactive_Box_collition=$Interactive_Box/CollisionShape2D
 
-func suffer_damage(weapond):
+func body_damage(weapond):
 	#desgaste del torso
-	var part_wear=shockwave*weapond.damage
+	suffer_damage(weapond.damage,weapond)
+	
+func suffer_damage(_damage,weapond=null):
+	#desgaste del torso
+	var part_wear=shockwave*_damage
 	#daño dirigido a las partes del cuerpo
 	if body.torso!=null:
-		body.torso.skills.body_part_damage(weapond,part_wear)
+		body.torso.skills.body_part_damage(part_wear,weapond)
 	if body.right_arm!=null:
-		body.right_arm.skills.body_part_damage(weapond,(weapond.damage-part_wear)/count_parts)
+		body.right_arm.skills.body_part_damage((_damage-part_wear)/count_parts,weapond)
 	if body.left_arm!=null:
-		body.left_arm.skills.body_part_damage(weapond,(weapond.damage-part_wear)/count_parts)
+		body.left_arm.skills.body_part_damage((_damage-part_wear)/count_parts,weapond)
 	if body.legs!=null:
-		body.legs.skills.body_part_damage(weapond,(weapond.damage-part_wear)/int(count_parts/2))
+		body.legs.skills.body_part_damage((_damage-part_wear)/int(count_parts/2),weapond)
 		
-
 
 #Carga los nodos de estado en el nodo abilities del state machine
 func load_abilities(number_habilities):
