@@ -8,6 +8,7 @@ extends Node2D
 @onready var legs_position: Node2D = $legs_position
 
 var total_weight
+var movility=0
 var body
 var count_parts=0
 
@@ -129,8 +130,9 @@ func _ready() -> void:
 		skills.jump_force+=legsSkills.jump_force
 		
 		count_parts+=2
-		total_weight-=legsSkills.size*3
 		
+		movility=1.0-float(total_weight)/(legsSkills.size*3)
+		print(movility)
 		load_abilities(legsSkills.number_habilities)
 
 		add_child(legs)
@@ -140,8 +142,8 @@ func _ready() -> void:
 		if parent.body_botton<10:
 			parent.body_botton=10
 	
-	skills.speed-=total_weight*25
-	skills.jump_force+=total_weight*30
+	skills.speed*=movility
+	skills.jump_force*=movility
 	
 	if skills.speed<0:
 		skills.speed=0
