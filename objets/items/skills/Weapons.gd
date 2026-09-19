@@ -10,6 +10,11 @@ class_name Weapons
 @export var recoil=100
 @export var knockback=Vector2(-100,-100)
 
-enum Effects {fire}
+@export var number_effects: Array[GlobalValues.Effects] = []
 
-@export var number_effects: Array[Effects] = []
+
+var number_kinds: Array[GlobalValues.BodyParts] = [GlobalValues.BodyParts.right_hand, GlobalValues.BodyParts.left_hand]
+var kind=[]
+
+func suffer_damage(_damage):
+	durability-=_damage

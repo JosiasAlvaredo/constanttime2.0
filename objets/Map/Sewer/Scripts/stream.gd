@@ -4,6 +4,7 @@ extends Area2D
 @export var stream_time=0
 @export var damage=40
 
+@export var number_effects: Array[GlobalValues.Effects] = []
 
 enum States{Starting,Max_height,Stopping}
 

@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/other_arm.tscn" id="11_6586s"]
 [ext_resource type="PackedScene" uid="uid://cqhbw1m88idtf" path="res://objets/Map/save_point.tscn" id="12_6586s"]
 [ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="13_w61f1"]
-[ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="14_dxveu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kupbu"]
 size = Vector2(896, 672)
@@ -105,7 +104,7 @@ position = Vector2(403, 314)
 position = Vector2(438, 319)
 
 [node name="stick_arm2" parent="." unique_id=818630450 instance=ExtResource("7_jmps0")]
-position = Vector2(392, 308)
+position = Vector2(404, 332)
 
 [node name="Rain" parent="." unique_id=843869072 instance=ExtResource("9_3kh8l")]
 position = Vector2(123, -1)
@@ -125,6 +124,3 @@ scale = Vector2(7.566982, 4.776169)
 
 [node name="Slime" parent="." unique_id=487235860 instance=ExtResource("13_w61f1")]
 position = Vector2(599, 351)
-
-[node name="Torch_item" parent="." unique_id=135219130 instance=ExtResource("14_dxveu")]
-position = Vector2(411, 288)

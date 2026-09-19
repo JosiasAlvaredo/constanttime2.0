@@ -17,6 +17,8 @@ class_name Stats
 @export var activate_Gravity=true
 @export var solid=true
 
+var current_effects=[]
+
 var trapped=false
 
 var can_roll=true

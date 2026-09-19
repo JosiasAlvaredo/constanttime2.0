@@ -36,11 +36,9 @@ func _physics_process(delta: float) -> void:
 			var new_slot_item=load("res://interface/User_interfece/slot_items/slot_item.tscn").instantiate()
 			near_objets_node.add_child(new_slot_item)
 			new_slot_item.button.icon=near_objet.item_sprite.texture
-			new_slot_item.durability=int(near_objet.durability)
-			new_slot_item.kind=near_objet.kind
+			new_slot_item.skills=near_objet.skills
 			new_slot_item.path="res://objets/body_parts/%s.tscn" % near_objet._name
 			
-			new_slot_item._name=near_objet._name
 			new_slot_item.save_position=Vector2((i%5)*60,pos_y)
 			new_slot_item.link_to_original=near_objet
 		save_near_objets=near_objets.duplicate()
@@ -54,42 +52,29 @@ func rebuil_body():
 		
 #muestra la info de objeto
 func analisis(obj):
-	var skills=load("res://objets/body_parts/skills/%s.tres" % obj._name)
+	var skills=obj.skills
 	if skills!=null:
 		var size_icons=[$Inventory/info/small_icon,$Inventory/info/medium_icon,$Inventory/info/big_icon]
 		checking_info=true
 		if info_animations.current_animation=="Info_unvisible":
 			info_animations.play("Info_open")
 		
-		$Inventory/info/name.text=obj._name
-		$Inventory/info/durability.text=str(obj.durability)
-		
-		if skills.damage!=0:
-			$Inventory/info/strength.visible=true
-			$Inventory/info/strength.text=str(skills.damage)
-		else:
-			$Inventory/info/strength.visible=false
-			
-		if skills.jump_force!=0:
-			$Inventory/info/jump.visible=true
-			$Inventory/info/jump.text=str(float(abs(skills.jump_force))/100)
-		else:
-			$Inventory/info/jump.visible=false
-			
-		if skills.speed!=0:
-			$Inventory/info/velocity.visible=true
-			$Inventory/info/velocity.text=str(float(skills.speed)/100)
-		else:
-			$Inventory/info/velocity.visible=false
-		
-		for size_icon in size_icons:
-			if skills.size-1==size_icons.find(size_icon):
-				size_icon.visible=true
-			else:
-				size_icon.visible=false
+		$Inventory/info/name.text=skills._name
+		$Inventory/info/durability.text=str(skills.durability)
+
+	
 	
 func timer_clouse_info():
 	checking_info=false
 	await get_tree().create_timer(0.5).timeout
 	if not checking_info and info_animations.current_animation=="Info_visible":
 		info_animations.play("Info_close")
+
+
+func _on_menu_box_mouse_entered() -> void:
+	player.mouse_on_menu=true
+
+
+
+func _on_menu_box_mouse_exited() -> void:
+	player.mouse_on_menu=false

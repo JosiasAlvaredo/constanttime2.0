@@ -1,6 +1,6 @@
 extends RigidBody2D
 @export var probably=10
-
+@export var number_effects: Array[GlobalValues.Effects] = []
 @export var knockback=Vector2(-200,-100)
 
 @export var damage=5
