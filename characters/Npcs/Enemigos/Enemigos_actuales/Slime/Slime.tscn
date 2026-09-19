@@ -42,8 +42,8 @@ shape = SubResource("CircleShape2D_5rfaf")
 [node name="RayCast" type="Node2D" parent="." unique_id=1780885422]
 
 [node name="FloorRay" type="RayCast2D" parent="RayCast" unique_id=1384405360]
-position = Vector2(22, 0)
-target_position = Vector2(0, 59)
+position = Vector2(26, -1)
+target_position = Vector2(18, 64)
 
 [node name="FrontRay" type="RayCast2D" parent="RayCast" unique_id=760859769]
 position = Vector2(1, 0)

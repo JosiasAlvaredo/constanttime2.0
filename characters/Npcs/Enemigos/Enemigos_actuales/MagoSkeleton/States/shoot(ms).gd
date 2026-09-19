@@ -13,7 +13,7 @@ func on_physics_process(delta):
 
 	enemy.velocity.x = 0
 
-	if enemy.player == null:
+	if enemy.player_objetivo == null:
 		state_machine.change_to("Patrol(MS)")
 		return
 

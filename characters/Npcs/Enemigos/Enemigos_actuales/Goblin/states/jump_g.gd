@@ -12,8 +12,8 @@ func on_physics_process(delta: float) -> void:
 	
 	enemy.velocity.y += enemy.gravity * delta
 	
-	if enemy.player != null:
-		var difference = enemy.player.global_position.x - enemy.global_position.x
+	if enemy.playerUbi != null:
+		var difference = enemy.playerUbi.global_position.x - enemy.global_position.x
 		
 		if difference > 5:
 			enemy.direction = 1

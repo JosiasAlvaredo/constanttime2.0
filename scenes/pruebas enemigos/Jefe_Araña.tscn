@@ -2,17 +2,31 @@
 
 [ext_resource type="PackedScene" uid="uid://bvc4vhafegiw1" path="res://characters/Npcs/Bosses/arañaLobo/araña_lobo.tscn" id="1_2myoa"]
 [ext_resource type="Texture2D" uid="uid://b2dj77v6rqcao" path="res://assets/pisos.png" id="1_gtyal"]
+[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="3_0guag"]
+[ext_resource type="PackedScene" uid="uid://bj64ousu087v2" path="res://objets/body_parts/stick_torso.tscn" id="4_if55w"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/other_arm.tscn" id="5_wkbcs"]
+[ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="6_0xnh5"]
+[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="7_ihsct"]
+[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick_arm.tscn" id="8_p3hry"]
+[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="9_wkbcs"]
+[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="10_0xnh5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2myoa"]
 texture = ExtResource("1_gtyal")
 0:0/0 = 0
 1:0/0 = 0
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:0/0 = 0
 13:0/0 = 0
 14:0/0 = 0
@@ -161,13 +175,41 @@ texture = ExtResource("1_gtyal")
 13:13/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_37kbo"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_2myoa")
 
 [node name="JefeAraña_escena" type="Node2D" unique_id=2069594567]
 
-[node name="ArañaLobo" parent="." unique_id=1384144224 instance=ExtResource("1_2myoa")]
-position = Vector2(484, 312)
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=975768611]
 tile_map_data = PackedByteArray("AAAIAB4AAAAFAAAAAAAJAB4AAAAGAAAAAAAKAB4AAAAHAAAAAAALAB4AAAAIAAAAAAAMAB4AAAAFAAAAAAANAB4AAAAGAAAAAAAOAB4AAAAHAAAAAAAPAB4AAAAIAAAAAAARAB4AAAAGAAAAAAASAB4AAAAHAAAAAAATAB4AAAAFAAAAAAAUAB4AAAAGAAAAAAAQAB4AAAAFAAAAAAAVAB4AAAAHAAAAAAAWAB4AAAAIAAAAAAAXAB4AAAAFAAAAAAAYAB4AAAAGAAAAAAAZAB4AAAAHAAAAAAAaAB4AAAAIAAAAAAAbAB4AAAAFAAAAAAAcAB4AAAAGAAAAAAAdAB4AAAAHAAAAAAAeAB4AAAAIAAAAAAAfAB4AAAAFAAAAAAAgAB4AAAAGAAAAAAAhAB4AAAAHAAAAAAAiAB4AAAAIAAAAAAAjAB4AAAAFAAAAAAAkAB4AAAAGAAAAAAAlAB4AAAAHAAAAAAAmAB4AAAAFAAAAAAAnAB4AAAAGAAAAAAAoAB4AAAAHAAAAAAApAB4AAAAIAAAAAAAqAB4AAAAFAAAAAAArAB4AAAAGAAAAAAAsAB4AAAAHAAAAAAAtAB4AAAAIAAAAAAAuAB4AAAAFAAAAAAAvAB4AAAAGAAAAAAAwAB4AAAAHAAAAAAAxAB4AAAAFAAAAAAAyAB4AAAAGAAAAAAAzAB4AAAAFAAAAAAA0AB4AAAAGAAAAAAA1AB4AAAAHAAAAAAA2AB4AAAAFAAAAAAA3AB4AAAAGAAAAAAA4AB4AAAAHAAAAAAA5AB4AAAAIAAAAAAA6AB4AAAAIAAAAAAAIABcAAAAEAAAAAAAIABgAAAAEAAEAAAAIABkAAAAEAAIAAAAIABoAAAAEAAIAAAAIABsAAAAEAAIAAAAIABwAAAAEAAIAAAAIAB0AAAAEAAIAAAA6AB0AAAAJAAIAAAA6ABwAAAAJAAIAAAA6ABsAAAAJAAIAAAA6ABoAAAAJAAIAAAA6ABkAAAAJAAIAAAA6ABgAAAAJAAIAAAA6ABcAAAAJAAAAAAAJABcAAAAFAAAAAAAKABcAAAAGAAAAAAALABcAAAAHAAAAAAAMABcAAAAIAAAAAAANABcAAAAFAAAAAAAOABcAAAAGAAAAAAAPABcAAAAHAAAAAAAQABcAAAAFAAAAAAARABcAAAAGAAAAAAASABcAAAAHAAAAAAATABcAAAAFAAAAAAAUABcAAAAGAAAAAAAVABcAAAAHAAAAAAAWABcAAAAIAAAAAAAXABcAAAAFAAAAAAAYABcAAAAGAAAAAAAZABcAAAAHAAAAAAAaABcAAAAIAAAAAAAbABcAAAAFAAAAAAAcABcAAAAGAAAAAAAdABcAAAAHAAAAAAAeABcAAAAFAAAAAAAfABcAAAAGAAAAAAAgABcAAAAHAAAAAAAhABcAAAAFAAAAAAAiABcAAAAGAAAAAAAjABcAAAAHAAAAAAAkABcAAAAIAAAAAAAlABcAAAAFAAAAAAAmABcAAAAGAAAAAAAnABcAAAAHAAAAAAAoABcAAAAFAAAAAAApABcAAAAGAAAAAAAqABcAAAAHAAAAAAArABcAAAAIAAAAAAAsABcAAAAFAAAAAAAtABcAAAAGAAAAAAAuABcAAAAHAAAAAAAvABcAAAAIAAAAAAAwABcAAAAFAAAAAAAxABcAAAAGAAAAAAAyABcAAAAHAAAAAAAzABcAAAAIAAAAAAA0ABcAAAAFAAAAAAA1ABcAAAAGAAAAAAA2ABcAAAAHAAAAAAA3ABcAAAAFAAAAAAA4ABcAAAAGAAAAAAA5ABcAAAAHAAAAAAA=")
 tile_set = SubResource("TileSet_37kbo")
+
+[node name="ArañaLobo" parent="." unique_id=1384144224 instance=ExtResource("1_2myoa")]
+position = Vector2(484, 312)
+
+[node name="Player" parent="." unique_id=294110880 instance=ExtResource("3_0guag")]
+position = Vector2(539, 453)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=334081274]
+zoom = Vector2(1.5, 1.5)
+
+[node name="pARTS" type="Node2D" parent="." unique_id=648165584]
+
+[node name="stick_arm5" parent="pARTS" unique_id=926426869 instance=ExtResource("4_if55w")]
+position = Vector2(525, 466)
+
+[node name="stick_arm" parent="pARTS" unique_id=1374159914 instance=ExtResource("5_wkbcs")]
+position = Vector2(563, 435)
+
+[node name="Stick_item" parent="pARTS" unique_id=1284734035 instance=ExtResource("6_0xnh5")]
+position = Vector2(534, 467)
+
+[node name="stick_arm2" parent="pARTS" unique_id=1925625896 instance=ExtResource("7_ihsct")]
+position = Vector2(533, 461)
+
+[node name="stick_arm3" parent="pARTS" unique_id=1275562998 instance=ExtResource("8_p3hry")]
+position = Vector2(522, 444)
+
+[node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("9_wkbcs")]
+
+[node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("10_0xnh5")]

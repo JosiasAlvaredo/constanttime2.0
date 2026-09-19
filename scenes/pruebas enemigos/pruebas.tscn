@@ -16,15 +16,12 @@
 size = Vector2(799, 124)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvag6"]
-size = Vector2(1085, 20)
+size = Vector2(45.5, 295)
 
 [node name="Pruebas" type="Node2D" unique_id=1605760903]
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("1_vvag6")]
 position = Vector2(754, 360)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=414066125]
-zoom = Vector2(1.5, 1.5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1870115442]
 position = Vector2(247, 463)
@@ -39,7 +36,7 @@ scale = Vector2(6.265625, 1)
 texture = ExtResource("1_6pp24")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=756142402]
-position = Vector2(426, -285)
+position = Vector2(392, 28)
 shape = SubResource("RectangleShape2D_vvag6")
 
 [node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("10_w7rhc")]
@@ -53,18 +50,24 @@ position = Vector2(730, 372)
 
 [node name="stick_arm2" parent="Partes" unique_id=489407587 instance=ExtResource("6_w7rhc")]
 position = Vector2(797, 374)
+durability = 55
 
 [node name="stick_arm3" parent="Partes" unique_id=1851522366 instance=ExtResource("7_1c5xe")]
 position = Vector2(706, 366)
+durability = 55
 
 [node name="stick_arm4" parent="Partes" unique_id=2091530953 instance=ExtResource("8_efm7s")]
 position = Vector2(731, 374)
+durability = 55
 
 [node name="stick_arm5" parent="Partes" unique_id=1666670675 instance=ExtResource("9_2f5eg")]
 position = Vector2(714, 368)
+durability = 55
 
 [node name="stick_arm" parent="Partes" unique_id=207645265 instance=ExtResource("5_1nmdi")]
 position = Vector2(741, 368)
+durability = 55
 
 [node name="Stick_item" parent="Partes" unique_id=1284734035 instance=ExtResource("11_w7rhc")]
 position = Vector2(846, 368)
+durability = 55

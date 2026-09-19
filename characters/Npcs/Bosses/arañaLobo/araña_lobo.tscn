@@ -3,25 +3,492 @@
 [ext_resource type="Script" uid="uid://c4jtxxbir4tl8" path="res://characters/Npcs/Bosses/arañaLobo/araña_lobo.gd" id="1_jpim1"]
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_om0p2"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="2_jpim1"]
+[ext_resource type="Script" uid="uid://biypiqsiovrds" path="res://characters/Npcs/Bosses/arañaLobo/Attacs/sweep_attack_1.gd" id="3_35f8q"]
+[ext_resource type="Script" uid="uid://c3apfd7elm2bn" path="res://characters/Npcs/Bosses/arañaLobo/States/idle(araña_lobo).gd" id="4_876n6"]
+[ext_resource type="Script" uid="uid://dc5ejiq2f4qno" path="res://characters/Npcs/Bosses/arañaLobo/Attacs/sweep_attack_d.gd" id="4_mvgbn"]
+[ext_resource type="Script" uid="uid://bbusy4gr3fkty" path="res://characters/Npcs/Bosses/arañaLobo/States/attack.gd" id="5_chlrl"]
+[ext_resource type="Script" uid="uid://63tubhsn8tff" path="res://characters/Npcs/Bosses/arañaLobo/attack_manager.gd" id="5_qb0ta"]
+[ext_resource type="Script" uid="uid://cedqdb12sgueo" path="res://characters/Npcs/Bosses/arañaLobo/States/shoot.gd" id="8_vbf8x"]
+[ext_resource type="PackedScene" uid="uid://bywkehgsxs5sh" path="res://characters/Npcs/Enemigos/Enemigos_actuales/MagoSkeleton/Proyectil/proyectil.tscn" id="9_bb0dc"]
+
+[sub_resource type="Animation" id="Animation_876n6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cabeza:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_om0p2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cabeza:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(69.5, 3.4999998)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cabeza:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.0859375, 0.9453125)]
+}
+
+[sub_resource type="Animation" id="Animation_chlrl"]
+resource_name = "attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cabeza:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(69.5, 3.4999998), Vector2(69, -2.0000007)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cabeza:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.0859375, 0.9453125), Vector2(0.67968756, 0.9453125)]
+}
+
+[sub_resource type="Animation" id="Animation_qb0ta"]
+resource_name = "idle"
+length = 1.0666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cabeza:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_om0p2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cabeza:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(69.5, 3.4999998), Vector2(69.5, 30.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cabeza:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.0859375, 0.9453125), Vector2(2.0859375, 0.5234375)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_chlrl"]
+_data = {
+&"RESET": SubResource("Animation_876n6"),
+&"attack": SubResource("Animation_chlrl"),
+&"idle": SubResource("Animation_qb0ta")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_876n6"]
 size = Vector2(242, 110)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpim1"]
+size = Vector2(205, 106)
+
+[sub_resource type="Animation" id="Animation_35f8q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PataIzq:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_om0p2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PataIzq:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-94, 12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PataIzq:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.234375, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PataIzq:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-95, 14)]
+}
+
+[sub_resource type="Animation" id="Animation_mvgbn"]
+resource_name = "sweepI"
+length = 2.2666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../PataIzq:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_om0p2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PataIzq:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1576353, 1.7666667, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-94, 12), Vector2(-238.53342, 54.30332), Vector2(-100, 60.88272), Vector2(11.690945, 80.537384), Vector2(-94, 12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PataIzq:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1576353, 1.7666667, 2.2666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.234375, 1), Vector2(0.234375, 2.86304), Vector2(0.234375, 1.6268325), Vector2(0.234375, 2.4256105), Vector2(0.234375, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PataIzq:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.1576353, 1.7666667, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0663961, 0.0, -0.8290314, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hitbox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.59, 1.8, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-95, 14), Vector2(-367, 122), Vector2(122, 151), Vector2(-95, 14)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.8666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vbf8x"]
+_data = {
+&"RESET": SubResource("Animation_35f8q"),
+&"sweepI": SubResource("Animation_mvgbn")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chlrl"]
+size = Vector2(25, 117.55107)
+
+[sub_resource type="Animation" id="Animation_bb0dc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(242, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PataDer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(240, 15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PataDer:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PataDer:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.234375, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vbf8x"]
+resource_name = "sweepD"
+length = 2.26
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.63, 1.29, 1.86, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(242, 12), Vector2(509, 153), Vector2(266, 163), Vector2(5, 176), Vector2(242, 12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PataDer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.29, 1.86, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(240, 15), Vector2(370.16837, 67.74388), Vector2(256.5317, 91.443306), Vector2(118.13229, 97.4621), Vector2(240, 15)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../PataDer:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.29, 1.86, 2.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.9477138, -0.11868239, 0.9477138, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../PataDer:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.29, 1.86, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.234375, 1), Vector2(0.234375, 2.7297363), Vector2(0.26066825, 1.9497439), Vector2(0.26066825, 2.5244164), Vector2(0.234375, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bb0dc"]
+_data = {
+&"RESET": SubResource("Animation_bb0dc"),
+&"sweepD": SubResource("Animation_vbf8x")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35f8q"]
+size = Vector2(20, 109)
+
 [node name="ArañaLobo" type="CharacterBody2D" unique_id=1384144224]
+position = Vector2(476, 265)
+collision_layer = 128
 script = ExtResource("1_jpim1")
+max_live = 20
 live = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733849900]
-position = Vector2(69.5, 0)
-scale = Vector2(2.0859375, 1)
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=1931333018]
+position = Vector2(65, -2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1114406880]
+libraries/ = SubResource("AnimationLibrary_chlrl")
+autoplay = &"idle"
+
+[node name="Cabeza" type="Sprite2D" parent="." unique_id=1733849900]
+position = Vector2(69.5, 3.4999998)
+scale = Vector2(2.0859375, 0.9453125)
+texture = ExtResource("1_om0p2")
+
+[node name="PataIzq" type="Sprite2D" parent="." unique_id=232533143]
+position = Vector2(-94, 12)
+scale = Vector2(0.234375, 1)
+texture = ExtResource("1_om0p2")
+
+[node name="PataDer" type="Sprite2D" parent="." unique_id=867246244]
+position = Vector2(240, 15)
+scale = Vector2(0.234375, 1)
 texture = ExtResource("1_om0p2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1774483367]
 position = Vector2(68, -2)
 shape = SubResource("RectangleShape2D_876n6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1114406880]
+[node name="HitboxCabeza" type="Area2D" parent="." unique_id=1743371554]
+collision_layer = 132
+collision_mask = 32
 
-[node name="State_Machine" parent="." unique_id=1059784330 instance=ExtResource("2_jpim1")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxCabeza" unique_id=510688667]
+position = Vector2(68.5, 4)
+shape = SubResource("RectangleShape2D_jpim1")
+
+[node name="SweepAttackI" type="Node2D" parent="." unique_id=361137400]
+script = ExtResource("3_35f8q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SweepAttackI" unique_id=259661133]
+libraries/ = SubResource("AnimationLibrary_vbf8x")
+
+[node name="Hitbox" type="Area2D" parent="SweepAttackI" unique_id=1096517111]
+position = Vector2(-95, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SweepAttackI/Hitbox" unique_id=804050144]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_chlrl")
+
+[node name="SweepAttackD" type="Node2D" parent="." unique_id=74760532]
+script = ExtResource("4_mvgbn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SweepAttackD" unique_id=105594413]
+libraries/ = SubResource("AnimationLibrary_bb0dc")
+
+[node name="Hitbox" type="Area2D" parent="SweepAttackD" unique_id=1096064131]
+position = Vector2(242, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SweepAttackD/Hitbox" unique_id=139823369]
+position = Vector2(-2, -8)
+shape = SubResource("RectangleShape2D_35f8q")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("2_jpim1")]
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State_Machine" unique_id=1581342952]
+script = ExtResource("4_876n6")
+
+[node name="Attack" type="Node" parent="State_Machine" unique_id=2114076253]
+script = ExtResource("5_chlrl")
+
+[node name="Shoot" type="Node" parent="State_Machine" unique_id=635949518]
+script = ExtResource("8_vbf8x")
+projectile_scene = ExtResource("9_bb0dc")
 
 [node name="Attack_Manager" type="Node" parent="." unique_id=1679274540]
+script = ExtResource("5_qb0ta")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="area_entered" from="HitboxCabeza" to="." method="_on_hitbox_area_entered"]
