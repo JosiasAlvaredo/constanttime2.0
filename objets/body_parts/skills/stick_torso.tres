@@ -8,5 +8,6 @@ _name = "stick_torso"
 max_durability = 25
 durability = 5
 shockwave = 10
+number_kinds = Array[int]([0])
 size = 1
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

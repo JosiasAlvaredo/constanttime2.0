@@ -93,7 +93,7 @@ func coyote_timer():
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer_value(3) and not is_inmunity:
 		var enemy=area.owner
-		current_torso.suffer_damage(enemy.damage)
+		current_torso.body_damage(enemy)
 		
 		recoil=enemy.knockback
 		velocity.x=sign(enemy.global_position.x-global_position.x)
@@ -101,15 +101,9 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		
 		inmunity()
 	elif area.get_collision_layer_value(4):
-		current_torso.suffer_damage(area.damage)
+		current_torso.body_damage(area)
 		global_position=save_point
 		
-	for i in area.owner.number_effects:
-			
-		var effect=ActiveEffects[GlobalValues.Effects.keys()[i]]
-		if not effect in current_effects:
-			current_effects.append(effect)
-			effect.call(current_torso)
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:

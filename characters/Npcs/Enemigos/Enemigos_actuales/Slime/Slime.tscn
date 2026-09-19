@@ -14,8 +14,10 @@ radius = 18.248287
 size = Vector2(40, 40.5)
 
 [node name="Slime" type="CharacterBody2D" unique_id=487235860]
+scale = Vector2(0.5, 0.5)
 collision_layer = 0
 script = ExtResource("1_7extp")
+live = 50
 damage = 15
 
 [node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("1_q82pc")]
@@ -43,7 +45,7 @@ shape = SubResource("CircleShape2D_5rfaf")
 
 [node name="FloorRay" type="RayCast2D" parent="RayCast" unique_id=1384405360]
 position = Vector2(22, 0)
-target_position = Vector2(0, 59)
+target_position = Vector2(0, 100)
 
 [node name="FrontRay" type="RayCast2D" parent="RayCast" unique_id=760859769]
 position = Vector2(1, 0)

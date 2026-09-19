@@ -8,6 +8,7 @@ _name = "bird_wings"
 max_durability = 55
 durability = 55
 jump_force = -100
+number_kinds = Array[int]([1, 2])
 size = 2
 number_habilities = Array[int]([2])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"
