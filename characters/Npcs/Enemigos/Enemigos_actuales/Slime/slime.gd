@@ -30,4 +30,4 @@ func update_direction():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	enemy_damage(area.get_parent())
+	suffer_damage(area.get_parent())
