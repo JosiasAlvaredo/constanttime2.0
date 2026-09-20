@@ -49,6 +49,7 @@ shape = SubResource("CircleShape2D_7b6hw")
 
 [node name="Head" type="Sprite2D" parent="body" unique_id=1706439698]
 visibility_layer = 2
+z_index = 1
 position = Vector2(0, 5)
 texture = ExtResource("3_w53g3")
 offset = Vector2(-1, -9)

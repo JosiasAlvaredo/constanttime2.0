@@ -2,19 +2,21 @@
 
 [ext_resource type="Script" uid="uid://djgp6gpevln8f" path="res://interface/User_interfece/slot_items/slot_item.gd" id="1_kaq4b"]
 
+[sub_resource type="ImageTexture" id="ImageTexture_nugtk"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f8gm"]
 size = Vector2(74.5, 75.5)
 
 [node name="slot_item" type="Node2D" unique_id=1747009124]
 script = ExtResource("1_kaq4b")
 
-[node name="Button" type="Button" parent="." unique_id=1668584708]
+[node name="Button" type="Button" parent="." unique_id=1107755457]
 offset_left = -36.0
-offset_top = -40.0
-offset_right = 39.0
+offset_top = -42.0
+offset_right = 38.0
 offset_bottom = 35.0
-focus_mode = 0
 mouse_filter = 2
+icon = SubResource("ImageTexture_nugtk")
 flat = true
 expand_icon = true
 
@@ -33,7 +35,3 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1349876185]
 position = Vector2(28, 29.75)
 shape = SubResource("RectangleShape2D_1f8gm")
-
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

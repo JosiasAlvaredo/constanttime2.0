@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b6qgrp65vco8d"]
+
+[ext_resource type="Script" uid="uid://c81kgrvm7dic4" path="res://characters/player/Body_parts/legs/legs.gd" id="1_t45yq"]
+[ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/Weapons/Rock.png" id="2_t45yq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mut7r"]
+radius = 1.4142135
+
+[node name="slime_legs" type="Node2D" unique_id=552661092]
+script = ExtResource("1_t45yq")
+
+[node name="Stick" type="Sprite2D" parent="." unique_id=1698048193]
+modulate = Color(0, 0.6039216, 0, 1)
+position = Vector2(0, 3)
+rotation = -6.2765417
+scale = Vector2(1.6079608, 1.3122828)
+texture = ExtResource("2_t45yq")
+flip_h = true
+
+[node name="foot_position" type="Node2D" parent="." unique_id=119149150]
+position = Vector2(0, 10)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="foot_position" unique_id=1165104098]
+shape = SubResource("CircleShape2D_mut7r")
+debug_color = Color(0.9956085, 0, 0.21029541, 0.41960785)

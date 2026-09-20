@@ -3,12 +3,14 @@ class_name body_part
 
 @export var _name=""
 
+@export var spanish_name=""
+
 @export var max_durability=0
 @export var durability=0
 @export var speed=0
 @export var jump_force=0
 @export var damage=0
-
+@export var description=""
 #es el porcentaje de daño q se lleva esta parte (por ahora solo funciona para el torso)
 @export var shockwave=0
 
@@ -19,7 +21,7 @@ var kind=[]
 
 @export_enum("none","small","medium","big") var size:int
 
-enum Habilities {climb,use,doble_jump}
+enum Habilities {climb,use,doble_jump,sticky}
 
 @export var number_habilities: Array[Habilities] = []
 

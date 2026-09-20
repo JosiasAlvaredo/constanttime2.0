@@ -49,6 +49,8 @@ func on_input(event: InputEvent) -> void:
 	var direction_x=Input.get_axis("Right","Left")
 	
 	if Input.is_action_pressed("Jump"):
+		controlled_node.velocity.y=controlled_node.Jump_stength
+		controlled_node.velocity.x=-300*sign(controlled_node.body.scale.x)
 		state_machine.change_to("Jump")
 	
 	if direction_x!=init_direction_x and direction_x!=0:

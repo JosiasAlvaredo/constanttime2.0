@@ -11,7 +11,6 @@ radius = 1.4142135
 
 [node name="None" type="Node2D" unique_id=1888509634]
 script = ExtResource("1_2uuvf")
-shockwave = 50
 
 [node name="Interactive_Box" type="Area2D" parent="." unique_id=1893239209]
 visible = false
@@ -52,5 +51,6 @@ shape = SubResource("CircleShape2D_g0sqg")
 debug_color = Color(0.6242576, 0.53344774, 1.92523e-07, 0.41960785)
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=287641547]
+z_index = 1
 position = Vector2(-1, 9)
 texture = ExtResource("2_tr0rl")

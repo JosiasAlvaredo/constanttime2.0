@@ -9,15 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="5_bmwt8"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="5_gea1q"]
 [ext_resource type="Texture2D" uid="uid://bfy6urbuikfn5" path="res://assets/exclamation.png" id="9_aao4b"]
-[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick_arm.tscn" id="10_4d7pk"]
-[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/other_arm.tscn" id="11_3nlyl"]
-[ext_resource type="PackedScene" uid="uid://cf732aoc4a0dv" path="res://objets/body_parts/stick_legs.tscn" id="12_fyddo"]
-[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="13_58nlb"]
-[ext_resource type="PackedScene" uid="uid://bkppvqw050ppw" path="res://characters/Npcs/Enemigos/Enemigos_viejos/Forest/enemigo_plataformero.tscn" id="14_2q7o6"]
-[ext_resource type="PackedScene" uid="uid://bj64ousu087v2" path="res://objets/body_parts/stick_torso.tscn" id="15_6jkxb"]
+[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="10_4d7pk"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="11_3nlyl"]
+[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="13_58nlb"]
 [ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="17_1jhfv"]
 [ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="18_6tv0b"]
+[ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="18_he1ik"]
+[ext_resource type="PackedScene" uid="uid://cqhbw1m88idtf" path="res://objets/Map/save_point.tscn" id="19_cvi62"]
 [ext_resource type="PackedScene" uid="uid://da5otd0or2vki" path="res://objets/items/Stick_item.tscn" id="19_he1ik"]
+[ext_resource type="PackedScene" uid="uid://53b4nigck6v6" path="res://objets/items/Forgot_lance.tscn" id="19_ohroy"]
+[ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="20_cvi62"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aao4b"]
 texture = ExtResource("2_f37jf")
@@ -206,7 +207,7 @@ tile_map_data = PackedByteArray("AAD//wAAAQADAAAAAAD+/wAAAQADAAAAAAD9/wAAAQADAAA
 position = Vector2(56, -31)
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_23wfk")]
-position = Vector2(-37, -91)
+position = Vector2(-59, -120)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2076875252]
 zoom = Vector2(2, 2)
@@ -250,18 +251,8 @@ position = Vector2(-31, -22)
 [node name="stick_arm6" parent="." unique_id=1234020750 instance=ExtResource("11_3nlyl")]
 position = Vector2(-31, -22)
 
-[node name="stick_arm3" parent="." unique_id=692060312 instance=ExtResource("12_fyddo")]
-position = Vector2(-97, -31)
-
 [node name="stick_arm4" parent="." unique_id=168672118 instance=ExtResource("13_58nlb")]
 position = Vector2(5, -30)
-
-[node name="Enemigo_plat" parent="." unique_id=1513898474 instance=ExtResource("14_2q7o6")]
-position = Vector2(131, -47)
-number_effects = Array[int]([1])
-
-[node name="stick_arm7" parent="." unique_id=1297055427 instance=ExtResource("15_6jkxb")]
-position = Vector2(26, -16)
 
 [node name="Stick_item" parent="." unique_id=1284734035 instance=ExtResource("18_6tv0b")]
 position = Vector2(-22, -60)
@@ -270,9 +261,17 @@ _name = "Torch"
 [node name="bird_wings" parent="." unique_id=1794513963 instance=ExtResource("17_1jhfv")]
 position = Vector2(-9, -31)
 
-[node name="slots" type="Node2D" parent="bird_wings" unique_id=1554065275]
-
-[node name="slots" type="Node2D" parent="bird_wings/slots" unique_id=1019386221]
-
 [node name="Stick_item2" parent="." unique_id=1055492467 instance=ExtResource("19_he1ik")]
 position = Vector2(-13, -75)
+
+[node name="slime_legs" parent="." unique_id=1992199456 instance=ExtResource("18_he1ik")]
+position = Vector2(-22, -68)
+
+[node name="SavePoint" parent="." unique_id=147022339 instance=ExtResource("19_cvi62")]
+position = Vector2(-63, -50)
+
+[node name="frog_legs" parent="." unique_id=1367313257 instance=ExtResource("20_cvi62")]
+position = Vector2(-62, -45)
+
+[node name="Forgot_lance" parent="." unique_id=1735038476 instance=ExtResource("19_ohroy")]
+position = Vector2(-54, -50)

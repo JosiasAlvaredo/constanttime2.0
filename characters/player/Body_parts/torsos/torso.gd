@@ -43,21 +43,23 @@ func _ready() -> void:
 	body=GlobalValues.bodies_parts
 	
 	if body.torso !=null:
-		_name=body.torso._name
+		_name=body.torso.skills._name
 		body.torso.check_player(user_interface)
 	else:
 		_name="none"
 		
 	skills=load("res://objets/body_parts/skills/%s.tres" % _name).duplicate()
 	total_weight=skills.size
-
+	
+	load_abilities(skills.number_habilities)
+	
 	#se crean las extremidades, se definen los stats y habilidades
 	if body.right_arm!=null:
 		var right_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.right_arm.skills._name).instantiate()
 		var right_armSkills=body.right_arm.skills
 
 		right_arm.position=right_arm_position.position
-		right_arm.z_index=1
+		right_arm.z_index=2
 		
 		count_parts+=1
 		total_weight+=right_armSkills.size
@@ -126,8 +128,8 @@ func _ready() -> void:
 		
 		body.legs.check_player(user_interface)
 		
-		skills.speed+=legsSkills.speed
-		skills.jump_force+=legsSkills.jump_force
+		skills.speed=legsSkills.speed
+		skills.jump_force=legsSkills.jump_force
 		
 		count_parts+=2
 		
@@ -137,6 +139,7 @@ func _ready() -> void:
 		load_abilities(legsSkills.number_habilities)
 
 		add_child(legs)
+		$Body_Down.position.y=legs.foot_position.position.y+10
 		parent.body_botton=legs.foot_position.position.y*(1.5)+legs.position.y
 	else:
 		parent.body_botton=legs_position.position.y*1.5
@@ -165,16 +168,21 @@ func suffer_damage(_damage,weapond=null):
 	#desgaste del torso
 	var part_wear=shockwave*_damage
 	#daño dirigido a las partes del cuerpo
-	if body.torso!=null:
-		body.torso.skills.body_part_damage(part_wear,weapond)
+	var increment=0
 	if body.right_arm!=null:
 		body.right_arm.skills.body_part_damage((_damage-part_wear)/count_parts,weapond)
+	else:
+		increment+=1
 	if body.left_arm!=null:
 		body.left_arm.skills.body_part_damage((_damage-part_wear)/count_parts,weapond)
+	else:
+		increment+=1
 	if body.legs!=null:
 		body.legs.skills.body_part_damage((_damage-part_wear)/int(count_parts/2),weapond)
-		
-
+	else:
+		increment+=2
+	if body.torso!=null:
+		body.torso.skills.body_part_damage(part_wear*increment,weapond)
 #Carga los nodos de estado en el nodo abilities del state machine
 func load_abilities(number_habilities):
 		for number_hability in number_habilities:

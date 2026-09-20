@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://n8q5pqldptpw"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_o1ngu"]
+
+[resource]
+script = ExtResource("1_o1ngu")
+_name = "gargoyle_torso"
+spanish_name = "Torso de gargola"
+max_durability = 25
+durability = 5
+description = "Fuerte torso de piedra"
+shockwave = 10
+number_kinds = Array[int]([0])
+size = 1
+metadata/_custom_type_script = "uid://c5pevm087pgoq"
