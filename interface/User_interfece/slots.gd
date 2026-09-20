@@ -22,7 +22,7 @@ var durability_percent=0
 
 func _ready() -> void:
 	save_position=position
-	await  get_tree().create_timer(0.1).timeout
+	await  get_tree().create_timer(0.01).timeout
 
 func _physics_process(delta: float) -> void:
 	#crear un item aux para que el jugador pueda ver que objeto esta moviendo
@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		if not taking_thing:
 			await get_tree().create_timer(0.2).timeout
 			taking_thing=true
-			get_parent().add_child(item_aux)
+			user_interface.add_child(item_aux)
 			
 	#lo que se muestra en el slot (el objeto que esta ahi o nada)
 	if GlobalValues.bodies_parts[slot_part]!=null and (item_aux==null or not moving_thing) :

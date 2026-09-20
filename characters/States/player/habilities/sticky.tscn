@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cy4yp14bdqfx6"]
+
+[ext_resource type="Script" uid="uid://qoukr0wxv43a" path="res://characters/States/player/habilities/sticky.gd" id="1_28vxd"]
+
+[node name="Sticky" type="Node" unique_id=29894792]
+script = ExtResource("1_28vxd")

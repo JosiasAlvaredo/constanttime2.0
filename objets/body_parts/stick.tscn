@@ -12,7 +12,7 @@ radius = 4.0
 [node name="stick_arm" type="RigidBody2D" unique_id=926426869]
 collision_layer = 0
 script = ExtResource("1_wjj2a")
-_name = "stick_arm"
+_name = "stick"
 origin = "body_parts"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]

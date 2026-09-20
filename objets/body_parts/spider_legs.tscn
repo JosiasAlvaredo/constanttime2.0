@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://crlgjc5el33h1"]
+[gd_scene format=3 uid="uid://b7f4lpee6v5nj"]
 
-[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_klahn"]
-[ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/Weapons/Stick.png" id="2_lhvpq"]
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_1g5jd"]
+[ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/Weapons/Rock.png" id="2_1g5jd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -11,14 +11,13 @@ radius = 4.0
 
 [node name="stick_arm" type="RigidBody2D" unique_id=926426869]
 collision_layer = 0
-script = ExtResource("1_klahn")
-_name = "other_arm"
+script = ExtResource("1_1g5jd")
+_name = "spider_legs"
 origin = "body_parts"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
-modulate = Color(0.92395884, 4.861206e-06, 1.347661e-06, 1)
 position = Vector2(0, -1)
-texture = ExtResource("2_lhvpq")
+texture = ExtResource("2_1g5jd")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
 collision_layer = 64

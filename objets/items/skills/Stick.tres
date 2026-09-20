@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_nj7fn")
 _name = "Stick"
+spanish_name = "Palo"
 max_durability = 35
 durability = 35
 damage = 2

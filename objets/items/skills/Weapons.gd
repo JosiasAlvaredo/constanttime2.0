@@ -2,6 +2,9 @@ extends Resource
 class_name Weapons
 
 @export var _name=""
+@export var spanish_name=""
+
+@export var description=""
 
 @export var max_durability=0
 @export var durability=0

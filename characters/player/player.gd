@@ -135,7 +135,8 @@ func buil_body():
 	if GlobalValues.bodies_parts.torso==null:
 		torso=load("res://characters/player/Body_parts/torsos/none.tscn").instantiate()
 	else:
-		torso=load("res://characters/player/Body_parts/torsos/%s.tscn" % GlobalValues.bodies_parts.torso._name).instantiate()
+
+		torso=load("res://characters/player/Body_parts/torsos/%s.tscn" % GlobalValues.bodies_parts.torso.skills._name).instantiate()
 	
 	body.add_child(torso)
 	body.move_child(torso, torso.get_index() - 1)

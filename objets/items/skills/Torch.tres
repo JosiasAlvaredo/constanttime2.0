@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_kifpi")
 _name = "Torch"
+spanish_name = "Antorcha"
 max_durability = 23
 durability = 23
 damage = 1
