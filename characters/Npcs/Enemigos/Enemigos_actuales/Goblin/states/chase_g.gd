@@ -4,7 +4,7 @@ extends State_base
 func on_physics_process(delta: float) -> void:
 	var enemy = controlled_node
 	
-	if enemy.player == null:
+	if enemy.playerUbi == null:
 		state_machine.change_to("IdleG")
 		return
 	
@@ -13,7 +13,7 @@ func on_physics_process(delta: float) -> void:
 		state_machine.change_to("IdleG")
 		return
 	
-	var difference = enemy.player.global_position.x - enemy.global_position.x
+	var difference = enemy.playerUbi.global_position.x - enemy.global_position.x
 	
 	if difference > 5:
 		enemy.direction = 1

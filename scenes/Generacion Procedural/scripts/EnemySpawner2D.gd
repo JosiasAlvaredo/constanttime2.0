@@ -15,12 +15,6 @@ func _ready() -> void:
 	spawn_enemies()
 
 
-func _process(_delta: float) -> void:
-	for enemy in spawned_enemies:
-		if is_instance_valid(enemy):
-			print("Enemigo: ", enemy.name, " | Posición: ", enemy.global_position)
-
-
 func spawn_enemies() -> void:
 	for i in range(enemy_amount):
 		spawn_enemy()
@@ -47,7 +41,3 @@ func spawn_enemy() -> void:
 	add_child(enemy)
 	
 	spawned_enemies.append(enemy)
-
-	print("Enemigo creado: ", enemy.name)
-	print("Posición inicial: ", enemy.global_position)
-	print("Ruta: ", enemy.get_path())

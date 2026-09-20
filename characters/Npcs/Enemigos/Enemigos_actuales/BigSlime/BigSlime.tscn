@@ -23,7 +23,7 @@ shape = SubResource("CircleShape2D_ys45m")
 [node name="RayCast" type="Node2D" parent="." unique_id=328842527]
 
 [node name="FloorRay" type="RayCast2D" parent="RayCast" unique_id=1538487330]
-position = Vector2(25, -6)
+position = Vector2(50, -6)
 target_position = Vector2(0, 36)
 
 [node name="FrontRay" type="RayCast2D" parent="RayCast" unique_id=224983737]

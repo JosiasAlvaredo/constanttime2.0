@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bgcpunbe24yy"]
+
+[ext_resource type="Script" uid="uid://bldyry7qecumn" path="res://characters/player/Body_parts/legs/frog_legs.gd" id="1_wvs3h"]
+[ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/Weapons/Stick.png" id="2_wvs3h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mut7r"]
+radius = 1.4142135
+
+[node name="frog_legs" type="Node2D" unique_id=552661092]
+script = ExtResource("1_wvs3h")
+
+[node name="Stick" type="Sprite2D" parent="." unique_id=1698048193]
+modulate = Color(0, 0.6039216, 0, 1)
+position = Vector2(-7, 8)
+rotation = -9.365805
+scale = Vector2(0.61430496, 0.5883967)
+texture = ExtResource("2_wvs3h")
+flip_h = true
+
+[node name="Stick2" type="Sprite2D" parent="." unique_id=113944972]
+modulate = Color(0, 0.6039216, 0, 1)
+position = Vector2(7, 7)
+rotation = -8.613505
+scale = Vector2(0.61430496, 0.5883967)
+texture = ExtResource("2_wvs3h")
+flip_h = true
+
+[node name="Stick4" type="Sprite2D" parent="." unique_id=383203217]
+modulate = Color(0, 0.6039216, 0, 1)
+position = Vector2(-5.263386, 0.74678326)
+rotation = 1.1546929
+scale = Vector2(0.614305, 0.5883967)
+texture = ExtResource("2_wvs3h")
+flip_h = true
+
+[node name="Stick3" type="Sprite2D" parent="." unique_id=1236332418]
+modulate = Color(0, 0.6039216, 0, 1)
+position = Vector2(7.7260895, 0.22374296)
+rotation = -6.2644567
+scale = Vector2(0.61430496, 0.5883967)
+texture = ExtResource("2_wvs3h")
+flip_h = true
+
+[node name="foot_position" type="Node2D" parent="." unique_id=119149150]
+position = Vector2(0, 10)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="foot_position" unique_id=1165104098]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_mut7r")
+debug_color = Color(0.9956085, 0, 0.21029541, 0.41960785)

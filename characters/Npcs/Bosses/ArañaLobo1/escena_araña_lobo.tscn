@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cuvu2bd3apux5"]
+
+[ext_resource type="PackedScene" uid="uid://dko1jbvffbroc" path="res://characters/Npcs/Bosses/ArañaLobo1/araña_lobo.tscn" id="1_ee5si"]
+[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_7dcrg"]
+[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="3_sw0v0"]
+[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="4_j32nr"]
+[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="5_jgbog"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="7_6isdm"]
+[ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="8_yts3j"]
+[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="9_y301q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqp2c"]
+size = Vector2(1162, 20)
+
+[node name="EscenaArañaLobo" type="Node2D" unique_id=25733053]
+
+[node name="ArañaLobo" parent="." unique_id=1550610712 instance=ExtResource("1_ee5si")]
+position = Vector2(582.00006, 433)
+scale = Vector2(2.2146552, 1.2510777)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1974250865]
+position = Vector2(-1, 633)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1650520266]
+position = Vector2(571, 0)
+shape = SubResource("RectangleShape2D_nqp2c")
+debug_color = Color(0, 0.6, 0, 0.41960785)
+
+[node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_7dcrg")]
+position = Vector2(525, 589)
+
+[node name="Piernas" parent="." unique_id=926426869 instance=ExtResource("3_sw0v0")]
+position = Vector2(533, 461)
+
+[node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("4_j32nr")]
+
+[node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("5_jgbog")]
+
+[node name="Partes" type="Node2D" parent="." unique_id=1278169587]
+position = Vector2(18, 114)
+
+[node name="stick_arm" parent="Partes" unique_id=1531977345 instance=ExtResource("7_6isdm")]
+position = Vector2(563, 435)
+
+[node name="Stick_item" parent="Partes" unique_id=1284734035 instance=ExtResource("8_yts3j")]
+position = Vector2(534, 467)
+
+[node name="stick_arm2" parent="Partes" unique_id=788725046 instance=ExtResource("3_sw0v0")]
+position = Vector2(533, 461)
+
+[node name="stick_arm3" parent="Partes" unique_id=1413581743 instance=ExtResource("9_y301q")]
+position = Vector2(522, 444)

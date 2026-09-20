@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.03333336, 0.43333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(84, 0)]
+"values": [Vector2(0, 0), Vector2(155, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.33333337),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(84, 0), Vector2(0, 0)]
+"values": [Vector2(155, 0), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -57,7 +57,7 @@ tracks/1/path = NodePath("Info_animations:current_animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Info_visible"]
@@ -65,6 +65,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_oixlu"]
 resource_name = "Info_unvisible"
+length = 0.001
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -76,7 +77,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(84, 0)]
+"values": [Vector2(155, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_p4rts"]
@@ -107,7 +108,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(84, 0)]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -164,10 +165,9 @@ metadata/_edit_horizontal_guides_ = [525.0]
 visible = false
 
 [node name="info" type="Node2D" parent="Inventory" unique_id=1646273436]
-position = Vector2(84, 0)
 
 [node name="back_ground" type="ColorRect" parent="Inventory/info" unique_id=274178625]
-offset_left = 721.0
+offset_left = 651.0
 offset_top = 107.0
 offset_right = 808.0
 offset_bottom = 338.0
@@ -176,7 +176,7 @@ offset_bottom = 338.0
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
-offset_right = 84.0
+offset_right = 154.0
 offset_bottom = 228.0
 color = Color(0, 0, 0, 1)
 
@@ -201,10 +201,10 @@ anchor_left = 0.5
 anchor_top = 0.56
 anchor_right = 0.5
 anchor_bottom = 0.56
-offset_left = 726.0
-offset_top = 134.0
-offset_right = 798.0
-offset_bottom = 150.0
+offset_left = 696.0
+offset_top = 116.0
+offset_right = 768.0
+offset_bottom = 132.0
 theme_override_fonts/font = ExtResource("1_nxw7e")
 
 [node name="durability" type="Label" parent="Inventory/info" unique_id=1261529160]
@@ -213,10 +213,10 @@ anchor_left = 0.5
 anchor_top = 0.56
 anchor_right = 0.5
 anchor_bottom = 0.56
-offset_left = 742.0
-offset_top = 182.0
-offset_right = 794.0
-offset_bottom = 198.0
+offset_left = 679.0
+offset_top = 144.0
+offset_right = 731.0
+offset_bottom = 160.0
 theme_override_fonts/font = ExtResource("1_nxw7e")
 
 [node name="icon" parent="Inventory/info/durability" unique_id=613666362 instance=ExtResource("3_p4rts")]
@@ -229,15 +229,31 @@ anchor_left = 0.5
 anchor_top = 0.56
 anchor_right = 0.5
 anchor_bottom = 0.56
-offset_left = 742.0
-offset_top = 213.0
-offset_right = 794.0
-offset_bottom = 229.0
+offset_left = 679.0
+offset_top = 164.0
+offset_right = 731.0
+offset_bottom = 180.0
 theme_override_fonts/font = ExtResource("1_nxw7e")
 
 [node name="icon" parent="Inventory/info/strength" unique_id=11283988 instance=ExtResource("3_p4rts")]
 position = Vector2(-18, 3.8146973e-06)
 layer_0/tile_data = PackedInt32Array(0, 262145, 5)
+
+[node name="shockwave" type="Label" parent="Inventory/info" unique_id=1884928758]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.56
+anchor_right = 0.5
+anchor_bottom = 0.56
+offset_left = 750.0
+offset_top = 144.0
+offset_right = 802.0
+offset_bottom = 160.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+
+[node name="icon" parent="Inventory/info/shockwave" unique_id=1147705064 instance=ExtResource("3_p4rts")]
+position = Vector2(-18, 3.8146973e-06)
+layer_0/tile_data = PackedInt32Array(0, 262145, 6)
 
 [node name="jump" type="Label" parent="Inventory/info" unique_id=250601429]
 anchors_preset = -1
@@ -245,10 +261,10 @@ anchor_left = 0.5
 anchor_top = 0.56
 anchor_right = 0.5
 anchor_bottom = 0.56
-offset_left = 742.0
-offset_top = 244.0
-offset_right = 794.0
-offset_bottom = 260.0
+offset_left = 750.0
+offset_top = 183.0
+offset_right = 802.0
+offset_bottom = 199.0
 theme_override_fonts/font = ExtResource("1_nxw7e")
 
 [node name="icon" parent="Inventory/info/jump" unique_id=1551241134 instance=ExtResource("3_p4rts")]
@@ -261,15 +277,28 @@ anchor_left = 0.5
 anchor_top = 0.56
 anchor_right = 0.5
 anchor_bottom = 0.56
-offset_left = 742.0
-offset_top = 273.0
-offset_right = 794.0
-offset_bottom = 289.0
+offset_left = 679.0
+offset_top = 183.0
+offset_right = 731.0
+offset_bottom = 199.0
 theme_override_fonts/font = ExtResource("1_nxw7e")
 
 [node name="icon" parent="Inventory/info/velocity" unique_id=1521025057 instance=ExtResource("3_p4rts")]
 position = Vector2(-18, 3.8146973e-06)
 layer_0/tile_data = PackedInt32Array(0, 131073, 7)
+
+[node name="Descripccion" type="Label" parent="Inventory/info" unique_id=1293000310]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.56
+anchor_right = 0.5
+anchor_bottom = 0.56
+offset_left = 665.0
+offset_top = 208.0
+offset_right = 794.0
+offset_bottom = 322.0
+theme_override_fonts/font = ExtResource("1_nxw7e")
+autowrap_mode = 2
 
 [node name="Info_animations" type="AnimationPlayer" parent="Inventory/info" unique_id=2008671110]
 libraries/ = SubResource("AnimationLibrary_84lj5")
@@ -392,16 +421,24 @@ offset_right = 962.0
 offset_bottom = 316.0
 slot_part = "legs"
 
-[node name="near_objets" type="Control" parent="Inventory/inventory" unique_id=168938720]
+[node name="near_objets" type="ScrollContainer" parent="Inventory/inventory" unique_id=1745538878]
 layout_mode = 1
-anchor_left = 0.07300001
-anchor_top = 0.53400004
-anchor_right = 0.924
-anchor_bottom = 0.73700005
-offset_left = -0.12600136
-offset_top = -0.19403076
-offset_right = -0.088012695
-offset_bottom = 0.13296509
+anchors_preset = -1
+anchor_left = 0.031000001
+anchor_top = 0.47700003
+anchor_right = 0.966
+anchor_bottom = 0.768
+offset_left = -0.122000694
+offset_top = -0.20701599
+offset_right = -0.0920105
+offset_bottom = -0.088012695
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/inventory/near_objets" unique_id=686480299]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 4
 
 [node name="Menu_box" type="Area2D" parent="Inventory" unique_id=2096701751]
 priority = -1

@@ -5,9 +5,11 @@
 [resource]
 script = ExtResource("1_f8jo4")
 _name = "bird_wings"
-max_durability = 55
-durability = 55
+spanish_name = "Ala rota"
+max_durability = 150
+durability = 125
 jump_force = -100
+description = "Aunque rota tiene la fuerza para realizar un segundo salto en el aire."
 number_kinds = Array[int]([1, 2])
 size = 2
 number_habilities = Array[int]([2])

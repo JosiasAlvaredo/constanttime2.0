@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_7brb3")
 _name = "Rock"
+spanish_name = "Roca"
 max_durability = 100
 durability = 100
 damage = 5

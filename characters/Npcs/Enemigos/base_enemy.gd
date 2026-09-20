@@ -27,17 +27,19 @@ func _process(delta: float) -> void:
 
 func enemy_damage(weapond):
 	var enemy=weapond.player
-	
+
 	last_direction=direction
 	direction=0
 	velocity.x=sign(enemy.global_position.x-global_position.x)
 	velocity.y=sign(enemy.global_position.y-global_position.y)
 	recoil=weapond.skills.knockback*Knockback_resistence
-	
+	print( weapond.skills.number_effects)
 	for i in weapond.skills.number_effects:
 		
 		var effect=ActiveEffects[GlobalValues.Effects.keys()[i]]
+		print(effect)
 		if not effect in current_effects:
+			print("llego","-",effect)
 			current_effects.append(effect)
 			effect.call(self)
 
@@ -48,10 +50,12 @@ func enemy_damage(weapond):
 		
 
 func suffer_damage(_damage):
-	damage_efect()
-	live-=_damage
-	if live<=0:
-		dead()
+	if _damage is int:
+		damage_efect()
+		
+		live-=_damage
+		if live<=0:
+			dead()
 
 func dead():
 	queue_free()

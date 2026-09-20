@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://dgh0chl205o8s"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_06211"]
+
+[resource]
+script = ExtResource("1_06211")
+_name = "frog_legs"
+spanish_name = "Patas de rana"
+max_durability = 100
+durability = 100
+speed = 300
+jump_force = -400
+description = "Un par de piernas fuertes pero no muy flexibles"
+shockwave = 30
+number_kinds = Array[int]([3])
+size = 2
+metadata/_custom_type_script = "uid://c5pevm087pgoq"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://cvlwbwwcjiat1"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_jqgwg"]
+
+[resource]
+script = ExtResource("1_jqgwg")
+_name = "stick"
+spanish_name = "Palo"
+max_durability = 50
+durability = 50
+speed = 200
+jump_force = -200
+damage = 15
+description = "Un palo resistente"
+shockwave = 50
+number_kinds = Array[int]([0, 1, 3, 2])
+size = 1
+number_habilities = Array[int]([1])
+metadata/_custom_type_script = "uid://c5pevm087pgoq"

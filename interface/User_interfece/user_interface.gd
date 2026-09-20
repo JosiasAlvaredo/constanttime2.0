@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-@onready var near_objets_node = $Inventory/inventory/near_objets
+@onready var near_objets_node = $Inventory/inventory/near_objets/GridContainer
 @onready var player: Player = $"../Player"
 
 @onready var inventory: Node2D = $Inventory
@@ -27,19 +27,15 @@ func _physics_process(delta: float) -> void:
 	if inventory.visible and save_near_objets!=near_objets:
 		for slot_item in near_objets_node.get_children():
 			slot_item.queue_free()
-		var pos_y=0
+
 		#mostrar cosas en el piso y ordenarlas
 		for i in range(len(near_objets)):
-			if i%5==4:
-				pos_y+=60
 			var near_objet=near_objets[i]
-			var new_slot_item=load("res://interface/User_interfece/slot_items/slot_item.tscn").instantiate()
+			var new_slot_item=load("res://interface/User_interfece/items_in_grid.tscn").instantiate()
 			near_objets_node.add_child(new_slot_item)
-			new_slot_item.button.icon=near_objet.item_sprite.texture
+			new_slot_item.icon=near_objet.item_sprite.texture
 			new_slot_item.skills=near_objet.skills
-			new_slot_item.path="res://objets/body_parts/%s.tscn" % near_objet._name
-			
-			new_slot_item.save_position=Vector2((i%5)*60,pos_y)
+
 			new_slot_item.link_to_original=near_objet
 		save_near_objets=near_objets.duplicate()
 	
@@ -59,11 +55,37 @@ func analisis(obj):
 		if info_animations.current_animation=="Info_unvisible":
 			info_animations.play("Info_open")
 		
-		$Inventory/info/name.text=skills._name
+		$Inventory/info/name.text=skills.spanish_name
 		$Inventory/info/durability.text=str(skills.durability)
-
-	
-	
+		
+		if skills.damage!=0:
+			$Inventory/info/strength.visible=true
+			$Inventory/info/strength.text=str(skills.damage)
+		else:
+			$Inventory/info/strength.visible=false
+		
+		if "shockwave" in skills:
+			if skills.shockwave!=0:
+				$Inventory/info/shockwave.visible=true
+				$Inventory/info/shockwave.text=str(skills.shockwave)
+			else:
+				$Inventory/info/shockwave.visible=false
+		if "speed" in skills:	
+			if skills.speed!=0:
+				$Inventory/info/velocity.visible=true
+				$Inventory/info/velocity.text=str(skills.speed)
+			else:
+				$Inventory/info/velocity.visible=false
+				
+		if "jump_force" in skills:
+			if skills.jump_force!=0:
+				$Inventory/info/jump.visible=true
+				$Inventory/info/jump.text=str(abs(skills.jump_force))
+			else:
+				$Inventory/info/jump.visible=false
+			
+		$Inventory/info/Descripccion.text=skills.description
+			
 func timer_clouse_info():
 	checking_info=false
 	await get_tree().create_timer(0.5).timeout

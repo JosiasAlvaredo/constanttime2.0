@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://8rtslj730bw4"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_r1v3w"]
+
+[resource]
+script = ExtResource("1_r1v3w")
+_name = "goblind_arm"
+spanish_name = "Brazo de duende"
+max_durability = 50
+durability = 50
+description = "Un brazo debil pero capaz de agarrar armas."
+number_kinds = Array[int]([1, 2])
+can_take = true
+size = 1
+metadata/_custom_type_script = "uid://c5pevm087pgoq"
