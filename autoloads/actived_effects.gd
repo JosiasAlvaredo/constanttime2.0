@@ -2,6 +2,7 @@ extends Node
 
 func fire(target):
 	for i in range(5):
+		print("fuego")
 		await get_tree().create_timer(1.5).timeout
 		if target!=null:
 			target.suffer_damage(5)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2i8krgqn6uk8"
-path="res://.godot/imported/ExploteEye.png-815a77a2ff46c9344f7e068829b08d54.ctex"
+uid="uid://dbjrxb46av0gb"
+path="res://.godot/imported/Alcantarilla.png-50fbbb56f97e6978b5292c47bc5b9992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/enemies/ExploteEye.png"
-dest_files=["res://.godot/imported/ExploteEye.png-815a77a2ff46c9344f7e068829b08d54.ctex"]
+source_file="res://assets/tilws/Alcantarilla.png"
+dest_files=["res://.godot/imported/Alcantarilla.png-50fbbb56f97e6978b5292c47bc5b9992.ctex"]
 
 [params]
 

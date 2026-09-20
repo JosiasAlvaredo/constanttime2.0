@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ui2ot313vec3"]
 
-[ext_resource type="Script" uid="uid://dl03ejk14nifc" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/piso_fuego.gd" id="1_0va06"]
+[ext_resource type="Script" uid="uid://dl03ejk14nifc" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Psi-fuego/piso_fuego.gd" id="1_0va06"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3q0mq"]
 

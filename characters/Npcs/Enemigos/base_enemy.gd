@@ -33,14 +33,16 @@ func enemy_damage(weapond):
 	velocity.x=sign(enemy.global_position.x-global_position.x)
 	velocity.y=sign(enemy.global_position.y-global_position.y)
 	recoil=weapond.skills.knockback*Knockback_resistence
-	
+	print( weapond.skills.number_effects)
 	for i in weapond.skills.number_effects:
 		
 		var effect=ActiveEffects[GlobalValues.Effects.keys()[i]]
+		print(effect)
 		if not effect in current_effects:
+			print("llego","-",effect)
 			current_effects.append(effect)
 			effect.call(self)
-	print(weapond.skills.damage)
+
 	suffer_damage(weapond.skills.damage)
 	
 	if Knockback_resistence!=0:
@@ -48,7 +50,6 @@ func enemy_damage(weapond):
 		
 
 func suffer_damage(_damage):
-
 	if _damage is int:
 		damage_efect()
 		

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bfsy85erx2vui"]
 
-[ext_resource type="Script" uid="uid://dqhwhv8ub2jf4" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/flame.gd" id="1_1f5s7"]
-[ext_resource type="PackedScene" uid="uid://ui2ot313vec3" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/piso_fuego.tscn" id="2_bbchw"]
+[ext_resource type="Script" uid="uid://dqhwhv8ub2jf4" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Flame/flame.gd" id="1_1f5s7"]
+[ext_resource type="PackedScene" uid="uid://ui2ot313vec3" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Psi-fuego/piso_fuego.tscn" id="2_bbchw"]
 [ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="2_clchw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wiul6"]

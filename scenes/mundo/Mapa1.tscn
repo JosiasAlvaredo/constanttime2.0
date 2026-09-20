@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="20_cvi62"]
 [ext_resource type="PackedScene" uid="uid://chm0tlaxhm01j" path="res://objets/items/fire_scroll.tscn" id="20_ohroy"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="21_ohroy"]
+[ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="22_f3ndf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aao4b"]
 texture = ExtResource("2_f37jf")
@@ -283,3 +284,6 @@ position = Vector2(-59, -32)
 
 [node name="EnemySpawner" parent="." unique_id=1236478016 instance=ExtResource("21_ohroy")]
 position = Vector2(141, -60)
+
+[node name="BigSlime" parent="." unique_id=1982467406 instance=ExtResource("22_f3ndf")]
+position = Vector2(349, -69)
