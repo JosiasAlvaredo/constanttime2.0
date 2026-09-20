@@ -15,9 +15,9 @@ var dragon: Dragon
 @export_category("Ataques Fase 2")
 
 @export var ataques_fase_2: Array[Dictionary] = [
-	{"nombre": "Shoot", "probabilidad": 25.0},
-	{"nombre": "Flame", "probabilidad": 25.0},
-	{"nombre": "MeteorRain", "probabilidad": 50.0},
+	{"nombre": "Shoot", "probabilidad": 30.0},
+	{"nombre": "MeteorRain", "probabilidad": 20.0},
+	{"nombre": "Summon", "probabilidad": 50.0},
 
 ]
 

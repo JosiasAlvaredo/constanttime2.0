@@ -2,13 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dko1jbvffbroc" path="res://characters/Npcs/Bosses/ArañaLobo1/araña_lobo.tscn" id="1_ee5si"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_7dcrg"]
-[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="3_sw0v0"]
+[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="3_sw0v0"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="4_j32nr"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="5_jgbog"]
-[ext_resource type="PackedScene" uid="uid://bj64ousu087v2" path="res://objets/body_parts/stick_torso.tscn" id="6_ix56s"]
-[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/other_arm.tscn" id="7_6isdm"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="7_6isdm"]
 [ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="8_yts3j"]
-[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick_arm.tscn" id="9_y301q"]
+[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="9_y301q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqp2c"]
 size = Vector2(1162, 20)
@@ -39,9 +38,6 @@ position = Vector2(533, 461)
 
 [node name="Partes" type="Node2D" parent="." unique_id=1278169587]
 position = Vector2(18, 114)
-
-[node name="stick_arm5" parent="Partes" unique_id=530266919 instance=ExtResource("6_ix56s")]
-position = Vector2(525, 466)
 
 [node name="stick_arm" parent="Partes" unique_id=1531977345 instance=ExtResource("7_6isdm")]
 position = Vector2(563, 435)
