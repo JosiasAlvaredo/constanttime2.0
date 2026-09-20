@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 
 func enemy_damage(weapond):
 	var enemy=weapond.player
-	
+
 	last_direction=direction
 	direction=0
 	velocity.x=sign(enemy.global_position.x-global_position.x)
@@ -40,7 +40,7 @@ func enemy_damage(weapond):
 		if not effect in current_effects:
 			current_effects.append(effect)
 			effect.call(self)
-
+	print(weapond.skills.damage)
 	suffer_damage(weapond.skills.damage)
 	
 	if Knockback_resistence!=0:
@@ -48,10 +48,13 @@ func enemy_damage(weapond):
 		
 
 func suffer_damage(_damage):
-	damage_efect()
-	live-=_damage
-	if live<=0:
-		dead()
+
+	if _damage is int:
+		damage_efect()
+		
+		live-=_damage
+		if live<=0:
+			dead()
 
 func dead():
 	queue_free()
