@@ -8,9 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="5_2of1a"]
 [ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="6_7iove"]
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="7_vax2r"]
+[ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="9_ikq0o"]
+[ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="10_8yqei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(818, 135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikq0o"]
+size = Vector2(20, 72)
 
 [node name="StartRoom01" type="Node2D" unique_id=1701331687]
 position = Vector2(-191, 1)
@@ -29,6 +34,7 @@ position = Vector2(-12, 322)
 tile_map_data = PackedByteArray("AAD9//3/AAADAAAAAAD+//3/AAADAAQAAAD///3/AAADAAQAAAAAAP3/AAADAAQAAAABAP3/AAADAAQAAAACAP3/AAADAAQAAAADAP3/AAADAAQAAAAEAP3/AAADAAQAAAAFAP3/AAADAAQAAAAGAP3/AAADAAQAAAAHAP3/AAADAAQAAAAIAP3/AAADAAQAAAAJAP3/AAADAAQAAAAKAP3/AAADAAQAAAALAP3/AAADAAQAAAAMAP3/AAADAAQAAAANAP3/AAADAAQAAAAOAP3/AAADAAQAAAAPAP3/AAADAAQAAAAQAP3/AAADAAQAAAARAP3/AAADAAQAAAASAP3/AAADAAQAAAATAP3/AAADAAQAAAAUAP3/AAADAAQAAAAVAP3/AAADAAQAAAAWAP3/AAADAAAAAAAWAPn/AAADAAIAAAD9//n/AAADAAIAAAD+//n/AAAHAAYAAAD///n/AAAHAAYAAAAAAPn/AAAHAAYAAAABAPn/AAAHAAYAAAACAPn/AAAHAAYAAAADAPn/AAAHAAYAAAAEAPn/AAAHAAYAAAAFAPn/AAAHAAYAAAAGAPn/AAAHAAYAAAAHAPn/AAAHAAYAAAAIAPn/AAAHAAYAAAAJAPn/AAAHAAYAAAAKAPn/AAAHAAYAAAALAPn/AAAHAAYAAAAMAPn/AAAHAAYAAAANAPn/AAAHAAYAAAAOAPn/AAAHAAYAAAAPAPn/AAAHAAYAAAAQAPn/AAAHAAYAAAARAPn/AAAHAAYAAAASAPn/AAAHAAYAAAATAPn/AAAHAAYAAAAUAPn/AAAHAAYAAAAVAPn/AAAHAAYAAAABAPv/AAAKAAIAAAANAPv/AAAKAAIAAAA=")
 
 [node name="Bounds" type="Area2D" parent="." unique_id=348332757]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1304408014]
 position = Vector2(311, 180)
@@ -53,3 +59,20 @@ position = Vector2(-44, 184)
 
 [node name="stick_arm2" parent="." unique_id=512423657 instance=ExtResource("7_vax2r")]
 position = Vector2(-78, 197)
+
+[node name="frog_legs" parent="." unique_id=835217674 instance=ExtResource("9_ikq0o")]
+position = Vector2(-59, 182)
+
+[node name="slime_legs" parent="." unique_id=1748175525 instance=ExtResource("10_8yqei")]
+position = Vector2(-50, 204)
+
+[node name="STOP" type="Area2D" parent="." unique_id=1405820208]
+position = Vector2(-50, 204)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="STOP" unique_id=1911315130]
+position = Vector2(158, -20)
+shape = SubResource("RectangleShape2D_ikq0o")
+
+[connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]

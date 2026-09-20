@@ -21,4 +21,4 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	GlobalValues.start_door = target_door
-	get_tree().change_scene_to_file("res://scenes/mundo/" + nodeName + ".tscn")
+	get_tree().change_scene_to_file("res://scenes/Generacion Procedural/Alcantarilla.tscn")

@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://c72bigi0wvd12"]
 
-[ext_resource type="Script" uid="uid://btkc0ypwohb01" path="res://scenes/Generacion Procedural/scripts/alcantarilla.gd" id="1_daslf"]
-[ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="2_syuyx"]
+[ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/DungeonGenerator.gd" id="1_wtf4g"]
+[ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="2_gdfjh"]
+[ext_resource type="Resource" uid="uid://gtanjl7umyrl" path="res://scenes/Generacion Procedural/scripts/cueva.tres" id="3_7x0ox"]
+[ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="4_7vu7k"]
 
 [sub_resource type="Animation" id="Animation_vol6j"]
 length = 0.001
@@ -150,7 +152,8 @@ _data = {
 }
 
 [node name="Alcantarilla" type="Node2D" unique_id=936655814]
-script = ExtResource("1_daslf")
+script = ExtResource("1_wtf4g")
+levels = Array[ExtResource("2_gdfjh")]([ExtResource("3_7x0ox")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1118151226]
 offset_left = -33.0
@@ -169,4 +172,4 @@ libraries/ = SubResource("AnimationLibrary_kx86g")
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(1076, 570)
 scale = Vector2(0.10674661, 0.1067466)
-texture = ExtResource("2_syuyx")
+texture = ExtResource("4_7vu7k")

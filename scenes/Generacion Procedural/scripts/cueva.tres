@@ -1,23 +1,42 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=12 format=3 uid="uid://gtanjl7umyrl"]
+[gd_resource type="Resource" script_class="LevelData" format=4 uid="uid://gtanjl7umyrl"]
 
-[ext_resource type="PackedScene" uid="uid://c40x4irhyvt5k" path="res://scenes/Generacion Procedural/Cueva/boss/Tittan_slime.tscn" id="1_a88qq"]
+[ext_resource type="PackedScene" uid="uid://dd2mm4a5yiy5p" path="res://scenes/Generacion Procedural/Alcantarilla/boss/Tittan_slime.tscn" id="1_a88qq"]
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="1_mywna"]
-[ext_resource type="PackedScene" uid="uid://bepwwafpi1jw0" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_01.tscn" id="2_c1dgv"]
-[ext_resource type="PackedScene" uid="uid://ccgqf36mu66gh" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_02.tscn" id="3_8t3pt"]
-[ext_resource type="PackedScene" uid="uid://bly7h0dw7bhbf" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_01.tscn" id="4_hnopf"]
-[ext_resource type="PackedScene" uid="uid://v55pgsvhnqjq" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_02.tscn" id="5_0e3mg"]
-[ext_resource type="PackedScene" uid="uid://c06acqtv7gko7" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_02.tscn" id="7_77sfc"]
-[ext_resource type="PackedScene" uid="uid://droniq6ewfc8k" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_03.tscn" id="8_spx06"]
-[ext_resource type="PackedScene" uid="uid://d4dc4hbav823m" path="res://scenes/Generacion Procedural/Cueva/start/StartRoom_01.tscn" id="10_vtqmq"]
+[ext_resource type="PackedScene" uid="uid://bmnqofvod5a6a" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/horizontal/corridorH_01.tscn" id="2_c1dgv"]
+[ext_resource type="PackedScene" uid="uid://rku3cesdcbvr" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/horizontal/corridorH_02.tscn" id="3_8t3pt"]
+[ext_resource type="PackedScene" uid="uid://cojyx2ppkqc2u" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/vertical/corridorV_01.tscn" id="4_hnopf"]
+[ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="5_a88qq"]
+[ext_resource type="PackedScene" uid="uid://tfts7j3krmpa" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_01.tscn" id="6_50l4p"]
+[ext_resource type="PackedScene" uid="uid://cx04780vnlrw1" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_02.tscn" id="7_77sfc"]
+[ext_resource type="PackedScene" uid="uid://bdprwc4ev2e61" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_03.tscn" id="8_spx06"]
+[ext_resource type="PackedScene" uid="uid://84svjuaeha70" path="res://scenes/Generacion Procedural/Alcantarilla/start/StartRoom_01.tscn" id="10_vtqmq"]
 [ext_resource type="PackedScene" uid="uid://bf5oga8r6dh61" path="res://scenes/Generacion Procedural/Cueva/treasure/treasure_01.tscn" id="11_rcq83"]
 [ext_resource type="PackedScene" uid="uid://sw53o0ecta8l" path="res://scenes/Generacion Procedural/Cueva/treasure/treasure_02.tscn" id="12_ftlct"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdxpm"]
+size = Vector2(479, 608)
+
+[sub_resource type="PackedScene" id="PackedScene_c1dgv"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("CorridorV01", "Node2D", "metadata/_edit_vertical_guides_", "metadata/_edit_horizontal_guides_", "fondos", "collision_enabled", "paredes", "tile_map_data", "SocketUp", "Marker2D", "position", "SocketLeft", "Marker2D", "position", "SocketDown", "Marker2D", "position", "SocketRight", "Marker2D", "position", "Bounds", "Area2D", "CollisionShape2D", "CollisionShape2D", "position", "shape", "puertaUp", "visible", "tile_map_data", "puertaDown", "visible", "tile_map_data", "puertaLeft", "visible", "tile_map_data", "puertaRigth", "visible", "tile_map_data"),
+"node_count": 13,
+"node_ids": PackedInt32Array(1800956991, 751012581, 1746307384, 1689931811, 2082355571, 1754520169, 1584239863, 1225054392, 189599719, 2057391194, 1554750057, 510951383, 1778425658),
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("./Bounds"), NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 2147483647, 4, 2, 1, 5, 3, 0, 1073741825, 0, 2147483647, 6, 4, 1, 7, 5, 0, 1073741826, 0, 9, 8, -1, 1, 10, 6, 0, 1073741827, 0, 12, 11, -1, 1, 13, 7, 0, 1073741828, 0, 15, 14, -1, 1, 16, 8, 0, 1073741829, 0, 18, 17, -1, 1, 19, 9, 0, 1073741830, 0, 21, 20, -1, 0, 0, 1073741831, 0, 23, 22, -1, 2, 24, 10, 25, 11, 0, 1073741832, 0, 2147483647, 26, 12, 2, 27, 13, 28, 14, 0, 1073741833, 0, 2147483647, 29, 15, 2, 30, 16, 31, 17, 0, 1073741834, 0, 2147483647, 32, 18, 2, 33, 19, 34, 20, 0, 1073741835, 0, 2147483647, 35, 21, 2, 36, 22, 37, 23, 0),
+"variants": [[321.0, 176.0, 144.0], [304.0, 336.0], ExtResource("5_a88qq"), false, ExtResource("5_a88qq"), PackedByteArray("AAAAAAsAAQADAAAAAAAAAA8AAQAJAAEAAAAAABAAAQAEAAEAAAABAAsAAQADAAAAAAABAA4AAQAJAAEAAAABAA8AAQAEAAIAAAABABEAAQAEAAAAAAACAAUAAQAEAAEAAAACAAsAAQADAAAAAAACAA0AAQADAAIAAAACAA4AAQAEAAIAAAACABIAAQAEAAAAAAADAAUAAQAAAAIAAAADAAsAAQADAAAAAAADAA0AAQADAAIAAAADABMAAQAEAAAAAAADABQAAQAEAAEAAAAEAAUAAQAAAAIAAAAEAAsAAQADAAAAAAAEAA0AAQAEAAIAAAAFAAUAAQAAAAIAAAAFAAsAAQAEAAAAAAAFAAwAAQAEAAIAAAAFABEAAQAAAAIAAAAGAAgAAQAAAAIAAAAGABEAAQAAAAIAAAAHAAEAAQACAAEAAAAHAAIAAQACAAEAAAAHAAMAAQACAAEAAAAHAAQAAQACAAIAAAAHAAgAAQAAAAIAAAAHABAAAQACAAAAAAAHABEAAQACAAEAAAAHABIAAQACAAEAAAAHABMAAQACAAEAAAAHABQAAQACAAEAAAAIAAQAAQAEAAEAAAAIAAUAAQACAAEAAAAIAAYAAQACAAIAAAAIAAgAAQAAAAIAAAAIAA0AAQAAAAIAAAAIABAAAQADAAAAAAAJAAYAAQAEAAEAAAAJAAcAAQACAAEAAAAJAAgAAQACAAIAAAAJAA0AAQAAAAIAAAAJABAAAQADAAAAAAAKAAgAAQADAAIAAAAKAAwAAQACAAAAAAAKAA0AAQACAAEAAAAKAA4AAQACAAEAAAAKAA8AAQACAAEAAAAKABAAAQAIAAAAAAADAAIAAQAEAAAAAAACAAAAAQAEAAEAAAACAAMAAQAJAAEAAAACAAQAAQAEAAEAAAAGAAIAAQAAAAIAAAAGAAAAAQACAAIAAAAHAAAAAQAIAAEAAAADAAMAAQAEAAIAAAACAAIAAQAJAAAAAAACAAEAAQAEAAEAAAACAAYAAQAEAAIAAAABAAYAAQAJAAEAAAABAAcAAQAEAAIAAAAAAAcAAQADAAIAAAAEAAwAAQAJAAEAAAABABIAAQAJAAAAAAAAABEAAQAJAAAAAAACABMAAQAJAAAAAAA="), Vector2(144, 0), Vector2(0, 304), Vector2(176, 672), Vector2(352, 336), Vector2(176, 336), SubResource("RectangleShape2D_jdxpm"), ExtResource("5_a88qq"), false, PackedByteArray("AAABAAcAAQADAAIAAAACAAcAAQADAAIAAAADAAcAAQADAAIAAAAEAAcAAQADAAIAAAAFAAcAAQADAAIAAAAGAAcAAQADAAIAAAAHAAcAAQADAAIAAAAIAAcAAQADAAIAAAAJAAcAAQAIAAEAAAABAAAAAQADAAEAAAABAAEAAQADAAEAAAABAAIAAQADAAEAAAABAAMAAQADAAEAAAABAAQAAQADAAEAAAABAAUAAQADAAEAAAABAAYAAQADAAEAAAACAAAAAQADAAEAAAACAAEAAQADAAEAAAACAAIAAQADAAEAAAACAAMAAQADAAEAAAACAAQAAQADAAEAAAACAAUAAQADAAEAAAACAAYAAQADAAEAAAADAAAAAQADAAEAAAADAAEAAQADAAEAAAADAAIAAQADAAEAAAADAAMAAQADAAEAAAADAAQAAQADAAEAAAADAAUAAQADAAEAAAADAAYAAQADAAEAAAAEAAAAAQADAAEAAAAEAAEAAQADAAEAAAAEAAIAAQADAAEAAAAEAAMAAQADAAEAAAAEAAQAAQADAAEAAAAEAAUAAQADAAEAAAAEAAYAAQADAAEAAAAFAAAAAQADAAEAAAAFAAEAAQADAAEAAAAFAAIAAQADAAEAAAAFAAMAAQADAAEAAAAFAAQAAQADAAEAAAAFAAUAAQADAAEAAAAFAAYAAQADAAEAAAAGAAAAAQADAAEAAAAGAAEAAQADAAEAAAAGAAIAAQADAAEAAAAGAAMAAQADAAEAAAAGAAQAAQADAAEAAAAGAAUAAQADAAEAAAAGAAYAAQADAAEAAAAHAAAAAQADAAEAAAAHAAEAAQADAAEAAAAHAAIAAQADAAEAAAAHAAMAAQADAAEAAAAHAAQAAQADAAEAAAAHAAUAAQADAAEAAAAHAAYAAQADAAEAAAAIAAAAAQADAAEAAAAIAAEAAQADAAEAAAAIAAIAAQADAAEAAAAIAAMAAQADAAEAAAAIAAQAAQADAAEAAAAIAAUAAQADAAEAAAAIAAYAAQADAAEAAAAJAAAAAQADAAEAAAAJAAEAAQADAAEAAAAJAAIAAQADAAEAAAAJAAMAAQADAAEAAAAJAAQAAQADAAEAAAAJAAUAAQADAAEAAAAJAAYAAQADAAEAAAA="), ExtResource("5_a88qq"), false, PackedByteArray("AAAEAAsAAQADAAAAAAAFAAsAAQADAAAAAAAGAAsAAQADAAAAAAAHAAsAAQADAAAAAAAIAAsAAQAEAAAAAAAIAAwAAQAJAAAAAAAJAAwAAQADAAAAAAAKAAwAAQADAAAAAAAGAA0AAQADAAEAAAAGAA4AAQADAAEAAAAGAA8AAQADAAEAAAAGABAAAQADAAEAAAAGABEAAQADAAEAAAAGABIAAQADAAEAAAAGABMAAQADAAEAAAAGABQAAQADAAEAAAAHAA0AAQADAAEAAAAHAA4AAQADAAEAAAAHAA8AAQADAAEAAAAHABAAAQADAAEAAAAHABEAAQADAAEAAAAHABIAAQADAAEAAAAHABMAAQADAAEAAAAHABQAAQADAAEAAAAIAA0AAQADAAEAAAAIAA4AAQADAAEAAAAIAA8AAQADAAEAAAAIABAAAQADAAEAAAAIABEAAQADAAEAAAAIABIAAQADAAEAAAAIABMAAQADAAEAAAAIABQAAQADAAEAAAAJAA0AAQADAAEAAAAJAA4AAQADAAEAAAAJAA8AAQADAAEAAAAJABAAAQADAAEAAAAJABEAAQADAAEAAAAJABIAAQADAAEAAAAJABMAAQADAAEAAAAJABQAAQADAAEAAAAKAA0AAQADAAEAAAAKAA4AAQADAAEAAAAKAA8AAQADAAEAAAAKABAAAQADAAEAAAAKABEAAQADAAEAAAAKABIAAQADAAEAAAAKABMAAQADAAEAAAAKABQAAQADAAEAAAAAAAwAAQADAAEAAAAAAA0AAQADAAEAAAAAAA4AAQADAAEAAAAAAA8AAQADAAEAAAAAABAAAQADAAEAAAAAABEAAQADAAEAAAAAABIAAQADAAEAAAAAABMAAQADAAEAAAABAAwAAQADAAEAAAABAA0AAQADAAEAAAABAA4AAQADAAEAAAABAA8AAQADAAEAAAABABAAAQADAAEAAAABABEAAQADAAEAAAABABIAAQADAAEAAAABABMAAQADAAEAAAACAAwAAQADAAEAAAACAA0AAQADAAEAAAACAA4AAQADAAEAAAACAA8AAQADAAEAAAACABAAAQADAAEAAAACABEAAQADAAEAAAACABIAAQADAAEAAAACABMAAQADAAEAAAADAAwAAQADAAEAAAADAA0AAQADAAEAAAADAA4AAQADAAEAAAADAA8AAQADAAEAAAADABAAAQADAAEAAAADABEAAQADAAEAAAADABIAAQADAAEAAAADABMAAQADAAEAAAAEAAwAAQADAAEAAAAEAA0AAQADAAEAAAAEAA4AAQADAAEAAAAEAA8AAQADAAEAAAAEABAAAQADAAEAAAAEABEAAQADAAEAAAAEABIAAQADAAEAAAAEABMAAQADAAEAAAAFAAwAAQADAAEAAAAFAA0AAQADAAEAAAAFAA4AAQADAAEAAAAFAA8AAQADAAEAAAAFABAAAQADAAEAAAAFABEAAQADAAEAAAAFABIAAQADAAEAAAAFABMAAQADAAEAAAAGAAwAAQADAAEAAAAHAAwAAQADAAEAAAADABQAAQADAAEAAAA="), ExtResource("5_a88qq"), false, PackedByteArray("AAAAAAgAAQAEAAEAAAAAAAkAAQAEAAEAAAAAAAoAAQAEAAEAAAAAAAsAAQAJAAAAAAA="), ExtResource("5_a88qq"), false, PackedByteArray("AAAKAAkAAQACAAEAAAAKAAoAAQACAAEAAAAKAAsAAQACAAEAAAAKAAwAAQACAAEAAAAKAAgAAQAIAAEAAAA=")],
+"version": 3
+}
 
 [resource]
 script = ExtResource("1_mywna")
 start_module = ExtResource("10_vtqmq")
-room_modules = Array[PackedScene]([ExtResource("7_77sfc"), ExtResource("8_spx06")])
+room_modules = Array[PackedScene]([ExtResource("6_50l4p"), ExtResource("7_77sfc"), ExtResource("8_spx06")])
 corridor_h_modules = Array[PackedScene]([ExtResource("2_c1dgv"), ExtResource("3_8t3pt")])
-corridor_v_modules = Array[PackedScene]([ExtResource("4_hnopf"), ExtResource("5_0e3mg")])
+corridor_v_modules = Array[PackedScene]([ExtResource("4_hnopf"), SubResource("PackedScene_c1dgv")])
 treasure_modules = Array[PackedScene]([ExtResource("11_rcq83"), ExtResource("12_ftlct")])
 boss_modules = Array[PackedScene]([ExtResource("1_a88qq")])
 metadata/_custom_type_script = "uid://bvqtmq8gdroge"

@@ -45,6 +45,8 @@ var right_hand_action=null
 
 var mouse_on_menu=false
 
+var last_body_botton=0
+
 func _ready() -> void:
 	$".".z_index = 10
 	
@@ -144,7 +146,9 @@ func buil_body():
 	collision_shape_2d.scale.y=body_botton
 	hit_box.scale.y=body_botton
 	
-	position.y-=body_botton
+	position.y+=last_body_botton-body_botton
+	last_body_botton=body_botton
+		
 	
 	collision_shape_2d.position.y=(collision_shape_2d.scale.y/2)- 9
 	hit_box.position.y=(collision_shape_2d.scale.y/2)- 9
