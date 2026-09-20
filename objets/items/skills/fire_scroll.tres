@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Weapons" format=3 uid="uid://ded1lxbakg0qf"]
+
+[ext_resource type="Script" uid="uid://csg6c1ni2e46a" path="res://objets/items/skills/Weapons.gd" id="1_cdbeh"]
+
+[resource]
+script = ExtResource("1_cdbeh")
+_name = "fire_scroll"
+spanish_name = "Pergamino de fuego"
+description = "Un antiguo escrito magico capaz de invocar bolas de fuego"
+max_durability = 50
+durability = 50
+damage = 2
+recoil = 0
+number_effects = Array[int]([0])
+metadata/_custom_type_script = "uid://csg6c1ni2e46a"

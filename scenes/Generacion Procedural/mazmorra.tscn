@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dodqhuppv2s3b"]
+[gd_scene load_steps=11 format=3 uid="uid://dodqhuppv2s3b"]
 
 [ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/DungeonGenerator.gd" id="1_cu61f"]
+[ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="2_7iigb"]
 [ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="2_jx0a1"]
+[ext_resource type="Resource" uid="uid://gtanjl7umyrl" path="res://scenes/Generacion Procedural/scripts/cueva.tres" id="3_u08jo"]
 
 [sub_resource type="Animation" id="Animation_vol6j"]
 length = 0.001
@@ -151,6 +153,7 @@ _data = {
 
 [node name="Mazmorra" type="Node2D" unique_id=936655814]
 script = ExtResource("1_cu61f")
+levels = Array[ExtResource("2_7iigb")]([ExtResource("3_u08jo")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1118151226]
 offset_left = -33.0
