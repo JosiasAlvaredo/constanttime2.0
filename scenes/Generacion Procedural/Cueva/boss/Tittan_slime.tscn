@@ -2,15 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_jmmc6"]
 [ext_resource type="PackedScene" uid="uid://cj0ou4wf85852" path="res://objets/Map/Sewer/geiser.tscn" id="2_p66gc"]
-[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="3_cgm35"]
-[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="4_56erh"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="5_xhurn"]
 [ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="6_h7w13"]
 [ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick_arm.tscn" id="7_n2v3r"]
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/other_legs.tscn" id="8_1up2d"]
+[ext_resource type="Script" uid="uid://df8bjwmrqln5q" path="res://scenes/Generacion Procedural/scripts/BossRoomTrigger.gd" id="9_p66gc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kupbu"]
 size = Vector2(896, 672)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgm35"]
+size = Vector2(688, 391)
 
 [node name="Slime_boss" type="Node2D" unique_id=943335602]
 
@@ -49,14 +51,6 @@ visible = false
 position = Vector2(448, 176)
 shape = SubResource("RectangleShape2D_kupbu")
 
-[node name="Player" parent="." unique_id=294110880 instance=ExtResource("3_cgm35")]
-position = Vector2(420, 319)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1774948986]
-zoom = Vector2(1.5, 1.5)
-
-[node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("4_56erh")]
-
 [node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("5_xhurn")]
 
 [node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("6_h7w13")]
@@ -67,3 +61,12 @@ position = Vector2(438, 319)
 
 [node name="stick_arm2" parent="." unique_id=818630450 instance=ExtResource("8_1up2d")]
 position = Vector2(404, 332)
+
+[node name="BossRoomTrigger" type="Area2D" parent="." unique_id=1908469183]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("9_p66gc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossRoomTrigger" unique_id=75390579]
+position = Vector2(448, 185.5)
+shape = SubResource("RectangleShape2D_cgm35")

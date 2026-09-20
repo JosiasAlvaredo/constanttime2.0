@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=4 uid="uid://c06acqtv7gko7"]
+[gd_scene load_steps=8 format=4 uid="uid://c06acqtv7gko7"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_yidxm"]
 [ext_resource type="PackedScene" uid="uid://cqhbw1m88idtf" path="res://objets/Map/save_point.tscn" id="2_3mqxu"]
+[ext_resource type="Script" uid="uid://bs0wn4j4aorwo" path="res://scenes/Generacion Procedural/scripts/EnemySpawner2D.gd" id="3_thhx8"]
+[ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="4_ofqto"]
+[ext_resource type="PackedScene" uid="uid://buakd5w1sga82" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Spider/Spider.tscn" id="5_w0v0u"]
+[ext_resource type="PackedScene" uid="uid://dlnjjmts7p4fo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.tscn" id="6_nx2qk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yidxm"]
 size = Vector2(832, 928)
@@ -58,3 +62,17 @@ scale = Vector2(1.4106433, 4.6000004)
 position = Vector2(432, 0)
 rotation = -1.5713274
 scale = Vector2(1.4106433, 4.6000004)
+
+[node name="EnemySpawner2" type="Marker2D" parent="." unique_id=1593239716]
+position = Vector2(474, 611)
+script = ExtResource("3_thhx8")
+enemy_scenes = Array[PackedScene]([ExtResource("4_ofqto"), ExtResource("5_w0v0u"), ExtResource("6_nx2qk")])
+enemy_amount = 4
+spawn_radius = 2.0
+
+[node name="EnemySpawner" type="Marker2D" parent="." unique_id=943936491]
+position = Vector2(286, 80)
+script = ExtResource("3_thhx8")
+enemy_scenes = Array[PackedScene]([ExtResource("4_ofqto"), ExtResource("5_w0v0u"), ExtResource("6_nx2qk")])
+enemy_amount = 3
+spawn_radius = 0.0
