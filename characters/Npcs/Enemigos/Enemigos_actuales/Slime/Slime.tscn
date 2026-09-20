@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ct02bdk6t3tv3"]
+[gd_scene load_steps=9 format=3 uid="uid://ct02bdk6t3tv3"]
 
 [ext_resource type="Script" uid="uid://y5te4g2c5e74" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/slime.gd" id="1_7extp"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="1_q82pc"]
