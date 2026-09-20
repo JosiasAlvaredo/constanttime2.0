@@ -4,10 +4,25 @@ var arañalobo
 
 @export var idle_time := 1.0
 
-@export_range(0.0, 100.0) var shoot_chance := 40.0
-@export_range(0.0, 100.0) var summon_chance := 10.0
-@export_range(0.0, 100.0) var zarpazo_izquierdo_chance := 50.0
-@export_range(0.0, 100.0) var zarpazo_derecho_chance := 00.0
+
+# Cada ataque tiene:
+# ["NombreDelEstado", probabilidad]
+
+@export_category("Ataques Fase 1")
+
+@export var ataques_fase_1: Array[Dictionary] = [
+	{"nombre": "Shoot", "probabilidad": 40.0},
+	{"nombre": "AttackIzq", "probabilidad": 60.0}
+]
+
+
+@export_category("Ataques Fase 2")
+
+@export var ataques_fase_2: Array[Dictionary] = [
+	{"nombre": "Shoot", "probabilidad": 10.0},
+	{"nombre": "AttackIzq", "probabilidad": 10.0},
+	{"nombre": "Summon", "probabilidad": 80.0},
+]
 
 
 func start() -> void:
@@ -18,33 +33,54 @@ func start() -> void:
 	if state_machine.current_state != self:
 		return
 
-	choose_attack()
+	elegir_ataque()
 
 
-func choose_attack() -> void:
-	var total := (
-		shoot_chance
-		+ summon_chance
-		+ zarpazo_izquierdo_chance
-		+ zarpazo_derecho_chance
-	)
+func elegir_ataque() -> void:
+
+	var ataques: Array[Dictionary]
+
+
+	# Elegimos la lista dependiendo de la fase
+
+	if arañalobo.fase == 1:
+		ataques = ataques_fase_1
+
+	elif arañalobo.fase == 2:
+		ataques = ataques_fase_2
+
+	else:
+		return
+
+
+	# Calcular la suma de todas las probabilidades
+
+	var total: float = 0.0
+
+	for ataque in ataques:
+		total += ataque["probabilidad"]
+
 
 	if total <= 0.0:
 		return
 
+
+	# Elegir un número aleatorio
+
 	var random_value := randf_range(0.0, total)
 
-	if random_value < shoot_chance:
-		state_machine.change_to("Shoot")
 
-	elif random_value < shoot_chance + summon_chance:
-		state_machine.change_to("Summon")
+	# Buscar qué ataque corresponde
 
-	elif random_value < shoot_chance + summon_chance + zarpazo_izquierdo_chance:
-		state_machine.change_to("AttackIzq")
+	var acumulado: float = 0.0
 
-	else:
-		state_machine.change_to("ZarpazoDerecho")
+	for ataque in ataques:
+
+		acumulado += ataque["probabilidad"]
+
+		if random_value <= acumulado:
+			state_machine.change_to(ataque["nombre"])
+			return
 
 
 func end() -> void:
