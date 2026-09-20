@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ctiqkgdokyyk5"]
+
+[ext_resource type="Script" uid="uid://cw3ff6o1q8xok" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Spider/proyectil/proyectil.gd" id="1_ng1wc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbmke"]
+radius = 18.027756
+
+[node name="Proyectil" type="CharacterBody2D" unique_id=1744243755]
+scale = Vector2(0.48, 0.36000103)
+script = ExtResource("1_ng1wc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1887716664]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=92501778]
+shape = SubResource("CircleShape2D_hbmke")
+debug_color = Color(0.96318823, 0, 0.5030167, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2064344926]

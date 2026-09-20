@@ -1,13 +1,10 @@
-extends CharacterBody2D
-
-@export var speed := 50.0
-@export var gravity := 1000.0
+extends enemy_base
 
 @export var projectile_scene: PackedScene
 @export var shoot_cooldown := 1.5
 
-var direction := 1
-var player: Node2D
+
+var player_objetivo: Node2D
 
 @onready var floor_ray: RayCast2D = $RayCasts/FloorRay
 @onready var front_ray: RayCast2D = $RayCasts/FrontRay
@@ -16,7 +13,7 @@ var player: Node2D
 
 
 func _ready():
-	player = get_tree().get_first_node_in_group("player")
+	player_objetivo = get_tree().get_first_node_in_group("player")
 
 
 func _physics_process(delta):
@@ -24,31 +21,34 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	move_and_slide()
-	
+
+
 func change_direction():
 	direction *= -1
 
 	front_ray.target_position.x *= -1
 	floor_ray.position.x *= -1
 	floor_ray.target_position.x *= -1
-	
+
+
 func can_see_player() -> bool:
-	if player == null:
+	if player_objetivo == null:
 		return false
 
-	var distance = global_position.distance_to(player.global_position)
+	var distance = global_position.distance_to(player_objetivo.global_position)
 
 	if distance > 400:
 		return false
 
-	player_ray.target_position = to_local(player.global_position)
+	player_ray.target_position = to_local(player_objetivo.global_position)
 	player_ray.force_raycast_update()
 
 	if player_ray.is_colliding():
-		return player_ray.get_collider() == player
+		return player_ray.get_collider() == player_objetivo
 
 	return false
-	
+
+
 func shoot():
 	if projectile_scene == null:
 		return
@@ -60,7 +60,11 @@ func shoot():
 	projectile.global_position = shoot_point.global_position
 
 	var direction_to_player = (
-		player.global_position - shoot_point.global_position
+		player_objetivo.global_position - shoot_point.global_position
 	).normalized()
 
 	projectile.direction = direction_to_player
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())

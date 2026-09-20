@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4e8uo0qq5ouw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64xyi"]
+size = Vector2(40, 40)
+
+[node name="Door" type="Node2D" unique_id=1359374836]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=274729738]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1232197690]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=813683961]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_64xyi")

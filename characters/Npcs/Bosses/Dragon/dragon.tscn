@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cdvrca7vf6tel"]
+
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_3solx"]
+[ext_resource type="Script" uid="uid://limsr7g887kb" path="res://characters/Npcs/Bosses/Dragon/dragon.gd" id="1_c3s44"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_3vova"]
+[ext_resource type="Script" uid="uid://dw1v3oemehmhr" path="res://characters/Npcs/Bosses/Dragon/States/Idle.gd" id="4_8kn4j"]
+[ext_resource type="Script" uid="uid://bxvk4iffjst25" path="res://characters/Npcs/Bosses/Dragon/States/shoot.gd" id="5_t5fu6"]
+[ext_resource type="PackedScene" uid="uid://cglawvx2o6lpl" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/proyectil_dragon.tscn" id="6_c3s44"]
+[ext_resource type="Script" uid="uid://cbyyefsnd7326" path="res://characters/Npcs/Bosses/Dragon/States/flame.gd" id="7_3vova"]
+[ext_resource type="PackedScene" uid="uid://bfsy85erx2vui" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/flame.tscn" id="8_r5ypv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2xok0"]
+radius = 63.0
+height = 360.0
+
+[node name="Dragon" type="CharacterBody2D" unique_id=1458171680]
+script = ExtResource("1_c3s44")
+
+[node name="Sprites_Cuerpo" type="Node2D" parent="." unique_id=790636171]
+
+[node name="Panza" type="Sprite2D" parent="Sprites_Cuerpo" unique_id=2007914884]
+position = Vector2(555, 42)
+scale = Vector2(2.021485, 1.7421875)
+texture = ExtResource("1_3solx")
+
+[node name="Cuerpo" type="Sprite2D" parent="Sprites_Cuerpo" unique_id=2094553486]
+position = Vector2(553, -177.5)
+scale = Vector2(1.1875, 2.7421875)
+texture = ExtResource("1_3solx")
+
+[node name="PataIzq" type="Sprite2D" parent="Sprites_Cuerpo" unique_id=1157771567]
+position = Vector2(397, -50)
+texture = ExtResource("1_3solx")
+
+[node name="PataDer" type="Sprite2D" parent="Sprites_Cuerpo" unique_id=879363812]
+position = Vector2(726, -47)
+texture = ExtResource("1_3solx")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1938782036]
+position = Vector2(550, -214)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=30059369]
+position = Vector2(3, 28)
+shape = SubResource("CapsuleShape2D_2xok0")
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=426652007]
+position = Vector2(554, -263)
+
+[node name="Atacks" type="Node2D" parent="." unique_id=1758204350]
+
+[node name="GarraI" type="Node2D" parent="Atacks" unique_id=966161232]
+
+[node name="GarraD" type="Node2D" parent="Atacks" unique_id=525256328]
+
+[node name="ColaI" type="Node2D" parent="Atacks" unique_id=1130665069]
+
+[node name="ColaD" type="Node2D" parent="Atacks" unique_id=1613774600]
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_3vova")]
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State_Machine" unique_id=476444147]
+script = ExtResource("4_8kn4j")
+
+[node name="Shoot" type="Node" parent="State_Machine" unique_id=1682260526]
+script = ExtResource("5_t5fu6")
+projectile_scene = ExtResource("6_c3s44")
+amount = 10
+dispersion = 20.0
+
+[node name="Flame" type="Node" parent="State_Machine" unique_id=1723755862]
+script = ExtResource("7_3vova")
+flame_scene = ExtResource("8_r5ypv")
