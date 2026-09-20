@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=13 format=3 uid="uid://gtanjl7umyrl"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=12 format=3 uid="uid://gtanjl7umyrl"]
 
 [ext_resource type="PackedScene" uid="uid://c40x4irhyvt5k" path="res://scenes/Generacion Procedural/Cueva/boss/Tittan_slime.tscn" id="1_a88qq"]
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="1_mywna"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ccgqf36mu66gh" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_02.tscn" id="3_8t3pt"]
 [ext_resource type="PackedScene" uid="uid://bly7h0dw7bhbf" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_01.tscn" id="4_hnopf"]
 [ext_resource type="PackedScene" uid="uid://v55pgsvhnqjq" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_02.tscn" id="5_0e3mg"]
-[ext_resource type="PackedScene" uid="uid://113x1715qteo" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_01.tscn" id="6_50l4p"]
 [ext_resource type="PackedScene" uid="uid://c06acqtv7gko7" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_02.tscn" id="7_77sfc"]
 [ext_resource type="PackedScene" uid="uid://droniq6ewfc8k" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_03.tscn" id="8_spx06"]
 [ext_resource type="PackedScene" uid="uid://d4dc4hbav823m" path="res://scenes/Generacion Procedural/Cueva/start/StartRoom_01.tscn" id="10_vtqmq"]
@@ -15,10 +14,8 @@
 
 [resource]
 script = ExtResource("1_mywna")
-modules_to_generate = 0
-treasure_room_count = 0
 start_module = ExtResource("10_vtqmq")
-room_modules = Array[PackedScene]([ExtResource("6_50l4p"), ExtResource("7_77sfc"), ExtResource("8_spx06")])
+room_modules = Array[PackedScene]([ExtResource("7_77sfc"), ExtResource("8_spx06")])
 corridor_h_modules = Array[PackedScene]([ExtResource("2_c1dgv"), ExtResource("3_8t3pt")])
 corridor_v_modules = Array[PackedScene]([ExtResource("4_hnopf"), ExtResource("5_0e3mg")])
 treasure_modules = Array[PackedScene]([ExtResource("11_rcq83"), ExtResource("12_ftlct")])
