@@ -18,12 +18,14 @@ func _ready() -> void:
 	current_state=State.Shot
 
 func _physics_process(delta: float) -> void:
-	match current_state:
+	if get_parent().visible:
+		match current_state:
 
-		State.Shot: shot()
-	
-		State.StartWait:wait()
+			State.Shot: shot()
 		
+			State.StartWait:wait()
+	else:
+		$".".set_collision_layer_value(1,false)
 		
 func shot():
 	stream=preload("res://objets/Map/Sewer/Stream.tscn").instantiate()

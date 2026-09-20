@@ -6,6 +6,7 @@
 
 [node name="Geiser" type="StaticBody2D" unique_id=804250531]
 position = Vector2(508, 303)
+collision_mask = 0
 script = ExtResource("1_r3ibq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1368197919]
