@@ -1,0 +1,239 @@
+[gd_scene format=3 uid="uid://dko1jbvffbroc"]
+
+[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="1_8he3e"]
+[ext_resource type="Script" uid="uid://xekmkirfgc27" path="res://characters/Npcs/Bosses/ArañaLobo1/araña_lobo.gd" id="1_egguh"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="2_gtyqa"]
+[ext_resource type="Script" uid="uid://vsvi2ink0331" path="res://characters/Npcs/Bosses/ArañaLobo1/States/idle.gd" id="4_2arjb"]
+[ext_resource type="Script" uid="uid://d2u7lbxa6pwfj" path="res://characters/Npcs/Bosses/ArañaLobo1/States/shoot.gd" id="5_62qto"]
+[ext_resource type="PackedScene" uid="uid://dp2fx47p3ftoc" path="res://characters/Npcs/Bosses/ArañaLobo1/Proyectil/proyectilaraña.tscn" id="6_62qto"]
+[ext_resource type="Script" uid="uid://dfod8pqanwuap" path="res://characters/Npcs/Bosses/ArañaLobo1/States/summon.gd" id="7_hixnk"]
+[ext_resource type="PackedScene" uid="uid://buakd5w1sga82" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Spider/Spider.tscn" id="8_3p8xh"]
+[ext_resource type="Script" uid="uid://c635ttkv5l2nw" path="res://characters/Npcs/Bosses/ArañaLobo1/States/attack_izq.gd" id="9_ffd4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1228"]
+size = Vector2(108, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skl8q"]
+size = Vector2(19.18437, 123.264725)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p8xh"]
+size = Vector2(20, 121.42861)
+
+[sub_resource type="Animation" id="Animation_3p8xh"]
+resource_name = "Attack_Izq"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cuerpo/PataIzq/PataIzq:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.98, 3, 3.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -1), Vector2(-54.045197, 3.1576242), Vector2(4.3571167, 78.345085), Vector2(108.45199, 89.1158), Vector2(1, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cuerpo/PataIzq/PataIzq:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.98, 3, 3.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0663961, 0.0, -0.5934119, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cuerpo/PataIzq/PataIzq:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.2, 1, 1.98, 3, 3.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.1796875, 1), Vector2(0.1796875, 1.4941666), Vector2(0.1796875, 1.7608484), Vector2(0.18242228, 2.1095333), Vector2(0.1796875, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cuerpo/PataIzq/HitboxIzq/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0009999999, 1, 1.9903404, 3, 3.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.5207901, -0.6725905), Vector2(-131.21436, 112.47622), Vector2(4.1428223, 130.33337), Vector2(173.42859, 151.76195), Vector2(-1.5207901, -0.6725905)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cuerpo/PataIzq/HitboxIzq/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.26, 1.03, 3.1, 3.9667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ffd4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cuerpo/PataIzq/PataIzq:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cuerpo/PataIzq/PataIzq:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cuerpo/PataIzq/PataIzq:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1796875, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cuerpo/PataIzq/HitboxIzq/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.5207901, -0.6725905)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cuerpo/PataIzq/HitboxIzq/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dkls4"]
+_data = {
+&"Attack_Izq": SubResource("Animation_3p8xh"),
+&"RESET": SubResource("Animation_ffd4t")
+}
+
+[node name="ArañaLobo" type="CharacterBody2D" unique_id=1550610712]
+scale = Vector2(2.7999992, 2.5199993)
+script = ExtResource("1_egguh")
+
+[node name="Cuerpo" type="Node2D" parent="." unique_id=602567093]
+
+[node name="Cabeza" type="Node2D" parent="Cuerpo" unique_id=1954048383]
+
+[node name="Cabeza" type="Sprite2D" parent="Cuerpo/Cabeza" unique_id=1161689211]
+texture = ExtResource("1_8he3e")
+
+[node name="HitboxCabeza" type="Area2D" parent="Cuerpo/Cabeza" unique_id=2143678864]
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo/Cabeza/HitboxCabeza" unique_id=672116467]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_k1228")
+
+[node name="PataIzq" type="Node2D" parent="Cuerpo" unique_id=245138008]
+position = Vector2(-104, 3)
+
+[node name="PataIzq" type="Sprite2D" parent="Cuerpo/PataIzq" unique_id=718847321]
+position = Vector2(1, -1)
+scale = Vector2(0.1796875, 1)
+texture = ExtResource("1_8he3e")
+
+[node name="HitboxIzq" type="Area2D" parent="Cuerpo/PataIzq" unique_id=385449129]
+position = Vector2(2, 0)
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo/PataIzq/HitboxIzq" unique_id=54491474]
+position = Vector2(-1.5207901, -0.6725905)
+shape = SubResource("RectangleShape2D_skl8q")
+disabled = true
+
+[node name="PataDer" type="Node2D" parent="Cuerpo" unique_id=2054957409]
+position = Vector2(104, 2)
+
+[node name="PataDer" type="Sprite2D" parent="Cuerpo/PataDer" unique_id=309754076]
+position = Vector2(1, -1)
+scale = Vector2(0.1796875, 1)
+texture = ExtResource("1_8he3e")
+
+[node name="HitboxDer" type="Area2D" parent="Cuerpo/PataDer" unique_id=313993628]
+position = Vector2(2.0714548, 1.1746042)
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cuerpo/PataDer/HitboxDer" unique_id=1409545805]
+position = Vector2(0, -3.174601)
+shape = SubResource("RectangleShape2D_3p8xh")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("2_gtyqa")]
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State_Machine" unique_id=1999535458]
+script = ExtResource("4_2arjb")
+
+[node name="Shoot" type="Node" parent="State_Machine" unique_id=2138933560]
+script = ExtResource("5_62qto")
+projectile_scene = ExtResource("6_62qto")
+
+[node name="Summon" type="Node" parent="State_Machine" unique_id=2015178782]
+script = ExtResource("7_hixnk")
+enemy_scene = ExtResource("8_3p8xh")
+
+[node name="AttackIzq" type="Node" parent="State_Machine" unique_id=1578404663]
+script = ExtResource("9_ffd4t")
+
+[node name="ShootPoint" type="Marker2D" parent="." unique_id=379365275]
+
+[node name="SummonPoint1" type="Marker2D" parent="." unique_id=547460366]
+position = Vector2(-190.71434, 25.396833)
+
+[node name="SummonPoint2" type="Marker2D" parent="." unique_id=1884937487]
+position = Vector2(177.8572, 21.825403)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1564905998]
+libraries/ = SubResource("AnimationLibrary_dkls4")
+
+[connection signal="area_entered" from="Cuerpo/Cabeza/HitboxCabeza" to="." method="_on_hitbox_cabeza_area_entered"]
+[connection signal="area_entered" from="Cuerpo/PataIzq/HitboxIzq" to="." method="_on_hitbox_izq_area_entered"]
+[connection signal="area_entered" from="Cuerpo/PataDer/HitboxDer" to="." method="_on_hitbox_der_area_entered"]

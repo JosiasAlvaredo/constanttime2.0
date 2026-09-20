@@ -37,8 +37,6 @@ func change_phase(new_phase: int) -> void:
 
 	print("Boss entró en fase ", current_phase)
 	
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	enemy_damage(area.get_parent())
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "attack":
@@ -47,7 +45,17 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func choose_next_attack() -> void:
 	var random_number := randf_range(0.0, 100.0)
 	
-	if random_number < 80.0:
+	if random_number < 10.0:
 		state_machine.change_to("Attack")
 	else:
 		state_machine.change_to("Shoot")
+		
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+	
+func _on_hitbox_area_entered_Izq(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+
+
+func _on_hitbox_area_entered_der(area: Area2D) -> void:
+	enemy_damage(area.get_parent())

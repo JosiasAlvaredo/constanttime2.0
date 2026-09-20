@@ -125,9 +125,6 @@ _data = {
 &"idle": SubResource("Animation_qb0ta")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_876n6"]
-size = Vector2(242, 110)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpim1"]
 size = Vector2(205, 106)
 
@@ -415,7 +412,7 @@ max_live = 20
 live = 10
 
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=1931333018]
-position = Vector2(65, -2)
+position = Vector2(72, 109)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1114406880]
 libraries/ = SubResource("AnimationLibrary_chlrl")
@@ -436,12 +433,8 @@ position = Vector2(240, 15)
 scale = Vector2(0.234375, 1)
 texture = ExtResource("1_om0p2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1774483367]
-position = Vector2(68, -2)
-shape = SubResource("RectangleShape2D_876n6")
-
 [node name="HitboxCabeza" type="Area2D" parent="." unique_id=1743371554]
-collision_layer = 132
+collision_layer = 128
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxCabeza" unique_id=510688667]
@@ -456,6 +449,8 @@ libraries/ = SubResource("AnimationLibrary_vbf8x")
 
 [node name="Hitbox" type="Area2D" parent="SweepAttackI" unique_id=1096517111]
 position = Vector2(-95, 14)
+collision_layer = 132
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SweepAttackI/Hitbox" unique_id=804050144]
 position = Vector2(1, -2)
@@ -469,6 +464,8 @@ libraries/ = SubResource("AnimationLibrary_bb0dc")
 
 [node name="Hitbox" type="Area2D" parent="SweepAttackD" unique_id=1096064131]
 position = Vector2(242, 12)
+collision_layer = 132
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SweepAttackD/Hitbox" unique_id=139823369]
 position = Vector2(-2, -8)
@@ -492,3 +489,5 @@ script = ExtResource("5_qb0ta")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="HitboxCabeza" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="SweepAttackI/Hitbox" to="." method="_on_hitbox_area_entered_Izq"]
+[connection signal="area_entered" from="SweepAttackD/Hitbox" to="." method="_on_hitbox_area_entered_der"]

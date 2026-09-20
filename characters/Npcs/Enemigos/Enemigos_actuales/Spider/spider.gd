@@ -1,79 +1,53 @@
-extends CharacterBody2D
+extends enemy_base
 
-@export var speed := 50.0
-@export var gravity := 1000.0
 
 @export var projectile_scene: PackedScene
-@export var shoot_cooldown := 1.5
 
-var direction := 1
-var playerUbi: Node2D
 
+var playerUbi := Vector2.ZERO
 
 @onready var ceiling_ray: RayCast2D = $RayCasts/CeilingRay
-@onready var front_ray: RayCast2D = $RayCasts/FrontRay
+@onready var wall_ray: RayCast2D = $RayCasts/WallRay
 @onready var player_ray: RayCast2D = $RayCasts/PlayerRay
-@onready var shoot_point: Marker2D = $Marker2D_ShootPoint
+@onready var shoot_point: Marker2D = $ShootPoint
 
 
-func _ready():
-	playerUbi = get_tree().get_first_node_in_group("player")
-
-	# Para que Godot considere el techo como superficie
-	up_direction = Vector2.DOWN
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player") as Node2D
 
 
-func _physics_process(delta):
-	if not is_on_ceiling():
-		velocity.y -= gravity * delta
+func _physics_process(delta: float) -> void:
 
-	move_and_slide()
+	# Actualizar continuamente el PlayerRay
+	update_player_ray()
 
 
-func change_direction():
-	direction *= -1
+func update_player_ray() -> void:
 
-	front_ray.target_position.x *= -1
-	ceiling_ray.position.x *= -1
-	ceiling_ray.target_position.x *= -1
+	if player == null:
+		return
+
+	# Apuntar el RayCast hacia la posición actual del jugador
+	player_ray.target_position = (
+		player.global_position - player_ray.global_position
+	)
+
+	# Actualizar inmediatamente la colisión
+	player_ray.force_raycast_update()
 
 
 func can_see_player() -> bool:
-	if playerUbi == null:
+
+	if player == null:
 		return false
 
-	var distance = global_position.distance_to(playerUbi.global_position)
-
-	if distance > 400:
+	if not player_ray.is_colliding():
 		return false
 
-	player_ray.target_position = to_local(playerUbi.global_position)
-	player_ray.force_raycast_update()
+	# Objeto que está bloqueando el RayCast
+	var collider = player_ray.get_collider()
 
-	if player_ray.is_colliding():
-		return player_ray.get_collider() == playerUbi
-
-	return false
-
-
-func shoot():
-	if projectile_scene == null:
-		return
-
-	var direction_to_player = (
-		playerUbi.global_position - shoot_point.global_position
-	).normalized()
-
-	var directions = [
-		direction_to_player.rotated(deg_to_rad(-15)),
-		direction_to_player,
-		direction_to_player.rotated(deg_to_rad(15))
-	]
-
-	for shot_direction in directions:
-		var projectile = projectile_scene.instantiate()
-
-		get_tree().current_scene.add_child(projectile)
-
-		projectile.global_position = shoot_point.global_position
-		projectile.direction = shot_direction
+	# Solo devuelve true si lo primero que golpea es el jugador
+	return collider == player
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
