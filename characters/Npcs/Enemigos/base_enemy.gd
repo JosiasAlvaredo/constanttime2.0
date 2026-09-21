@@ -3,6 +3,8 @@ class_name enemy_base
 
 @export var number_effects: Array[GlobalValues.Effects] = []
 
+#@export var number_effects: Array[Scene] = []
+
 @onready var state_machine: State_Machine = $State_Machine
 
 var direction=1
@@ -17,7 +19,9 @@ var aux_values={}
 var weight=0
 
 func _process(delta: float) -> void:
-	
+	if activate_Gravity:
+		velocity += transform.y * gravity * delta
+		
 	if aux_values=={}:
 		aux_values.speed=speed
 		aux_values.Jump_stength=Jump_stength

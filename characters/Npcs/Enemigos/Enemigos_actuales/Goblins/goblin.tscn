@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=3 uid="uid://bu1jwensa1x17"]
+[gd_scene format=3 uid="uid://bu1jwensa1x17"]
 
 [ext_resource type="Script" uid="uid://bt0dc8l4g3b20" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.gd" id="1_lygnl"]
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_y6xvf"]
