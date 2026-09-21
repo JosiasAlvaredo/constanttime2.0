@@ -1,9 +1,9 @@
-[gd_scene format=4 uid="uid://rku3cesdcbvr"]
+[gd_scene load_steps=0 format=4 uid="uid://rku3cesdcbvr"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_2fh03"]
 [ext_resource type="PackedScene" uid="uid://vk1bfs3s17ao" path="res://objets/Map/Sewer/bad_water.tscn" id="2_t5w1w"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="3_0hiq1"]
-[ext_resource type="PackedScene" uid="uid://dlnjjmts7p4fo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.tscn" id="4_jqnxr"]
+[ext_resource type="PackedScene" uid="uid://bu1jwensa1x17" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/goblin.tscn" id="4_jqnxr"]
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="5_2qp5s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw3r2"]

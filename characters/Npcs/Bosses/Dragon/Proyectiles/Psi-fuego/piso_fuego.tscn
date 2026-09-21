@@ -10,6 +10,19 @@ size = Vector2(59, 20)
 [node name="PisoFuego" type="CharacterBody2D" unique_id=2087668833]
 collision_layer = 0
 script = ExtResource("1_0va06")
+time_alive = null
+number_effects = null
+live = null
+aceleration = null
+Jump_stength = null
+speed = null
+Climb_velocity = null
+roll_velocity = null
+Knockback_resistence = null
+knockback = null
+damage = null
+activate_Gravity = null
+solid = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=958316227]
 
@@ -23,4 +36,4 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=827709544]
 shape = SubResource("RectangleShape2D_0va06")
 
-[connection signal="area_entered" from="Area2D" to="." method="n_hitbox_area_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
