@@ -3,6 +3,8 @@ class_name enemy_base
 
 @export var number_effects: Array[GlobalValues.Effects] = []
 
+#@export var number_effects: Array[Scene] = []
+
 @onready var state_machine: State_Machine = $State_Machine
 
 var direction=1

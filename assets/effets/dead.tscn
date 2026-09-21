@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://cx1ic7xfgwbvg"]
 
+[ext_resource type="Texture2D" uid="uid://urq6ft5052gl" path="res://assets/no tocar.jpg" id="1_g83ah"]
+
 [node name="Dead" type="GPUParticles2D" unique_id=672750532]
+sub_emitter = NodePath(".")
+texture = ExtResource("1_g83ah")

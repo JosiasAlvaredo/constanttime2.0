@@ -91,10 +91,8 @@ damage = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1779736311]
 sprite_frames = SubResource("SpriteFrames_lssc2")
-animation = &"move"
+animation = &"falled"
 autoplay = "default"
-frame = 2
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1408143669]
 visible = false
