@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=4 uid="uid://84svjuaeha70"]
+
+[ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Mazmorra/start/start_room_01.gd" id="1_nhs0j"]
+[ext_resource type="PackedScene" uid="uid://dxb8dav3k57cc" path="res://objets/Map/tiles/tile_dungeon.tscn" id="2_rtgq8"]
+[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_xsciu"]
+[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="3_he2ru"]
+[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="4_l4nw3"]
+[ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="5_2of1a"]
+[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="6_7iove"]
+[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="7_vax2r"]
+[ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="9_ikq0o"]
+[ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="10_8yqei"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
+size = Vector2(818, 135)
+
+[node name="StartRoom01" type="Node2D" unique_id=1701331687]
+position = Vector2(-191, 1)
+script = ExtResource("1_nhs0j")
+
+[node name="fondo" parent="." unique_id=1138160604 instance=ExtResource("2_rtgq8")]
+position = Vector2(-136.95642, 74.05985)
+tile_map_data = PackedByteArray("AAD//wQAAAAFAAEAAAD//wUAAAAFAAIAAAD//wYAAAAFAAMAAAD//wcAAAAFAAQAAAAAAAQAAAAGAAEAAAAAAAUAAAAGAAIAAAAAAAYAAAAGAAMAAAAAAAcAAAAGAAQAAAABAAQAAAAHAAEAAAABAAUAAAAHAAIAAAABAAYAAAAHAAMAAAABAAcAAAAHAAQAAAACAAQAAAAIAAEAAAACAAUAAAAIAAIAAAACAAYAAAAIAAMAAAACAAcAAAAIAAQAAAADAAQAAAAFAAEAAAADAAUAAAAFAAIAAAADAAYAAAAFAAMAAAADAAcAAAAFAAQAAAAEAAQAAAAGAAEAAAAEAAUAAAAGAAIAAAAEAAYAAAAGAAMAAAAEAAcAAAAGAAQAAAAFAAQAAAAHAAEAAAAFAAUAAAAHAAIAAAAFAAYAAAAHAAMAAAAFAAcAAAAHAAQAAAAGAAQAAAAIAAEAAAAGAAUAAAAIAAIAAAAGAAYAAAAIAAMAAAAGAAcAAAAIAAQAAAADAAgAAAAFAAEAAAADAAkAAAAFAAIAAAADAAoAAAAFAAMAAAADAAsAAAAFAAQAAAAEAAgAAAAGAAEAAAAEAAkAAAAGAAIAAAAEAAoAAAAGAAMAAAAEAAsAAAAGAAQAAAAFAAgAAAAHAAEAAAAFAAkAAAAHAAIAAAAFAAoAAAAHAAMAAAAFAAsAAAAHAAQAAAAGAAgAAAAIAAEAAAAGAAkAAAAIAAIAAAAGAAoAAAAIAAMAAAAGAAsAAAAIAAQAAAD//wgAAAAFAAEAAAD//wkAAAAFAAIAAAD//woAAAAFAAMAAAD//wsAAAAFAAQAAAAAAAgAAAAGAAEAAAAAAAkAAAAGAAIAAAAAAAoAAAAGAAMAAAAAAAsAAAAGAAQAAAABAAgAAAAHAAEAAAABAAkAAAAHAAIAAAABAAoAAAAHAAMAAAABAAsAAAAHAAQAAAACAAgAAAAIAAEAAAACAAkAAAAIAAIAAAACAAoAAAAIAAMAAAACAAsAAAAIAAQAAAD//wwAAAAFAAAAAAAAAAwAAAAGAAAAAAABAAwAAAAHAAAAAAACAAwAAAAIAAAAAAADAAwAAAAFAAAAAAAEAAwAAAAGAAAAAAAFAAwAAAAHAAAAAAAGAAwAAAAIAAAAAAA=")
+
+[node name="escalones" parent="." unique_id=1254260655 instance=ExtResource("2_rtgq8")]
+tile_map_data = PackedByteArray("AAD3/w0AAAAAAAwAAAD3/w4AAAAAAA0AAAD4/w0AAAABAAwAAAD4/w4AAAABAA0AAAD7/woAAAAAAAwAAAD7/wsAAAAAAA0AAAD8/woAAAABAAwAAAD8/wsAAAABAA0AAAA=")
+
+[node name="SocketRight" type="Marker2D" parent="." unique_id=452273567]
+position = Vector2(723, 178)
+
+[node name="Bounds" type="Area2D" parent="." unique_id=348332757]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1304408014]
+position = Vector2(311, 180)
+scale = Vector2(1, 1.2)
+shape = SubResource("RectangleShape2D_e8jrh")
+
+[node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_xsciu")]
+position = Vector2(-82, 182)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1658636559]
+zoom = Vector2(1.5, 1.5)
+
+[node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("3_he2ru")]
+
+[node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("4_l4nw3")]
+
+[node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("5_2of1a")]
+position = Vector2(-79, 179)
+
+[node name="stick_arm" parent="." unique_id=29034957 instance=ExtResource("6_7iove")]
+position = Vector2(-44, 184)
+
+[node name="stick_arm2" parent="." unique_id=512423657 instance=ExtResource("7_vax2r")]
+position = Vector2(-78, 197)
+
+[node name="frog_legs" parent="." unique_id=835217674 instance=ExtResource("9_ikq0o")]
+position = Vector2(-59, 182)
+
+[node name="slime_legs" parent="." unique_id=1748175525 instance=ExtResource("10_8yqei")]
+position = Vector2(-50, 204)
