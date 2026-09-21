@@ -1,6 +1,8 @@
 extends Stats
 class_name enemy_base
 
+@export var number_effects: Array[GlobalValues.Effects] = []
+
 @onready var state_machine: State_Machine = $State_Machine
 
 var direction=1
@@ -11,10 +13,7 @@ var recoil=0
 var player: Player = null
 
 
-var current_effects=[]
-
-
-func enemy_damage(weapond):
+func suffer_damage(weapond):
 	var enemy=weapond.player
 	damage_efect()
 	last_direction=direction
@@ -26,10 +25,11 @@ func enemy_damage(weapond):
 	
 	for i in weapond.skills.number_effects:
 		
-		var effect=ActiveEffects[weapond.skills.Effects.keys()[i]]
+		var effect=ActiveEffects[GlobalValues.Effects.keys()[i]]
 		if not effect in current_effects:
 			current_effects.append(effect)
 			effect.call(self)
+			
 	if Knockback_resistence!=0:
 		state_machine.change_to("Knockback")
 		

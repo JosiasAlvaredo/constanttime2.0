@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://clq514hbk7bnh"]
+[gd_scene format=3 uid="uid://dlnjjmts7p4fo"]
 
-[ext_resource type="Script" uid="uid://bt0dc8l4g3b20" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.gd" id="1_lygnl"]
+[ext_resource type="Script" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.gd" id="1_lygnl"]
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_y6xvf"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_gt12a"]
 [ext_resource type="Script" uid="uid://bnycfxlb6s5xf" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/states/idle_g.gd" id="4_s4rcc"]

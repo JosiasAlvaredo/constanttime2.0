@@ -20,8 +20,4 @@ var hechizo=false
 var Left_hand={"name":"","durability":""}
 var Right_hand={"name":"","durability":""}
 
-#Bosque
-var Bosque={
-	"LLave_del_bosque":true,
-	"Puerta_del_bosque":false
-}
+enum Effects {fire,poison}

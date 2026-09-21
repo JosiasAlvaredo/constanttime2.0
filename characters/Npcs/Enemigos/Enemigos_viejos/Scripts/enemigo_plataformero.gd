@@ -18,7 +18,6 @@ func FLIP():
 		$AnimatedSprite2D.scale.x *= -1
 
 func _physics_process(delta):
-	print(live)
 	
 	velocity.y+= gravity*delta
 
@@ -31,4 +30,4 @@ func _physics_process(delta):
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	enemy_damage(area.get_parent())
+	suffer_damage(area.get_parent())

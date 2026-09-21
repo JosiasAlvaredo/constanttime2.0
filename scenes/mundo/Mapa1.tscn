@@ -259,6 +259,7 @@ position = Vector2(5, -30)
 
 [node name="Enemigo_plat" parent="." unique_id=1513898474 instance=ExtResource("14_2q7o6")]
 position = Vector2(107, -43)
+number_effects = Array[int]([0])
 
 [node name="stick_arm7" parent="." unique_id=1297055427 instance=ExtResource("15_6jkxb")]
 position = Vector2(26, -16)

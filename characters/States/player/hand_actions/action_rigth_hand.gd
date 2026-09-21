@@ -3,6 +3,7 @@ extends State_base
 func action_start(State,controlled_node,state_machine):
 	var right_hand_action=controlled_node.right_hand_action
 	
-	if right_hand_action!=null:
+	if right_hand_action!=null and not controlled_node.mouse_on_menu:
 		right_hand_action.call(State)
-		
+	else:
+		state_machine.change_to(State)

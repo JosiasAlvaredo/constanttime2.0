@@ -12,6 +12,7 @@ class_name arm_mele_base
 var using=false
 
 var current_state
+
 func use(State):
 
 	current_state=State

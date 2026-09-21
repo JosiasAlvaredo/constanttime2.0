@@ -153,12 +153,14 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wv5q"]
+size = Vector2(262, 491)
+
 [node name="User_Interface" type="CanvasLayer" unique_id=192385077]
 script = ExtResource("1_jb0ip")
 metadata/_edit_horizontal_guides_ = [525.0]
 
 [node name="Inventory" type="Node2D" parent="." unique_id=1474233795]
-visible = false
 
 [node name="info" type="Node2D" parent="Inventory" unique_id=1646273436]
 position = Vector2(84, 0)
@@ -400,6 +402,13 @@ offset_top = -0.19403076
 offset_right = -0.088012695
 offset_bottom = 0.13296509
 
+[node name="Menu_box" type="Area2D" parent="Inventory" unique_id=2096701751]
+priority = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/Menu_box" unique_id=1140649260]
+position = Vector2(936, 353.5)
+shape = SubResource("RectangleShape2D_5wv5q")
+
 [node name="hands" type="Node2D" parent="." unique_id=2011046253]
 position = Vector2(273, 501)
 
@@ -432,3 +441,6 @@ offset_top = -27.5
 offset_right = 27.5
 offset_bottom = 27.5
 slot_part = "right_hand"
+
+[connection signal="mouse_entered" from="Inventory/Menu_box" to="." method="_on_menu_box_mouse_entered"]
+[connection signal="mouse_exited" from="Inventory/Menu_box" to="." method="_on_menu_box_mouse_exited"]

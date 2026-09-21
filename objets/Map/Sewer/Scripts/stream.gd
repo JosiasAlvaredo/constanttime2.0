@@ -5,9 +5,11 @@ extends Area2D
 @export var damage=40
 
 
-enum States{Starting,Max_height,Stopping, Wait}
+enum States{Starting,Max_height,Stopping}
 
 var current_state=States.Starting
+
+	
 
 func _physics_process(delta: float) -> void:
 	match current_state:
@@ -30,6 +32,5 @@ func Max_height():
 func Stopping():
 	scale.y=move_toward(scale.y,0,scale.y/200)
 	if scale.y<=10:
-		get_child(2)
 		queue_free()
 		

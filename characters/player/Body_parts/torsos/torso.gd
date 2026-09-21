@@ -69,7 +69,8 @@ func _ready() -> void:
 			item.slot_position=GlobalValues.bodies_parts.right_hand
 			GlobalValues.bodies_parts.right_hand.check_player(user_interface)
 			add_child(item)
-		elif skills.Habilities.use in right_armSkills.Habilities:
+		elif skills.Habilities.use in right_armSkills.number_habilities:
+			
 			right_arm.player=parent
 			right_arm.slot_position=GlobalValues.bodies_parts.right_arm
 			parent.right_hand_action=right_arm.use
@@ -151,7 +152,7 @@ func _ready() -> void:
 	parent.body_down=$Body_Down
 	parent.Interactive_Box_collition=$Interactive_Box/CollisionShape2D
 
-func torso_damage(_damage):
+func suffer_damage(_damage):
 	#desgaste del torso
 	var part_wear=shockwave*_damage
 	#daño dirigido a las partes del cuerpo
@@ -163,6 +164,8 @@ func torso_damage(_damage):
 		body.left_arm.damage((_damage-part_wear)/count_parts)
 	if body.legs!=null:
 		body.legs.damage((_damage-part_wear)/int(count_parts/2))
+		
+
 
 #Carga los nodos de estado en el nodo abilities del state machine
 func load_abilities(number_habilities):
