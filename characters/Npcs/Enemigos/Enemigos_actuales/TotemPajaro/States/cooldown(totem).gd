@@ -1,3 +1,4 @@
+
 extends State_base
 
 @export var cooldown_time := 1.5
@@ -5,11 +6,11 @@ extends State_base
 var timer := 0.0
 
 
-func start():
+func start() -> void:
 	timer = cooldown_time
 
 
-func on_process(delta):
+func on_process(delta: float) -> void:
 	timer -= delta
 
 	if timer <= 0:
