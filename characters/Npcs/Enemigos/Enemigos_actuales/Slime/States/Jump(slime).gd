@@ -1,8 +1,8 @@
+
 extends State_base
 
 
-func on_physics_process(delta):
-
+func on_physics_process(delta: float) -> void:
 	# Si hay una pared adelante
 	if controlled_node.front_ray.is_colliding():
 		controlled_node.change_direction()

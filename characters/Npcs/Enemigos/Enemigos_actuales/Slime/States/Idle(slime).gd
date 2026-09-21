@@ -1,13 +1,14 @@
+
 extends State_base
 
 var timer := 0.5
 
 
-func start():
+func start() -> void:
 	timer = 0.5
 
 
-func on_physics_process(delta):
+func on_physics_process(delta: float) -> void:
 	timer -= delta
 
 	if timer <= 0:

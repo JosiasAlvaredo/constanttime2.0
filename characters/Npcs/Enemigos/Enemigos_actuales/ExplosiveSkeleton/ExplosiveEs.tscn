@@ -10,9 +10,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5d0m"]
 size = Vector2(57, 56)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gsqr8"]
-radius = 74.24284
-
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=638024466]
 collision_layer = 128
 script = ExtResource("1_jn6cw")
@@ -38,13 +35,6 @@ collision_mask = 2
 
 [node name="FloorRay" type="RayCast2D" parent="RayCasts" unique_id=1458575140]
 position = Vector2(58, -1)
-
-[node name="ExplosionArea" type="Area2D" parent="." unique_id=1542077685]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea" unique_id=1489260104]
-shape = SubResource("CircleShape2D_gsqr8")
 
 [node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_o5d0m")]
 default_state = NodePath("Patrol(exploSqueleton)")
