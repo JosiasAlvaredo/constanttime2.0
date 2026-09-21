@@ -1,7 +1,4 @@
-extends CharacterBody2D
-
-@export var speed := 60.0
-@export var gravity := 1000.0
+extends enemy_base
 
 @onready var wall_ray: RayCast2D = $RayCasts/WallRay
 @onready var floor_ray: RayCast2D = $RayCasts/FloorRay
@@ -11,7 +8,6 @@ extends CharacterBody2D
 @onready var attack_collision: CollisionShape2D = $AttackArea/CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var direction := 1
 
 
 func _physics_process(delta: float) -> void:

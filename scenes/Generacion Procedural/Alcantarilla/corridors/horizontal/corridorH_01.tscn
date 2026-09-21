@@ -1,9 +1,13 @@
 [gd_scene format=4 uid="uid://bmnqofvod5a6a"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_nf05q"]
+[ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="2_wo1rp"]
+[ext_resource type="PackedScene" uid="uid://dlnjjmts7p4fo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.tscn" id="3_0vc44"]
+[ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="4_hpi0l"]
+[ext_resource type="PackedScene" uid="uid://dfyewptptr14a" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="5_waydd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw3r2"]
-size = Vector2(832, 159)
+size = Vector2(831, 159)
 
 [node name="CorridorH01" type="Node2D" unique_id=431257943]
 
@@ -25,16 +29,20 @@ position = Vector2(-12, 322)
 tile_map_data = PackedByteArray("AAAEAP3/AAADAAAAAAAFAP3/AAADAAQAAAAGAP3/AAADAAQAAAAHAP3/AAADAAQAAAAIAP3/AAADAAQAAAAJAP3/AAADAAQAAAAKAP3/AAADAAQAAAALAP3/AAADAAQAAAAMAP3/AAADAAQAAAANAP3/AAADAAQAAAAOAP3/AAADAAQAAAAPAP3/AAADAAQAAAAQAP3/AAADAAQAAAARAP3/AAADAAQAAAASAP3/AAADAAQAAAATAP3/AAADAAQAAAAUAP3/AAADAAQAAAAVAP3/AAADAAQAAAAWAP3/AAAIAAYAAAAWAPn/AAAIAAUAAAAGAPn/AAADAAIAAAAHAPn/AAAHAAYAAAAIAPn/AAAHAAYAAAAJAPn/AAAHAAYAAAAKAPn/AAAHAAYAAAALAPn/AAAHAAYAAAAMAPn/AAAHAAYAAAANAPn/AAAHAAYAAAAOAPn/AAAHAAYAAAAPAPn/AAAHAAYAAAAQAPn/AAAHAAYAAAARAPn/AAAHAAYAAAASAPn/AAAHAAYAAAATAPn/AAAHAAYAAAAUAPn/AAAHAAYAAAAVAPn/AAAHAAYAAAAWAPr/AAAAAAMAAAAWAPv/AAAAAAMAAAAWAPz/AAAAAAMAAAA=")
 
 [node name="SocketLeft" type="Marker2D" parent="." unique_id=1415346625]
-visible = false
-position = Vector2(-96, 176)
+position = Vector2(-107, 176)
 
 [node name="SocketRight" type="Marker2D" parent="." unique_id=335574365]
-visible = false
-position = Vector2(736, 175)
+position = Vector2(724, 175)
+
+[node name="EnemySpawner3" parent="SocketRight" unique_id=1236478016 instance=ExtResource("2_wo1rp")]
+position = Vector2(-437, 41)
+enemy_scenes = Array[PackedScene]([ExtResource("3_0vc44"), ExtResource("4_hpi0l"), ExtResource("5_waydd")])
+enemy_amount = 1
+spawn_radius = 5.0
+random_position = false
 
 [node name="Bounds" type="Area2D" parent="." unique_id=1743847757]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=2078390579]
-position = Vector2(320, 176.5)
+position = Vector2(308.5, 176.5)
 shape = SubResource("RectangleShape2D_kw3r2")

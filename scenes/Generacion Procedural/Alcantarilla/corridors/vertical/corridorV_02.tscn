@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://78vyompmb3lx"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_itnb8"]
-[ext_resource type="PackedScene" uid="uid://fc1dpos8li5i" path="res://objets/Map/Sewer/Rain.tscn" id="2_rexak"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="3_w841o"]
 [ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="4_3wip4"]
 [ext_resource type="PackedScene" uid="uid://dfyewptptr14a" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="5_eewkc"]
@@ -15,7 +14,6 @@
 size = Vector2(479, 608)
 
 [node name="CorridorV01" type="Node2D" unique_id=1800956991]
-position = Vector2(319, -46)
 metadata/_edit_vertical_guides_ = [321.0, 176.0, 144.0]
 metadata/_edit_horizontal_guides_ = [304.0, 336.0]
 
@@ -32,13 +30,7 @@ tile_map_data = PackedByteArray("AAD///j/AAADAAEAAAD//woAAAADAAEAAAAAAPj/AAADAAE
 position = Vector2(-1, 320)
 tile_map_data = PackedByteArray("AAACAAoAAAADAAAAAAADAAoAAAADAAAAAAAEAAoAAAADAAAAAAAFAAoAAAADAAAAAAAGAAoAAAADAAAAAAA=")
 
-[node name="Rain2" parent="." unique_id=120645885 instance=ExtResource("2_rexak")]
-position = Vector2(32, 207)
-scale = Vector2(221.1256, -13.411782)
-max_wait_time = 2.0
-
 [node name="puertaUp" parent="." unique_id=476445372 instance=ExtResource("1_itnb8")]
-visible = false
 position = Vector2(-1, 320)
 tile_map_data = PackedByteArray("AAAEAPj/AAAHAAYAAAAFAPj/AAAHAAYAAAAGAPj/AAAHAAYAAAAHAPj/AAAHAAYAAAAIAPj/AAAHAAYAAAAJAPj/AAAHAAYAAAAKAPj/AAAHAAYAAAADAPj/AAAGAAAAAAA=")
 

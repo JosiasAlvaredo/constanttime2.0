@@ -28,8 +28,8 @@ const ROOM_WEIGHT: int = 7
 const CORRIDOR_H_WEIGHT: int = 3
 const CORRIDOR_V_WEIGHT: int = 3
 
-const HORIZONTAL_SOCKET_WEIGHT: int = 9
-const VERTICAL_SOCKET_WEIGHT: int = 1
+const HORIZONTAL_SOCKET_WEIGHT: int = 11
+const VERTICAL_SOCKET_WEIGHT: int = 2
 
 
 const SOCKET_TO_DOOR: Dictionary = {

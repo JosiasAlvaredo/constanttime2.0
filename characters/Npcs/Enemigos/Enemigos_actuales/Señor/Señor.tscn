@@ -52,8 +52,12 @@ size = Vector2(20, 34)
 [node name="Señor" type="CharacterBody2D" unique_id=193873761]
 collision_layer = 0
 script = ExtResource("1_2u0d4")
+number_effects = Array[int]([0])
+speed = 50
 
 [node name="AttackArea" type="Area2D" parent="." unique_id=1763246471]
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1320002503]
 position = Vector2(79.5, -1)
