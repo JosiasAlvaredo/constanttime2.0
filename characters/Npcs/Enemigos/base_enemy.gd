@@ -30,10 +30,11 @@ func enemy_damage(weapond):
 
 	last_direction=direction
 	direction=0
-	velocity.x=sign(enemy.global_position.x-global_position.x)
-	velocity.y=sign(enemy.global_position.y-global_position.y)
 	recoil=weapond.skills.knockback*Knockback_resistence
-	print( weapond.skills.number_effects)
+	velocity.x=sign(enemy.global_position.x-global_position.x)*recoil.x
+	velocity.y=sign(enemy.global_position.y-global_position.y)*recoil.y
+	
+
 	for i in weapond.skills.number_effects:
 		
 		var effect=ActiveEffects[GlobalValues.Effects.keys()[i]]
@@ -45,8 +46,6 @@ func enemy_damage(weapond):
 
 	suffer_damage(weapond.skills.damage)
 	
-	if Knockback_resistence!=0:
-		state_machine.change_to("Knockback")
 		
 
 func suffer_damage(_damage):

@@ -7,9 +7,14 @@ radius = 16.124516
 
 [node name="HadaFuego" type="CharacterBody2D" unique_id=962392775]
 script = ExtResource("1_452x3")
+speed = 60
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2045897722]
+collision_layer = 132
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1537915130]
 shape = SubResource("CircleShape2D_452x3")
 debug_color = Color(0.9440774, 7.412136e-06, 0.6009741, 0.41960785)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
