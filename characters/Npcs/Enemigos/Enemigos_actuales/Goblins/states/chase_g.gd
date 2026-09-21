@@ -1,38 +1,39 @@
-extends State_base
+extends enemy_base
+ 
+
+@export var acceleration := 500.0 
+
+@export var jump_force := -350.0 
+@export var follow_distance := 300.0 
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
+@onready var wall_ray: RayCast2D = $RayCasts/FrontRay 
+@onready var floor_ray: RayCast2D = $RayCasts/FloorRay 
+ 
+var playerUbi: Node2D 
+
+ 
+ 
+func _ready() -> void: 
+	playerUbi = get_tree().get_first_node_in_group("player") 
+ 
+func update_sprite_direction() -> void:
+	if direction == 1:
+		sprite_2d.flip_h = true
+	elif direction == -1:
+		sprite_2d.flip_h = false
 
 
-func on_physics_process(delta: float) -> void:
-	var enemy = controlled_node
-	
-	if enemy.playerUbi == null:
-		state_machine.change_to("IdleG")
-		return
-	
-	if not enemy.is_player_in_range():
-		enemy.velocity.x = 0
-		state_machine.change_to("IdleG")
-		return
-	
-	var difference = enemy.playerUbi.global_position.x - enemy.global_position.x
-	
-	if difference > 5:
-		enemy.direction = 1
-	elif difference < -5:
-		enemy.direction = -1
-	
-	enemy.update_sprite_direction()
-	
-	enemy.wall_ray.target_position.x = enemy.direction * 30
-	enemy.floor_ray.position.x = abs(enemy.floor_ray.position.x) * enemy.direction
-	
-	if enemy.wall_ray.is_colliding() or not enemy.floor_ray.is_colliding():
-		state_machine.change_to("JumpG")
-		return
-	
-	enemy.velocity.x = move_toward(
-		enemy.velocity.x,
-		enemy.direction * enemy.speed,
-		enemy.acceleration * delta
-	)
-	
-	enemy.move_and_slide()
+func get_player_distance() -> float: 
+	if playerUbi == null: 
+		return INF 
+	 
+	return global_position.distance_to(playerUbi.global_position) 
+ 
+
+func is_player_in_range() -> bool: 
+	return get_player_distance() <= follow_distance
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
