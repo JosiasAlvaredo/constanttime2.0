@@ -12,17 +12,6 @@ collision_layer = 0
 script = ExtResource("1_0va06")
 time_alive = null
 number_effects = null
-live = null
-aceleration = null
-Jump_stength = null
-speed = null
-Climb_velocity = null
-roll_velocity = null
-Knockback_resistence = null
-knockback = null
-damage = null
-activate_Gravity = null
-solid = null
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=958316227]
 

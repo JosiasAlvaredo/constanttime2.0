@@ -1,6 +1,6 @@
-extends CharacterBody2D
+extends enemy_base
 
-@export var gravity := 400.0
+
 @export var max_fall_speed := 400.0
 
 

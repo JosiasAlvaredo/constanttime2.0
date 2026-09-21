@@ -35,7 +35,7 @@ func cambiar_a_fase_2() -> void:
 	fase = 2
 	en_transicion = true
 
-	print("¡DRAGON ENTRA EN FASE 2!")
+	print("🔥 DRAGON ENTRA EN FASE 2")
 
 	animation_player.play("TransicionFase2")
 
@@ -44,31 +44,34 @@ func cambiar_a_fase_2() -> void:
 	if live <= 0:
 		return
 
-	print("Terminó la transición")
+	print("🔥 TERMINÓ LA TRANSICIÓN")
 
 	crear_plataformas()
 
+	en_transicion = false
+
+	# Primera posición de fase 2
 	animacion_fase_2_actual = "Fase2A"
 	animation_player.play(animacion_fase_2_actual)
 
-	en_transicion = false
+	# Empezamos el ciclo de posiciones
+	ciclo_posiciones_fase_2()
 
-	ciclo_fase_2()
 
-
-func ciclo_fase_2() -> void:
+func ciclo_posiciones_fase_2() -> void:
 
 	while fase == 2 and live > 0:
 
+		# Espera mientras permanece en la posición actual
 		await get_tree().create_timer(7.0).timeout
 
 		if fase != 2 or live <= 0:
 			return
 
-		elegir_siguiente_animacion()
+		cambiar_posicion_fase_2()
 
 
-func elegir_siguiente_animacion() -> void:
+func cambiar_posicion_fase_2() -> void:
 
 	var siguiente_animacion: String
 
@@ -95,6 +98,8 @@ func elegir_siguiente_animacion() -> void:
 
 	animacion_fase_2_actual = siguiente_animacion
 
+	print("🐉 Cambiando posición: ", siguiente_animacion)
+
 	animation_player.play(siguiente_animacion)
 
 
@@ -114,8 +119,6 @@ func crear_plataformas() -> void:
 
 	plataformas.global_position = plataformas_spawn.global_position
 
-	print("✅ Plataformas creadas en: ", plataformas_spawn.global_position)
-
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	enemy_damage(area.get_parent())
@@ -126,4 +129,12 @@ func hurtbox_maniIzq(area: Area2D) -> void:
 
 
 func _on_hurt_box_d_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+
+
+func FASE2I(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+
+
+func FASE2D(area: Area2D) -> void:
 	enemy_damage(area.get_parent())

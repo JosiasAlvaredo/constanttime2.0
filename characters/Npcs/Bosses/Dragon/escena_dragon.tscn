@@ -238,7 +238,7 @@ sources/0 = SubResource("TileSetAtlasSource_33ij6")
 [node name="Node2D" type="Node2D" unique_id=1794265959]
 
 [node name="Dragon" parent="." unique_id=1458171680 node_paths=PackedStringArray("plataformas_spawn") instance=ExtResource("1_g28ua")]
-position = Vector2(564, 357)
+position = Vector2(573, 364)
 plataformas_spawn = NodePath("../PlataformasSpawn")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_mr0xf")]
