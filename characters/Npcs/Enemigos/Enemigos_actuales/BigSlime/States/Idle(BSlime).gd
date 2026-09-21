@@ -21,4 +21,4 @@ func on_physics_process(delta):
 	controlled_node.move_and_slide()
 
 	if timer <= 0:
-		state_machine.change_to("Slide(BSlime)")
+		state_machine.change_to("Slide")

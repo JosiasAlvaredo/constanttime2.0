@@ -4,12 +4,64 @@
 [ext_resource type="PackedScene" uid="uid://fc1dpos8li5i" path="res://objets/Map/Sewer/Rain.tscn" id="2_8c8y0"]
 [ext_resource type="PackedScene" uid="uid://cqhbw1m88idtf" path="res://objets/Map/save_point.tscn" id="2_mrce5"]
 [ext_resource type="PackedScene" uid="uid://cj0ou4wf85852" path="res://objets/Map/Sewer/geiser.tscn" id="3_evua7"]
+[ext_resource type="Texture2D" uid="uid://bg8cixif5i0gk" path="res://assets/characters/enemies/slime chico.png" id="3_r3dhp"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="3_udlct"]
 [ext_resource type="PackedScene" uid="uid://vk1bfs3s17ao" path="res://objets/Map/Sewer/bad_water.tscn" id="4_68t7u"]
 [ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="6_7wdhl"]
-[ext_resource type="PackedScene" uid="uid://dfyewptptr14a" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="6_xhtws"]
-[ext_resource type="PackedScene" uid="uid://dlnjjmts7p4fo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.tscn" id="7_xhtws"]
+[ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="6_xhtws"]
+[ext_resource type="PackedScene" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.tscn" id="7_xhtws"]
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="9_swc8j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit4r"]
+atlas = ExtResource("3_r3dhp")
+region = Rect2(70, 40, 70, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fw0m"]
+atlas = ExtResource("3_r3dhp")
+region = Rect2(0, 0, 70, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gs8g"]
+atlas = ExtResource("3_r3dhp")
+region = Rect2(0, 40, 70, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auvt4"]
+atlas = ExtResource("3_r3dhp")
+region = Rect2(70, 40, 70, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hvp2y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hit4r")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fw0m")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gs8g")
+}],
+"loop": true,
+"name": &"new_animation_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auvt4")
+}],
+"loop": true,
+"name": &"new_animation_3",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuv48"]
 size = Vector2(736, 511.25)
@@ -51,6 +103,57 @@ position = Vector2(321, -301)
 scale = Vector2(61.46594, 15.684977)
 max_wait_time = 3.0
 
+[node name="Node2D" type="Node2D" parent="puertaUp" unique_id=1214945192]
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=762707778]
+position = Vector2(315, -288)
+rotation = 2.4178042
+scale = Vector2(0.5881726, 0.88556474)
+sprite_frames = SubResource("SpriteFrames_hvp2y")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=2057582663]
+position = Vector2(205.99997, -301.99997)
+rotation = 2.4178042
+scale = Vector2(0.5881726, 0.8855648)
+sprite_frames = SubResource("SpriteFrames_hvp2y")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=764826509]
+position = Vector2(242.99998, -292.99997)
+rotation = 2.4178042
+scale = Vector2(0.5881726, 0.8855648)
+sprite_frames = SubResource("SpriteFrames_hvp2y")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=659983866]
+position = Vector2(381, -296.99997)
+rotation = 2.4178042
+scale = Vector2(0.5881726, 0.8855648)
+sprite_frames = SubResource("SpriteFrames_hvp2y")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=1104026322]
+position = Vector2(343.00003, -305.00003)
+rotation = 3.1239202
+scale = Vector2(1.5220397, 0.9838091)
+sprite_frames = SubResource("SpriteFrames_hvp2y")
+animation = &"new_animation_1"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=349684836]
+position = Vector2(228.00002, -306)
+rotation = -3.101126
+scale = Vector2(2.2163088, 1.0595047)
+sprite_frames = SubResource("SpriteFrames_hvp2y")
+animation = &"new_animation_1"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=606895490]
+position = Vector2(270, -300)
+rotation = 0.08447945
+scale = Vector2(0.74199027, -1.2074054)
+sprite_frames = SubResource("SpriteFrames_hvp2y")
+animation = &"new_animation_2"
+
 [node name="puertaDown" parent="." unique_id=1035443827 instance=ExtResource("1_8c8y0")]
 visible = false
 position = Vector2(-1, 320)
@@ -85,6 +188,7 @@ position = Vector2(301, 416)
 position = Vector2(703, 144)
 
 [node name="Bounds" type="Area2D" parent="." unique_id=1796673238]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1631879316]
 position = Vector2(335, 159.625)

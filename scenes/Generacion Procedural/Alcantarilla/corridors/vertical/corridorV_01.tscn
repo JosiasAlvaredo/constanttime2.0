@@ -6,10 +6,62 @@
 [ext_resource type="PackedScene" uid="uid://cj0ou4wf85852" path="res://objets/Map/Sewer/geiser.tscn" id="2_gi02l"]
 [ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="3_gi02l"]
 [ext_resource type="PackedScene" uid="uid://fc1dpos8li5i" path="res://objets/Map/Sewer/Rain.tscn" id="3_w5aub"]
-[ext_resource type="PackedScene" uid="uid://dfyewptptr14a" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="6_bm2hr"]
+[ext_resource type="Texture2D" uid="uid://bg8cixif5i0gk" path="res://assets/characters/enemies/slime chico.png" id="4_i1cme"]
+[ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="6_bm2hr"]
 [ext_resource type="PackedScene" uid="uid://cqhbw1m88idtf" path="res://objets/Map/save_point.tscn" id="7_8e3wa"]
 [ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="8_i1cme"]
 [ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="8_woj3a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hit4r"]
+atlas = ExtResource("4_i1cme")
+region = Rect2(70, 40, 70, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fw0m"]
+atlas = ExtResource("4_i1cme")
+region = Rect2(0, 0, 70, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gs8g"]
+atlas = ExtResource("4_i1cme")
+region = Rect2(0, 40, 70, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auvt4"]
+atlas = ExtResource("4_i1cme")
+region = Rect2(70, 40, 70, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3pw8c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hit4r")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fw0m")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gs8g")
+}],
+"loop": true,
+"name": &"new_animation_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auvt4")
+}],
+"loop": true,
+"name": &"new_animation_3",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdxpm"]
 size = Vector2(479, 608)
@@ -47,6 +99,72 @@ tile_map_data = PackedByteArray("AAACAPn/AAADAAEAAAADAPn/AAADAAEAAAAEAPn/AAADAAE
 position = Vector2(36, -104)
 scale = Vector2(221.31343, 21.840235)
 max_wait_time = 2.0
+
+[node name="Node2D" type="Node2D" parent="puertaUp" unique_id=1551873147]
+position = Vector2(-161, 193)
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=1407194968]
+position = Vector2(315, -288)
+rotation = 2.4178042
+scale = Vector2(0.5881726, 0.88556474)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=1093854671]
+position = Vector2(205.99997, -301.99997)
+rotation = 2.4178042
+scale = Vector2(0.5881726, 0.8855648)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=232348130]
+position = Vector2(242.99998, -292.99997)
+rotation = 2.4178042
+scale = Vector2(0.5881726, 0.8855648)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=1361179290]
+position = Vector2(381, -296.99997)
+rotation = 2.4178042
+scale = Vector2(0.5881726, 0.8855648)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_2"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=864620972]
+position = Vector2(343.00003, -305.00003)
+rotation = 3.1239202
+scale = Vector2(1.5220397, 0.9838091)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_1"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=869500968]
+position = Vector2(228.00002, -306)
+rotation = -3.101126
+scale = Vector2(2.2163088, 1.0595047)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_1"
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=918819210]
+position = Vector2(294, -306)
+rotation = -3.101126
+scale = Vector2(2.2163088, 1.0595047)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_1"
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=111490998]
+position = Vector2(385.99997, -306)
+rotation = -3.101126
+scale = Vector2(2.2163088, 1.0595047)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_1"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="puertaUp/Node2D" unique_id=367899939]
+position = Vector2(270, -300)
+rotation = 0.08447945
+scale = Vector2(0.74199027, -1.2074054)
+sprite_frames = SubResource("SpriteFrames_3pw8c")
+animation = &"new_animation_2"
 
 [node name="puertaRigth" parent="." unique_id=988808346 instance=ExtResource("1_eq4ox")]
 position = Vector2(-1, 320)

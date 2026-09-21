@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="9_ikq0o"]
 [ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="10_8yqei"]
 [ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="11_8yqei"]
+[ext_resource type="PackedScene" uid="uid://dv63oqe8t1dw0" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/ExplosiveEs.tscn" id="12_pl5q4"]
+[ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="13_ko3j8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(818, 135)
@@ -76,7 +78,13 @@ collision_mask = 2
 position = Vector2(158, -20)
 shape = SubResource("RectangleShape2D_ikq0o")
 
+[node name="CharacterBody2D" parent="." unique_id=638024466 instance=ExtResource("12_pl5q4")]
+position = Vector2(127.99999, 198.99998)
+
 [node name="BigSlime" parent="." unique_id=1982467406 instance=ExtResource("11_8yqei")]
-position = Vector2(179, 202)
+position = Vector2(187, 196)
+
+[node name="Slime" parent="." unique_id=487235860 instance=ExtResource("13_ko3j8")]
+position = Vector2(48, 218)
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]

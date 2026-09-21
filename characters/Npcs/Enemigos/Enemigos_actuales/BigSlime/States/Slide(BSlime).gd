@@ -38,7 +38,7 @@ func on_physics_process(delta):
 	if controlled_node.front_ray.is_colliding():
 
 		controlled_node.change_direction()
-		state_machine.change_to("Idle(BSlime)")
+		state_machine.change_to("Idle")
 		return
 
 
@@ -46,7 +46,7 @@ func on_physics_process(delta):
 	if not controlled_node.floor_ray.is_colliding():
 
 		controlled_node.change_direction()
-		state_machine.change_to("Idle(BSlime)")
+		state_machine.change_to("Idle")
 		return
 
 
@@ -54,4 +54,4 @@ func on_physics_process(delta):
 	if timer <= 0:
 
 		controlled_node.velocity.x = 0
-		state_machine.change_to("Idle(BSlime)")
+		state_machine.change_to("Idle")

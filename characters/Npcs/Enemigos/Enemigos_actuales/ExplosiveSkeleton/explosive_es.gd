@@ -1,6 +1,5 @@
 extends enemy_base
 
-@export var patrol_speed: float = 60.0
 @export var chase_speed: float = 180.0
 
 @onready var sprite = $AnimatedSprite2D
@@ -30,6 +29,8 @@ func update_rays() -> void:
 	sprite.flip_h = direction < 0
 
 func _on_explosion_area_body_entered(body: Node2D) -> void:
-	print(9)
 	player = body
 	state_machine.change_to("Explode(exploSqueleton)")
+	
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())

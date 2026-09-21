@@ -2,7 +2,7 @@ extends State_base
 
 
 func on_physics_process(delta):
-
+	controlled_node.sprite.play("falled")
 	# Movimiento horizontal mientras cae
 	controlled_node.velocity.x = controlled_node.direction * controlled_node.speed
 

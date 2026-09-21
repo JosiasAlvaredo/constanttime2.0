@@ -205,9 +205,9 @@ position = Vector2(-1, 2)
 shape = SubResource("CircleShape2D_gsqr8")
 
 [node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_o5d0m")]
-default_state = NodePath("Patrol(exploSqueleton)")
+default_state = NodePath("Idle")
 
-[node name="Patrol(exploSqueleton)" type="Node" parent="State_Machine" unique_id=422228116]
+[node name="Idle" type="Node" parent="State_Machine" unique_id=422228116]
 script = ExtResource("4_mx7ti")
 
 [node name="Chase(exploSqueleton)" type="Node" parent="State_Machine" unique_id=214762295]
@@ -216,4 +216,13 @@ script = ExtResource("5_mx7ti")
 [node name="Explode(exploSqueleton)" type="Node" parent="State_Machine" unique_id=796420121]
 script = ExtResource("6_gsqr8")
 
+[node name="hitbox" type="Area2D" parent="." unique_id=2109789674]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=433414176]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_gsqr8")
+
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_explosion_area_body_entered"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
