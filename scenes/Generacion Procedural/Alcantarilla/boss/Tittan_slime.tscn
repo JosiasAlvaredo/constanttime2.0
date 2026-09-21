@@ -49,7 +49,7 @@ position = Vector2(916, 242)
 position = Vector2(481, 264)
 scale = Vector2(3.0868597, 0.68226814)
 max_wait_time = 10.0
-height_limit = 200
+height_limit = 150
 stream_time = 4
 
 [node name="Geiser4" parent="." unique_id=804250531 instance=ExtResource("2_3ewjs")]

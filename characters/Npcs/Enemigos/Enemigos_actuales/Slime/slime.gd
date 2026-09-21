@@ -1,10 +1,6 @@
 extends enemy_base
 
 
-@export var jump_force: float = 250.0
-
-
-
 @onready var ray_cast: Node2D = $RayCast
 @onready var floor_ray: RayCast2D = $RayCast/FloorRay
 @onready var front_ray: RayCast2D = $RayCast/FrontRay
@@ -28,6 +24,9 @@ func update_direction():
 	# Girar el sprite
 	sprite.flip_h = direction < 0
 
-
+func _physics_process(delta: float) -> void:
+	if velocity.x!=0 and is_on_floor():
+		velocity.y=Jump_stength
+		
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	enemy_damage(area.get_parent())

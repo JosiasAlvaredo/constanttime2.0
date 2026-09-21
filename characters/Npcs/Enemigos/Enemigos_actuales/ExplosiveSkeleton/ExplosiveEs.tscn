@@ -1,11 +1,26 @@
 [gd_scene format=3 uid="uid://dv63oqe8t1dw0"]
 
 [ext_resource type="Script" uid="uid://c7aed8eiu73sv" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/explosive_es.gd" id="1_jn6cw"]
-[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_qg6ew"]
+[ext_resource type="Texture2D" uid="uid://dyod3p0ftq55f" path="res://assets/characters/enemies/esqueleto explosivo.png" id="2_gsqr8"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_o5d0m"]
 [ext_resource type="Script" uid="uid://cmwesc62wb7x1" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/patrol(explo_esqueleton).gd" id="4_mx7ti"]
 [ext_resource type="Script" uid="uid://o7ng2dwabjmi" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/chase(explo_squeleton).gd" id="5_mx7ti"]
 [ext_resource type="Script" uid="uid://dgugp6r5400l7" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/explode(explo_squeleton).gd" id="6_gsqr8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sngqd"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(0, 0, 285, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wp1c3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sngqd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5d0m"]
 size = Vector2(57, 56)
@@ -14,10 +29,10 @@ size = Vector2(57, 56)
 collision_layer = 128
 script = ExtResource("1_jn6cw")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1243284924]
-position = Vector2(-1.9073486e-06, -1)
-scale = Vector2(0.515625, 0.5)
-texture = ExtResource("2_qg6ew")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=290327541]
+position = Vector2(-2.842171e-14, 1.7881393e-07)
+scale = Vector2(-0.19681355, 0.2202169)
+sprite_frames = SubResource("SpriteFrames_wp1c3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528252697]
 position = Vector2(-0.5, 1)

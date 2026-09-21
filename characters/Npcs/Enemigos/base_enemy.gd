@@ -17,7 +17,9 @@ var aux_values={}
 var weight=0
 
 func _process(delta: float) -> void:
-	
+	if activate_Gravity:
+		velocity += transform.y * gravity * delta
+		
 	if aux_values=={}:
 		aux_values.speed=speed
 		aux_values.Jump_stength=Jump_stength
