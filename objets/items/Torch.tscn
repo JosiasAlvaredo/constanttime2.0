@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d4fnb37drwy6x"]
+[gd_scene load_steps=0 format=3 uid="uid://d4fnb37drwy6x"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_gk6g8"]
 [ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/Weapons/Stick.png" id="2_gk6g8"]
