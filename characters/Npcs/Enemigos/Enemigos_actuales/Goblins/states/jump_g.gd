@@ -20,6 +20,8 @@ func on_physics_process(delta: float) -> void:
 		elif difference < -5:
 			enemy.direction = -1
 		
+		enemy.update_sprite_direction()
+		
 		enemy.wall_ray.target_position.x = enemy.direction * 30
 		enemy.floor_ray.position.x = abs(enemy.floor_ray.position.x) * enemy.direction
 		

@@ -14,6 +14,8 @@ func on_physics_process(delta: float) -> void:
 		elif difference < -5:
 			enemy.direction = -1
 		
+		enemy.update_sprite_direction()
+		
 		enemy.velocity.x = move_toward(
 			enemy.velocity.x,
 			enemy.direction * enemy.speed,

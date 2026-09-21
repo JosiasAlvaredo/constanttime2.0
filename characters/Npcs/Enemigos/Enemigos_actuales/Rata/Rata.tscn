@@ -1,3 +1,65 @@
-[gd_scene format=3 uid="uid://dfyewptptr14a"]
+[gd_scene format=3 uid="uid://dhux3ome4i70u"]
+
+[ext_resource type="Texture2D" uid="uid://cukv1s8703eed" path="res://assets/characters/enemies/enemies.png" id="1_21067"]
+[ext_resource type="Script" uid="uid://txw0idjvst4t" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/rata.gd" id="1_wxb80"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="2_nvgxq"]
+[ext_resource type="Script" uid="uid://bcoswg0v5nesv" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/idle.gd" id="4_vnhoi"]
+[ext_resource type="Script" uid="uid://duevdpdimn63q" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/chase.gd" id="5_1gshu"]
+[ext_resource type="Script" uid="uid://bfp0na8q6pk4l" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/jump.gd" id="6_nvgxq"]
+[ext_resource type="Script" uid="uid://xhj82tfbabgu" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/fall.gd" id="7_wxb80"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21067"]
+size = Vector2(66, 36)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxb80"]
+radius = 19.0
+height = 72.0
 
 [node name="Rata" type="CharacterBody2D" unique_id=1749833397]
+collision_layer = 0
+script = ExtResource("1_wxb80")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1780105687]
+texture = ExtResource("1_21067")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(172.22198, 376.23083, 124.55936, 74.2569)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1134687725]
+position = Vector2(-1, 7)
+shape = SubResource("RectangleShape2D_21067")
+
+[node name="RayCasts" type="Node2D" parent="." unique_id=681321109]
+
+[node name="FrontRay" type="RayCast2D" parent="RayCasts" unique_id=398844334]
+target_position = Vector2(40, 0)
+
+[node name="FloorRay" type="RayCast2D" parent="RayCasts" unique_id=1211076034]
+position = Vector2(60, -1)
+target_position = Vector2(0, 51)
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("2_nvgxq")]
+default_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State_Machine" unique_id=662533105]
+script = ExtResource("4_vnhoi")
+
+[node name="Chase" type="Node" parent="State_Machine" unique_id=1444542616]
+script = ExtResource("5_1gshu")
+
+[node name="Jump" type="Node" parent="State_Machine" unique_id=1674829094]
+script = ExtResource("6_nvgxq")
+
+[node name="Fall" type="Node" parent="State_Machine" unique_id=678236040]
+script = ExtResource("7_wxb80")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=765973420]
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=15520544]
+position = Vector2(0, 6)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wxb80")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

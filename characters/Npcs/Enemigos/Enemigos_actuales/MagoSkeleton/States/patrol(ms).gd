@@ -1,24 +1,31 @@
 extends State_base
 
-func start():
-	controlled_node.velocity.x = controlled_node.direction * controlled_node.speed
+
+func start() -> void:
+	var enemy = controlled_node
+	
+	enemy.velocity.x = enemy.direction * enemy.speed
+	enemy.update_direction()
 
 
-func on_physics_process(delta):
+func on_physics_process(delta: float) -> void:
 	var enemy = controlled_node
 
 	enemy.velocity.x = enemy.direction * enemy.speed
+
 
 	# Pared
 	if enemy.front_ray.is_colliding():
 		enemy.change_direction()
 		return
 
+
 	# Precipicio
 	if not enemy.floor_ray.is_colliding():
 		enemy.change_direction()
 		return
 
-	# Si puede ver al jugador
+
+	# Jugador
 	if enemy.can_see_player():
 		state_machine.change_to("Shoot(MS)")
