@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dlxu4nqmen300"]
 
 [ext_resource type="Script" uid="uid://cnqkuwqtqfbl" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/big_slime.gd" id="1_48nwi"]
-[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_wfn5g"]
+[ext_resource type="Texture2D" uid="uid://cukv1s8703eed" path="res://assets/characters/enemies/enemies.png" id="2_wfn5g"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_tusuu"]
 [ext_resource type="Script" uid="uid://cru67vf1ktnkt" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Idle(BSlime).gd" id="4_h4uay"]
 [ext_resource type="Script" uid="uid://bit7d61a2e1ls" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Slide(BSlime).gd" id="5_wfn5g"]
@@ -9,13 +9,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ys45m"]
 radius = 22.803509
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfn5g"]
+radius = 23.0
+
 [node name="BigSlime" type="CharacterBody2D" unique_id=1982467406]
+collision_layer = 0
 script = ExtResource("1_48nwi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1116133155]
-position = Vector2(0, -0.5)
 scale = Vector2(0.40625, 0.42968747)
 texture = ExtResource("2_wfn5g")
+region_enabled = true
+region_rect = Rect2(522.66675, 111.33334, 156, 130.6667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475176251]
 shape = SubResource("CircleShape2D_ys45m")
@@ -37,3 +42,13 @@ script = ExtResource("4_h4uay")
 
 [node name="Slide(BSlime)" type="Node" parent="State_Machine" unique_id=1032143357]
 script = ExtResource("5_wfn5g")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=824280197]
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1087128776]
+shape = SubResource("CircleShape2D_wfn5g")
+debug_color = Color(0.78629893, 0.43154466, 0.07245823, 0.41960785)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

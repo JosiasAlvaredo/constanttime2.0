@@ -1,18 +1,18 @@
-extends CharacterBody2D
+extends enemy_base
 
 @export var projectile_scene: PackedScene
 @export var spread_angle := 20.0
 
-var player: Node2D = null
+var playerUbi: Node2D = null
 
 @onready var shoot_point: Marker2D = $ShootPoint
 
 
 func shoot():
-	if player == null:
+	if playerUbi == null:
 		return
 
-	var direction = (player.global_position - shoot_point.global_position).normalized()
+	var direction = (playerUbi.global_position - shoot_point.global_position).normalized()
 
 	for i in range(4):
 		var projectile = projectile_scene.instantiate()
@@ -28,9 +28,13 @@ func shoot():
 
 func _on_detection_area_body_entered(body):
 	if body.is_in_group("player"):
-		player = body
+		playerUbi = body
 
 
 func _on_detection_area_body_exited(body):
-	if body == player:
-		player = null
+	if body == playerUbi:
+		playerUbi = null
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())

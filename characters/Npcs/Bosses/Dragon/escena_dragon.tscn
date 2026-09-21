@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="8_xvjcg"]
 [ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="9_33ij6"]
 [ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="10_8eg87"]
-[ext_resource type="PackedScene" uid="uid://cnxsiaacac4js" path="res://characters/Npcs/Bosses/Dragon/plataformas.tscn" id="10_xvjcg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vo4ee"]
 size = Vector2(1260, 20)
@@ -56,6 +55,3 @@ debug_color = Color(0.27782872, 0.63199824, 0, 0.41960785)
 
 [node name="PlataformasSpawn" type="Marker2D" parent="." unique_id=943376371]
 position = Vector2(541, 549)
-
-[node name="Plataformas" parent="." unique_id=175429004 instance=ExtResource("10_xvjcg")]
-position = Vector2(561, 570)

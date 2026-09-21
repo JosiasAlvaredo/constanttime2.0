@@ -1,17 +1,18 @@
 extends State_base
 
+
 @export var spread_angle := 15.0
 @export var shoot_cooldown := 1.0
+
 
 var timer := 0.0
 
 
 func start() -> void:
 	var enemy = controlled_node
-
+	
 	enemy.velocity = Vector2.ZERO
-
-	# No disparar inmediatamente al entrar
+	
 	timer = shoot_cooldown
 
 
@@ -21,41 +22,74 @@ func end() -> void:
 
 func on_physics_process(delta: float) -> void:
 	var enemy = controlled_node
-
+	
 	enemy.velocity = Vector2.ZERO
-
-	# Esperar cooldown
+	
 	timer -= delta
-
+	
 	if timer > 0:
 		return
 
-	# Si no existe el jugador
+
+	# ==============================
+	# COMPROBAR JUGADOR
+	# ==============================
+
 	if enemy.player == null:
 		state_machine.change_to("Patrol")
 		return
 
-	# Si ya no puede verlo
+
+	# Si está fuera de rango o hay una pared,
+	# vuelve a patrullar sin disparar.
 	if not enemy.can_see_player():
 		state_machine.change_to("Patrol")
 		return
 
-	# Guardar posición del jugador
+
+	# ==============================
+	# GUARDAR POSICIÓN
+	# ==============================
+
 	enemy.playerUbi = enemy.player.global_position
 
-	# Dirección hacia el jugador
+
+	# ==============================
+	# MIRAR AL JUGADOR
+	# ==============================
+
+	if enemy.player.global_position.x > enemy.global_position.x:
+		enemy.direction = 1
+	elif enemy.player.global_position.x < enemy.global_position.x:
+		enemy.direction = -1
+	
+	enemy.update_sprite_direction()
+
+
+	# ==============================
+	# DIRECCIÓN DEL DISPARO
+	# ==============================
+
 	var directionP: Vector2 = (
 		enemy.shoot_point.global_position
 		.direction_to(enemy.playerUbi)
 	)
 
-	# Disparo central
+
+	# ==============================
+	# DISPARO CENTRAL
+	# ==============================
+
 	disparar_proyectil(
 		enemy,
 		directionP
 	)
 
-	# Disparo +15°
+
+	# ==============================
+	# DISPARO +15°
+	# ==============================
+
 	disparar_proyectil(
 		enemy,
 		directionP.rotated(
@@ -63,7 +97,11 @@ func on_physics_process(delta: float) -> void:
 		)
 	)
 
-	# Disparo -15°
+
+	# ==============================
+	# DISPARO -15°
+	# ==============================
+
 	disparar_proyectil(
 		enemy,
 		directionP.rotated(
@@ -71,7 +109,11 @@ func on_physics_process(delta: float) -> void:
 		)
 	)
 
-	# Volver a patrulla
+
+	# ==============================
+	# VOLVER A PATRULLAR
+	# ==============================
+
 	state_machine.change_to("Patrol")
 
 
@@ -84,9 +126,10 @@ func disparar_proyectil(
 		push_error("No se asignó projectile_scene")
 		return
 
-	var projectile = enemy.projectile_scene.instantiate()
 
+	var projectile = enemy.projectile_scene.instantiate()
+	
 	projectile.global_position = enemy.shoot_point.global_position
 	projectile.direcionP = directionP
-
+	
 	get_tree().current_scene.add_child(projectile)

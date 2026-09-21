@@ -36,19 +36,23 @@ func cambiar_a_fase_2() -> void:
 
 	print("¡DRAGON ENTRA EN FASE 2!")
 
-	# Animación de transición
+	# Reproducir transición
 	animation_player.play("TransicionFase2")
 
+	# Esperar a que termine
 	await animation_player.animation_finished
 
 	if live <= 0:
 		return
 
-	# Primera posición de fase 2
+	# Crear las plataformas después de la transición
+	crear_plataformas()
+
+	# Primera animación de fase 2
 	animacion_fase_2_actual = "Fase2A"
 	animation_player.play(animacion_fase_2_actual)
 
-	# Empezar el ciclo de cambio de posiciones
+	# Empezar ciclo de fase 2
 	ciclo_fase_2()
 
 

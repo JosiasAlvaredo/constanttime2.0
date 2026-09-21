@@ -13,7 +13,7 @@ func on_process(delta):
 	timer -= delta
 
 	if timer <= 0:
-		if controlled_node.player != null:
+		if controlled_node.playerUbi != null:
 			state_machine.change_to("Attack(totem)")
 		else:
 			state_machine.change_to("Idle(totem)")

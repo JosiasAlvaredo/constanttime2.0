@@ -12,5 +12,10 @@ func on_physics_process(delta: float) -> void:
 	
 	enemy.velocity.x = 0
 	
+	# GRAVEDAD
+	enemy.velocity.y += enemy.gravity * delta
+	
+	enemy.move_and_slide()
+	
 	if enemy.is_player_in_range():
-		state_machine.change_to("ChaseG")
+		state_machine.change_to("Chase")

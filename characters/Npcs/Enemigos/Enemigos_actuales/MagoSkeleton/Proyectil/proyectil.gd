@@ -1,15 +1,19 @@
+
 extends enemy_base
 
 @export var max_distance := 600.0
-var start_position := Vector2.ZERO
 
-func _ready():
-	start_position = global_position
-
+var directionPlayer := Vector2.ZERO
+var distance_traveled := 0.0
 
 
-func _physics_process(delta):
-	position += direction * speed * delta
+func _physics_process(delta: float) -> void:
+	var movement: Vector2 = directionPlayer * speed * delta
 
-	if global_position.distance_to(start_position) >= max_distance:
+	velocity = directionPlayer * speed
+	move_and_slide()
+
+	distance_traveled += movement.length()
+
+	if distance_traveled >= max_distance:
 		queue_free()

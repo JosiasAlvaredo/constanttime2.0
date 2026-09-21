@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="1_0tesu"]
 [ext_resource type="Script" uid="uid://lsxepw08d3c5" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/pajarototem.gd" id="1_bdeei"]
 [ext_resource type="PackedScene" uid="uid://b51si4v42bm0k" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/Proyectil/pluma.tscn" id="2_5ewtc"]
-[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_bdeei"]
+[ext_resource type="Texture2D" uid="uid://cukv1s8703eed" path="res://assets/characters/enemies/enemies.png" id="3_wrqnx"]
 [ext_resource type="Script" uid="uid://2fiw30huf5q1" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/idle(totem).gd" id="4_idmj4"]
 [ext_resource type="Script" uid="uid://yigefk4ydxvm" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/attack(totem).gd" id="6_wrqnx"]
 [ext_resource type="Script" uid="uid://cvwn0tvhbp3gn" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/cooldown(totem).gd" id="7_iadch"]
@@ -14,6 +14,9 @@ size = Vector2(46, 91)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idmj4"]
 size = Vector2(638, 290)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iadch"]
+height = 82.0
+
 [node name="Pajarototem" type="CharacterBody2D" unique_id=1624782377]
 script = ExtResource("1_bdeei")
 projectile_scene = ExtResource("2_5ewtc")
@@ -22,7 +25,9 @@ spread_angle = 50.0
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1524595309]
 position = Vector2(1, 9.536743e-07)
 scale = Vector2(0.4609375, 0.7578125)
-texture = ExtResource("2_bdeei")
+texture = ExtResource("3_wrqnx")
+region_enabled = true
+region_rect = Rect2(364.77356, 226.82333, 90.40765, 121.798584)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1347472814]
 position = Vector2(0, 1.5)
@@ -53,5 +58,14 @@ script = ExtResource("6_wrqnx")
 [node name="Cooldown(totem)" type="Node" parent="State_Machine" unique_id=1027172946]
 script = ExtResource("7_iadch")
 
+[node name="Hitbox" type="Area2D" parent="." unique_id=1553242938]
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1093583488]
+shape = SubResource("CapsuleShape2D_iadch")
+
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

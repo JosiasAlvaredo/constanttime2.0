@@ -2,10 +2,12 @@ extends State_base
 
 
 func start() -> void:
-
 	var enemy = controlled_node
-
+	
 	enemy.velocity = Vector2.ZERO
+	
+	enemy.update_rays_direction()
+	enemy.update_sprite_direction()
 
 
 func end() -> void:
@@ -13,7 +15,6 @@ func end() -> void:
 
 
 func on_physics_process(delta: float) -> void:
-
 	var enemy = controlled_node
 
 
@@ -22,11 +23,8 @@ func on_physics_process(delta: float) -> void:
 	# ==============================
 
 	if enemy.can_see_player():
-
 		enemy.playerUbi = enemy.player.global_position
-
 		state_machine.change_to("Shoot")
-
 		return
 
 
@@ -42,10 +40,10 @@ func on_physics_process(delta: float) -> void:
 	# ==============================
 
 	if enemy.wall_ray.is_colliding():
-
 		enemy.direction *= -1
-
-		enemy.wall_ray.target_position.x *= -1
+		
+		enemy.update_rays_direction()
+		enemy.update_sprite_direction()
 
 
 	# ==============================
@@ -53,10 +51,10 @@ func on_physics_process(delta: float) -> void:
 	# ==============================
 
 	if not enemy.ceiling_ray.is_colliding():
-
 		enemy.direction *= -1
-
-		enemy.wall_ray.target_position.x *= -1
+		
+		enemy.update_rays_direction()
+		enemy.update_sprite_direction()
 
 
 	# ==============================
