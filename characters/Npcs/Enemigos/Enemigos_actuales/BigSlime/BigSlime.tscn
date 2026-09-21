@@ -1,23 +1,72 @@
 [gd_scene format=3 uid="uid://dlxu4nqmen300"]
 
 [ext_resource type="Script" uid="uid://cnqkuwqtqfbl" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/big_slime.gd" id="1_48nwi"]
-[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_wfn5g"]
+[ext_resource type="Texture2D" uid="uid://cf8o5rkwdnfc1" path="res://assets/characters/enemies/Slime.png" id="2_wfn5g"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_tusuu"]
 [ext_resource type="Script" uid="uid://cru67vf1ktnkt" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Idle(BSlime).gd" id="4_h4uay"]
 [ext_resource type="Script" uid="uid://bit7d61a2e1ls" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Slide(BSlime).gd" id="5_wfn5g"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tusuu"]
+atlas = ExtResource("2_wfn5g")
+region = Rect2(0, 0, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4uay"]
+atlas = ExtResource("2_wfn5g")
+region = Rect2(160, 0, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys45m"]
+atlas = ExtResource("2_wfn5g")
+region = Rect2(320, 0, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfofl"]
+atlas = ExtResource("2_wfn5g")
+region = Rect2(320, 240, 160, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtt3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tusuu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4uay")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ys45m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4uay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfofl")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ys45m"]
-radius = 22.803509
+radius = 18.0
 
 [node name="BigSlime" type="CharacterBody2D" unique_id=1982467406]
+collision_layer = 0
 script = ExtResource("1_48nwi")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1116133155]
-position = Vector2(0, -0.5)
-scale = Vector2(0.40625, 0.42968747)
-texture = ExtResource("2_wfn5g")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=64565006]
+position = Vector2(0, 4)
+scale = Vector2(0.4384611, 0.4674727)
+sprite_frames = SubResource("SpriteFrames_rtt3l")
+animation = &"move"
+autoplay = "default"
+frame_progress = 0.09900279
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475176251]
+position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_ys45m")
 
 [node name="RayCast" type="Node2D" parent="." unique_id=328842527]

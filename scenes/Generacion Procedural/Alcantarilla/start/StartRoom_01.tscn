@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="7_vax2r"]
 [ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="9_ikq0o"]
 [ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="10_8yqei"]
+[ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="11_8yqei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(818, 135)
@@ -74,5 +75,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="STOP" unique_id=1911315130]
 position = Vector2(158, -20)
 shape = SubResource("RectangleShape2D_ikq0o")
+
+[node name="BigSlime" parent="." unique_id=1982467406 instance=ExtResource("11_8yqei")]
+position = Vector2(179, 202)
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]

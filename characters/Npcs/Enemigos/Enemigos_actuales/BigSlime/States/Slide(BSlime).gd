@@ -7,7 +7,7 @@ var timer := 0.0
 
 
 func start():
-
+	controlled_node.sprite.play("move")
 	timer = slide_time
 
 	# Impulso inicial

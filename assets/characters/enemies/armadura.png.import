@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgmcccpjau1ud"
-path="res://.godot/imported/anim goblin.png-81793ef866b62336a8a170a137845d16.ctex"
+uid="uid://d4nygnbd7a2k0"
+path="res://.godot/imported/armadura.png-91cbdf9c872e840c0e41fefc91613951.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/anim goblin.png"
-dest_files=["res://.godot/imported/anim goblin.png-81793ef866b62336a8a170a137845d16.ctex"]
+source_file="res://assets/characters/enemies/armadura.png"
+dest_files=["res://.godot/imported/armadura.png-91cbdf9c872e840c0e41fefc91613951.ctex"]
 
 [params]
 

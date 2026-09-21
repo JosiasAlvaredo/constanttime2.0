@@ -6,7 +6,7 @@ var timer := 0.0
 
 
 func start():
-
+	controlled_node.sprite.play("default")
 	timer = idle_time
 	controlled_node.velocity.x = 0
 
