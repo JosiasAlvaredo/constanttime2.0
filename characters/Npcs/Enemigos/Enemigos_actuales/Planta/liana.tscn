@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://btoxnnkhm3fe3"]
+
+[ext_resource type="Texture2D" uid="uid://dlrqhtf6y2sqi" path="res://assets/characters/enemies/planta raiz.png" id="1_hp7dm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esk5k"]
+atlas = ExtResource("1_hp7dm")
+region = Rect2(0, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4gr4"]
+atlas = ExtResource("1_hp7dm")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u11at"]
+atlas = ExtResource("1_hp7dm")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keft1"]
+atlas = ExtResource("1_hp7dm")
+region = Rect2(0, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bivu5"]
+atlas = ExtResource("1_hp7dm")
+region = Rect2(200, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1onh"]
+atlas = ExtResource("1_hp7dm")
+region = Rect2(400, 200, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bdh1"]
+atlas = ExtResource("1_hp7dm")
+region = Rect2(0, 400, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8dwi"]
+atlas = ExtResource("1_hp7dm")
+region = Rect2(200, 400, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nw2hg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esk5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4gr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u11at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_keft1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bivu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1onh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bdh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8dwi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Liana" type="CharacterBody2D" unique_id=2052813828]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1472703038]
+sprite_frames = SubResource("SpriteFrames_nw2hg")
+frame_progress = 0.4198279

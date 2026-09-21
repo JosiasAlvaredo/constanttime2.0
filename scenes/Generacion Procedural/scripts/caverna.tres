@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_resource type="Resource" script_class="LevelData" load_steps=11 format=3 uid="uid://c5y7hlybg85ek"]
+=======
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://c5y7hlybg85ek"]
+>>>>>>> decfb85b726cb79e5648d8793944bc90944206a6
 
 [ext_resource type="PackedScene" uid="uid://c40x4irhyvt5k" path="res://scenes/Generacion Procedural/Cueva/boss/Tittan_slime.tscn" id="1_gre2w"]
 [ext_resource type="PackedScene" uid="uid://bepwwafpi1jw0" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_01.tscn" id="2_dk4dc"]

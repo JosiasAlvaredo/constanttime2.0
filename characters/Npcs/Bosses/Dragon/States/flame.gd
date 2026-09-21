@@ -24,23 +24,24 @@ func start() -> void:
 
 	var shoot_point: Marker2D = dragon.get_node("ShootPoint")
 
-	# Crear la llamarada
+	# Crear Flame
 	flame = flame_scene.instantiate()
 	get_tree().current_scene.add_child(flame)
 
 	# Posición inicial
 	flame.global_position = shoot_point.global_position
 
-	# Dirección hacia el jugador
+	# Guardar la posición del jugador AL INICIAR el ataque
+	var player_position := dragon.playerUbi.global_position
+
+	# Dirección hacia esa posición
 	var direction := (
-		dragon.playerUbi.global_position -
-		shoot_point.global_position
+		player_position - shoot_point.global_position
 	).normalized()
 
-	flame.direction = direction
-
-	# Guardar la posición del jugador al comenzar el ataque
-	flame.player_position = dragon.playerUbi.global_position
+	# Pasarle los datos al Flame
+	flame.direction_player = direction
+	flame.player_position = player_position
 
 
 func on_process(delta: float) -> void:

@@ -1,10 +1,11 @@
-extends enemy_base
+extends boss_base
 class_name Dragon
 
 @export var plataformas_scene: PackedScene
+@export var plataformas_spawn: Marker2D
 
 var playerUbi: Node2D = null
-
+var en_transicion := false
 var fase := 1
 var vida_inicial := 0.0
 
@@ -17,7 +18,6 @@ func _ready() -> void:
 	playerUbi = get_tree().get_first_node_in_group("player")
 	vida_inicial = live
 
-	# Animación inicial
 	animation_player.play("IdleFase1")
 
 
@@ -33,49 +33,50 @@ func suffer_damage(_damage) -> void:
 
 func cambiar_a_fase_2() -> void:
 	fase = 2
+	en_transicion = true
 
-	print("¡DRAGON ENTRA EN FASE 2!")
+	print("🔥 DRAGON ENTRA EN FASE 2")
 
-	# Reproducir transición
 	animation_player.play("TransicionFase2")
 
-	# Esperar a que termine
 	await animation_player.animation_finished
 
 	if live <= 0:
 		return
 
-	# Crear las plataformas después de la transición
+	print("🔥 TERMINÓ LA TRANSICIÓN")
+
 	crear_plataformas()
 
-	# Primera animación de fase 2
+	en_transicion = false
+
+	# Primera posición de fase 2
 	animacion_fase_2_actual = "Fase2A"
 	animation_player.play(animacion_fase_2_actual)
 
-	# Empezar ciclo de fase 2
-	ciclo_fase_2()
+	# Empezamos el ciclo de posiciones
+	ciclo_posiciones_fase_2()
 
 
-func ciclo_fase_2() -> void:
+func ciclo_posiciones_fase_2() -> void:
 
 	while fase == 2 and live > 0:
 
-		# Esperar 7 segundos
+		# Espera mientras permanece en la posición actual
 		await get_tree().create_timer(7.0).timeout
 
 		if fase != 2 or live <= 0:
 			return
 
-		elegir_siguiente_animacion()
+		cambiar_posicion_fase_2()
 
 
-func elegir_siguiente_animacion() -> void:
+func cambiar_posicion_fase_2() -> void:
 
 	var siguiente_animacion: String
 
 	if animacion_fase_2_actual == "Fase2A":
 
-		# Desde A puede ir a I o D
 		if randf() < 0.5:
 			siguiente_animacion = "Fase2I"
 		else:
@@ -83,15 +84,13 @@ func elegir_siguiente_animacion() -> void:
 
 	elif animacion_fase_2_actual == "Fase2I":
 
-		# Desde I puede ir a A o D
 		if randf() < 0.5:
 			siguiente_animacion = "Fase2A"
 		else:
 			siguiente_animacion = "Fase2D"
 
-	elif animacion_fase_2_actual == "Fase2D":
+	else:
 
-		# Desde D puede ir a A o I
 		if randf() < 0.5:
 			siguiente_animacion = "Fase2A"
 		else:
@@ -99,23 +98,43 @@ func elegir_siguiente_animacion() -> void:
 
 	animacion_fase_2_actual = siguiente_animacion
 
+	print("🐉 Cambiando posición: ", siguiente_animacion)
+
 	animation_player.play(siguiente_animacion)
 
 
 func crear_plataformas() -> void:
 
 	if plataformas_scene == null:
-		push_error("No se asignó Plataformas.tscn")
+		push_error("❌ No se asignó Plataformas.tscn")
 		return
 
-	var spawn_point: Marker2D = get_tree().current_scene.get_node("PlataformasSpawn")
+	if plataformas_spawn == null:
+		push_error("❌ No se asignó PlataformasSpawn")
+		return
 
 	var plataformas = plataformas_scene.instantiate()
 
 	get_tree().current_scene.add_child(plataformas)
 
-	plataformas.global_position = spawn_point.global_position
+	plataformas.global_position = plataformas_spawn.global_position
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+
+
+func hurtbox_maniIzq(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+
+
+func _on_hurt_box_d_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+
+
+func FASE2I(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
+
+
+func FASE2D(area: Area2D) -> void:
 	enemy_damage(area.get_parent())
