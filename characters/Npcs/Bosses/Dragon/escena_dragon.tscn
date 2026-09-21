@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bs1ora3pgwyon"]
+
+[ext_resource type="PackedScene" uid="uid://cdvrca7vf6tel" path="res://characters/Npcs/Bosses/Dragon/dragon.tscn" id="1_g28ua"]
+[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_mr0xf"]
+[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="3_mr0xf"]
+[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="4_d50jx"]
+[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="5_67t1k"]
+[ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="6_67t1k"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="8_xvjcg"]
+[ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="9_33ij6"]
+[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="10_8eg87"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo4ee"]
+size = Vector2(1260, 20)
+
+[node name="Node2D" type="Node2D" unique_id=1794265959]
+
+[node name="Dragon" parent="." unique_id=1458171680 instance=ExtResource("1_g28ua")]
+position = Vector2(1, 458)
+
+[node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_mr0xf")]
+position = Vector2(539, 529)
+
+[node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("4_d50jx")]
+
+[node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("5_67t1k")]
+
+[node name="PartesPlayer" type="Node2D" parent="." unique_id=1942107812]
+
+[node name="Piernas" parent="PartesPlayer" unique_id=480669547 instance=ExtResource("3_mr0xf")]
+position = Vector2(533, 461)
+
+[node name="frog_legs" parent="PartesPlayer" unique_id=758617477 instance=ExtResource("6_67t1k")]
+position = Vector2(542, 542)
+
+[node name="stick_arm" parent="PartesPlayer" unique_id=926426869 instance=ExtResource("8_xvjcg")]
+position = Vector2(563, 435)
+
+[node name="Stick_item" parent="PartesPlayer" unique_id=1284734035 instance=ExtResource("9_33ij6")]
+position = Vector2(534, 467)
+
+[node name="stick_arm2" parent="PartesPlayer" unique_id=100921495 instance=ExtResource("3_mr0xf")]
+position = Vector2(533, 461)
+
+[node name="stick_arm3" parent="PartesPlayer" unique_id=1459966507 instance=ExtResource("10_8eg87")]
+position = Vector2(522, 444)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=508834662]
+position = Vector2(-59, 615)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1590524927]
+position = Vector2(620, 0)
+shape = SubResource("RectangleShape2D_vo4ee")
+debug_color = Color(0.27782872, 0.63199824, 0, 0.41960785)
+
+[node name="PlataformasSpawn" type="Marker2D" parent="." unique_id=943376371]
+position = Vector2(541, 549)

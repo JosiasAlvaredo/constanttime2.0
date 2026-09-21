@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ui2ot313vec3"]
+
+[ext_resource type="Script" uid="uid://dl03ejk14nifc" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Psi-fuego/piso_fuego.gd" id="1_0va06"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3q0mq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0va06"]
+size = Vector2(59, 20)
+
+[node name="PisoFuego" type="CharacterBody2D" unique_id=2087668833]
+collision_layer = 0
+script = ExtResource("1_0va06")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=958316227]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1557936742]
+shape = SubResource("RectangleShape2D_3q0mq")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=923664693]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=827709544]
+shape = SubResource("RectangleShape2D_0va06")
+
+[connection signal="area_entered" from="Area2D" to="." method="n_hitbox_area_entered"]

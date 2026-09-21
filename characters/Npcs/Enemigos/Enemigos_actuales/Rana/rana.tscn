@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://kchcoc0ye0ip"]
+
+[ext_resource type="Script" uid="uid://s33alwnnlava" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rana/rana.gd" id="1_2x7n8"]
+[ext_resource type="Texture2D" uid="uid://cukv1s8703eed" path="res://assets/characters/enemies/enemies.png" id="1_lnibr"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_641es"]
+[ext_resource type="Script" uid="uid://d12oeeqkgxdq7" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/States/Idle(slime).gd" id="4_qmutj"]
+[ext_resource type="Script" uid="uid://cqqbq35f8ht7o" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/States/Jump(slime).gd" id="5_slufo"]
+[ext_resource type="Script" uid="uid://cucdlfbcnfidy" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/States/Fall(slime).gd" id="6_yvq7d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbbpr"]
+size = Vector2(52, 56)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2x7n8"]
+radius = 29.068884
+
+[node name="Rana" type="CharacterBody2D" unique_id=347915310]
+collision_layer = 0
+script = ExtResource("1_2x7n8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=575008171]
+texture = ExtResource("1_lnibr")
+region_enabled = true
+region_rect = Rect2(33.23688, 347.20673, 89.63165, 99.66177)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=12696106]
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_dbbpr")
+
+[node name="RayCast" type="Node2D" parent="." unique_id=758572740]
+
+[node name="FrontRay" type="RayCast2D" parent="RayCast" unique_id=732566568]
+target_position = Vector2(62, -1)
+
+[node name="FloorRay" type="RayCast2D" parent="RayCast" unique_id=2007360479]
+position = Vector2(61, 4)
+target_position = Vector2(-1, 96)
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_641es")]
+default_state = NodePath("Idle(slime)")
+
+[node name="Idle(slime)" type="Node" parent="State_Machine" unique_id=1037146059]
+script = ExtResource("4_qmutj")
+
+[node name="Jump(slime)" type="Node" parent="State_Machine" unique_id=528552590]
+script = ExtResource("5_slufo")
+
+[node name="Fall(slime)" type="Node" parent="State_Machine" unique_id=1680063939]
+script = ExtResource("6_yvq7d")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1164027861]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1650185917]
+position = Vector2(-2, 6)
+shape = SubResource("CircleShape2D_2x7n8")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

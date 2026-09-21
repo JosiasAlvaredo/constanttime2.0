@@ -8,7 +8,7 @@ extends enemy_base
 @onready var ray_cast: Node2D = $RayCast
 @onready var floor_ray: RayCast2D = $RayCast/FloorRay
 @onready var front_ray: RayCast2D = $RayCast/FrontRay
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 
 
 func _ready():

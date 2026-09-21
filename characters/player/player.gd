@@ -45,6 +45,8 @@ var right_hand_action=null
 
 var mouse_on_menu=false
 
+var last_body_botton=0
+
 func _ready() -> void:
 	$".".z_index = 10
 	
@@ -93,7 +95,7 @@ func coyote_timer():
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.get_collision_layer_value(3) and not is_inmunity:
 		var enemy=area.owner
-		current_torso.suffer_damage(enemy.damage)
+		current_torso.body_damage(enemy)
 		
 		recoil=enemy.knockback
 		velocity.x=sign(enemy.global_position.x-global_position.x)
@@ -101,15 +103,9 @@ func _on_hit_box_area_entered(area: Area2D) -> void:
 		
 		inmunity()
 	elif area.get_collision_layer_value(4):
-		current_torso.suffer_damage(area.damage)
+		current_torso.body_damage(area)
 		global_position=save_point
 		
-	for i in area.owner.number_effects:
-			
-		var effect=ActiveEffects[GlobalValues.Effects.keys()[i]]
-		if not effect in current_effects:
-			current_effects.append(effect)
-			effect.call(current_torso)
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
@@ -141,7 +137,8 @@ func buil_body():
 	if GlobalValues.bodies_parts.torso==null:
 		torso=load("res://characters/player/Body_parts/torsos/none.tscn").instantiate()
 	else:
-		torso=load("res://characters/player/Body_parts/torsos/%s.tscn" % GlobalValues.bodies_parts.torso._name).instantiate()
+
+		torso=load("res://characters/player/Body_parts/torsos/%s.tscn" % GlobalValues.bodies_parts.torso.skills._name).instantiate()
 	
 	body.add_child(torso)
 	body.move_child(torso, torso.get_index() - 1)
@@ -149,7 +146,9 @@ func buil_body():
 	collision_shape_2d.scale.y=body_botton
 	hit_box.scale.y=body_botton
 	
-	position.y-=body_botton
+	position.y+=last_body_botton-body_botton
+	last_body_botton=body_botton
+		
 	
 	collision_shape_2d.position.y=(collision_shape_2d.scale.y/2)- 9
 	hit_box.position.y=(collision_shape_2d.scale.y/2)- 9

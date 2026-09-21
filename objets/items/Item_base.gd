@@ -1,21 +1,26 @@
 extends Node2D
 class_name Item_base
 
-enum BodyParts { torso,left_arm,right_arm,legs,right_hand,left_hand }
-
 @export var _name="Rock"
-@export var durability=5
-@export var number_kinds: Array[BodyParts] = [BodyParts.right_hand, BodyParts.left_hand]
-@export var kind=[]
+@export_enum("body_parts","items") var origin:String
+@export var skills=null
+
 var item_sprite
 
 func _ready() -> void:
 	item_sprite=get_child(0)
-	kind=[]
-	for nro in number_kinds:
-		kind.append(BodyParts.keys()[nro])
+	await get_tree().create_timer(0.1).timeout
+	if skills==null:
+		skills=load("res://objets/%s/skills/%s.tres" %  [origin,_name]).duplicate()
 
-		
-		
+	
+
+	for nro in skills.number_kinds:
+		skills.kind.append(GlobalValues.BodyParts.keys()[nro])
+	
+func _physics_process(delta: float) -> void:
+	if skills!=null:
+		if skills.durability<=0:
+			queue_free()
 
 	

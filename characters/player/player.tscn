@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_yklsb"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_d4e2f"]
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_cdgnk"]
+[ext_resource type="Script" uid="uid://gein4vrnmbga" path="res://characters/States/Enter_room.gd" id="6_jgd8i"]
 [ext_resource type="PackedScene" uid="uid://djikhfs38ii0w" path="res://characters/States/jump.tscn" id="7_artkk"]
 [ext_resource type="PackedScene" uid="uid://dkmu7i15llj3v" path="res://characters/States/fall.tscn" id="7_tbqdr"]
 [ext_resource type="PackedScene" uid="uid://nbdce5ors7ng" path="res://characters/States/player/hand_actions/action_left_hand.tscn" id="11_blik6"]
@@ -49,6 +50,7 @@ shape = SubResource("CircleShape2D_7b6hw")
 
 [node name="Head" type="Sprite2D" parent="body" unique_id=1706439698]
 visibility_layer = 2
+z_index = 1
 position = Vector2(0, 5)
 texture = ExtResource("3_w53g3")
 offset = Vector2(-1, -9)
@@ -77,6 +79,9 @@ default_state = NodePath("default_states/Idle")
 [node name="Idle" parent="State_Machine/default_states" unique_id=137508918 instance=ExtResource("4_d4e2f")]
 
 [node name="Move" parent="State_Machine/default_states" unique_id=453338450 instance=ExtResource("5_cdgnk")]
+
+[node name="Enter_room" parent="State_Machine/default_states" unique_id=594455639 instance=ExtResource("5_cdgnk")]
+script = ExtResource("6_jgd8i")
 
 [node name="Fall" parent="State_Machine/default_states" unique_id=1275433795 instance=ExtResource("7_tbqdr")]
 

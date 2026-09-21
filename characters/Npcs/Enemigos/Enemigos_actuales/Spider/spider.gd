@@ -1,79 +1,110 @@
-extends CharacterBody2D
+extends enemy_base
 
-@export var speed := 50.0
-@export var gravity := 1000.0
 
 @export var projectile_scene: PackedScene
-@export var shoot_cooldown := 1.5
-
-var direction := 1
-var player: Node2D
+@export var detection_range := 400.0
 
 
+var playerUbi := Vector2.ZERO
+
+
+@onready var raycasts: Node2D = $RayCasts
 @onready var ceiling_ray: RayCast2D = $RayCasts/CeilingRay
-@onready var front_ray: RayCast2D = $RayCasts/FrontRay
-@onready var player_ray: RayCast2D = $RayCasts/PlayerRay
-@onready var shoot_point: Marker2D = $Marker2D_ShootPoint
+@onready var wall_ray: RayCast2D = $RayCasts/WallRay
+@onready var player_ray: RayCast2D = $PlayerRay
+@onready var shoot_point: Marker2D = $RayCasts/ShootPoint
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 
-func _ready():
-	player = get_tree().get_first_node_in_group("player")
-
-	# Para que Godot considere el techo como superficie
-	up_direction = Vector2.DOWN
-
-
-func _physics_process(delta):
-	if not is_on_ceiling():
-		velocity.y -= gravity * delta
-
-	move_and_slide()
+func _ready() -> void:
+	player = get_tree().get_first_node_in_group("player") as Node2D
+	
+	update_rays_direction()
+	update_sprite_direction()
 
 
-func change_direction():
-	direction *= -1
+func _physics_process(delta: float) -> void:
+	# Gravedad invertida: empuja hacia arriba
+	velocity.y -= gravity * delta
+	
+	# Actualizar continuamente el raycast hacia el jugador
+	update_player_ray()
 
-	front_ray.target_position.x *= -1
-	ceiling_ray.position.x *= -1
-	ceiling_ray.target_position.x *= -1
 
+# ==========================================
+# DIRECCIÓN DE LOS RAYCAST
+# ==========================================
+
+func update_rays_direction() -> void:
+	raycasts.scale.x = abs(raycasts.scale.x) * direction
+
+
+# ==========================================
+# DIRECCIÓN DEL SPRITE
+# ==========================================
+
+func update_sprite_direction() -> void:
+	if direction == 1:
+		sprite_2d.flip_h = true
+	else:
+		sprite_2d.flip_h = false
+
+
+# ==========================================
+# DISTANCIA AL JUGADOR
+# ==========================================
+
+func get_player_distance() -> float:
+	if player == null:
+		return INF
+	
+	return global_position.distance_to(player.global_position)
+
+
+func is_player_in_range() -> bool:
+	return get_player_distance() <= detection_range
+
+
+# ==========================================
+# RAYCAST HACIA EL JUGADOR
+# ==========================================
+
+func update_player_ray() -> void:
+	if player == null:
+		return
+	
+	player_ray.target_position = (
+		player.global_position - player_ray.global_position
+	)
+	
+	player_ray.force_raycast_update()
+
+
+# ==========================================
+# ¿PUEDE VER AL JUGADOR?
+# ==========================================
 
 func can_see_player() -> bool:
 	if player == null:
 		return false
-
-	var distance = global_position.distance_to(player.global_position)
-
-	if distance > 400:
+	
+	# Fuera del rango
+	if not is_player_in_range():
 		return false
+	
+	# El RayCast no toca nada
+	if not player_ray.is_colliding():
+		return false
+	
+	var collider = player_ray.get_collider()
+	
+	# Solo puede verlo si lo primero que toca es el jugador
+	return collider == player
 
-	player_ray.target_position = to_local(player.global_position)
-	player_ray.force_raycast_update()
 
-	if player_ray.is_colliding():
-		return player_ray.get_collider() == player
+# ==========================================
+# RECIBIR DAÑO
+# ==========================================
 
-	return false
-
-
-func shoot():
-	if projectile_scene == null:
-		return
-
-	var direction_to_player = (
-		player.global_position - shoot_point.global_position
-	).normalized()
-
-	var directions = [
-		direction_to_player.rotated(deg_to_rad(-15)),
-		direction_to_player,
-		direction_to_player.rotated(deg_to_rad(15))
-	]
-
-	for shot_direction in directions:
-		var projectile = projectile_scene.instantiate()
-
-		get_tree().current_scene.add_child(projectile)
-
-		projectile.global_position = shoot_point.global_position
-		projectile.direction = shot_direction
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())

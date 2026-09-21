@@ -20,4 +20,6 @@ var hechizo=false
 var Left_hand={"name":"","durability":""}
 var Right_hand={"name":"","durability":""}
 
-enum Effects {fire,poison}
+enum Effects {fire,poison,slowly}
+
+enum BodyParts { torso,left_arm,right_arm,legs,right_hand,left_hand }

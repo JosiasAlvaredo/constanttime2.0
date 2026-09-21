@@ -11,6 +11,7 @@ size = Vector2(14, 13)
 [node name="Droplet" type="RigidBody2D" unique_id=1943424840]
 collision_layer = 0
 script = ExtResource("1_f8dbp")
+number_effects = Array[int]([1])
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1579128376]
 modulate = Color(0, 0.69411767, 0, 1)

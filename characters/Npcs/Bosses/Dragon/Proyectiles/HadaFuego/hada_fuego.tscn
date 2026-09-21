@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://vndb3cohwv7t"]
+
+[ext_resource type="Script" uid="uid://cadtglkinw6eo" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/HadaFuego/hada_fuego.gd" id="1_452x3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_452x3"]
+radius = 16.124516
+
+[node name="HadaFuego" type="CharacterBody2D" unique_id=962392775]
+script = ExtResource("1_452x3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2045897722]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1537915130]
+shape = SubResource("CircleShape2D_452x3")
+debug_color = Color(0.9440774, 7.412136e-06, 0.6009741, 0.41960785)

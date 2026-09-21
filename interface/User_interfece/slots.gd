@@ -6,7 +6,7 @@ extends Button
 
 @export_enum("torso","left_arm","right_arm","legs","right_hand","left_hand" ) var slot_part: String
 
-var kind
+@export var current_effects=[]
 
 var save_position=Vector2.ZERO
 var can_drop=false
@@ -17,10 +17,12 @@ var taking_thing=false
 var item_aux=null
 
 var moving_thing=false
-var durability=0
+
+var durability_percent=0 
+
 func _ready() -> void:
 	save_position=position
-	await  get_tree().create_timer(0.1).timeout
+	await  get_tree().create_timer(0.01).timeout
 
 func _physics_process(delta: float) -> void:
 	#crear un item aux para que el jugador pueda ver que objeto esta moviendo
@@ -28,36 +30,37 @@ func _physics_process(delta: float) -> void:
 		if not taking_thing:
 			await get_tree().create_timer(0.2).timeout
 			taking_thing=true
-			get_parent().add_child(item_aux)
+			user_interface.add_child(item_aux)
 			
-
 	#lo que se muestra en el slot (el objeto que esta ahi o nada)
 	if GlobalValues.bodies_parts[slot_part]!=null and (item_aux==null or not moving_thing) :
 		icon=GlobalValues.bodies_parts[slot_part].get_child(0).icon
-		var skill=load("res://objets/body_parts/skills/%s.tres" % GlobalValues.bodies_parts[slot_part]._name)
+		var skill=load("res://objets/body_parts/skills/%s.tres" % GlobalValues.bodies_parts[slot_part].skills._name)
 		if skill==null:
-			skill=load("res://objets/items/skills/%s.tres" % GlobalValues.bodies_parts[slot_part]._name)
+			skill=load("res://objets/items/skills/%s.tres" % GlobalValues.bodies_parts[slot_part].skills._name)
 		else:
 			skill=skill.duplicate()
 			
-		var durability_percent=float(GlobalValues.bodies_parts[slot_part].durability)/skill.max_durability
+		durability_percent=float(GlobalValues.bodies_parts[slot_part].skills.durability)/skill.max_durability
 		durability_node.size.x=durability_percent*53
 		durability_node.color=Color8(255-255*durability_percent,255*durability_percent,0)
+	
 	elif moving_thing or GlobalValues.bodies_parts[slot_part]==null:
 		icon=null
 		durability_node.size.x=0
 
+	if durability_percent<=0 and GlobalValues.bodies_parts[slot_part]!=null:
+		GlobalValues.bodies_parts[slot_part]=null
+
 	#agregar algo en el slot o itercambiarlo con otra cosa
 	if Input.is_action_just_pressed("Left_hand") and user_interface.selected_body_part!=null and mouse_on_this_slot and ((can_drop and item_aux!=null) or item_aux==null):
-		if slot_part in user_interface.selected_body_part.kind:
+		if slot_part in user_interface.selected_body_part.skills.kind:
 			if GlobalValues.bodies_parts[slot_part]!=null:
 				taking_thing=false
 				item_aux=GlobalValues.bodies_parts[slot_part].duplicate()
 				timer()
 			GlobalValues.bodies_parts[slot_part]=user_interface.selected_body_part.duplicate()
 
-			GlobalValues.bodies_parts[slot_part]._name=user_interface.selected_body_part._name
-			
 			user_interface.selected_body_part.delete()
 			if item_aux==null:
 				user_interface.selected_body_part=null
@@ -77,6 +80,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			reset_item_aux()
 
+
 func timer():
 	can_drop=false
 	await get_tree().create_timer(0.5).timeout
@@ -93,22 +97,21 @@ func _on_button_down() -> void:
 		timer()
 
 func drop():
-	var drop=load("res://objets/body_parts/%s.tscn" % item_aux._name)
+	var drop=load("res://objets/body_parts/%s.tscn" % item_aux.skills._name)
 	
 	if drop==null:
-		drop=load("res://objets/items/%s.tscn" % item_aux._name)
+		drop=load("res://objets/items/%s.tscn" % item_aux.skills._name)
 		
 	if drop==null:
 		return
 		
 	drop=drop.instantiate()
 
-	drop.durability=item_aux.durability
+	drop.skills=item_aux.skills
 	
 			
 	user_interface.get_parent().add_child(drop)
 
-	drop.kind=slot_part
 	drop.global_position=user_interface.player.global_position
 	if moving_thing:
 		GlobalValues.bodies_parts[slot_part]=null
@@ -141,22 +144,18 @@ func turn(_bool):
 	
 	if not _bool and GlobalValues.bodies_parts[slot_part]:
 		item_aux=GlobalValues.bodies_parts[slot_part].duplicate()
-		var drop=load("res://objets/body_parts/%s.tscn" % item_aux._name)
+		var drop=load("res://objets/body_parts/%s.tscn" % item_aux.skills._name)
 		
 		if drop==null:
-			drop=load("res://objets/items/%s.tscn" % item_aux._name)
+			drop=load("res://objets/items/%s.tscn" % item_aux.skills._name)
 			
 		if drop==null:
 			return
 			
 		drop=drop.instantiate()
-
-		drop.durability=item_aux.durability
-		
-				
 		user_interface.get_parent().add_child(drop)
 
-		drop.kind=slot_part
+		drop.skills=item_aux.skills.duplicate()
 		drop.global_position=user_interface.player.global_position
 		item_aux.queue_free()
 		GlobalValues.bodies_parts[slot_part]=null

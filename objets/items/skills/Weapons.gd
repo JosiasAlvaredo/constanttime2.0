@@ -2,6 +2,9 @@ extends Resource
 class_name Weapons
 
 @export var _name=""
+@export var spanish_name=""
+
+@export var description=""
 
 @export var max_durability=0
 @export var durability=0
@@ -11,3 +14,10 @@ class_name Weapons
 @export var knockback=Vector2(-100,-100)
 
 @export var number_effects: Array[GlobalValues.Effects] = []
+
+
+var number_kinds: Array[GlobalValues.BodyParts] = [GlobalValues.BodyParts.right_hand, GlobalValues.BodyParts.left_hand]
+var kind=[]
+
+func suffer_damage(_damage):
+	durability-=_damage

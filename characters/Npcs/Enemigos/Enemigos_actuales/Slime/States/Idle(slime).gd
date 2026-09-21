@@ -1,15 +1,9 @@
 extends State_base
 
-var timer := 0.5
 
 
 func start():
-	timer = 0.5
+	controlled_node.sprite.play("charge")
 
-
-func on_physics_process(delta):
-	timer -= delta
-
-	if timer <= 0:
-		controlled_node.velocity.y = -controlled_node.jump_force
-		state_machine.change_to("Jump(slime)")
+	await get_tree().create_timer(1).timeout
+	state_machine.change_to("Jump(slime)")

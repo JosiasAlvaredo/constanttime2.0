@@ -1,39 +1,109 @@
 [gd_scene format=3 uid="uid://dlxu4nqmen300"]
 
 [ext_resource type="Script" uid="uid://cnqkuwqtqfbl" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/big_slime.gd" id="1_48nwi"]
-[ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_wfn5g"]
+[ext_resource type="Texture2D" uid="uid://cf8o5rkwdnfc1" path="res://assets/characters/enemies/Slime.png" id="2_wfn5g"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_tusuu"]
 [ext_resource type="Script" uid="uid://cru67vf1ktnkt" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Idle(BSlime).gd" id="4_h4uay"]
 [ext_resource type="Script" uid="uid://bit7d61a2e1ls" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Slide(BSlime).gd" id="5_wfn5g"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="6_h4uay"]
+[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="7_ys45m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tusuu"]
+atlas = ExtResource("2_wfn5g")
+region = Rect2(0, 0, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4uay"]
+atlas = ExtResource("2_wfn5g")
+region = Rect2(160, 0, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys45m"]
+atlas = ExtResource("2_wfn5g")
+region = Rect2(320, 0, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfofl"]
+atlas = ExtResource("2_wfn5g")
+region = Rect2(320, 240, 160, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtt3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tusuu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4uay")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ys45m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4uay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfofl")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ys45m"]
-radius = 22.803509
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfn5g"]
+radius = 17.029387
 
 [node name="BigSlime" type="CharacterBody2D" unique_id=1982467406]
+collision_layer = 0
 script = ExtResource("1_48nwi")
+live = 120
+damage = 15
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1116133155]
-position = Vector2(0, -0.5)
-scale = Vector2(0.40625, 0.42968747)
-texture = ExtResource("2_wfn5g")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=64565006]
+position = Vector2(0, 4)
+scale = Vector2(0.4384611, 0.4674727)
+sprite_frames = SubResource("SpriteFrames_rtt3l")
+animation = &"move"
+autoplay = "default"
+frame_progress = 0.09900279
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475176251]
+position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_ys45m")
 
 [node name="RayCast" type="Node2D" parent="." unique_id=328842527]
 
 [node name="FloorRay" type="RayCast2D" parent="RayCast" unique_id=1538487330]
-position = Vector2(25, -6)
+position = Vector2(50, -6)
 target_position = Vector2(0, 36)
 
 [node name="FrontRay" type="RayCast2D" parent="RayCast" unique_id=224983737]
 target_position = Vector2(29, 0)
 
 [node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_tusuu")]
-default_state = NodePath("Idle(BSlime)")
+default_state = NodePath("Idle")
 
-[node name="Idle(BSlime)" type="Node" parent="State_Machine" unique_id=277614471]
+[node name="Idle" type="Node" parent="State_Machine" unique_id=277614471]
 script = ExtResource("4_h4uay")
 
-[node name="Slide(BSlime)" type="Node" parent="State_Machine" unique_id=1032143357]
+[node name="Slide" type="Node" parent="State_Machine" unique_id=1032143357]
 script = ExtResource("5_wfn5g")
+
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("6_h4uay")]
+script = ExtResource("7_ys45m")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1794482960]
+position = Vector2(1, 4)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=489708558]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_wfn5g")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

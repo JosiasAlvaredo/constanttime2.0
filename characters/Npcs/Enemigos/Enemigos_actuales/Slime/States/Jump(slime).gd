@@ -2,7 +2,7 @@ extends State_base
 
 
 func on_physics_process(delta):
-
+	controlled_node.sprite.play("jump")
 	# Si hay una pared adelante
 	if controlled_node.front_ray.is_colliding():
 		controlled_node.change_direction()

@@ -4,7 +4,7 @@ extends enemy_base
 @onready var ray_cast: Node2D = $RayCast
 @onready var floor_ray: RayCast2D = $RayCast/FloorRay
 @onready var front_ray: RayCast2D = $RayCast/FrontRay
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite= $AnimatedSprite2D
 
 
 func _ready():
@@ -23,3 +23,7 @@ func update_direction():
 
 	# Girar el sprite
 	sprite.flip_h = direction < 0
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
