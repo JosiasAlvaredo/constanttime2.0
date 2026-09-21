@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf1itvdxlfh1v"]
+
+[ext_resource type="Script" uid="uid://dbkxbxg6yajbm" path="res://scenes/extras/Fluid2D.gd" id="1_qs7t3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfo4h"]
+
+[node name="Fluid2D" type="Node2D" unique_id=378605653]
+script = ExtResource("1_qs7t3")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=977857253]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1060741224]
+shape = SubResource("RectangleShape2D_bfo4h")
+
+[node name="Surface" type="Node2D" parent="." unique_id=777620853]
+
+[node name="SplashDetector" type="Area2D" parent="." unique_id=262614796]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SplashDetector" unique_id=20616271]

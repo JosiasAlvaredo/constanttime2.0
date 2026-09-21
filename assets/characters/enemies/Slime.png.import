@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8xv5040ydpk3"
-path="res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"
+uid="uid://cf8o5rkwdnfc1"
+path="res://.godot/imported/Slime.png-0482107e011ae59a775a957bdf5fe04a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/enemies/planta.png"
-dest_files=["res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"]
+source_file="res://assets/characters/enemies/Slime.png"
+dest_files=["res://.godot/imported/Slime.png-0482107e011ae59a775a957bdf5fe04a.ctex"]
 
 [params]
 

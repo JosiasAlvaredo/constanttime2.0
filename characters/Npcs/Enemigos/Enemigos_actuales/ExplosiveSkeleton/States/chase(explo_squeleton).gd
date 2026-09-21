@@ -5,12 +5,12 @@ func start() -> void:
 
 func on_physics_process(delta: float) -> void:
 	if controlled_node.player == null:
-		state_machine.change_to("Patrol(exploSqueleton)")
+		state_machine.change_to("Idle")
 		return
 
 	if not is_instance_valid(controlled_node.player):
 		controlled_node.player = null
-		state_machine.change_to("Patrol(exploSqueleton)")
+		state_machine.change_to("Idle")
 		return
 
 	if controlled_node.player_ray.is_colliding():
@@ -40,4 +40,4 @@ func on_physics_process(delta: float) -> void:
 
 			return
 
-	state_machine.change_to("Patrol(exploSqueleton)")
+	state_machine.change_to("Idle")

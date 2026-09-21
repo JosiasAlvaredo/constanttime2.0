@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8xv5040ydpk3"
-path="res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"
+uid="uid://dlm2oxqxly8m2"
+path="res://.godot/imported/planta raiz.png-1ca8a0a2b8f953fda7a82390d065452c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/enemies/planta.png"
-dest_files=["res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"]
+source_file="res://assets/planta raiz.png"
+dest_files=["res://.godot/imported/planta raiz.png-1ca8a0a2b8f953fda7a82390d065452c.ctex"]
 
 [params]
 

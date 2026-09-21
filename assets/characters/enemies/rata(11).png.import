@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8xv5040ydpk3"
-path="res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"
+uid="uid://dqbfsdgbu8bjd"
+path="res://.godot/imported/rata(11).png-254faff0e4d804d1235838ff97c397d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/enemies/planta.png"
-dest_files=["res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"]
+source_file="res://assets/characters/enemies/rata(11).png"
+dest_files=["res://.godot/imported/rata(11).png-254faff0e4d804d1235838ff97c397d3.ctex"]
 
 [params]
 

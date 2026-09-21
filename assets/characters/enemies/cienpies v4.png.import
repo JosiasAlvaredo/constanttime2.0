@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8xv5040ydpk3"
-path="res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"
+uid="uid://dfcipcecfhfct"
+path="res://.godot/imported/cienpies v4.png-cacbe7e09b8143ce4b74f69601714429.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/enemies/planta.png"
-dest_files=["res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"]
+source_file="res://assets/characters/enemies/cienpies v4.png"
+dest_files=["res://.godot/imported/cienpies v4.png-cacbe7e09b8143ce4b74f69601714429.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8xv5040ydpk3"
-path="res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"
+uid="uid://cmygi8oq62f41"
+path="res://.godot/imported/goblin 2.png-0b74854b178ac82103cdea6753b7f757.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/enemies/planta.png"
-dest_files=["res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"]
+source_file="res://assets/characters/enemies/goblin 2.png"
+dest_files=["res://.godot/imported/goblin 2.png-0b74854b178ac82103cdea6753b7f757.ctex"]
 
 [params]
 

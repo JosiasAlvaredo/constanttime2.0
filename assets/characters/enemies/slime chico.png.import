@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8xv5040ydpk3"
-path="res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"
+uid="uid://bg8cixif5i0gk"
+path="res://.godot/imported/slime chico.png-51817fde2a199f67781ef91fdce18902.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/enemies/planta.png"
-dest_files=["res://.godot/imported/planta.png-e4a4bba97c0e4ece7697206671abaa2c.ctex"]
+source_file="res://assets/characters/enemies/slime chico.png"
+dest_files=["res://.godot/imported/slime chico.png-51817fde2a199f67781ef91fdce18902.ctex"]
 
 [params]
 

@@ -40,7 +40,7 @@ func change_to(new_state: String):
 	else:
 		next = get_node_or_null(new_state)
 	if next == null:
-		return
+		return null
 	current_state = next
 
 	_state_start()

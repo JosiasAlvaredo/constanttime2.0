@@ -1,19 +1,19 @@
 extends enemy_base
 
-@export var patrol_speed: float = 60.0
 @export var chase_speed: float = 180.0
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 @onready var explosion_area: Area2D = $ExplosionArea
 @onready var wall_ray: RayCast2D = $RayCasts/FrontRay
 @onready var player_ray: RayCast2D = $RayCasts/PlayerRay
 @onready var floor_ray: RayCast2D = $RayCasts/FloorRay
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	update_rays()
-
+	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -29,6 +29,8 @@ func update_rays() -> void:
 	sprite.flip_h = direction < 0
 
 func _on_explosion_area_body_entered(body: Node2D) -> void:
-	if body is Player:
-		player = body
-		state_machine.change_to("Explode")
+	player = body
+	state_machine.change_to("Explode(exploSqueleton)")
+	
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	enemy_damage(area.get_parent())
