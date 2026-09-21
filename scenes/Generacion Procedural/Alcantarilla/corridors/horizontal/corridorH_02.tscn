@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://rku3cesdcbvr"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_84bfq"]
+[ext_resource type="PackedScene" uid="uid://vk1bfs3s17ao" path="res://objets/Map/Sewer/bad_water.tscn" id="2_0jwug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw3r2"]
 size = Vector2(956, 288)
@@ -22,7 +23,6 @@ position = Vector2(-12, 322)
 tile_map_data = PackedByteArray("AAD9//3/AAAGAAIAAAD9//r/AAAEAAEAAAD9//v/AAAEAAEAAAD9//z/AAAEAAEAAAD9//n/AAAGAAAAAAA=")
 
 [node name="puertaDown" parent="." unique_id=121518457 instance=ExtResource("1_84bfq")]
-visible = false
 position = Vector2(-12, 322)
 tile_map_data = PackedByteArray("AAAXAAEAAAADAAAAAAAYAAEAAAADAAAAAAAZAAEAAAADAAAAAAAWAAEAAAAGAAIAAAAaAAEAAAAIAAIAAAA=")
 
@@ -39,3 +39,7 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=2078390579]
 position = Vector2(372, 241)
 shape = SubResource("RectangleShape2D_kw3r2")
+
+[node name="BadWater2" parent="." unique_id=1592752810 instance=ExtResource("2_0jwug")]
+position = Vector2(724, 350.00003)
+scale = Vector2(2.4484098, 0.35644174)

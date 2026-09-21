@@ -1,24 +1,9 @@
 extends Node2D
 
-signal level_started(level_index: int)
-signal game_completed
-
-@export var levels: Array[LevelData] = []
-@export var exit_trigger_size: Vector2 = Vector2(32, 128)
-
-var current_level_index: int = 0
-var is_transitioning: bool = false
-
-# Datos del nivel actual (los rellena apply_level_data)
-var modules_to_generate: int = 0
-var treasure_room_count: int = 0
-var start_module: PackedScene
-var room_modules: Array[PackedScene] = []
-var corridor_h_modules: Array[PackedScene] = []
-var corridor_v_modules: Array[PackedScene] = []
-var treasure_modules: Array[PackedScene] = []
-var boss_modules: Array[PackedScene] = []
-
+# Cantidad de módulos normales que queremos generar
+const MODULES_TO_GENERATE: int = 20
+# Cantidad de salas de tesoro
+const TREASURE_ROOM_COUNT: int = 2
 # Cantidad de regeneraciones de mazmorras
 const MAX_GENERATION_RETRIES: int = 50
 # Cantidad máxima de intentos
@@ -28,8 +13,8 @@ const ROOM_WEIGHT: int = 7
 const CORRIDOR_H_WEIGHT: int = 3
 const CORRIDOR_V_WEIGHT: int = 3
 
-const HORIZONTAL_SOCKET_WEIGHT: int = 11
-const VERTICAL_SOCKET_WEIGHT: int = 2
+const HORIZONTAL_SOCKET_WEIGHT: int = 9
+const VERTICAL_SOCKET_WEIGHT: int = 1
 
 
 const SOCKET_TO_DOOR: Dictionary = {
@@ -51,7 +36,39 @@ const ALL_SOCKET_NAMES: Array[String] = [
 ]
 
 
+const START_MODULE: PackedScene = preload("res://scenes/Generacion Procedural/Alcantarilla/start/StartRoom_01.tscn")
+
+
+const ROOM_MODULES: Array[PackedScene] = [
+	preload("res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_01.tscn"),
+	preload("res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_02.tscn"),
+	preload("res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_03.tscn")
+]
+
+# CORREDORES HORIZONTALES
+const CORRIDOR_H_MODULES: Array[PackedScene] = [
+	preload("res://scenes/Generacion Procedural/Alcantarilla/corridors/horizontal/corridorH_01.tscn")
+]
+
+# CORREDORES VERTICALES
+const CORRIDOR_V_MODULES: Array[PackedScene] = [
+	preload("res://scenes/Generacion Procedural/Alcantarilla/corridors/vertical/corridorV_01.tscn")
+]
+
+# HABITACIONES DE TESOROS
+const TREASURE_MODULES: Array[PackedScene] = [
+	preload("res://scenes/Generacion Procedural/Alcantarilla/treasure/treasure_01.tscn"),
+	preload("res://scenes/Generacion Procedural/Alcantarilla/treasure/treasure_02.tscn")
+]
+
+# HABITACIONES DE JEFES
+const BOSS_MODULES: Array[PackedScene] = [
+	preload("res://scenes/Generacion Procedural/Alcantarilla/boss/Tittan_slime.tscn")
+]
+
+
 @onready var dungeon: Node2D = $Dungeon
+@onready var player: Node2D = $Player
 
 var generated_modules: Array[Node2D] = []
 var occupied_rects: Array[Rect2] = []
@@ -60,78 +77,8 @@ var pending_sockets: Array[Marker2D] = []
 func _ready():
 	randomize()
 	dungeon.z_index = -10
-	add_to_group("dungeon_generator")
-	
-	start_level(0)
 
-
-# NIVELES
-func start_level(index: int):
-	if index < 0 or index >= levels.size():
-		push_error("No existe el nivel " + str(index) + ". Asigná LevelData en 'levels'.")
-		return
-	
-	if not validate_level_data(levels[index], index):
-		return
-	
-	current_level_index = index
-	apply_level_data(levels[index])
 	generate_dungeon()
-	level_started.emit(index)
-
-
-# Avisa con un mensaje claro si el LevelData está incompleto
-func validate_level_data(data: LevelData, index: int) -> bool:
-	var label: String = "LevelData del nivel %d" % (index + 1)
-	if data == null:
-		push_error(label + ": el slot está vacío en el Inspector.")
-		return false
-	
-	var ok: bool = true
-	if data.start_module == null:
-		push_error(label + ": falta 'start_module'.")
-		ok = false
-	if data.boss_modules.is_empty():
-		push_error(label + ": 'boss_modules' está vacío (sin jefe no hay generación válida).")
-		ok = false
-	if data.treasure_room_count > 0 and data.treasure_modules.is_empty():
-		push_error(label + ": 'treasure_room_count' es %d pero 'treasure_modules' está vacío." % data.treasure_room_count)
-		ok = false
-	if data.room_modules.is_empty():
-		push_error(label + ": 'room_modules' está vacío.")
-		ok = false
-	return ok
-
-
-func apply_level_data(data: LevelData):
-	modules_to_generate = data.modules_to_generate
-	treasure_room_count = data.treasure_room_count
-	start_module = data.start_module
-	room_modules = data.room_modules
-	corridor_h_modules = data.corridor_h_modules
-	corridor_v_modules = data.corridor_v_modules
-	treasure_modules = data.treasure_modules
-	boss_modules = data.boss_modules
-
-
-# Llamado (deferred) por el trigger de salida de la sala del jefe
-func load_next_level():
-	if is_transitioning:
-		return
-	is_transitioning = true
-	
-	var next_index: int = current_level_index + 1
-	if next_index >= levels.size():
-		print("No hay más niveles: juego completado")
-		game_completed.emit()
-		is_transitioning = false
-		return
-	
-	print("CARGANDO NIVEL ", next_index + 1)
-	clear_dungeon()
-	start_level(next_index)
-	
-	is_transitioning = false
 
 
 # GENERACIÓN PRINCIPAL
@@ -150,7 +97,7 @@ func generate_dungeon():
 			module_count > 1
 		)
 		var enough_treasures: bool = (
-			treasures_created >= treasure_room_count
+			treasures_created >= TREASURE_ROOM_COUNT
 		)
 		var has_boss: bool = boss_created
 		generation_valid = (
@@ -169,7 +116,7 @@ func generate_dungeon():
 					"- Faltan salas de tesoro: ",
 					treasures_created,
 					"/",
-					treasure_room_count
+					TREASURE_ROOM_COUNT
 				)
 			if not has_boss:
 				print("- No se generó la sala de Boss.")
@@ -186,7 +133,7 @@ func generate_dungeon():
 
 func generate_dungeon_attempt() -> Dictionary:
 	clear_dungeon()
-	var start: Node2D = start_module.instantiate()
+	var start: Node2D = START_MODULE.instantiate()
 	dungeon.add_child(start)
 	start.position = Vector2.ZERO
 	generated_modules.append(start)
@@ -215,7 +162,7 @@ func generate_dungeon_attempt() -> Dictionary:
 	# GENERAR MÓDULOS
 	var attempts: int = 0
 	while (
-		generated_modules.size() < modules_to_generate + 1
+		generated_modules.size() < MODULES_TO_GENERATE + 1
 		and not pending_sockets.is_empty()
 		and attempts < MAX_ATTEMPTS
 	):
@@ -235,7 +182,7 @@ func generate_dungeon_attempt() -> Dictionary:
 	var treasures_created: int = 0
 	
 	while (
-		treasures_created < treasure_room_count
+		treasures_created < TREASURE_ROOM_COUNT
 		and not pending_sockets.is_empty()
 		and attempts < MAX_ATTEMPTS
 	):
@@ -247,7 +194,7 @@ func generate_dungeon_attempt() -> Dictionary:
 			break
 		var created: bool = create_special_from_socket(
 			socket,
-			treasure_modules,
+			TREASURE_MODULES,
 			"TREASURE"
 		)
 		
@@ -271,7 +218,7 @@ func generate_dungeon_attempt() -> Dictionary:
 			
 		boss_created = create_special_from_socket(
 			socket,
-			boss_modules,
+			BOSS_MODULES,
 			"BOSS"
 		)
 		
@@ -471,7 +418,7 @@ func add_compatible_room(candidates: Array[Dictionary], direction: String):
 	
 	if socket_name == "":
 		return
-	for scene in room_modules:
+	for scene in ROOM_MODULES:
 		candidates.append({
 			"scene": scene,
 			"socket": socket_name
@@ -493,7 +440,7 @@ func add_compatible_corridor_h(candidates: Array[Dictionary], direction: String)
 	
 	if socket_name == "":
 		return
-	for scene in corridor_h_modules:
+	for scene in CORRIDOR_H_MODULES:
 		candidates.append({
 			"scene": scene,
 			"socket": socket_name
@@ -507,7 +454,7 @@ func add_compatible_corridor_v(candidates: Array[Dictionary], direction: String)
 	
 	if socket_name == "":
 		return
-	for scene in corridor_v_modules:
+	for scene in CORRIDOR_V_MODULES:
 		candidates.append({
 			"scene": scene,
 			"socket": socket_name
@@ -585,19 +532,8 @@ func create_special_from_socket(connection_socket: Marker2D, scenes: Array[Packe
 		generated_modules.append(module)
 		register_module(module)
 
-		if type_name == "BOSS":
-			module.set_meta("entrance_socket", input_socket_name)
-			module.set_meta("boss_room", true)
-			
-			# Sockets que NO son la entrada = puertas de salida hacia el próximo nivel
-			var exit_sockets: Array[String] = []
-			for socket_name in ALL_SOCKET_NAMES:
-				if socket_name != input_socket_name and find_marker(module, socket_name) != null:
-					exit_sockets.append(socket_name)
-			module.set_meta("exit_sockets", exit_sockets)
-
-		print("[", type_name, "] ", module.name, " -> ", module.global_position)
-
+		print("[", type_name,"] ", module.name, " -> ", module.global_position)
+		
 		add_terminal_sockets(
 			module,
 			input_socket_name
@@ -899,32 +835,46 @@ func close_unused_sockets():
 	
 	for module in generated_modules:
 		for socket_name in SOCKET_TO_DOOR:
-			var socket: Marker2D = find_marker(module, socket_name)
-			if socket == null:
-				continue
+			process_door(module, socket_name, SOCKET_TO_DOOR[socket_name])
+
+
+# PROCESAR PUERTA
+func process_door(module: Node2D, socket_name: String, door_name: String):
+	
+	var socket: Marker2D = find_marker(
+		module,
+		socket_name
+	)
+	
+	var door: Node = find_node(
+		module,
+		door_name
+	)
+	
+	if socket == null:
+		return
+	
+	if door != null:
+		var is_closed: bool = pending_sockets.has(socket)
+		
+		set_node_visible(
+			door,
+			is_closed
+		)
+		
+		# ESCALERA RELACIONADA CON ESTE SOCKET
+		if SOCKET_TO_DECORATION.has(socket_name):
+			var stairs_name: String = SOCKET_TO_DECORATION[socket_name]
+			var stairs: Node = find_node(
+				module,
+				stairs_name
+			)
 			
-			# Socket pendiente = no se conectó nada = puerta cerrada
-			set_socket_door_closed(module, socket_name, pending_sockets.has(socket))
-
-
-# PUERTA DE UN SOCKET (cerrada = visible + colisión / abierta = oculta + sin colisión)
-func set_socket_door_closed(module: Node2D, socket_name: String, closed: bool):
-	if not SOCKET_TO_DOOR.has(socket_name):
-		return
-	
-	var door: Node = find_node(module, SOCKET_TO_DOOR[socket_name])
-	if door == null:
-		return
-	
-	if door is CanvasItem:
-		(door as CanvasItem).visible = closed
-	set_collision_state_recursive(door, closed)
-	
-	# Las escaleras se muestran cuando la puerta está abierta
-	if SOCKET_TO_DECORATION.has(socket_name):
-		var stairs: Node = find_node(module, SOCKET_TO_DECORATION[socket_name])
-		if stairs != null:
-			set_node_visible(stairs, not closed)
+			if stairs != null:
+				set_node_visible(
+					stairs,
+					not is_closed
+				)
 
 
 # BUSCAR CUALQUIER NODO
@@ -957,88 +907,9 @@ func set_node_visible(node: Node, value: bool):
 # LIMPIAR
 func clear_dungeon():
 	for child in dungeon.get_children():
-		dungeon.remove_child(child)
 		child.queue_free()
 	generated_modules.clear()
 	
 	occupied_rects.clear()
 	
 	pending_sockets.clear()
-
-# SALA DEL JEFE
-# Se llaman con call_deferred desde BossRoomTrigger (dentro de callbacks de física
-# no se puede modificar colisiones ni agregar Area2D directamente).
-
-# El jugador entró: cerrar la puerta por la que entró
-func lock_boss_room(boss_room: Node2D):
-	if not is_instance_valid(boss_room):
-		return
-	
-	var entrance: String = boss_room.get_meta("entrance_socket", "")
-	if entrance == "":
-		push_error("La sala del jefe no tiene 'entrance_socket'.")
-		return
-	
-	set_socket_door_closed(boss_room, entrance, true)
-	print("Puerta de entrada del jefe cerrada: ", entrance)
-
-
-# El jefe murió: abrir la entrada, abrir la salida y habilitar el paso al próximo nivel
-func complete_boss_room(boss_room: Node2D):
-	if not is_instance_valid(boss_room):
-		return
-	
-	var entrance: String = boss_room.get_meta("entrance_socket", "")
-	if entrance != "":
-		set_socket_door_closed(boss_room, entrance, false)
-	
-	var exit_sockets: Array = boss_room.get_meta("exit_sockets", [])
-	for socket_name in exit_sockets:
-		set_socket_door_closed(boss_room, socket_name, false)
-		create_exit_trigger(boss_room, socket_name)
-	
-	print("Jefe derrotado: puertas abiertas")
-
-
-func create_exit_trigger(boss_room: Node2D, socket_name: String):
-	var socket: Marker2D = find_marker(boss_room, socket_name)
-	if socket == null:
-		return
-	
-	# Puertas izquierda/derecha = área alta; arriba/abajo = área ancha
-	var size: Vector2 = exit_trigger_size
-	if socket_name == "SocketUp" or socket_name == "SocketDown":
-		size = Vector2(size.y, size.x)
-	
-	var rect: RectangleShape2D = RectangleShape2D.new()
-	rect.size = size
-	
-	var shape: CollisionShape2D = CollisionShape2D.new()
-	shape.shape = rect
-	
-	var area: Area2D = Area2D.new()
-	area.name = "NextLevelTrigger"
-	area.collision_layer = 0
-	area.collision_mask = 0xFFFFFFFF # se filtra por 'body is Player'
-	area.add_child(shape)
-	boss_room.add_child(area)
-	area.global_position = socket.global_position
-	area.body_entered.connect(_on_exit_trigger_body_entered)
-
-
-func _on_exit_trigger_body_entered(body: Node2D):
-	if not body is Player:
-		return
-	# Deferred: no se puede borrar/crear cuerpos físicos dentro de este callback
-	call_deferred("load_next_level")
-
-
-# Cambia colisiones de un nodo y sus hijos (deferred: seguro dentro de callbacks de física)
-func set_collision_state_recursive(node: Node, enabled: bool):
-	if node is CollisionShape2D or node is CollisionPolygon2D:
-		node.set_deferred("disabled", not enabled)
-	elif node is TileMapLayer:
-		node.set_deferred("collision_enabled", enabled)
-	
-	for child in node.get_children():
-		set_collision_state_recursive(child, enabled)

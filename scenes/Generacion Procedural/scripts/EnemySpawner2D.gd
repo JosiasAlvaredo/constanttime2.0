@@ -36,7 +36,7 @@ func spawn_enemy() -> void:
 	
 
 
-	enemy.position = position
+	enemy.position = Vector2.ZERO
 	
 	add_child(enemy)
 	

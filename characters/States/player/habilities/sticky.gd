@@ -40,7 +40,6 @@ func on_input(event: InputEvent) -> void:
 		state_machine.change_to("Jump")
 	
 	if direction_x!=init_direction_x and direction_x!=0:
-		controlled_node.velocity.y=controlled_node.Jump_stength
 		state_machine.change_to("Fall")
 
 	if Input.is_action_pressed("Up") or Input.is_action_pressed("Crouch"):
