@@ -5,10 +5,12 @@ class_name Dragon
 @export var plataformas_spawn: Marker2D
 
 var playerUbi: Node2D = null
+
 var en_transicion := false
 var fase := 1
 var vida_inicial := 0.0
 
+var posicion_fase_2 := "Fase2A"
 var animacion_fase_2_actual := "Fase2A"
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -35,7 +37,7 @@ func cambiar_a_fase_2() -> void:
 	fase = 2
 	en_transicion = true
 
-	print("🔥 DRAGON ENTRA EN FASE 2")
+	print("🔥 DRAGÓN ENTRA EN FASE 2")
 
 	animation_player.play("TransicionFase2")
 
@@ -48,21 +50,26 @@ func cambiar_a_fase_2() -> void:
 
 	crear_plataformas()
 
-	en_transicion = false
-
 	# Primera posición de fase 2
+	posicion_fase_2 = "Fase2A"
 	animacion_fase_2_actual = "Fase2A"
-	animation_player.play(animacion_fase_2_actual)
 
-	# Empezamos el ciclo de posiciones
+	print("🐉 POSICIÓN INICIAL: ", posicion_fase_2)
+	print("🐉 POSICIÓN REAL: ", global_position)
+
+	animation_player.play("Fase2A")
+
+	# Ya puede atacar
+	en_transicion = false
+	state_machine.change_to("Idle")
+
+	# Empieza el cambio de posiciones
 	ciclo_posiciones_fase_2()
 
 
 func ciclo_posiciones_fase_2() -> void:
-
 	while fase == 2 and live > 0:
 
-		# Espera mientras permanece en la posición actual
 		await get_tree().create_timer(7.0).timeout
 
 		if fase != 2 or live <= 0:
@@ -73,38 +80,44 @@ func ciclo_posiciones_fase_2() -> void:
 
 func cambiar_posicion_fase_2() -> void:
 
-	var siguiente_animacion: String
+	var siguiente_animacion := ""
 
-	if animacion_fase_2_actual == "Fase2A":
+	if posicion_fase_2 == "Fase2A":
 
 		if randf() < 0.5:
 			siguiente_animacion = "Fase2I"
 		else:
 			siguiente_animacion = "Fase2D"
 
-	elif animacion_fase_2_actual == "Fase2I":
+	elif posicion_fase_2 == "Fase2I":
 
 		if randf() < 0.5:
 			siguiente_animacion = "Fase2A"
 		else:
 			siguiente_animacion = "Fase2D"
+
+	elif posicion_fase_2 == "Fase2D":
+
+		if randf() < 0.5:
+			siguiente_animacion = "Fase2A"
+		else:
+			siguiente_animacion = "Fase2I"
 
 	else:
+		siguiente_animacion = "Fase2A"
 
-		if randf() < 0.5:
-			siguiente_animacion = "Fase2A"
-		else:
-			siguiente_animacion = "Fase2I"
 
+	posicion_fase_2 = siguiente_animacion
 	animacion_fase_2_actual = siguiente_animacion
 
-	print("🐉 Cambiando posición: ", siguiente_animacion)
+	print("🐉 CAMBIANDO POSICIÓN")
+	print("🐉 Nueva posición: ", posicion_fase_2)
+	print("🐉 Posición real: ", global_position)
 
 	animation_player.play(siguiente_animacion)
 
 
 func crear_plataformas() -> void:
-
 	if plataformas_scene == null:
 		push_error("❌ No se asignó Plataformas.tscn")
 		return
@@ -114,9 +127,7 @@ func crear_plataformas() -> void:
 		return
 
 	var plataformas = plataformas_scene.instantiate()
-
 	get_tree().current_scene.add_child(plataformas)
-
 	plataformas.global_position = plataformas_spawn.global_position
 
 
