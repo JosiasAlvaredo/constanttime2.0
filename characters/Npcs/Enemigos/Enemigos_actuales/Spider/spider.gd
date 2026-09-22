@@ -1,12 +1,13 @@
 extends enemy_base
-
+class_name Spider
 
 @export var projectile_scene: PackedScene
 @export var detection_range := 400.0
 
-
 var playerUbi := Vector2.ZERO
 
+# Movimiento inicial hasta llegar al techo
+var llegando_al_techo := true
 
 @onready var raycasts: Node2D = $RayCasts
 @onready var ceiling_ray: RayCast2D = $RayCasts/CeilingRay
@@ -18,17 +19,44 @@ var playerUbi := Vector2.ZERO
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player") as Node2D
-	
+
 	update_rays_direction()
 	update_sprite_direction()
 
 
 func _physics_process(delta: float) -> void:
-	# Gravedad invertida: empuja hacia arriba
-	velocity.y -= gravity * delta
-	
-	# Actualizar continuamente el raycast hacia el jugador
+
+	# Actualizar el raycast hacia el jugador
 	update_player_ray()
+
+
+	# ==========================================
+	# SUBIR AL TECHO AL INICIAR
+	# ==========================================
+
+	if llegando_al_techo:
+
+		velocity.x = 0
+		velocity.y = -speed
+
+		move_and_slide()
+
+		# La colisión física determina cuándo
+		# llegó al techo.
+		if is_on_ceiling():
+			velocity = Vector2.ZERO
+			llegando_al_techo = false
+
+		return
+
+
+	# ==========================================
+	# YA ESTÁ EN EL TECHO
+	# ==========================================
+
+	# No usamos gravedad.
+	# Patrol controla el movimiento horizontal.
+	velocity.y = 0
 
 
 # ==========================================
@@ -44,6 +72,7 @@ func update_rays_direction() -> void:
 # ==========================================
 
 func update_sprite_direction() -> void:
+
 	if direction == 1:
 		sprite_2d.flip_h = true
 	else:
@@ -55,9 +84,10 @@ func update_sprite_direction() -> void:
 # ==========================================
 
 func get_player_distance() -> float:
+
 	if player == null:
 		return INF
-	
+
 	return global_position.distance_to(player.global_position)
 
 
@@ -70,13 +100,14 @@ func is_player_in_range() -> bool:
 # ==========================================
 
 func update_player_ray() -> void:
+
 	if player == null:
 		return
-	
+
 	player_ray.target_position = (
 		player.global_position - player_ray.global_position
 	)
-	
+
 	player_ray.force_raycast_update()
 
 
@@ -85,20 +116,18 @@ func update_player_ray() -> void:
 # ==========================================
 
 func can_see_player() -> bool:
+
 	if player == null:
 		return false
-	
-	# Fuera del rango
+
 	if not is_player_in_range():
 		return false
-	
-	# El RayCast no toca nada
+
 	if not player_ray.is_colliding():
 		return false
-	
+
 	var collider = player_ray.get_collider()
-	
-	# Solo puede verlo si lo primero que toca es el jugador
+
 	return collider == player
 
 

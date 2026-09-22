@@ -227,10 +227,10 @@ script = ExtResource("9_ffd4t")
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=379365275]
 
 [node name="SummonPoint1" type="Marker2D" parent="." unique_id=547460366]
-position = Vector2(-190.71434, 25.396833)
+position = Vector2(-189.28577, 56.349224)
 
 [node name="SummonPoint2" type="Marker2D" parent="." unique_id=1884937487]
-position = Vector2(177.8572, 21.825403)
+position = Vector2(176.78577, 55.158745)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1564905998]
 libraries/ = SubResource("AnimationLibrary_dkls4")

@@ -14,6 +14,10 @@ size = Vector2(1162, 20)
 
 [node name="EscenaArañaLobo" type="Node2D" unique_id=25733053]
 
+[node name="ArañaLobo" parent="." unique_id=1550610712 instance=ExtResource("1_ee5si")]
+position = Vector2(582.00006, 433)
+scale = Vector2(2.2146552, 1.2510777)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1974250865]
 position = Vector2(-1, 633)
 
@@ -22,14 +26,10 @@ position = Vector2(571, 0)
 shape = SubResource("RectangleShape2D_nqp2c")
 debug_color = Color(0, 0.6, 0, 0.41960785)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=932767916]
-position = Vector2(575, -154)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1037918573]
+position = Vector2(576, -163)
 shape = SubResource("RectangleShape2D_nqp2c")
 debug_color = Color(0, 0.6, 0, 0.41960785)
-
-[node name="ArañaLobo" parent="." unique_id=1550610712 instance=ExtResource("1_ee5si")]
-position = Vector2(582.00006, 433)
-scale = Vector2(2.2146552, 1.2510777)
 
 [node name="Partes" type="Node2D" parent="." unique_id=1278169587]
 position = Vector2(18, 114)
