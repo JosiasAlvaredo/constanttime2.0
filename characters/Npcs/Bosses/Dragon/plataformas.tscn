@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cnxsiaacac4js"]
 
+[ext_resource type="Texture2D" uid="uid://cxl74syjnphv5" path="res://assets/tilws/castillo.png" id="1_r2ic6"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3da7"]
 size = Vector2(77, 15.5)
 
@@ -11,12 +13,22 @@ size = Vector2(77, 15.5)
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma1" unique_id=322090517]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
+
 [node name="Plataforma2" type="StaticBody2D" parent="." unique_id=416077877]
 position = Vector2(106, -54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma2" unique_id=182248406]
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma2" unique_id=1370028886]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
 
 [node name="Plataforma3" type="StaticBody2D" parent="." unique_id=1624856735]
 position = Vector2(-100, -55)
@@ -25,12 +37,22 @@ position = Vector2(-100, -55)
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma3" unique_id=2003163826]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
+
 [node name="Plataforma5" type="StaticBody2D" parent="." unique_id=299176388]
 position = Vector2(-207, -112)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma5" unique_id=28403013]
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma5" unique_id=28542984]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
 
 [node name="Plataforma6" type="StaticBody2D" parent="." unique_id=301025622]
 position = Vector2(-312, -164)
@@ -39,12 +61,22 @@ position = Vector2(-312, -164)
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma6" unique_id=572312921]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
+
 [node name="Plataforma7" type="StaticBody2D" parent="." unique_id=2005609628]
 position = Vector2(220, -118)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma7" unique_id=526423333]
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma7" unique_id=706876531]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
 
 [node name="Plataforma8" type="StaticBody2D" parent="." unique_id=900519648]
 position = Vector2(324, -171)
@@ -53,12 +85,22 @@ position = Vector2(324, -171)
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma8" unique_id=1689958641]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
+
 [node name="Plataforma9" type="StaticBody2D" parent="." unique_id=80508513]
 position = Vector2(-111, -171)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma9" unique_id=64830665]
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma9" unique_id=249662527]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
 
 [node name="Plataforma10" type="StaticBody2D" parent="." unique_id=1325428278]
 position = Vector2(111, -173)
@@ -67,9 +109,19 @@ position = Vector2(111, -173)
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma10" unique_id=981741737]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)
+
 [node name="Plataforma11" type="StaticBody2D" parent="." unique_id=1444136946]
 position = Vector2(-3, -225)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforma11" unique_id=1105926281]
 shape = SubResource("RectangleShape2D_a3da7")
 one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Plataforma11" unique_id=790258846]
+texture = ExtResource("1_r2ic6")
+region_enabled = true
+region_rect = Rect2(63.17505, 186.0794, 98.77838, 25.98294)

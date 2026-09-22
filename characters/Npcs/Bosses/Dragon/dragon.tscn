@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://limsr7g887kb" path="res://characters/Npcs/Bosses/Dragon/dragon.gd" id="1_c3s44"]
 [ext_resource type="PackedScene" uid="uid://cnxsiaacac4js" path="res://characters/Npcs/Bosses/Dragon/plataformas.tscn" id="2_f4u5j"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_3vova"]
-[ext_resource type="Texture2D" uid="uid://mvjhoosx56rg" path="res://assets/characters/Bosses/Dragon/dragon estructura.png" id="3_nak5m"]
+[ext_resource type="Texture2D" uid="uid://bp2fx0ei1p4il" path="res://assets/characters/Bosses/Dragon/output-onlinepngtools (17).png" id="3_62ipe"]
 [ext_resource type="Script" uid="uid://dw1v3oemehmhr" path="res://characters/Npcs/Bosses/Dragon/States/Idle.gd" id="4_8kn4j"]
 [ext_resource type="Texture2D" uid="uid://1ulbontlk3mc" path="res://assets/characters/Bosses/Dragon/dragon estructura de lado.png" id="4_rygdo"]
 [ext_resource type="Script" uid="uid://bxvk4iffjst25" path="res://characters/Npcs/Bosses/Dragon/States/shoot.gd" id="5_t5fu6"]
@@ -255,6 +255,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ShootPoint:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, -173)]
+}
 
 [sub_resource type="Animation" id="Animation_nak5m"]
 length = 0.001
@@ -400,17 +412,17 @@ rotation = 3.1415927
 [node name="Sprite2D" type="Sprite2D" parent="CuerpoFase1" unique_id=533131448]
 position = Vector2(-19.999996, 54)
 rotation = -3.1415925
-texture = ExtResource("3_nak5m")
+texture = ExtResource("3_62ipe")
 region_enabled = true
-region_rect = Rect2(0, 0, 779.0348, 653.2731)
+region_rect = Rect2(416.66345, 514.7114, 879.9132, 768.7986)
 
 [node name="Panza" type="Sprite2D" parent="CuerpoFase1" unique_id=2007914884]
-position = Vector2(-14.579712, -3.0527492)
+position = Vector2(-57.999992, 29.000013)
 rotation = 3.1415927
-scale = Vector2(0.9157426, 0.8744271)
-texture = ExtResource("3_nak5m")
+scale = Vector2(1.0334115, 0.91908187)
+texture = ExtResource("3_62ipe")
 region_enabled = true
-region_rect = Rect2(0, 636.10095, 639.1521, 563.89905)
+region_rect = Rect2(0, 513.68225, 426.37775, 686.31775)
 
 [node name="Hitbox" type="Area2D" parent="CuerpoFase1/Panza" unique_id=1938782036]
 position = Vector2(-13.104055, 18.297699)
@@ -419,16 +431,16 @@ collision_layer = 128
 collision_mask = 32
 
 [node name="PanzaCol" type="CollisionShape2D" parent="CuerpoFase1/Panza/Hitbox" unique_id=30059369]
-position = Vector2(-2.9999928, -20)
+position = Vector2(-15.470247, 0.17404747)
 shape = SubResource("CapsuleShape2D_2xok0")
 
 [node name="PataIzq" type="Sprite2D" parent="CuerpoFase1" unique_id=1157771567]
 position = Vector2(253, -107.000015)
 rotation = 3.1415927
 scale = Vector2(0.67277485, 0.59313726)
-texture = ExtResource("3_nak5m")
+texture = ExtResource("3_62ipe")
 region_enabled = true
-region_rect = Rect2(703.36096, 962.1229, 191.69397, 204.8352)
+region_rect = Rect2(520.52856, 152.35403, 188.77698, 197.69034)
 
 [node name="HurtBox" type="Area2D" parent="CuerpoFase1/PataIzq" unique_id=1242560706]
 position = Vector2(1.486381, -6.743801)
@@ -449,9 +461,9 @@ shape = SubResource("CircleShape2D_62ipe")
 position = Vector2(-267.99994, -91.99995)
 rotation = 3.1415927
 scale = Vector2(0.673, 0.593)
-texture = ExtResource("3_nak5m")
+texture = ExtResource("3_62ipe")
 region_enabled = true
-region_rect = Rect2(901.4771, 935.27985, 219.29352, 234.15802)
+region_rect = Rect2(1014.0174, 142.51471, 182.3482, 204.35571)
 
 [node name="HurtBoxD" type="Area2D" parent="CuerpoFase1/PataDer" unique_id=1445566872]
 collision_layer = 128
@@ -469,12 +481,12 @@ shape = SubResource("CircleShape2D_rygdo")
 disabled = true
 
 [node name="Cabeza" type="Sprite2D" parent="CuerpoFase1" unique_id=2094553486]
-position = Vector2(-3.579834, 159.94725)
+position = Vector2(-23.99999, 270)
 rotation = 3.1415927
 scale = Vector2(0.7670899, 0.79741853)
-texture = ExtResource("3_nak5m")
+texture = ExtResource("3_62ipe")
 region_enabled = true
-region_rect = Rect2(787.5679, 512.27234, 256.09326, 424.5758)
+region_rect = Rect2(28.146301, 60.318325, 291.01526, 364.52768)
 
 [node name="CuerpoFase2" type="Node2D" parent="." unique_id=1205538713]
 
