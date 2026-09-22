@@ -1,4 +1,4 @@
-extends enemy_base
+extends boss_base
 
 var playerUbi: Node2D = null
 
