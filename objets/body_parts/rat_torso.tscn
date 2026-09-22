@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cei2w4wemd2od"]
+
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_aysyk"]
+[ext_resource type="Texture2D" uid="uid://bkb70iuk0r41f" path="res://assets/items/Weapons/rat_torso.png" id="2_dimsi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
+radius = 375.20828
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lc80n"]
+radius = 4.0
+
+[node name="rat_torso" type="RigidBody2D" unique_id=926426869]
+collision_layer = 0
+script = ExtResource("1_aysyk")
+_name = "rat_torso"
+origin = "body_parts"
+
+[node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
+position = Vector2(0, -1)
+texture = ExtResource("2_dimsi")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729557036]
+position = Vector2(0, -1)
+scale = Vector2(0.08, 0.08)
+shape = SubResource("CircleShape2D_vswh6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1753255336]
+shape = SubResource("CircleShape2D_lc80n")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

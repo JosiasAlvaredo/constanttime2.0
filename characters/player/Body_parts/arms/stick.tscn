@@ -1,8 +1,72 @@
 [gd_scene format=3 uid="uid://dx53yec25iflw"]
 
 [ext_resource type="Script" uid="uid://6e3gqrji1cfh" path="res://objets/weapons_tools/scripts/stick.gd" id="1_cgd8v"]
-[ext_resource type="Texture2D" uid="uid://oko1txt8sr2q" path="res://assets/characters/Player/arms/stick.png" id="1_e85ak"]
 [ext_resource type="Texture2D" uid="uid://by0ycskrweplk" path="res://assets/effets/attack_mele.png" id="3_cgd8v"]
+[ext_resource type="Texture2D" uid="uid://bi58hejhni72l" path="res://assets/pixil-frame-0 (5).png" id="3_uvso3"]
+
+[sub_resource type="Animation" id="Animation_5nkiw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.028112411, -0.03763008)]
+}
+
+[sub_resource type="Animation" id="Animation_0koyt"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.028112411, -0.03763008), Vector2(-0.028, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3rcn"]
+_data = {
+&"RESET": SubResource("Animation_5nkiw"),
+&"move": SubResource("Animation_0koyt")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hralt"]
+atlas = ExtResource("3_uvso3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7m4u"]
+atlas = ExtResource("3_uvso3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16dtd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hralt")
+}],
+"loop": false,
+"name": &"activate",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7m4u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pgme"]
 size = Vector2(53.5, 64)
@@ -35,11 +99,21 @@ animations = [{
 }]
 
 [node name="stick_arm" type="Node2D" unique_id=1126278460]
+position = Vector2(-0.028112411, -0.03763008)
 script = ExtResource("1_cgd8v")
+origin = "body_parts"
 
-[node name="Stick" type="Sprite2D" parent="." unique_id=147274010]
-position = Vector2(0, 10)
-texture = ExtResource("1_e85ak")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=866957101]
+libraries/ = SubResource("AnimationLibrary_e3rcn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1096876854]
+position = Vector2(-6.9718876, 8.03763)
+rotation = 3.1415927
+scale = Vector2(-0.77363706, -1.1149446)
+sprite_frames = SubResource("SpriteFrames_16dtd")
+animation = &"activate"
+autoplay = "default"
+offset = Vector2(5.549663, 2.218649)
 
 [node name="Mele_front" type="Area2D" parent="." unique_id=823626158]
 collision_layer = 32

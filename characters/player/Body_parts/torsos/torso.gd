@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var user_interface: CanvasLayer = $"../../../User_Interface"
 
+@export var current_direction=1
 
 @onready var right_arm_position: Node2D = $right_arm_position
 @onready var left_arm_position: Node2D = $left_arm_position
@@ -31,6 +32,10 @@ var shockwave
 
 var current_effects=[]
 
+var right_arm=null
+var left_arm=null
+var legs=null
+
 func _ready() -> void:
 	parent=get_parent().get_parent()
 	
@@ -55,7 +60,7 @@ func _ready() -> void:
 	
 	#se crean las extremidades, se definen los stats y habilidades
 	if body.right_arm!=null:
-		var right_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.right_arm.skills._name).instantiate()
+		right_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.right_arm.skills._name).instantiate()
 		var right_armSkills=body.right_arm.skills
 
 		right_arm.position=right_arm_position.position
@@ -86,10 +91,12 @@ func _ready() -> void:
 		
 		add_child(right_arm)
 		
-
+		var animation=right_arm.get_child(0)
+		if animation is AnimationPlayer:
+			animation.play("move")
 		
 	if body.left_arm!=null:
-		var left_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.left_arm.skills._name).instantiate()
+		left_arm=load("res://characters/player/Body_parts/arms/%s.tscn" % body.left_arm.skills._name).instantiate()
 		var left_armSkills=body.left_arm.skills
 
 		left_arm.position=left_arm_position.position
@@ -98,6 +105,8 @@ func _ready() -> void:
 		total_weight+=left_armSkills.size
 		can_take_left_hand=left_armSkills.can_take
 		body.left_arm.check_player(user_interface)
+		
+		
 		
 		if body.left_hand!=null and can_take_left_hand:
 			
@@ -119,10 +128,12 @@ func _ready() -> void:
 		
 		add_child(left_arm)
 
-
-			
+		var animation=left_arm.get_child(0)
+		if animation is AnimationPlayer:
+			animation.play("move")
+						
 	if body.legs!=null:
-		var legs=load("res://characters/player/Body_parts/legs/%s.tscn" % body.legs.skills._name).instantiate()
+		legs=load("res://characters/player/Body_parts/legs/%s.tscn" % body.legs.skills._name).instantiate()
 		var legsSkills=body.legs.skills
 		legs.position=legs_position.position
 		
@@ -159,6 +170,8 @@ func _ready() -> void:
 	parent.body_up=$Body_up
 	parent.body_down=$Body_Down
 	parent.Interactive_Box_collition=$Interactive_Box/CollisionShape2D
+
+	FLIP()
 
 func body_damage(weapond):
 	#desgaste del torso
@@ -206,6 +219,53 @@ func load_abilities(number_habilities):
 						abilities_fall_conections.append(hability_node.conect_jump)
 
 					parent.habilities_states.add_child(hability_node)
+
+func FLIP():
+	if parent.direction!=current_direction or parent.direction==0:
+		if parent.direction!=0:
+			current_direction=int(parent.direction)
+		match current_direction:
+			-1:
+				if right_arm !=null:
+					right_arm.position=left_arm_position.position
+					right_arm.z_index=0
+					
+				if left_arm !=null:
+					left_arm.position=right_arm_position.position
+					left_arm.z_index=2
+			1:
+				if right_arm !=null:
+					right_arm.position=right_arm_position.position
+					right_arm.z_index=2
+						
+				if left_arm !=null:
+					left_arm.position=left_arm_position.position
+					left_arm.z_index=0
+
+func play(state):
+	match state:
+		"idle":
+			if legs!=null:
+				var sprite=legs.get_child(0)
+				if sprite is AnimatedSprite2D:
+					sprite.play("default")
+		
+		"move":
+			
+			var action={"right":"subir","left":"subir"}
+			
+			if legs!=null:
+				var sprite=legs.get_child(0)
+				if sprite is AnimatedSprite2D:
+					sprite.play("move")
+					
+					
+		"jump":
+			if legs!=null:
+				var sprite=legs.get_child(0)
+				if sprite is AnimatedSprite2D:
+					sprite.play("jump")
+
 
 #Guardan las conecciones de las habilidades con su respectivo estado
 func conect_Idle(controlled_node,state_machine):

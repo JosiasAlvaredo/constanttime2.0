@@ -4,13 +4,15 @@
 
 [resource]
 script = ExtResource("1_f8jo4")
-_name = "bird_wings"
-spanish_name = "Ala rota"
-max_durability = 150
-durability = 125
 jump_force = -100
-description = "Aunque rota tiene la fuerza para realizar un segundo salto en el aire."
-number_kinds = Array[int]([1, 2])
 size = 2
 number_habilities = Array[int]([2])
+_name = "bird_wings"
+spanish_name = "Ala rota"
+description = "Aunque rota tiene la fuerza para realizar un segundo salto en el aire."
+max_durability = 150
+durability = 125
+recoil = 0
+knockback = Vector2(0, 0)
+number_kinds = Array[int]([1, 2])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

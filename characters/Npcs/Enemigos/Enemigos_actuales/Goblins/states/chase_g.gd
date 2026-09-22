@@ -1,4 +1,4 @@
-extends enemy_base
+extends State_base
  
 
 @export var acceleration := 500.0 
@@ -19,9 +19,9 @@ func _ready() -> void:
 	playerUbi = get_tree().get_first_node_in_group("player") 
  
 func update_sprite_direction() -> void:
-	if direction == 1:
+	if controlled_node.direction == 1:
 		sprite_2d.flip_h = true
-	elif direction == -1:
+	elif controlled_node.direction == -1:
 		sprite_2d.flip_h = false
 
 
@@ -29,11 +29,8 @@ func get_player_distance() -> float:
 	if playerUbi == null: 
 		return INF 
 	 
-	return global_position.distance_to(playerUbi.global_position) 
+	return controlled_node.global_position.distance_to(playerUbi.global_position) 
  
 
 func is_player_in_range() -> bool: 
 	return get_player_distance() <= follow_distance
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	enemy_damage(area.get_parent())

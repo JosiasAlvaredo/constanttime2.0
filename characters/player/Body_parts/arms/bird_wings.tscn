@@ -1,11 +1,87 @@
 [gd_scene format=3 uid="uid://3igcr55i8yg3"]
 
-[ext_resource type="Texture2D" uid="uid://ccuinfhyo3qxc" path="res://assets/items/Weapons/Sword.png" id="1_5nkiw"]
+[ext_resource type="Texture2D" uid="uid://csohnurf2b2fs" path="res://assets/characters/Player/arms/ala.png" id="1_5nkiw"]
+
+[sub_resource type="Animation" id="Animation_5nkiw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.028112411, -0.03763008)]
+}
+
+[sub_resource type="Animation" id="Animation_0koyt"]
+resource_name = "move"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.028112411, -0.03763008), Vector2(-0.028, -2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6uls"]
+_data = {
+&"RESET": SubResource("Animation_5nkiw"),
+&"move": SubResource("Animation_0koyt")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0koyt"]
+atlas = ExtResource("1_5nkiw")
+region = Rect2(58, 0, 58, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6uls"]
+atlas = ExtResource("1_5nkiw")
+region = Rect2(0, 0, 58, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ioo0"]
+atlas = ExtResource("1_5nkiw")
+region = Rect2(0, 0, 58, 59)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_arfvi"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_0koyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6uls")
+}],
+"loop": false,
+"name": &"activate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ioo0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="stick_arm" type="Node2D" unique_id=1126278460]
 
-[node name="Stick" type="Sprite2D" parent="." unique_id=147274010]
-position = Vector2(-2.9999998, 7.000001)
-rotation = 2.7780335
-scale = Vector2(0.4315671, 0.35661015)
-texture = ExtResource("1_5nkiw")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1783342187]
+root_node = NodePath("../AnimatedSprite2D")
+libraries/ = SubResource("AnimationLibrary_t6uls")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=63611173]
+position = Vector2(-0.028112411, -0.03763008)
+scale = Vector2(-0.3311403, 0.40414563)
+sprite_frames = SubResource("SpriteFrames_arfvi")
+autoplay = "default"
+offset = Vector2(24.074047, 22.36231)

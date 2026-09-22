@@ -121,6 +121,7 @@ script = ExtResource("6_wrqnx")
 
 [node name="Cooldown(totem)" type="Node" parent="State_Machine" unique_id=1027172946]
 script = ExtResource("7_iadch")
+cooldown_time = 3.0
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1553242938]
 collision_layer = 132

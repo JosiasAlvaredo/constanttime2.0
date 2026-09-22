@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=11 format=3 uid="uid://c8wiww83y365b"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://c8wiww83y365b"]
 
 [ext_resource type="PackedScene" uid="uid://dd2mm4a5yiy5p" path="res://scenes/Generacion Procedural/Alcantarilla/boss/Tittan_slime.tscn" id="1_abqtc"]
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="1_cmg0w"]

@@ -1,44 +1,32 @@
-[gd_scene format=3 uid="uid://dlnjjmts7p4fo"]
+[gd_scene format=3 uid="uid://bu1jwensa1x17"]
 
-<<<<<<< HEAD:characters/Npcs/Enemigos/Enemigos_actuales/Goblins/goblin1.tscn
 [ext_resource type="Script" uid="uid://bt0dc8l4g3b20" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/goblin.gd" id="1_lygnl"]
-[ext_resource type="Texture2D" uid="uid://cukv1s8703eed" path="res://assets/characters/enemies/enemies.png" id="2_yvguf"]
-=======
-[ext_resource type="Script" uid="uid://bt0dc8l4g3b20" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.gd" id="1_lygnl"]
 [ext_resource type="Texture2D" uid="uid://bxx5oq8ktgfxs" path="res://assets/icon.svg" id="2_y6xvf"]
->>>>>>> 21bdfaf407aa8ef3e2e01d3d0676edf3ddd5e960:characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.tscn
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_gt12a"]
 [ext_resource type="Script" uid="uid://bnycfxlb6s5xf" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/states/idle_g.gd" id="4_s4rcc"]
 [ext_resource type="Script" uid="uid://gvyj3h67dvyg" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/states/chase_g.gd" id="5_vhtpj"]
 [ext_resource type="Script" uid="uid://7b6jugfi6gny" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/states/jump_g.gd" id="6_ro4jv"]
 [ext_resource type="Script" uid="uid://fp3fmne7pkmu" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/states/fall_g.gd" id="7_ro4jv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvguf"]
-size = Vector2(27, 29)
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0suq"]
+radius = 22.022715
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yxep7"]
-radius = 17.029387
+radius = 22.090721
 
-[node name="Goblin1" type="CharacterBody2D" unique_id=1029094022]
+[node name="Goblin" type="CharacterBody2D" unique_id=1029094022]
 collision_layer = 0
 script = ExtResource("1_lygnl")
-<<<<<<< HEAD:characters/Npcs/Enemigos/Enemigos_actuales/Goblins/goblin1.tscn
-=======
 acceleration = 300.0
 follow_distance = 600.0
->>>>>>> 21bdfaf407aa8ef3e2e01d3d0676edf3ddd5e960:characters/Npcs/Enemigos/Enemigos_actuales/Goblin/goblin.tscn
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=881347514]
-position = Vector2(2, 0)
-scale = Vector2(0.5697674, 0.5581395)
-texture = ExtResource("2_yvguf")
-flip_h = true
-region_enabled = true
-region_rect = Rect2(373.44934, 4.957761, 86.05954, 86.871475)
+position = Vector2(-1, 3.8146973e-06)
+scale = Vector2(0.4140625, 0.3671875)
+texture = ExtResource("2_y6xvf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=543943449]
-position = Vector2(-0.5, 4.5)
-shape = SubResource("RectangleShape2D_yvguf")
+shape = SubResource("CircleShape2D_n0suq")
 
 [node name="RayCasts" type="Node2D" parent="." unique_id=600254767]
 

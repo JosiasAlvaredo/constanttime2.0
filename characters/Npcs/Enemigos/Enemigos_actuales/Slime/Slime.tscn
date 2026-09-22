@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y5te4g2c5e74" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/slime.gd" id="1_7extp"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="1_q82pc"]
+[ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="2_w246m"]
 [ext_resource type="Script" uid="uid://cru67vf1ktnkt" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Idle(BSlime).gd" id="4_ye8b0"]
 [ext_resource type="Script" uid="uid://bit7d61a2e1ls" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Slide(BSlime).gd" id="5_w246m"]
 [ext_resource type="Texture2D" uid="uid://bg8cixif5i0gk" path="res://assets/characters/enemies/slime chico.png" id="6_ui1lj"]
@@ -84,7 +85,9 @@ size = Vector2(40, 40.5)
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
 script = ExtResource("1_7extp")
+drops = Array[PackedScene]([ExtResource("2_w246m")])
 live = 50
+Jump_stength = -400
 speed = 200
 roll_velocity = 400
 damage = 15
@@ -100,11 +103,10 @@ position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_5rfaf")
 
 [node name="RayCast" type="Node2D" parent="." unique_id=1780885422]
-visible = false
 
 [node name="FloorRay" type="RayCast2D" parent="RayCast" unique_id=1384405360]
 position = Vector2(22, 0)
-target_position = Vector2(0, 100)
+target_position = Vector2(-4, 144)
 
 [node name="FrontRay" type="RayCast2D" parent="RayCast" unique_id=760859769]
 position = Vector2(1, 0)

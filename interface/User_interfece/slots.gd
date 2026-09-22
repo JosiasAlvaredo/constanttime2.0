@@ -23,7 +23,7 @@ var durability_percent=0
 func _ready() -> void:
 	save_position=position
 	await  get_tree().create_timer(0.01).timeout
-
+	
 func _physics_process(delta: float) -> void:
 	#crear un item aux para que el jugador pueda ver que objeto esta moviendo
 	if user_interface.selected_body_part==item_aux and item_aux !=null:
@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 				item_aux=GlobalValues.bodies_parts[slot_part].duplicate()
 				timer()
 			GlobalValues.bodies_parts[slot_part]=user_interface.selected_body_part.duplicate()
-
+			
 			user_interface.selected_body_part.delete()
 			if item_aux==null:
 				user_interface.selected_body_part=null

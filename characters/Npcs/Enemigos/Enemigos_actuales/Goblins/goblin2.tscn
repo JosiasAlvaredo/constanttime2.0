@@ -51,6 +51,21 @@ script = ExtResource("5_vjjyw")
 
 [node name="ChaseG" type="Node" parent="State_Machine" unique_id=1396031772]
 script = ExtResource("6_sb7yj")
+acceleration = null
+jump_force = null
+follow_distance = null
+number_effects = null
+live = null
+aceleration = null
+Jump_stength = null
+speed = null
+Climb_velocity = null
+roll_velocity = null
+Knockback_resistence = null
+knockback = null
+damage = null
+activate_Gravity = null
+solid = null
 
 [node name="FallG" type="Node" parent="State_Machine" unique_id=984207308]
 script = ExtResource("7_bicwf")

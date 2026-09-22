@@ -75,6 +75,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func FLIP():
+	current_torso.FLIP()
 	body.scale.x=abs(body.scale.x)*direction
 
 func dead():
@@ -130,8 +131,7 @@ func buil_body():
 	state_machine.change_to("Idle")
 	save_body_part=GlobalValues.bodies_parts.duplicate()
 	
-	if current_torso !=null:
-		current_torso.queue_free()
+
 		
 
 	if GlobalValues.bodies_parts.torso==null:
@@ -140,6 +140,9 @@ func buil_body():
 
 		torso=load("res://characters/player/Body_parts/torsos/%s.tscn" % GlobalValues.bodies_parts.torso.skills._name).instantiate()
 	
+	if current_torso !=null:
+		torso.current_direction=current_torso.current_direction
+		current_torso.queue_free()
 	body.add_child(torso)
 	body.move_child(torso, torso.get_index() - 1)
 	

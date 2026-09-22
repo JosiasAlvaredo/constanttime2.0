@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://nkk64178vtal"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_d81or"]
+
+[resource]
+script = ExtResource("1_d81or")
+shockwave = 20
+size = 1
+bulnerable_effects = Array[int]([1])
+_name = "goblin_torso"
+spanish_name = "Torso de duende"
+description = "Un torso debil y enfermiso"
+max_durability = 100
+durability = 100
+number_kinds = Array[int]([0])
+metadata/_custom_type_script = "uid://c5pevm087pgoq"

@@ -1,4 +1,10 @@
 extends State_base
+
+func start():
+	if controlled_node is Player:
+		if controlled_node.current_torso!=null:
+			controlled_node.current_torso.play("idle")
+
 func on_physics_process(delta: float) -> void:
 	controlled_node.velocity.x=0
 	

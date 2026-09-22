@@ -4,16 +4,16 @@
 
 [resource]
 script = ExtResource("1_jqgwg")
-_name = "stick"
-spanish_name = "Palo"
-max_durability = 50
-durability = 50
 speed = 200
 jump_force = -200
-damage = 15
-description = "Un palo resistente"
 shockwave = 50
-number_kinds = Array[int]([0, 1, 3, 2])
 size = 1
 number_habilities = Array[int]([1])
+_name = "stick"
+spanish_name = "Palo"
+description = "Un palo resistente"
+max_durability = 50
+durability = 50
+damage = 15
+number_kinds = Array[int]([0, 1, 3, 2, 4, 5])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

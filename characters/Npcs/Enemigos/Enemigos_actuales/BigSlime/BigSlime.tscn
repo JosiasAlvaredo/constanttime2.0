@@ -99,7 +99,7 @@ script = ExtResource("7_ys45m")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1794482960]
 position = Vector2(1, 4)
-collision_layer = 0
+collision_layer = 4
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=489708558]

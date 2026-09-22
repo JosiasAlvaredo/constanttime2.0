@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://de7yccuygil5n"]
+
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_4ry8x"]
+[ext_resource type="Texture2D" uid="uid://c0t1fcg2uhln8" path="res://assets/characters/Player/toros/goblin.png" id="2_4ry8x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
+radius = 375.20828
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lc80n"]
+radius = 4.0
+
+[node name="bird_wings" type="RigidBody2D" unique_id=926426869]
+collision_layer = 0
+script = ExtResource("1_4ry8x")
+_name = "goblin_torso"
+origin = "body_parts"
+
+[node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
+modulate = Color(1, 0.3019608, 1, 1)
+position = Vector2(0, -1)
+texture = ExtResource("2_4ry8x")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1729557036]
+position = Vector2(0, -1)
+scale = Vector2(0.08, 0.08)
+shape = SubResource("CircleShape2D_vswh6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1753255336]
+shape = SubResource("CircleShape2D_lc80n")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

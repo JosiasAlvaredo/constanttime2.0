@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://c60a5u7fpem4k"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_riny8"]
+
+[resource]
+script = ExtResource("1_riny8")
+size = 1
+number_habilities = Array[int]([1])
+_name = "cienpies"
+spanish_name = "Pata de insecto"
+description = "Una filosa extremidad, perfecta para un depredador"
+max_durability = 100
+durability = 100
+damage = 20
+knockback = Vector2(-300, -100)
+number_kinds = Array[int]([1, 2])
+metadata/_custom_type_script = "uid://c5pevm087pgoq"

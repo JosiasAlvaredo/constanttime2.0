@@ -1,7 +1,45 @@
 [gd_scene format=3 uid="uid://b6qgrp65vco8d"]
 
 [ext_resource type="Script" uid="uid://c81kgrvm7dic4" path="res://characters/player/Body_parts/legs/legs.gd" id="1_t45yq"]
-[ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/Weapons/Rock.png" id="2_t45yq"]
+[ext_resource type="Texture2D" uid="uid://bg8cixif5i0gk" path="res://assets/characters/enemies/slime chico.png" id="2_kvfqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1bkc"]
+atlas = ExtResource("2_kvfqv")
+region = Rect2(0, 0, 70, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwyt3"]
+atlas = ExtResource("2_kvfqv")
+region = Rect2(70, 0, 70, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vu5ou"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1bkc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwyt3")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1bkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwyt3")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mut7r"]
 radius = 1.4142135
@@ -9,13 +47,13 @@ radius = 1.4142135
 [node name="slime_legs" type="Node2D" unique_id=552661092]
 script = ExtResource("1_t45yq")
 
-[node name="Stick" type="Sprite2D" parent="." unique_id=1698048193]
-modulate = Color(0, 0.6039216, 0, 1)
-position = Vector2(0, 3)
-rotation = -6.2765417
-scale = Vector2(1.6079608, 1.3122828)
-texture = ExtResource("2_t45yq")
-flip_h = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=580193080]
+position = Vector2(-4, 3)
+scale = Vector2(0.4542112, 0.424481)
+sprite_frames = SubResource("SpriteFrames_vu5ou")
+animation = &"move"
+autoplay = "default"
+frame_progress = 0.9299611
 
 [node name="foot_position" type="Node2D" parent="." unique_id=119149150]
 position = Vector2(0, 10)

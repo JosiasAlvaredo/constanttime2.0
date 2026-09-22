@@ -4,14 +4,14 @@
 
 [resource]
 script = ExtResource("1_06211")
-_name = "frog_legs"
-spanish_name = "Patas de rana"
-max_durability = 100
-durability = 100
 speed = 300
 jump_force = -500
-description = "Un par de piernas fuertes pero no muy flexibles"
 shockwave = 30
-number_kinds = Array[int]([3])
 size = 2
+_name = "frog_legs"
+spanish_name = "Patas de rana"
+description = "Un par de piernas fuertes pero no muy flexibles"
+max_durability = 100
+durability = 100
+number_kinds = Array[int]([3])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

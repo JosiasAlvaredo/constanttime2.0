@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://84svjuaeha70"]
+[gd_scene format=4 uid="uid://84svjuaeha70"]
 
-[ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Mazmorra/start/start_room_01.gd" id="1_nhs0j"]
+[ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Alcantarilla/start/start_room_01.gd" id="1_nhs0j"]
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="2_kuocb"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_xsciu"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="3_he2ru"]
@@ -10,8 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="7_vax2r"]
 [ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="9_ikq0o"]
 [ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="10_8yqei"]
-[ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="11_8yqei"]
-[ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="13_ko3j8"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="13_clopg"]
+[ext_resource type="PackedScene" uid="uid://bts7xkknnfm4x" path="res://objets/body_parts/cienpies.tscn" id="14_clopg"]
+[ext_resource type="PackedScene" uid="uid://cei2w4wemd2od" path="res://objets/body_parts/rat_torso.tscn" id="15_lyfp4"]
+[ext_resource type="PackedScene" uid="uid://c4vhj81yc7w70" path="res://objets/body_parts/rat_legs.tscn" id="16_1ol81"]
+[ext_resource type="PackedScene" uid="uid://b8aix8qs6054f" path="res://objets/body_parts/goblin_legs.tscn" id="17_qkvjg"]
+[ext_resource type="PackedScene" uid="uid://de7yccuygil5n" path="res://objets/body_parts/goblin_torso.tscn" id="18_5e770"]
+[ext_resource type="PackedScene" uid="uid://chm0tlaxhm01j" path="res://objets/items/fire_scroll.tscn" id="18_55tv6"]
+[ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="19_5e770"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(818, 135)
@@ -44,7 +50,7 @@ scale = Vector2(1, 1.2)
 shape = SubResource("RectangleShape2D_e8jrh")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_xsciu")]
-position = Vector2(-82, 182)
+position = Vector2(-37, 180)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1658636559]
 zoom = Vector2(1.5, 1.5)
@@ -54,19 +60,19 @@ zoom = Vector2(1.5, 1.5)
 [node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("4_l4nw3")]
 
 [node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("5_2of1a")]
-position = Vector2(-79, 179)
+position = Vector2(-34, 177)
 
 [node name="stick_arm" parent="." unique_id=29034957 instance=ExtResource("6_7iove")]
-position = Vector2(-44, 184)
+position = Vector2(1, 182)
 
 [node name="stick_arm2" parent="." unique_id=512423657 instance=ExtResource("7_vax2r")]
-position = Vector2(-78, 197)
+position = Vector2(-33, 195)
 
 [node name="frog_legs" parent="." unique_id=835217674 instance=ExtResource("9_ikq0o")]
-position = Vector2(-59, 182)
+position = Vector2(-14, 180)
 
 [node name="slime_legs" parent="." unique_id=1748175525 instance=ExtResource("10_8yqei")]
-position = Vector2(-50, 204)
+position = Vector2(-5, 202)
 
 [node name="STOP" type="Area2D" parent="." unique_id=1405820208]
 position = Vector2(-50, 204)
@@ -77,10 +83,31 @@ collision_mask = 2
 position = Vector2(158, -20)
 shape = SubResource("RectangleShape2D_ikq0o")
 
-[node name="BigSlime" parent="." unique_id=1982467406 instance=ExtResource("11_8yqei")]
-position = Vector2(187, 196)
+[node name="goblind_arm" parent="." unique_id=1865627012 instance=ExtResource("13_clopg")]
+position = Vector2(-13, 205)
 
-[node name="Slime" parent="." unique_id=487235860 instance=ExtResource("13_ko3j8")]
-position = Vector2(48, 218)
+[node name="stick_arm3" parent="." unique_id=1307601408 instance=ExtResource("14_clopg")]
+position = Vector2(-24, 206)
+
+[node name="rat_torso" parent="." unique_id=2012691640 instance=ExtResource("15_lyfp4")]
+position = Vector2(2, 200)
+
+[node name="rat_legs" parent="." unique_id=343115415 instance=ExtResource("16_1ol81")]
+position = Vector2(-25, 206)
+
+[node name="fire_scroll" parent="." unique_id=1284734035 instance=ExtResource("18_55tv6")]
+position = Vector2(-25, 206)
+
+[node name="Torch_item" parent="." unique_id=766590214 instance=ExtResource("19_5e770")]
+position = Vector2(-40, 213)
+
+[node name="bird_wings2" parent="." unique_id=2115256637 instance=ExtResource("17_qkvjg")]
+position = Vector2(-16, 207)
+
+[node name="bird_wings3" parent="." unique_id=182063723 instance=ExtResource("18_5e770")]
+position = Vector2(-29, 212)
+
+[node name="goblind_arm2" parent="." unique_id=85397131 instance=ExtResource("13_clopg")]
+position = Vector2(-44, 208)
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]

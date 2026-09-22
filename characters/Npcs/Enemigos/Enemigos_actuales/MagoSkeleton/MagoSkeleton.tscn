@@ -14,9 +14,11 @@ size = Vector2(19, 33.5)
 height = 42.0
 
 [node name="MagoSkeleton" type="CharacterBody2D" unique_id=1143743863]
+position = Vector2(-2, 1)
 collision_layer = 0
 script = ExtResource("1_to86r")
 projectile_scene = ExtResource("2_8lirq")
+shoot_cooldown = 3.0
 speed = 50
 roll_velocity = 50
 

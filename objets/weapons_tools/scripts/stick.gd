@@ -9,12 +9,15 @@ class_name arm_mele_base
 @onready var animated_down: AnimatedSprite2D = $Animated_down
 @onready var animated_up: AnimatedSprite2D = $Animated_up
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 var using=false
 
 var current_state
 
 func use(State):
-
+	if animated_sprite_2d!=null:
+		animated_sprite_2d.play("activate")
 	current_state=State
 	if Input.is_action_pressed("Up"):
 		mele_up_collition.disabled=false
@@ -27,6 +30,10 @@ func use(State):
 		animated_front.play("Attack")
 		
 	await get_tree().create_timer(0.2).timeout
+	
+	if animated_sprite_2d!=null:
+		animated_sprite_2d.play("default")
+	
 	mele_front_collition.disabled=true
 	mele_down_collition.disabled=true
 	mele_up_collition.disabled=true

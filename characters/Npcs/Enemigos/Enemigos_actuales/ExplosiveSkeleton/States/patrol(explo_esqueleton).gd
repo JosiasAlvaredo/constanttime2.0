@@ -16,9 +16,3 @@ func on_physics_process(delta: float) -> void:
 	if not controlled_node.floor_ray.is_colliding():
 		controlled_node.direction *= -1
 		return
-
-	if controlled_node.player_ray.is_colliding():
-		var collider = controlled_node.player_ray.get_collider()
-
-		if collider is Player:
-			state_machine.change_to("Chase(exploSqueleton)")

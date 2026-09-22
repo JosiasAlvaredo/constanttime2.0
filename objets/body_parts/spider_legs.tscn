@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b7f4lpee6v5nj"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_1g5jd"]
-[ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/Weapons/Rock.png" id="2_1g5jd"]
+[ext_resource type="Texture2D" uid="uid://dmli2a1ly47fr" path="res://assets/characters/Player/legs/spider.png" id="2_c038u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -17,7 +17,7 @@ origin = "body_parts"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
 position = Vector2(0, -1)
-texture = ExtResource("2_1g5jd")
+texture = ExtResource("2_c038u")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
 collision_layer = 64

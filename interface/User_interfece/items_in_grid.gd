@@ -14,11 +14,11 @@ var user_interface
 func _ready() -> void:
 	await  get_tree().create_timer(0.01).timeout
 	user_interface=get_parent().get_parent().get_parent().get_parent().get_parent()
-
-	var durability_percent=float(skills.durability)/skills.max_durability
-	durability_node.size.x=durability_percent*51
-		
-	durability_node.color=Color8(255-255*durability_percent,255*durability_percent,0)
+	if skills!=null:
+		var durability_percent=float(skills.durability)/skills.max_durability
+		durability_node.size.x=durability_percent*51
+			
+		durability_node.color=Color8(255-255*durability_percent,255*durability_percent,0)
 
 func _on_pressed() -> void:
 	if user_interface.selected_body_part==null:
