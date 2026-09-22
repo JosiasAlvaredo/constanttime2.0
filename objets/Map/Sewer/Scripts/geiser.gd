@@ -29,8 +29,8 @@ func _physics_process(delta: float) -> void:
 		
 func shot():
 	stream=preload("res://objets/Map/Sewer/Stream.tscn").instantiate()
-	stream.height_limit=height_limit
-	stream.stream_time=stream_time
+	stream.get_child(2).height_limit=height_limit
+	stream.get_child(2).stream_time=stream_time
 	add_child(stream)
 		
 	wait_time=randf_range(0,max_wait_time)
