@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/DungeonGenerator.gd" id="1_cu61f"]
 [ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="2_jx0a1"]
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="2_kx86g"]
-[ext_resource type="Resource" uid="uid://c5y7hlybg85ek" path="res://scenes/Generacion Procedural/scripts/caverna.tres" id="3_7iigb"]
+[ext_resource type="Resource" path="res://scenes/Generacion Procedural/scripts/caverna.tres" id="3_7iigb"]
 [ext_resource type="Resource" uid="uid://c8wiww83y365b" path="res://scenes/Generacion Procedural/scripts/alcantarilla.tres" id="4_u08jo"]
 
 [node name="Mazmorra" type="Node2D" unique_id=936655814]
