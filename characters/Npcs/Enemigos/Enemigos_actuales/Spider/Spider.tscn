@@ -18,6 +18,7 @@ script = ExtResource("1_o66k8")
 projectile_scene = ExtResource("2_c3xrp")
 detection_range = 0.0
 speed = 60
+activate_Gravity = false
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1089262913]
 position = Vector2(0, -2.3841858e-07)

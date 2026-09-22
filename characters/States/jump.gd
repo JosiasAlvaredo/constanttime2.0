@@ -2,8 +2,12 @@ extends State_base
 var direction
 
 func start():
+	if controlled_node is Player:
+		if controlled_node.current_torso!=null:
+			controlled_node.current_torso.play("jump")
+		
 	controlled_node.can_jump=false
-
+	
 	if controlled_node.velocity.y==0:
 		controlled_node.velocity.y=controlled_node.Jump_stength
 

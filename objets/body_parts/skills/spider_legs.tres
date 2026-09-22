@@ -4,14 +4,14 @@
 
 [resource]
 script = ExtResource("1_524nb")
-_name = "spider_legs"
-spanish_name = "Patas de araña"
-max_durability = 25
-durability = 25
 speed = 300
 jump_force = -250
-description = "Permiten desplazarse por superficies y trepar paredes."
-number_kinds = Array[int]([3])
 size = 2
 number_habilities = Array[int]([0])
+_name = "spider_legs"
+spanish_name = "Patas de araña"
+description = "Permiten desplazarse por superficies y trepar paredes."
+max_durability = 25
+durability = 25
+number_kinds = Array[int]([3])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

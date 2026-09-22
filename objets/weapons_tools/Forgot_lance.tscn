@@ -36,6 +36,7 @@ animations = [{
 [node name="Forgot_lance" type="Node2D" unique_id=274988526]
 script = ExtResource("1_1clru")
 _name = "Forgot_lance"
+origin = "items"
 
 [node name="Mele_front" type="Area2D" parent="." unique_id=1595088100]
 collision_layer = 32

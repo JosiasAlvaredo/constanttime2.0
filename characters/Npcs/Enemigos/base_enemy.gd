@@ -3,7 +3,8 @@ class_name enemy_base
 
 @export var number_effects: Array[GlobalValues.Effects] = []
 
-#@export var number_effects: Array[Scene] = []
+@export var nro_drops=1
+@export var drops: Array[PackedScene] = []
 
 @onready var state_machine: State_Machine = $State_Machine
 
@@ -31,7 +32,7 @@ func _process(delta: float) -> void:
 
 func enemy_damage(weapond):
 	var enemy=weapond.player
-
+	print(weapond.skills.damage)
 	last_direction=direction
 	direction=0
 	recoil=weapond.skills.knockback*Knockback_resistence
@@ -61,6 +62,13 @@ func suffer_damage(_damage):
 			dead()
 
 func dead():
+	
+	for drop in drops:
+		var new_drop=drop.instantiate()
+		new_drop.position=position+Vector2(randf_range(-10,10),randf_range(0,10))
+		
+		for i in range(nro_drops):
+			get_parent().add_child(new_drop)
 	queue_free()
 	
 func damage_efect():

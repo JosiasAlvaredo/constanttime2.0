@@ -2,14 +2,62 @@
 
 [ext_resource type="Script" uid="uid://c7aed8eiu73sv" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/explosive_es.gd" id="1_jn6cw"]
 [ext_resource type="Texture2D" uid="uid://dyod3p0ftq55f" path="res://assets/characters/enemies/esqueleto explosivo.png" id="2_gsqr8"]
+[ext_resource type="PackedScene" uid="uid://chm0tlaxhm01j" path="res://objets/items/fire_scroll.tscn" id="2_sngqd"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_o5d0m"]
 [ext_resource type="Script" uid="uid://cmwesc62wb7x1" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/patrol(explo_esqueleton).gd" id="4_mx7ti"]
-[ext_resource type="Script" uid="uid://o7ng2dwabjmi" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/chase(explo_squeleton).gd" id="5_mx7ti"]
 [ext_resource type="Script" uid="uid://dgugp6r5400l7" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/States/explode(explo_squeleton).gd" id="6_gsqr8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sngqd"]
 atlas = ExtResource("2_gsqr8")
 region = Rect2(0, 0, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp1c3"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(285, 0, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63khu"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(570, 0, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17f4"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(855, 0, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnjbo"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(0, 270, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o534i"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(285, 270, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rod46"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(570, 270, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6s0y"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(855, 270, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_divmc"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(0, 540, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrivt"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(285, 540, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkqxq"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(570, 540, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doeum"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(855, 540, 285, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xewgk"]
+atlas = ExtResource("2_gsqr8")
+region = Rect2(0, 810, 285, 270)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wp1c3"]
 animations = [{
@@ -20,19 +68,106 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp1c3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63khu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnjbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o534i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rod46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6s0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_divmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrivt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkqxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doeum")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xewgk")
+}],
+"loop": true,
+"name": &"explote",
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5d0m"]
 size = Vector2(57, 56)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sngqd"]
+radius = 17.029387
+
+[sub_resource type="Animation" id="Animation_of010"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2.842171e-14, 1.7881393e-07)]
+}
+
+[sub_resource type="Animation" id="Animation_hj0p7"]
+resource_name = "move"
+length = 1.4666667
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2.842171e-14, 1.7881393e-07), Vector2(0, -4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h7s38"]
+_data = {
+&"RESET": SubResource("Animation_of010"),
+&"move": SubResource("Animation_hj0p7")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=638024466]
 collision_layer = 128
 script = ExtResource("1_jn6cw")
+number_effects = Array[int]([0])
+drops = Array[PackedScene]([ExtResource("2_sngqd")])
+speed = 150
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=290327541]
 position = Vector2(-2.842171e-14, 1.7881393e-07)
 scale = Vector2(-0.19681355, 0.2202169)
 sprite_frames = SubResource("SpriteFrames_wp1c3")
+animation = &"explote"
+frame_progress = 0.67052704
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1528252697]
 position = Vector2(-0.5, 1)
@@ -43,11 +178,6 @@ shape = SubResource("RectangleShape2D_o5d0m")
 [node name="FrontRay" type="RayCast2D" parent="RayCasts" unique_id=763930651]
 target_position = Vector2(48, 0)
 
-[node name="PlayerRay" type="RayCast2D" parent="RayCasts" unique_id=1356391452]
-position = Vector2(-1, 25)
-target_position = Vector2(254, 0)
-collision_mask = 2
-
 [node name="FloorRay" type="RayCast2D" parent="RayCasts" unique_id=1458575140]
 position = Vector2(58, -1)
 
@@ -57,8 +187,30 @@ default_state = NodePath("Patrol(exploSqueleton)")
 [node name="Patrol(exploSqueleton)" type="Node" parent="State_Machine" unique_id=422228116]
 script = ExtResource("4_mx7ti")
 
-[node name="Chase(exploSqueleton)" type="Node" parent="State_Machine" unique_id=214762295]
-script = ExtResource("5_mx7ti")
-
 [node name="Explode(exploSqueleton)" type="Node" parent="State_Machine" unique_id=796420121]
 script = ExtResource("6_gsqr8")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1777611228]
+position = Vector2(1, 4)
+scale = Vector2(0.7424614, 0.74102)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=974519105]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_sngqd")
+
+[node name="Explote_area" type="Area2D" parent="." unique_id=1061235100]
+position = Vector2(1, 4)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explote_area" unique_id=12361811]
+position = Vector2(-1, 2)
+shape = SubResource("CircleShape2D_sngqd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1239328727]
+libraries/ = SubResource("AnimationLibrary_h7s38")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Explote_area" to="." method="_on_explote_area_area_entered"]

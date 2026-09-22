@@ -1,7 +1,46 @@
-[gd_scene format=3 uid="uid://bcsw7fvv1enqq"]
+[gd_scene format=3 uid="uid://3e4sk2we88j0"]
 
 [ext_resource type="Script" uid="uid://c81kgrvm7dic4" path="res://characters/player/Body_parts/legs/legs.gd" id="1_nm75l"]
-[ext_resource type="Texture2D" uid="uid://oko1txt8sr2q" path="res://assets/characters/Player/arms/stick.png" id="2_jmvyv"]
+[ext_resource type="Texture2D" uid="uid://dmli2a1ly47fr" path="res://assets/characters/Player/legs/spider.png" id="2_nm75l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmvyv"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(0, 0, 50, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pb17"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(0, 0, 50, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt1en"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(0, 0, 50, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nh4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmvyv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pb17")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt1en")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mut7r"]
 radius = 1.4142135
@@ -9,21 +48,14 @@ radius = 1.4142135
 [node name="StickLegs" type="Node2D" unique_id=552661092]
 script = ExtResource("1_nm75l")
 
-[node name="Stick" type="Sprite2D" parent="." unique_id=1698048193]
-modulate = Color(4.7168137e-06, 0.60204554, 0.8300303, 1)
-position = Vector2(3, 10)
-rotation = -3.1415925
-texture = ExtResource("2_jmvyv")
-flip_h = true
-
-[node name="Stick2" type="Sprite2D" parent="." unique_id=828325264]
-modulate = Color(4.7168137e-06, 0.60204554, 0.8300303, 1)
-position = Vector2(-4, 10)
-rotation = -3.1415925
-texture = ExtResource("2_jmvyv")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2037907313]
+position = Vector2(-8.000001, 3)
+scale = Vector2(-0.63693213, 0.57908666)
+sprite_frames = SubResource("SpriteFrames_4nh4o")
+animation = &"move"
 
 [node name="foot_position" type="Node2D" parent="." unique_id=119149150]
-position = Vector2(0, 18)
+position = Vector2(0, 13)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="foot_position" unique_id=1165104098]
 shape = SubResource("CircleShape2D_mut7r")

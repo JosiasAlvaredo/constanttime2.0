@@ -1,21 +1,13 @@
-extends Resource
+extends Weapons
 class_name body_part
 
-@export var _name=""
 
-@export var spanish_name=""
-
-@export var max_durability=0
-@export var durability=0
 @export var speed=0
 @export var jump_force=0
-@export var damage=0
-@export var description=""
+
 #es el porcentaje de daño q se lleva esta parte (por ahora solo funciona para el torso)
 @export var shockwave=0
 
-@export var number_kinds: Array[GlobalValues.BodyParts] = [GlobalValues.BodyParts.right_hand, GlobalValues.BodyParts.left_hand]
-var kind=[]
 
 @export var can_take=false
 

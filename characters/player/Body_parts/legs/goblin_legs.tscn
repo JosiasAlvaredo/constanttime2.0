@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://yonn1j4rq84d"]
+
+[ext_resource type="Script" uid="uid://c81kgrvm7dic4" path="res://characters/player/Body_parts/legs/legs.gd" id="1_7crio"]
+[ext_resource type="Texture2D" uid="uid://c008b5o0q7bhe" path="res://assets/characters/Player/legs/goblin.png" id="2_7crio"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfm3a"]
+atlas = ExtResource("2_7crio")
+region = Rect2(0, 0, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqeu3"]
+atlas = ExtResource("2_7crio")
+region = Rect2(0, 240, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_704mr"]
+atlas = ExtResource("2_7crio")
+region = Rect2(90, 0, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcktb"]
+atlas = ExtResource("2_7crio")
+region = Rect2(180, 0, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdlry"]
+atlas = ExtResource("2_7crio")
+region = Rect2(0, 0, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76amk"]
+atlas = ExtResource("2_7crio")
+region = Rect2(180, 120, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhixq"]
+atlas = ExtResource("2_7crio")
+region = Rect2(0, 240, 90, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nh4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfm3a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqeu3")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_704mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcktb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_704mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdlry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76amk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhixq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76amk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdlry")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mut7r"]
+radius = 1.4142135
+
+[node name="StickLegs" type="Node2D" unique_id=552661092]
+script = ExtResource("1_7crio")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2037907313]
+position = Vector2(-4.0000005, -7.0000005)
+scale = Vector2(-0.63693213, 0.57908666)
+sprite_frames = SubResource("SpriteFrames_4nh4o")
+animation = &"move"
+autoplay = "default"
+frame_progress = 0.7609982
+
+[node name="foot_position" type="Node2D" parent="." unique_id=119149150]
+position = Vector2(-1, 23)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="foot_position" unique_id=1165104098]
+shape = SubResource("CircleShape2D_mut7r")
+debug_color = Color(0.9956085, 0, 0.21029541, 0.41960785)

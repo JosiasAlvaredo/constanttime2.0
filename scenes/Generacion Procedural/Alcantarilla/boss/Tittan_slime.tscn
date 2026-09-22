@@ -11,11 +11,59 @@
 [ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="10_8kat6"]
 [ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="11_6586s"]
 [ext_resource type="PackedScene" uid="uid://cqhbw1m88idtf" path="res://objets/Map/save_point.tscn" id="12_6586s"]
+[ext_resource type="Texture2D" uid="uid://cf8o5rkwdnfc1" path="res://assets/characters/enemies/Slime.png" id="13_8mrsq"]
+[ext_resource type="Script" uid="uid://bedn6eqelgkcg" path="res://scenes/Generacion Procedural/Alcantarilla/boss/slime_boss.gd" id="13_16htg"]
 [ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="13_w61f1"]
+[ext_resource type="Texture2D" uid="uid://co05y8pjc8tyf" path="res://assets/characters/Bosses/slime_boss/core.webp" id="14_16htg"]
 [ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="14_dxveu"]
+[ext_resource type="Texture2D" uid="uid://csmswqluy5sch" path="res://assets/tilws/alcantarilla/stock-vector-the-set-of-damaged-pipes-pixel-art-vector-1088674490.png" id="15_x4ccs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kupbu"]
 size = Vector2(927, 510)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcmc6"]
+atlas = ExtResource("13_8mrsq")
+region = Rect2(0, 120, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2ppf"]
+atlas = ExtResource("13_8mrsq")
+region = Rect2(160, 120, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r0oi"]
+atlas = ExtResource("13_8mrsq")
+region = Rect2(320, 120, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alw0m"]
+atlas = ExtResource("13_8mrsq")
+region = Rect2(0, 0, 160, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44xly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcmc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2ppf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5r0oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2ppf")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alw0m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Slime_boss" type="Node2D" unique_id=943335602]
 position = Vector2(3, -1)
@@ -44,43 +92,6 @@ position = Vector2(-12, 242)
 
 [node name="SocketRight" type="Marker2D" parent="." unique_id=1183475517]
 position = Vector2(916, 242)
-
-[node name="Geiser2" parent="." unique_id=863601631 instance=ExtResource("2_3ewjs")]
-position = Vector2(481, 264)
-scale = Vector2(3.0868597, 0.68226814)
-max_wait_time = 10.0
-height_limit = 150
-stream_time = 4
-
-[node name="Geiser4" parent="." unique_id=804250531 instance=ExtResource("2_3ewjs")]
-position = Vector2(88, 138)
-rotation = 1.8325958
-scale = Vector2(0.94024605, 1.0917362)
-max_wait_time = 50.0
-height_limit = 500
-stream_time = 2
-
-[node name="Geiser5" parent="." unique_id=2000728917 instance=ExtResource("2_3ewjs")]
-position = Vector2(192.00002, 360)
-scale = Vector2(3.0868597, 0.68226814)
-max_wait_time = 5.0
-height_limit = 50
-stream_time = 1
-
-[node name="Geiser6" parent="." unique_id=1620012252 instance=ExtResource("2_3ewjs")]
-position = Vector2(674.00006, 296)
-scale = Vector2(3.0868597, 0.68226814)
-max_wait_time = 15.0
-height_limit = 100
-stream_time = 2
-
-[node name="Geiser3" parent="." unique_id=282810827 instance=ExtResource("2_3ewjs")]
-position = Vector2(708.00006, 84.00001)
-rotation = -1.820734
-scale = Vector2(0.9870808, 0.675984)
-max_wait_time = 30.0
-height_limit = 600
-stream_time = 2
 
 [node name="Bounds" type="Area2D" parent="." unique_id=1546742542]
 visible = false
@@ -127,3 +138,103 @@ scale = Vector2(6.437009, 0.35644174)
 [node name="BadWater2" parent="." unique_id=1187660534 instance=ExtResource("2_w61f1")]
 position = Vector2(84, 349)
 scale = Vector2(6.437009, 0.35644174)
+
+[node name="boss" type="CharacterBody2D" parent="." unique_id=1158006524]
+script = ExtResource("13_16htg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss" unique_id=758221845]
+position = Vector2(450, 151)
+
+[node name="Node2D" type="Node2D" parent="boss" unique_id=1607933473]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="boss/Node2D" unique_id=738619124]
+position = Vector2(297, 62.000008)
+rotation = -3.1413724
+scale = Vector2(1.6453941, 0.7110438)
+sprite_frames = SubResource("SpriteFrames_44xly")
+autoplay = "default"
+frame_progress = 0.50023574
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="boss/Node2D" unique_id=884710115]
+position = Vector2(565, 67.00001)
+rotation = -3.1413724
+scale = Vector2(1.6453941, 0.7110438)
+sprite_frames = SubResource("SpriteFrames_44xly")
+autoplay = "default"
+frame_progress = 0.50023574
+
+[node name="StockVectorTheSetOfDamagedPipesPixelArtVector1088674490" type="Sprite2D" parent="boss/Node2D" unique_id=986067724]
+modulate = Color(0.23529412, 0.4392157, 0.06666667, 1)
+position = Vector2(715.00006, 79.999985)
+rotation = -1.8203784
+scale = Vector2(3.179674, 1.8869418)
+texture = ExtResource("15_x4ccs")
+
+[node name="StockVectorTheSetOfDamagedPipesPixelArtVector1088674491" type="Sprite2D" parent="boss/Node2D" unique_id=979182327]
+modulate = Color(0.23529412, 0.4392157, 0.06666667, 1)
+position = Vector2(78, 135)
+rotation = 1.8325957
+scale = Vector2(3.1796741, 1.8869419)
+texture = ExtResource("15_x4ccs")
+
+[node name="Geiser2" parent="boss/Node2D" unique_id=863601631 instance=ExtResource("2_3ewjs")]
+position = Vector2(481, 264)
+scale = Vector2(3.0868597, 0.68226814)
+max_wait_time = 10.0
+height_limit = 150
+stream_time = 4
+
+[node name="Geiser4" parent="boss/Node2D" unique_id=804250531 instance=ExtResource("2_3ewjs")]
+position = Vector2(88, 138)
+rotation = 1.8325958
+scale = Vector2(0.9402461, 1.0917362)
+max_wait_time = 50.0
+height_limit = 500
+stream_time = 2
+
+[node name="Geiser5" parent="boss/Node2D" unique_id=2000728917 instance=ExtResource("2_3ewjs")]
+position = Vector2(192.00002, 360)
+scale = Vector2(3.0868597, 0.68226814)
+max_wait_time = 5.0
+height_limit = 50
+stream_time = 1
+
+[node name="Geiser6" parent="boss/Node2D" unique_id=1620012252 instance=ExtResource("2_3ewjs")]
+position = Vector2(674.00006, 296)
+scale = Vector2(3.0868597, 0.68226814)
+max_wait_time = 15.0
+height_limit = 100
+stream_time = 2
+
+[node name="Geiser3" parent="boss/Node2D" unique_id=282810827 instance=ExtResource("2_3ewjs")]
+position = Vector2(708.00006, 84.00001)
+rotation = -1.820734
+scale = Vector2(0.9870808, 0.6759841)
+max_wait_time = 30.0
+height_limit = 600
+stream_time = 2
+
+[node name="core" type="Node2D" parent="boss" unique_id=616860809]
+
+[node name="core_back" type="AnimatedSprite2D" parent="boss/core" unique_id=1452311690]
+position = Vector2(431, 116)
+rotation = -3.12114
+scale = Vector2(1.8841078, 1.6722481)
+sprite_frames = SubResource("SpriteFrames_44xly")
+autoplay = "default"
+frame_progress = 0.039452937
+
+[node name="core_gem" type="Sprite2D" parent="boss/core" unique_id=85711122]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(441, 121.999985)
+scale = Vector2(0.19428574, 0.19428572)
+texture = ExtResource("14_16htg")
+
+[node name="core_front" type="AnimatedSprite2D" parent="boss/core" unique_id=830972955]
+modulate = Color(1, 1, 1, 0.4627451)
+position = Vector2(431, 116)
+rotation = -3.12114
+scale = Vector2(1.8841078, 1.6722481)
+sprite_frames = SubResource("SpriteFrames_44xly")
+autoplay = "default"
+frame_progress = 0.8970079

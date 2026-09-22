@@ -12,7 +12,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.1).timeout
 	if skills==null:
 		skills=load("res://objets/%s/skills/%s.tres" %  [origin,_name]).duplicate()
-
+		
 	
 
 	for nro in skills.number_kinds:

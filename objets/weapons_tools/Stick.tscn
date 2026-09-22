@@ -35,6 +35,7 @@ animations = [{
 
 [node name="Stick" type="Node2D" unique_id=274988526]
 script = ExtResource("1_vmc3n")
+origin = "items"
 
 [node name="Mele_front" type="Area2D" parent="." unique_id=1595088100]
 collision_layer = 32

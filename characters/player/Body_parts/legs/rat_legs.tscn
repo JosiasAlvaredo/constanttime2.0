@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bcsw7fvv1enqq"]
+
+[ext_resource type="Script" uid="uid://c81kgrvm7dic4" path="res://characters/player/Body_parts/legs/legs.gd" id="1_nm75l"]
+[ext_resource type="Texture2D" uid="uid://bgu8661pxoki5" path="res://assets/characters/Player/legs/rata.png" id="2_nm75l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmvyv"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(156, 85, 78, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pb17"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(156, 0, 78, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt1en"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(0, 170, 78, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nh4o"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(0, 0, 78, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwng0"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(156, 0, 78, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86wuj"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(0, 85, 78, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffq6d"]
+atlas = ExtResource("2_nm75l")
+region = Rect2(156, 85, 78, 85)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4nh4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmvyv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pb17")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt1en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nh4o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwng0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86wuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffq6d")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mut7r"]
+radius = 1.4142135
+
+[node name="rat_legs" type="Node2D" unique_id=552661092]
+script = ExtResource("1_nm75l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2037907313]
+position = Vector2(-5, 3)
+scale = Vector2(0.45734498, 0.60942584)
+sprite_frames = SubResource("SpriteFrames_4nh4o")
+animation = &"move"
+frame_progress = 0.92487526
+
+[node name="foot_position" type="Node2D" parent="." unique_id=119149150]
+position = Vector2(0, 18)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="foot_position" unique_id=1165104098]
+shape = SubResource("CircleShape2D_mut7r")
+debug_color = Color(0.9956085, 0, 0.21029541, 0.41960785)

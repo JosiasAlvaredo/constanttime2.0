@@ -1,11 +1,71 @@
 [gd_scene format=3 uid="uid://cgfpcfjo80wxi"]
 
 [ext_resource type="Script" uid="uid://bjck7xbn8yj40" path="res://objets/weapons_tools/bullets/fire_ball.gd" id="1_5qscw"]
+[ext_resource type="Texture2D" uid="uid://b2gp10ut0cafd" path="res://assets/effets/fire_ball.png" id="2_8qsq2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mofjp"]
+atlas = ExtResource("2_8qsq2")
+region = Rect2(0, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbict"]
+atlas = ExtResource("2_8qsq2")
+region = Rect2(150, 0, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya5mg"]
+atlas = ExtResource("2_8qsq2")
+region = Rect2(0, 100, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xapj"]
+atlas = ExtResource("2_8qsq2")
+region = Rect2(150, 100, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ff8u"]
+atlas = ExtResource("2_8qsq2")
+region = Rect2(0, 200, 50, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks4wd"]
+atlas = ExtResource("2_8qsq2")
+region = Rect2(150, 200, 50, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rr2p6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mofjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbict")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya5mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xapj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ff8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks4wd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kiwv"]
 
 [node name="FireBall" type="CharacterBody2D" unique_id=2129713359]
 script = ExtResource("1_5qscw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1748227329]
+modulate = Color(1, 0.11372549, 0, 1)
+position = Vector2(-15.000004, -6.0000005)
+rotation = -1.572309
+scale = Vector2(0.91725254, -1.0405288)
+sprite_frames = SubResource("SpriteFrames_rr2p6")
+autoplay = "default"
+frame_progress = 0.62361586
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1684895241]
 collision_layer = 32
@@ -13,13 +73,6 @@ collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1916072452]
 shape = SubResource("CircleShape2D_3kiwv")
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=603746962]
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 9.0
-offset_bottom = 9.0
-color = Color(1, 0, 0, 1)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -17,6 +17,8 @@ func _ready() -> void:
 	parent=get_parent()
 	
 	await  get_tree().create_timer(0.01).timeout
+	
+
 	if parent.selected_body_part==null:
 		parent.selected_body_part=self
 		can_drop=false
@@ -34,7 +36,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	global_position=get_global_mouse_position()
 	if (Input.is_action_just_pressed("Left_hand") and not parent.mouse_on_a_slot and can_drop) or Input.is_action_just_pressed("Inventory"):
-		grid_item.visible=true
+		if not grid_item == null:
+			grid_item.visible=true
 		parent.selected_body_part=null
 		queue_free()
 

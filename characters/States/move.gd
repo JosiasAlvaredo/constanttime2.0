@@ -1,6 +1,11 @@
 extends State_base
 var direction
 
+func start():
+	if controlled_node is Player:
+		if controlled_node.current_torso!=null:
+			controlled_node.current_torso.play("move")
+
 func on_physics_process(delta: float) -> void:
 	
 	direction=controlled_node.direction
