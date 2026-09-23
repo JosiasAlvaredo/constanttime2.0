@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://cglawvx2o6lpl"]
 
 [ext_resource type="Script" uid="uid://cfu26a66veyk2" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Rafaga/proyectil_dragon.gd" id="1_cnh6u"]
+[ext_resource type="Texture2D" uid="uid://c2ot04jlaoxyi" path="res://assets/characters/Bosses/Dragon/proyectile.png" id="2_oyojy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_53clc"]
-radius = 32.695564
+radius = 25.0
 
 [node name="Proyectil_Dragon" type="CharacterBody2D" unique_id=2120627038]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_cnh6u")
+max_distance = 1000.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=547547181]
 collision_layer = 4
@@ -17,3 +19,10 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=672811736]
 shape = SubResource("CircleShape2D_53clc")
 debug_color = Color(0.9982018, 0, 0.1590724, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1993672510]
+position = Vector2(2, 4.000001)
+scale = Vector2(1.5263158, 1.4302325)
+texture = ExtResource("2_oyojy")
+region_enabled = true
+region_rect = Rect2(51.333374, 9, 38.666656, 43.333344)

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_3vova"]
 [ext_resource type="Texture2D" uid="uid://bp2fx0ei1p4il" path="res://assets/characters/Bosses/Dragon/output-onlinepngtools (17).png" id="3_62ipe"]
 [ext_resource type="Script" uid="uid://dw1v3oemehmhr" path="res://characters/Npcs/Bosses/Dragon/States/Idle.gd" id="4_8kn4j"]
-[ext_resource type="Texture2D" uid="uid://1ulbontlk3mc" path="res://assets/characters/Bosses/Dragon/dragon estructura de lado.png" id="4_rygdo"]
+[ext_resource type="Texture2D" uid="uid://74vpx0xebr3f" path="res://assets/characters/Bosses/Dragon/dragon final lado-1.png.png" id="4_62ipe"]
 [ext_resource type="Script" uid="uid://bxvk4iffjst25" path="res://characters/Npcs/Bosses/Dragon/States/shoot.gd" id="5_t5fu6"]
 [ext_resource type="PackedScene" uid="uid://cglawvx2o6lpl" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Rafaga/proyectil_dragon.tscn" id="6_c3s44"]
 [ext_resource type="Script" uid="uid://cbyyefsnd7326" path="res://characters/Npcs/Bosses/Dragon/States/flame.gd" id="7_3vova"]
@@ -110,7 +110,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.96666664, 5.9666667, 6.9333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-15, -631), Vector2(-4, -19), Vector2(-4, -19), Vector2(-15, -631)]
+"values": [Vector2(-15, -800), Vector2(-4, -19), Vector2(-4, -19), Vector2(-15, -800)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -166,7 +166,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.64, 6.4333334, 6.9666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-916, -18.999992), Vector2(-723, -15.999992), Vector2(-723, -15.999992), Vector2(-916, -18.999992)]
+"values": [Vector2(-1000, -19), Vector2(-723, -15.999992), Vector2(-723, -15.999992), Vector2(-1000, -19)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -241,7 +241,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-916, -18.999992)]
+"values": [Vector2(-992, -30.999992)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -380,7 +380,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.4333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-4, -19), Vector2(-29, -719)]
+"values": [Vector2(-4, -19), Vector2(-29, -800)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nak5m"]
@@ -409,7 +409,7 @@ live = 250
 position = Vector2(-4, -19)
 rotation = 3.1415927
 
-[node name="Sprite2D" type="Sprite2D" parent="CuerpoFase1" unique_id=533131448]
+[node name="Alas" type="Sprite2D" parent="CuerpoFase1" unique_id=533131448]
 position = Vector2(-19.999996, 54)
 rotation = -3.1415925
 texture = ExtResource("3_62ipe")
@@ -492,11 +492,12 @@ region_rect = Rect2(28.146301, 60.318325, 291.01526, 364.52768)
 
 [node name="Derecha" type="Sprite2D" parent="CuerpoFase2" unique_id=1952399550]
 position = Vector2(733, -31.999992)
-scale = Vector2(0.7495833, 0.7575001)
-texture = ExtResource("4_rygdo")
+scale = Vector2(1.8709118, 1.8244402)
+texture = ExtResource("4_62ipe")
 
 [node name="Area2D" type="Area2D" parent="CuerpoFase2/Derecha" unique_id=571536778]
-position = Vector2(-272.15118, -104.29041)
+position = Vector2(-126.14166, -28.501892)
+scale = Vector2(0.40065134, 0.4151959)
 collision_layer = 128
 collision_mask = 32
 
@@ -507,11 +508,12 @@ shape = SubResource("CapsuleShape2D_rygdo")
 
 [node name="Izquierda" type="Sprite2D" parent="CuerpoFase2" unique_id=1256469560]
 position = Vector2(-723, -15.999992)
-scale = Vector2(-0.75, 0.758)
-texture = ExtResource("4_rygdo")
+scale = Vector2(-1.7992783, 1.7806755)
+texture = ExtResource("4_62ipe")
 
 [node name="Area2D" type="Area2D" parent="CuerpoFase2/Izquierda" unique_id=88105814]
-position = Vector2(-341.3333, -180.73877)
+position = Vector2(-152.83905, -59.52797)
+scale = Vector2(0.4168338, 0.42568114)
 collision_layer = 128
 collision_mask = 32
 
