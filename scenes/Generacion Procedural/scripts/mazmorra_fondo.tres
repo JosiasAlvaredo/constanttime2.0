@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cvly0sl7nb260"]
+
+[ext_resource type="Texture2D" uid="uid://dxq656fn76h6i" path="res://assets/mazmorra.png" id="1_thgjr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nuaau"]
+texture = ExtResource("1_thgjr")
+texture_region_size = Vector2i(32, 32)
+3:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_nuaau")

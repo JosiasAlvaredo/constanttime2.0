@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dodqhuppv2s3b"]
+[gd_scene load_steps=7 format=3 uid="uid://dodqhuppv2s3b"]
 
 [ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/DungeonGenerator.gd" id="1_cu61f"]
 [ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="2_jx0a1"]
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="2_kx86g"]
-[ext_resource type="Resource" uid="uid://c8wiww83y365b" path="res://scenes/Generacion Procedural/scripts/alcantarilla.tres" id="4_u08jo"]
+[ext_resource type="Resource" uid="uid://c8fjrgmsekdkj" path="res://scenes/Generacion Procedural/scripts/mazmorra.tres" id="3_bomrq"]
+[ext_resource type="Script" uid="uid://bxcuhnfwcvwsi" path="res://scenes/Generacion Procedural/dungeon_background.gd" id="5_5uiyj"]
+
+[sub_resource type="TileSet" id="TileSet_u08jo"]
 
 [node name="Mazmorra" type="Node2D" unique_id=936655814]
 script = ExtResource("1_cu61f")
-levels = Array[ExtResource("2_kx86g")]([ExtResource("4_u08jo")])
+levels = Array[ExtResource("2_kx86g")]([ExtResource("3_bomrq")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1118151226]
+visible = false
 offset_left = -33.0
 offset_top = -33.0
 offset_right = 9.430534
@@ -20,6 +24,10 @@ color = Color(0, 0, 0, 0)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1448851936]
 
 [node name="Dungeon" type="Node2D" parent="." unique_id=921618824]
+
+[node name="Background" type="TileMapLayer" parent="." unique_id=371138860]
+tile_set = SubResource("TileSet_u08jo")
+script = ExtResource("5_5uiyj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624347463]
 self_modulate = Color(1, 1, 1, 0)

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cxvahsblhhpye"]
+[gd_scene load_steps=4 format=3 uid="uid://cxvahsblhhpye"]
 
 [ext_resource type="Script" uid="uid://bs0wn4j4aorwo" path="res://scenes/Generacion Procedural/scripts/EnemySpawner2D.gd" id="1_fxa3o"]
 [ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="2_m37q1"]
