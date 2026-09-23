@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dpckbqm32fc4o"]
+[gd_scene load_steps=0 format=3 uid="uid://dpckbqm32fc4o"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_rqaav"]
 [ext_resource type="Texture2D" uid="uid://c6urov235vq80" path="res://assets/items/Weapons/New_sword.png" id="2_rqaav"]

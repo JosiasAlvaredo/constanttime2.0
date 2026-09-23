@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b413u5o5smt7g"]
+[gd_scene load_steps=0 format=3 uid="uid://b413u5o5smt7g"]
 
 [ext_resource type="Script" uid="uid://6e3gqrji1cfh" path="res://objets/weapons_tools/scripts/stick.gd" id="1_eu2h0"]
 [ext_resource type="Texture2D" uid="uid://by0ycskrweplk" path="res://assets/effets/attack_mele.png" id="2_g8fd1"]

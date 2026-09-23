@@ -1,17 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://vk1bfs3s17ao"]
+[gd_scene load_steps=3 format=3 uid="uid://d0wjls4bucaau"]
 
-[ext_resource type="Script" uid="uid://d03bag7r6kcco" path="res://objets/Map/Sewer/Scripts/bad_water.gd" id="1_0w36j"]
+[ext_resource type="Script" uid="uid://d03bag7r6kcco" path="res://objets/Map/Sewer/Scripts/bad_water.gd" id="1_3ulu5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esx7l"]
 size = Vector2(40, 40)
 
-[node name="BadWater" type="CharacterBody2D" unique_id=1592752810]
+[node name="Water" type="CharacterBody2D" unique_id=1592752810]
 show_behind_parent = true
 z_index = 10
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_0w36j")
-number_effects = Array[int]([2])
+script = ExtResource("1_3ulu5")
+number_effects = Array[int]([1])
 live = 223372036854776000
 Jump_stength = 0
 speed = 0
@@ -22,9 +22,10 @@ solid = false
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1114959792]
 modulate = Color(1, 1, 1, 0.54901963)
+z_index = 5
 offset_right = 40.0
 offset_bottom = 40.0
-color = Color(0, 0.36862746, 0, 1)
+color = Color(0.1429613, 0.44498867, 0.7325983, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1081836959]
 collision_layer = 4

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://84svjuaeha70"]
+[gd_scene load_steps=24 format=4 uid="uid://84svjuaeha70"]
 
 [ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Mazmorra/start/start_room_01.gd" id="1_nhs0j"]
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="2_kuocb"]
@@ -21,11 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="19_iapuq"]
 [ext_resource type="PackedScene" uid="uid://1vlvoemgu10w" path="res://characters/player/Body_parts/arms/mr_arm.tscn" id="20_iapuq"]
 [ext_resource type="PackedScene" uid="uid://d1lfb3qg6n56f" path="res://objets/body_parts/mr_arm.tscn" id="21_c7xcu"]
-[ext_resource type="PackedScene" uid="uid://dbss78mocjgjh" path="res://objets/body_parts/mr_torso.tscn" id="22_vxhys"]
-[ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="23_v48yy"]
-[ext_resource type="PackedScene" uid="uid://dv63oqe8t1dw0" path="res://characters/Npcs/Enemigos/Enemigos_actuales/ExplosiveSkeleton/ExplosiveEs.tscn" id="24_045mi"]
-[ext_resource type="PackedScene" uid="uid://oo75whoaybfo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/Goblin_1.tscn" id="25_tnanx"]
-[ext_resource type="PackedScene" uid="uid://2y2k8obqg0hs" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/Goblin_2.tscn" id="26_nka4c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(818, 135)
@@ -50,7 +45,6 @@ position = Vector2(-12, 322)
 tile_map_data = PackedByteArray("AAD9//3/AAADAAAAAAD+//3/AAADAAQAAAD///3/AAADAAQAAAAAAP3/AAADAAQAAAABAP3/AAADAAQAAAACAP3/AAADAAQAAAADAP3/AAADAAQAAAAEAP3/AAADAAQAAAAFAP3/AAADAAQAAAAGAP3/AAADAAQAAAAHAP3/AAADAAQAAAAIAP3/AAADAAQAAAAJAP3/AAADAAQAAAAKAP3/AAADAAQAAAALAP3/AAADAAQAAAAMAP3/AAADAAQAAAANAP3/AAADAAQAAAAOAP3/AAADAAQAAAAPAP3/AAADAAQAAAAQAP3/AAADAAQAAAARAP3/AAADAAQAAAASAP3/AAADAAQAAAATAP3/AAADAAQAAAAUAP3/AAADAAQAAAAVAP3/AAADAAQAAAAWAP3/AAADAAAAAAAWAPn/AAADAAIAAAD9//n/AAADAAIAAAD+//n/AAAHAAYAAAD///n/AAAHAAYAAAAAAPn/AAAHAAYAAAABAPn/AAAHAAYAAAACAPn/AAAHAAYAAAADAPn/AAAHAAYAAAAEAPn/AAAHAAYAAAAFAPn/AAAHAAYAAAAGAPn/AAAHAAYAAAAHAPn/AAAHAAYAAAAIAPn/AAAHAAYAAAAJAPn/AAAHAAYAAAAKAPn/AAAHAAYAAAALAPn/AAAHAAYAAAAMAPn/AAAHAAYAAAANAPn/AAAHAAYAAAAOAPn/AAAHAAYAAAAPAPn/AAAHAAYAAAAQAPn/AAAHAAYAAAARAPn/AAAHAAYAAAASAPn/AAAHAAYAAAATAPn/AAAHAAYAAAAUAPn/AAAHAAYAAAAVAPn/AAAHAAYAAAABAPv/AAAKAAIAAAANAPv/AAAKAAIAAAA=")
 
 [node name="Bounds" type="Area2D" parent="." unique_id=348332757]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1304408014]
 position = Vector2(311, 180)
@@ -119,7 +113,7 @@ position = Vector2(-29, 212)
 position = Vector2(-44, 208)
 
 [node name="Señor" parent="." unique_id=193873761 instance=ExtResource("19_iapuq")]
-position = Vector2(401, -24)
+position = Vector2(83, 186)
 drops = Array[PackedScene]([ExtResource("20_iapuq")])
 
 [node name="mr_arm2" parent="." unique_id=1362311282 instance=ExtResource("21_c7xcu")]
@@ -127,20 +121,5 @@ position = Vector2(0, 195)
 
 [node name="mr_arm3" parent="." unique_id=186490083 instance=ExtResource("21_c7xcu")]
 position = Vector2(0, 195)
-
-[node name="mr_torso" parent="." unique_id=2017159127 instance=ExtResource("22_vxhys")]
-position = Vector2(-14, 195)
-
-[node name="BigSlime" parent="." unique_id=1982467406 instance=ExtResource("23_v48yy")]
-position = Vector2(166, 28)
-
-[node name="CharacterBody2D" parent="." unique_id=638024466 instance=ExtResource("24_045mi")]
-position = Vector2(150, 61)
-
-[node name="Doblin_1" parent="." unique_id=1749833397 instance=ExtResource("25_tnanx")]
-position = Vector2(365, 204)
-
-[node name="Doblin_2" parent="." unique_id=287778284 instance=ExtResource("26_nka4c")]
-position = Vector2(408, 200)
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]

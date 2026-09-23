@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://bw24u0nsnft4"]
+[gd_resource type="Resource" script_class="body_part" load_steps=0 format=3 uid="uid://bw24u0nsnft4"]
 
 [ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_i3yfd"]
 

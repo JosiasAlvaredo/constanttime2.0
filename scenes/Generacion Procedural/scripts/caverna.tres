@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=11 format=3 uid="uid://c5y7hlybg85ek"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=12 format=3 uid="uid://c5y7hlybg85ek"]
 
+[ext_resource type="TileSet" uid="uid://cl80k6phrxj3h" path="res://scenes/Generacion Procedural/scripts/cueva_fondo.tres" id="1_dk4dc"]
 [ext_resource type="PackedScene" uid="uid://c40x4irhyvt5k" path="res://scenes/Generacion Procedural/Cueva/boss/Tittan_slime.tscn" id="1_gre2w"]
 [ext_resource type="PackedScene" uid="uid://bepwwafpi1jw0" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_01.tscn" id="3_2aq8m"]
 [ext_resource type="PackedScene" uid="uid://bly7h0dw7bhbf" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_01.tscn" id="4_g3rwf"]
@@ -13,12 +14,12 @@
 
 [resource]
 script = ExtResource("9_0pqp1")
-modules_to_generate = 0
-treasure_room_count = 0
 start_module = ExtResource("10_yjgcw")
 room_modules = Array[PackedScene]([ExtResource("6_en8sw"), ExtResource("7_slkha"), ExtResource("8_h18b8")])
 corridor_h_modules = Array[PackedScene]([ExtResource("3_2aq8m"), ExtResource("3_2aq8m")])
 corridor_v_modules = Array[PackedScene]([ExtResource("4_g3rwf"), ExtResource("5_815l4")])
 treasure_modules = Array[PackedScene]([ExtResource("11_71k6s")])
 boss_modules = Array[PackedScene]([ExtResource("1_gre2w")])
+background_tileset = ExtResource("1_dk4dc")
+background_tiles = Array[Vector2i]([Vector2i(3, 1)])
 metadata/_custom_type_script = "uid://bvqtmq8gdroge"
