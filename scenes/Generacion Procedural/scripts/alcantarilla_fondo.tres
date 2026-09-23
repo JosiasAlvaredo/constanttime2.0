@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://iexq4dqep3aa"]
+
+[ext_resource type="Texture2D" uid="uid://dbjrxb46av0gb" path="res://assets/tilws/Alcantarilla.png" id="1_0e2yl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6y0r0"]
+texture = ExtResource("1_0e2yl")
+texture_region_size = Vector2i(32, 32)
+3:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/2 = SubResource("TileSetAtlasSource_6y0r0")

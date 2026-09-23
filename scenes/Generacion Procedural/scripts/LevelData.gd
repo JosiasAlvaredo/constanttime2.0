@@ -17,3 +17,10 @@ extends Resource
 @export var corridor_v_modules: Array[PackedScene] = []
 @export var treasure_modules: Array[PackedScene] = []
 @export var boss_modules: Array[PackedScene] = []
+
+@export_group("Fondo")
+@export var background_tileset: TileSet
+@export var background_source_id: int = 0
+@export var background_tiles: Array[Vector2i] = [Vector2i.ZERO]
+@export_range(0.0, 1.0) var background_variant_chance: float = 0.15
+@export var background_margin_tiles: int = 10
