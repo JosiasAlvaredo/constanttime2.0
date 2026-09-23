@@ -281,6 +281,8 @@ plataformas_spawn = NodePath("../PlataformasSpawn")
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_mr0xf")]
 position = Vector2(107, 554)
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1134492459]
+
 [node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("4_d50jx")]
 
 [node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("5_67t1k")]
