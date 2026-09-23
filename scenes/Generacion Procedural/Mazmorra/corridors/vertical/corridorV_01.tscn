@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://cojyx2ppkqc2u"]
+[gd_scene load_steps=8 format=4 uid="uid://cojyx2ppkqc2u"]
 
 [ext_resource type="PackedScene" uid="uid://dxb8dav3k57cc" path="res://objets/Map/tiles/tile_dungeon.tscn" id="1_8qxx7"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="2_3fnaw"]
 [ext_resource type="PackedScene" uid="uid://d0wjls4bucaau" path="res://objets/Map/Sewer/WATER.tscn" id="2_vj0bv"]
 [ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="3_gi02l"]
-[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="5_cl5ln"]
 [ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="6_bm2hr"]
-[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="6_cl5ln"]
 [ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="8_woj3a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdxpm"]
@@ -72,14 +70,6 @@ enemy_amount = 2
 
 [node name="SocketRight" type="Marker2D" parent="." unique_id=657244768]
 position = Vector2(448, 431)
-
-[node name="Player" parent="." unique_id=294110880 instance=ExtResource("5_cl5ln")]
-position = Vector2(66.46756, 10.973711)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1095148345]
-zoom = Vector2(2.05, 2.05)
-
-[node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("6_cl5ln")]
 
 [node name="frog_legs" parent="." unique_id=926426869 instance=ExtResource("8_woj3a")]
 position = Vector2(66.46756, 10.973711)

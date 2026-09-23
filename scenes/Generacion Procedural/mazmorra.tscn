@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/DungeonGenerator.gd" id="1_cu61f"]
 [ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="2_jx0a1"]
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="2_kx86g"]
-[ext_resource type="Resource" uid="uid://c8fjrgmsekdkj" path="res://scenes/Generacion Procedural/scripts/mazmorra.tres" id="3_bomrq"]
+[ext_resource type="Resource" uid="uid://c5y7hlybg85ek" path="res://scenes/Generacion Procedural/scripts/caverna.tres" id="4_u08jo"]
 [ext_resource type="Script" uid="uid://bxcuhnfwcvwsi" path="res://scenes/Generacion Procedural/dungeon_background.gd" id="5_5uiyj"]
 
 [sub_resource type="TileSet" id="TileSet_u08jo"]
 
 [node name="Mazmorra" type="Node2D" unique_id=936655814]
 script = ExtResource("1_cu61f")
-levels = Array[ExtResource("2_kx86g")]([ExtResource("3_bomrq")])
+levels = Array[ExtResource("2_kx86g")]([ExtResource("4_u08jo")])
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1118151226]
 visible = false

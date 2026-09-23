@@ -1,10 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://cu2gu3v85wg8l"]
+[gd_scene load_steps=11 format=4 uid="uid://cu2gu3v85wg8l"]
 
 [ext_resource type="PackedScene" uid="uid://dxb8dav3k57cc" path="res://objets/Map/tiles/tile_dungeon.tscn" id="1_8wbkw"]
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="2_jvsqh"]
-[ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="3_cqy7w"]
-[ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="4_xkxv2"]
-[ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="5_aqphf"]
 [ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="6_p366i"]
 [ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="7_e1vho"]
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="8_qtwje"]
@@ -63,16 +60,6 @@ position = Vector2(288, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=2042270430]
 shape = SubResource("RectangleShape2D_cross01")
-
-[node name="Player" parent="." unique_id=294110880 instance=ExtResource("3_cqy7w")]
-position = Vector2(-110.91089, -32.691208)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1424947314]
-zoom = Vector2(1.5, 1.5)
-
-[node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("4_xkxv2")]
-
-[node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("5_aqphf")]
 
 [node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("6_p366i")]
 position = Vector2(-110.91089, -32.691208)

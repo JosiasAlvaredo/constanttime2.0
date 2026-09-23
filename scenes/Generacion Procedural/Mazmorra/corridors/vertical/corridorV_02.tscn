@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxb8dav3k57cc" path="res://objets/Map/tiles/tile_dungeon.tscn" id="1_mvlie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jdxpm"]
-size = Vector2(479, 608)
+size = Vector2(384, 638.75)
 
 [node name="CorridorV01" type="Node2D" unique_id=1800956991]
 metadata/_edit_vertical_guides_ = [321.0, 176.0, 144.0]
@@ -24,8 +24,7 @@ position = Vector2(128, -160)
 position = Vector2(96, 480)
 
 [node name="Bounds" type="Area2D" parent="." unique_id=1225054392]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=189599719]
-position = Vector2(207.5, 368)
+position = Vector2(127, 160)
 shape = SubResource("RectangleShape2D_jdxpm")
