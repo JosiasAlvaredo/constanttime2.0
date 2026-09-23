@@ -1,7 +1,8 @@
 extends State_base
 
 
-func start() -> void:
+func start():
+	controlled_node.direction=controlled_node.sprite_2d.scale.x
 
 	var enemy = controlled_node
 

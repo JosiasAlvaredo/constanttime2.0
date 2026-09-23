@@ -1,3 +1,6 @@
 [gd_scene format=3 uid="uid://ckxwms63cly6i"]
 
+[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="1_f3b1w"]
+
 [node name="Knockback" type="Node" unique_id=959375226]
+script = ExtResource("1_f3b1w")

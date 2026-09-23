@@ -8,7 +8,7 @@ extends enemy_base
 
 
 func _ready():
-	direction = 1
+	$AnimatedSprite2D.scale.x=direction*abs($AnimatedSprite2D.scale.x)
 	update_direction()
 
 

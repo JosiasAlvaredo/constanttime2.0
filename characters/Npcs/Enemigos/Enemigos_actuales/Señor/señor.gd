@@ -7,7 +7,9 @@ extends enemy_base
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-
+func _ready() -> void:
+	$AnimatedSprite2D.scale.x=direction*abs($AnimatedSprite2D.scale.x)
+	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -25,4 +27,4 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+	enemy_damage(area.get_parent())

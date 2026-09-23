@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="4_sr4hj"]
 [ext_resource type="Script" uid="uid://du2cvwdccmif" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Spider/States/patrol(spider).gd" id="5_c3xrp"]
 [ext_resource type="Script" uid="uid://cs1sebpl7xjjn" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Spider/States/shoot(Spider).gd" id="6_c3xrp"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_vayg0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vayg0"]
 size = Vector2(48, 36)
@@ -58,6 +59,8 @@ script = ExtResource("5_c3xrp")
 [node name="Shoot" type="Node" parent="State_Machine" unique_id=1859850546]
 script = ExtResource("6_c3xrp")
 shoot_cooldown = 2.0
+
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_vayg0")]
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1855564778]
 collision_layer = 132

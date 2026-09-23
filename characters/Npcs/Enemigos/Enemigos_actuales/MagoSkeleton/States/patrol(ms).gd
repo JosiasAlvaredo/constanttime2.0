@@ -3,7 +3,7 @@ extends State_base
 
 func start() -> void:
 	var enemy = controlled_node
-	
+	controlled_node.direction=controlled_node.sprite.scale.x
 	enemy.velocity.x = enemy.direction * enemy.speed
 	enemy.update_direction()
 

@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://oo75whoaybfo"]
+
+[ext_resource type="Script" uid="uid://txw0idjvst4t" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/rata.gd" id="1_8vxpa"]
+[ext_resource type="Texture2D" uid="uid://cv3tk4rxx6mvr" path="res://assets/characters/enemies/goblin 1.png" id="2_8vxpa"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_xumno"]
+[ext_resource type="Script" uid="uid://cvq245v6pqkbe" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/patrol(Rat).gd" id="4_xkig7"]
+[ext_resource type="Script" uid="uid://duevdpdimn63q" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/chase.gd" id="5_8q0n3"]
+[ext_resource type="Script" uid="uid://bfp0na8q6pk4l" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/jump.gd" id="6_ydr0f"]
+[ext_resource type="Script" uid="uid://xhj82tfbabgu" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/fall.gd" id="7_mlj0e"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="8_t7t2q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eguh0"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(0, 0, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xumno"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(0, 240, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv2wi"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(0, 0, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q0n3"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(90, 0, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydr0f"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(180, 0, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlj0e"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(0, 120, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7t2q"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(90, 120, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dligy"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(180, 120, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu28e"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(0, 240, 90, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv371"]
+atlas = ExtResource("2_8vxpa")
+region = Rect2(90, 240, 90, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_amfy1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eguh0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xumno")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yv2wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q0n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydr0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlj0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7t2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dligy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu28e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv371")
+}],
+"loop": true,
+"name": &"move",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21067"]
+size = Vector2(12.5, 38)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wxb80"]
+radius = 12.972
+height = 58.26866
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkig7"]
+size = Vector2(87.59071, 62.352127)
+
+[node name="Doblin_1" type="CharacterBody2D" unique_id=1749833397]
+collision_layer = 0
+script = ExtResource("1_8vxpa")
+follow_distance = 200.0
+live = 75
+speed = 150
+Knockback_resistence = 50
+damage = 15
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1418561670]
+position = Vector2(0, 3)
+scale = Vector2(0.533, 0.598)
+sprite_frames = SubResource("SpriteFrames_amfy1")
+animation = &"move"
+autoplay = "default"
+flip_h = true
+
+[node name="RayCasts" type="Node2D" parent="AnimatedSprite2D" unique_id=681321109]
+position = Vector2(0, -5.0167227)
+scale = Vector2(1.8761727, 1.6722409)
+
+[node name="FrontRay" type="RayCast2D" parent="AnimatedSprite2D/RayCasts" unique_id=398844334]
+target_position = Vector2(40, 0)
+
+[node name="FloorRay" type="RayCast2D" parent="AnimatedSprite2D/RayCasts" unique_id=1211076034]
+position = Vector2(40, 0)
+target_position = Vector2(0, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1134687725]
+position = Vector2(1, 10)
+shape = SubResource("RectangleShape2D_21067")
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_xumno")]
+default_state = NodePath("Patrol")
+
+[node name="Patrol" type="Node" parent="State_Machine" unique_id=463145877]
+script = ExtResource("4_xkig7")
+
+[node name="Chase" type="Node" parent="State_Machine" unique_id=1444542616]
+script = ExtResource("5_8q0n3")
+
+[node name="Jump" type="Node" parent="State_Machine" unique_id=1674829094]
+script = ExtResource("6_ydr0f")
+
+[node name="Fall" type="Node" parent="State_Machine" unique_id=678236040]
+script = ExtResource("7_mlj0e")
+
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("8_t7t2q")]
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=765973420]
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=15520544]
+position = Vector2(2, 6)
+rotation = 3.140809
+shape = SubResource("CapsuleShape2D_wxb80")
+
+[node name="Vision_area" type="Area2D" parent="." unique_id=1957472007]
+position = Vector2(-4.664999, 10.412697)
+scale = Vector2(1.5549997, 1.4875286)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vision_area" unique_id=960360260]
+position = Vector2(4.2861786, -14.142525)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_xkig7")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Vision_area" to="." method="_on_vision_area_area_entered"]

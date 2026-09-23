@@ -18,6 +18,7 @@ var player_objetivo: Node2D
 
 func _ready() -> void:
 	player_objetivo = get_tree().get_first_node_in_group("player")
+	sprite.scale.x=direction*abs(sprite.scale.x)
 	update_direction()
 
 
