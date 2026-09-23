@@ -3,7 +3,7 @@ extends State_base
 
 func start() -> void:
 	print("ENTRO A PATROL")
-
+	controlled_node.animated_sprite_2d.play("move")
 
 func on_physics_process(delta: float) -> void:
 	var enemy = controlled_node
@@ -21,12 +21,5 @@ func on_physics_process(delta: float) -> void:
 		enemy.change_direction()
 		return
 
-	# Detectar jugador
-	if enemy.player_ray.is_colliding():
-		var collider = enemy.player_ray.get_collider()
-
-		if collider.is_in_group("player"):
-			state_machine.change_to("Attack(Sr)")
-			return
 
 	enemy.move_and_slide()

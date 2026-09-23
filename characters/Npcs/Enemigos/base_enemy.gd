@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 
 func enemy_damage(weapond):
 	var enemy=weapond.player
-	print(weapond.skills.damage)
+
 	last_direction=direction
 	direction=0
 	recoil=weapond.skills.knockback*Knockback_resistence

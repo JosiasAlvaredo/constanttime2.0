@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://73r84t3aqvoi"]
 
 [ext_resource type="Script" uid="uid://bq6jd7uknr3r2" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Meteoritos/meteorito.gd" id="1_fv7bh"]
+[ext_resource type="Texture2D" uid="uid://c2ot04jlaoxyi" path="res://assets/characters/Bosses/Dragon/proyectile.png" id="2_n5cso"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bc7m"]
 radius = 55.00909
@@ -10,9 +11,15 @@ radius = 50.803543
 
 [node name="Meteorito" type="CharacterBody2D" unique_id=1410221844]
 collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_fv7bh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1521863614]
+position = Vector2(-3.8146973e-06, 4.9999924)
+scale = Vector2(3.2619047, 2.9693878)
+texture = ExtResource("2_n5cso")
+region_enabled = true
+region_rect = Rect2(48.666687, 7, 42.666687, 49.333344)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1886879691]
 shape = SubResource("CircleShape2D_3bc7m")

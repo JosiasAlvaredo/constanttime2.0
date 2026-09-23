@@ -4,6 +4,7 @@ extends State_base
 
 
 func start() -> void:
+	controlled_node.animated_sprite_2d.play("default")
 	var enemy = controlled_node
 
 	enemy.animation_player.play(animation_name)
@@ -14,6 +15,7 @@ func on_physics_process(delta: float) -> void:
 
 	enemy.velocity.x = 0
 	enemy.move_and_slide()
-
-	if not enemy.animation_player.is_playing():
+	
+	if not controlled_node.animation_player.is_playing():
 		state_machine.change_to("Patrol(Sr)")
+		

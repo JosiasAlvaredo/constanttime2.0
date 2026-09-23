@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqhwhv8ub2jf4" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Flame/flame.gd" id="1_1f5s7"]
 [ext_resource type="PackedScene" uid="uid://ui2ot313vec3" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Psi-fuego/piso_fuego.tscn" id="2_bbchw"]
-[ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="2_clchw"]
+[ext_resource type="Texture2D" uid="uid://c2ot04jlaoxyi" path="res://assets/characters/Bosses/Dragon/proyectile.png" id="3_i0383"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wiul6"]
 size = Vector2(44, 21)
@@ -11,22 +11,24 @@ size = Vector2(44, 21)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_1f5s7")
+max_distance = 1000.0
+flame_width = 50.0
 falling_fire_scene = ExtResource("2_bbchw")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=365823876]
 target_position = Vector2(-1, 157)
 
-[node name="Line2D" type="Line2D" parent="." unique_id=1733641530]
-width = 50.0
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=834805544]
-position = Vector2(-0.9999995, 0)
-scale = Vector2(0.13769531, 0.14550781)
-texture = ExtResource("2_clchw")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=798098365]
 collision_layer = 4
 collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=834805544]
+position = Vector2(0.14505768, -0.67600304)
+rotation = 3.1415927
+scale = Vector2(1.9361702, 1.0254968)
+texture = ExtResource("3_i0383")
+region_enabled = true
+region_rect = Rect2(12.0000305, 9, 23.333344, 42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=165642878]
 shape = SubResource("RectangleShape2D_wiul6")
