@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://buliib3nflx85"]
+
+[ext_resource type="Texture2D" uid="uid://b4wssxl4bclpp" path="res://assets/Animacion/viñetoide1.png" id="1_dfljd"]
+[ext_resource type="Script" uid="uid://dh5b06rqshsa7" path="res://interface/AnimacionInicio/node_2d.gd" id="1_opshs"]
+
+[node name="Node2D" type="Node2D" unique_id=1483026396]
+script = ExtResource("1_opshs")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1150720396]
+offset_left = -55.0
+offset_top = -27.0
+offset_right = 1181.0
+offset_bottom = 682.0
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=949054123]
+position = Vector2(577.99994, 278.00003)
+scale = Vector2(0.26588237, 0.28846157)
+texture = ExtResource("1_dfljd")
+
+[node name="Label" type="Label" parent="." unique_id=532659980]
+offset_left = 283.0
+offset_top = 456.0
+offset_right = 874.0
+offset_bottom = 590.0
+horizontal_alignment = 1
+autowrap_mode = 3
