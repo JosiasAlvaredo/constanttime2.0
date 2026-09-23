@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dodqhuppv2s3b"]
+[gd_scene load_steps=5 format=3 uid="uid://dodqhuppv2s3b"]
 
 [ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/DungeonGenerator.gd" id="1_cu61f"]
 [ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="2_jx0a1"]
