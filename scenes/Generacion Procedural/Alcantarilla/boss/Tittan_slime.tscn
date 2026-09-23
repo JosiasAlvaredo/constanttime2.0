@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://co05y8pjc8tyf" path="res://assets/characters/Bosses/slime_boss/core.webp" id="14_16htg"]
 [ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="14_dxveu"]
 [ext_resource type="Texture2D" uid="uid://csmswqluy5sch" path="res://assets/tilws/alcantarilla/stock-vector-the-set-of-damaged-pipes-pixel-art-vector-1088674490.png" id="15_x4ccs"]
+[ext_resource type="PackedScene" uid="uid://dpckbqm32fc4o" path="res://objets/items/new_Sword_item.tscn" id="16_alw0m"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="18_x4ccs"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="19_c2ppf"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="20_5r0oi"]
@@ -207,6 +208,9 @@ scale = Vector2(1.8841078, 1.6722481)
 sprite_frames = SubResource("SpriteFrames_44xly")
 autoplay = "default"
 frame_progress = 0.8970079
+
+[node name="new_Sword_item" parent="boss/core" unique_id=2885162 instance=ExtResource("16_alw0m")]
+position = Vector2(417, 306)
 
 [node name="Node2D" type="Node2D" parent="boss" unique_id=1607933473]
 

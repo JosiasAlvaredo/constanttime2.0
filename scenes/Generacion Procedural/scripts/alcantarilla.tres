@@ -4,12 +4,7 @@
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="1_cmg0w"]
 [ext_resource type="PackedScene" uid="uid://cojyx2ppkqc2u" path="res://scenes/Generacion Procedural/Mazmorra/corridors/vertical/corridorV_01.tscn" id="2_cktgw"]
 [ext_resource type="PackedScene" uid="uid://78vyompmb3lx" path="res://scenes/Generacion Procedural/Mazmorra/corridors/vertical/corridorV_02.tscn" id="3_k3d0g"]
-[ext_resource type="PackedScene" uid="uid://tfts7j3krmpa" path="res://scenes/Generacion Procedural/Mazmorra/rooms/normal/room_01.tscn" id="4_fh6hl"]
-[ext_resource type="PackedScene" uid="uid://b0c1iu5xjsy50" path="res://scenes/Generacion Procedural/Mazmorra/rooms/normal/room_02.tscn" id="5_kxkxi"]
-[ext_resource type="PackedScene" uid="uid://cu2gu3v85wg8l" path="res://scenes/Generacion Procedural/Mazmorra/rooms/normal/room_03.tscn" id="6_c4us1"]
-[ext_resource type="PackedScene" uid="uid://bmnqofvod5a6a" path="res://scenes/Generacion Procedural/Mazmorra/rooms/normal/room_04.tscn" id="7_abj43"]
-[ext_resource type="PackedScene" uid="uid://rku3cesdcbvr" path="res://scenes/Generacion Procedural/Mazmorra/rooms/normal/room_05.tscn" id="8_cpdti"]
-[ext_resource type="PackedScene" uid="uid://84svjuaeha70" path="res://scenes/Generacion Procedural/Alcantarilla/start/StartRoom_01.tscn" id="10_0cj74"]
+[ext_resource type="PackedScene" uid="uid://84svjuaeha70" path="res://scenes/Generacion Procedural/Mazmorra/start/StartRoom_01.tscn" id="10_0cj74"]
 
 [resource]
 script = ExtResource("1_cmg0w")
@@ -17,7 +12,6 @@ level_name = "Alcantarilla"
 modules_to_generate = 0
 treasure_room_count = 0
 start_module = ExtResource("10_0cj74")
-room_modules = Array[PackedScene]([ExtResource("4_fh6hl"), ExtResource("5_kxkxi"), ExtResource("6_c4us1"), ExtResource("7_abj43"), ExtResource("8_cpdti")])
 corridor_v_modules = Array[PackedScene]([ExtResource("2_cktgw"), ExtResource("3_k3d0g")])
 boss_modules = Array[PackedScene]([ExtResource("1_abqtc")])
 metadata/_custom_type_script = "uid://bvqtmq8gdroge"

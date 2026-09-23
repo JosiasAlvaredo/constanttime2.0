@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://crlgjc5el33h1"]
+[gd_scene format=3 uid="uid://d1lfb3qg6n56f"]
 
-[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_36yia"]
-[ext_resource type="Texture2D" uid="uid://dm145ojkknmkr" path="res://assets/characters/Player/arms/goblin.png" id="2_36yia"]
+[ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_bne2l"]
+[ext_resource type="Texture2D" uid="uid://rv5hh4xie5tk" path="res://assets/characters/Player/arms/señor.png" id="2_bne2l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -9,17 +9,16 @@ radius = 375.20828
 [sub_resource type="CircleShape2D" id="CircleShape2D_lc80n"]
 radius = 4.0
 
-[node name="goblind_arm" type="RigidBody2D" unique_id=926426869]
+[node name="mr_arm" type="RigidBody2D" unique_id=926426869]
 collision_layer = 0
-script = ExtResource("1_36yia")
-_name = "goblind_arm"
+script = ExtResource("1_bne2l")
+_name = "mr_arm"
 origin = "body_parts"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
-modulate = Color(1, 1, 0, 1)
 position = Vector2(0, -1)
-scale = Vector2(0.29908958, 0.28178424)
-texture = ExtResource("2_36yia")
+scale = Vector2(0.6775197, 0.5784999)
+texture = ExtResource("2_bne2l")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
 collision_layer = 64

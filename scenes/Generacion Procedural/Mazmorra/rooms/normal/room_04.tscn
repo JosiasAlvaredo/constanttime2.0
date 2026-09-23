@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://bmnqofvod5a6a"]
+[gd_scene load_steps=7 format=4 uid="uid://ddkn5m3fu5vsp"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_nf05q"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="2_wo1rp"]

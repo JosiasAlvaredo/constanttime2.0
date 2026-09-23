@@ -1,7 +1,8 @@
-[gd_scene format=3 uid="uid://cgfpcfjo80wxi"]
+[gd_scene load_steps=12 format=3 uid="uid://cgfpcfjo80wxi"]
 
 [ext_resource type="Script" uid="uid://bjck7xbn8yj40" path="res://objets/weapons_tools/bullets/fire_ball.gd" id="1_5qscw"]
 [ext_resource type="Texture2D" uid="uid://b2gp10ut0cafd" path="res://assets/effets/fire_ball.png" id="2_8qsq2"]
+[ext_resource type="Texture2D" uid="uid://c8e0gmxxrtl8t" path="res://assets/light.png" id="3_mofjp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mofjp"]
 atlas = ExtResource("2_8qsq2")
@@ -73,6 +74,14 @@ collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1916072452]
 shape = SubResource("CircleShape2D_3kiwv")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1035973320]
+scale = Vector2(16.015627, 7.812501)
+color = Color(1, 0.45490196, 0, 1)
+energy = 1.61
+texture = ExtResource("3_mofjp")
+texture_scale = 0.01
+height = 74.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

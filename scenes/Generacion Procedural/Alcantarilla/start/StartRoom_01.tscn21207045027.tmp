@@ -19,8 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://chm0tlaxhm01j" path="res://objets/items/fire_scroll.tscn" id="18_55tv6"]
 [ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="19_5e770"]
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="19_iapuq"]
-[ext_resource type="PackedScene" uid="uid://1vlvoemgu10w" path="res://characters/player/Body_parts/arms/mr_arm.tscn" id="20_iapuq"]
-[ext_resource type="PackedScene" uid="uid://d1lfb3qg6n56f" path="res://objets/body_parts/mr_arm.tscn" id="21_c7xcu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(818, 135)
@@ -53,7 +51,7 @@ scale = Vector2(1, 1.2)
 shape = SubResource("RectangleShape2D_e8jrh")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_xsciu")]
-position = Vector2(0, 192)
+position = Vector2(-37, 180)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1658636559]
 zoom = Vector2(1.5, 1.5)
@@ -114,13 +112,18 @@ position = Vector2(-29, 212)
 position = Vector2(-44, 208)
 
 [node name="Señor" parent="." unique_id=193873761 instance=ExtResource("19_iapuq")]
-position = Vector2(83, 186)
-drops = Array[PackedScene]([ExtResource("20_iapuq")])
-
-[node name="mr_arm2" parent="." unique_id=1362311282 instance=ExtResource("21_c7xcu")]
-position = Vector2(0, 195)
-
-[node name="mr_arm3" parent="." unique_id=186490083 instance=ExtResource("21_c7xcu")]
-position = Vector2(0, 195)
+position = Vector2(178, 202)
+nro_drops = 1
+drops = Array[PackedScene]([])
+live = 1
+aceleration = 50
+Jump_stength = -300
+Climb_velocity = -150
+roll_velocity = 600
+Knockback_resistence = 0
+knockback = Vector2(-200, -100)
+damage = 5
+activate_Gravity = true
+solid = true
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]
