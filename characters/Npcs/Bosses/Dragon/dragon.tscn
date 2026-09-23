@@ -41,6 +41,46 @@ height = 314.19135
 radius = 65.333305
 height = 266.49072
 
+[sub_resource type="Animation" id="Animation_55o8g"]
+resource_name = "Aparicion"
+length = 1.6666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CuerpoFase1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-4, -914), Vector2(-4, -19)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CuerpoFase2/Derecha:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1084, -19.999992)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CuerpoFase2/Izquierda:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-992, -30.999992)]
+}
+
 [sub_resource type="Animation" id="Animation_yjael"]
 resource_name = "AttackD"
 length = 2.8
@@ -97,6 +137,45 @@ tracks/1/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_s5os1"]
+resource_name = "Dormido"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CuerpoFase1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -914)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CuerpoFase2/Izquierda:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-992, -30.999992)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CuerpoFase2/Derecha:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1084, -19.999992)]
+}
+
 [sub_resource type="Animation" id="Animation_6kp8x"]
 resource_name = "Fase2A"
 length = 7.0
@@ -119,10 +198,34 @@ tracks/1/path = NodePath("ShootPoint:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1, 5.9333334, 6.9333334),
+"times": PackedFloat32Array(0, 1.0333333, 6, 6.9333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-20, -659), Vector2(-5, -66), Vector2(-5, -66), Vector2(-20, -659)]
+"values": [Vector2(-20, -659), Vector2(26, -180), Vector2(26, -180), Vector2(-20, -659)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CuerpoFase2/Derecha:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(998, -27.999992)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CuerpoFase2/Izquierda:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1000, -19)]
 }
 
 [sub_resource type="Animation" id="Animation_3k1ns"]
@@ -152,6 +255,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(425, -93), Vector2(425, -93), Vector2(678, -73)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CuerpoFase2/Izquierda:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1000, -19)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CuerpoFase1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -914)]
+}
 
 [sub_resource type="Animation" id="Animation_dxsdj"]
 resource_name = "Fase2I"
@@ -179,6 +306,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-594, -77), Vector2(-415, -67), Vector2(-415, -67), Vector2(-594, -77)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CuerpoFase1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, -914)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CuerpoFase2/Derecha:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1084, -19.999992)]
 }
 
 [sub_resource type="Animation" id="Animation_rygdo"]
@@ -366,6 +517,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CuerpoFase1/Panza:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-57.999992, 29.000013)]
+}
 
 [sub_resource type="Animation" id="Animation_62ipe"]
 resource_name = "TransicionFase2"
@@ -382,11 +545,73 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-4, -19), Vector2(-29, -800)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CuerpoFase1/Panza:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-57.999992, 29.000013)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CuerpoFase1/PataIzq:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(253, -107.000015)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CuerpoFase1/PataDer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-267.99994, -91.99995)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CuerpoFase1/PataDer/AttackD/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CuerpoFase1/PataIzq/attackI/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nak5m"]
 _data = {
+&"Aparicion": SubResource("Animation_55o8g"),
 &"AttackD": SubResource("Animation_yjael"),
 &"AttackI": SubResource("Animation_1kn7y"),
+&"Dormido": SubResource("Animation_s5os1"),
 &"Fase2A": SubResource("Animation_6kp8x"),
 &"Fase2D": SubResource("Animation_3k1ns"),
 &"Fase2I": SubResource("Animation_dxsdj"),
@@ -396,6 +621,9 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kp8x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62ipe"]
+size = Vector2(215, 73)
 
 [node name="Dragon" type="CharacterBody2D" unique_id=1458171680]
 position = Vector2(595, 448)
@@ -558,7 +786,7 @@ script = ExtResource("16_62ipe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=454285467]
 libraries/ = SubResource("AnimationLibrary_nak5m")
-autoplay = &"IdleFase1"
+autoplay = &"Dormido"
 
 [node name="MeteorSpawn" type="Marker2D" parent="." unique_id=316368489]
 position = Vector2(-23, -476)
@@ -575,8 +803,18 @@ position = Vector2(266, -188)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=832383338]
 shape = SubResource("CircleShape2D_6kp8x")
 
+[node name="Ready" type="Area2D" parent="." unique_id=364840985]
+position = Vector2(21, 230)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ready" unique_id=1590499506]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_62ipe")
+
 [connection signal="area_entered" from="CuerpoFase1/Panza/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="CuerpoFase1/PataIzq/HurtBox" to="." method="hurtbox_maniIzq"]
 [connection signal="area_entered" from="CuerpoFase1/PataDer/HurtBoxD" to="." method="_on_hurt_box_d_area_entered"]
 [connection signal="area_entered" from="CuerpoFase2/Derecha/Area2D" to="." method="FASE2D"]
 [connection signal="area_entered" from="CuerpoFase2/Izquierda/Area2D" to="." method="FASE2I"]
+[connection signal="body_entered" from="Ready" to="." method="_on_ready_area_body_entered"]
