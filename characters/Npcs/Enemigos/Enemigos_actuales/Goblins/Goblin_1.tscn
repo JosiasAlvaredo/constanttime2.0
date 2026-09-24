@@ -110,8 +110,9 @@ size = Vector2(87.59071, 62.352127)
 [node name="Doblin_1" type="CharacterBody2D" unique_id=1749833397]
 collision_layer = 0
 script = ExtResource("1_8vxpa")
-follow_distance = 200.0
+follow_distance = 700.0
 live = 75
+aceleration = 500
 speed = 150
 Knockback_resistence = 50
 damage = 15

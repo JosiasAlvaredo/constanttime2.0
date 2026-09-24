@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cr1etajyx7su5"]
 
 [ext_resource type="Script" uid="uid://dk7i25fxniar1" path="res://characters/player/Body_parts/torsos/torso.gd" id="1_lvrga"]
-[ext_resource type="Texture2D" uid="uid://dnvc6bi5qdm5r" path="res://assets/characters/Player/toros/rata.png" id="2_lvrga"]
+[ext_resource type="Texture2D" uid="uid://bkb70iuk0r41f" path="res://assets/items/Weapons/rat_torso.png" id="2_lvrga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1lxq0"]
 size = Vector2(38.75, 38)
@@ -10,12 +10,11 @@ size = Vector2(38.75, 38)
 radius = 1.4142135
 
 [node name="None" type="Node2D" unique_id=1888509634]
-position = Vector2(-2, 20)
 script = ExtResource("1_lvrga")
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=287641547]
 z_index = 1
-position = Vector2(-18, 0)
+position = Vector2(-19.72873, 22.212938)
 rotation = -1.112069
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("2_lvrga")
@@ -32,28 +31,28 @@ disabled = true
 debug_color = Color(2.4065375e-08, 0.5417988, 0.17373273, 0.41960785)
 
 [node name="Body_up" type="RayCast2D" parent="." unique_id=1123851503]
-position = Vector2(7, -15)
+position = Vector2(5.2712708, 7.2129364)
 target_position = Vector2(11, 0)
 
 [node name="Body_Down" type="RayCast2D" parent="." unique_id=815405816]
-position = Vector2(3, 7)
+position = Vector2(1.2712708, 29.212936)
 target_position = Vector2(11, 0)
 
 [node name="right_arm_position" type="Node2D" parent="." unique_id=1537930880]
-position = Vector2(-14, -15)
+position = Vector2(-15.728729, 7.2129364)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_arm_position" unique_id=616460]
 shape = SubResource("CircleShape2D_g0sqg")
 
 [node name="left_arm_position" type="Node2D" parent="." unique_id=1823336891]
-position = Vector2(7, -14)
+position = Vector2(5.2712708, 8.212936)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="left_arm_position" unique_id=1950212104]
 shape = SubResource("CircleShape2D_g0sqg")
 debug_color = Color(0.9956085, 0, 0.21029541, 0.41960785)
 
 [node name="legs_position" type="Node2D" parent="." unique_id=826483778]
-position = Vector2(-23, 26)
+position = Vector2(-24.72873, 48.212936)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="legs_position" unique_id=1718920350]
 shape = SubResource("CircleShape2D_g0sqg")

@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://iexq4dqep3aa"]
+[gd_resource type="TileSet" format=3 uid="uid://iexq4dqep3aa"]
 
 [ext_resource type="Texture2D" uid="uid://dbjrxb46av0gb" path="res://assets/tilws/Alcantarilla.png" id="1_0e2yl"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0wjls4bucaau"]
+[gd_scene format=3 uid="uid://d0wjls4bucaau"]
 
 [ext_resource type="Script" uid="uid://d03bag7r6kcco" path="res://objets/Map/Sewer/Scripts/bad_water.gd" id="1_3ulu5"]
 

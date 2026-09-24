@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccuinfhyo3qxc"
-path="res://.godot/imported/sword.png-14a9ea5be3c1ff5b33aa65bde795af5e.ctex"
+uid="uid://b34em0p4e8wwq"
+path="res://.godot/imported/rana.png-92521247a6780c7c9713c734efe0e52e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Weapons/sword.png"
-dest_files=["res://.godot/imported/sword.png-14a9ea5be3c1ff5b33aa65bde795af5e.ctex"]
+source_file="res://assets/characters/Player/legs/rana.png"
+dest_files=["res://.godot/imported/rana.png-92521247a6780c7c9713c734efe0e52e.ctex"]
 
 [params]
 

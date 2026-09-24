@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=4 uid="uid://84svjuaeha70"]
+[gd_scene format=4 uid="uid://84svjuaeha70"]
 
 [ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Mazmorra/start/start_room_01.gd" id="1_nhs0j"]
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="2_kuocb"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_xsciu"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="3_he2ru"]
+[ext_resource type="PackedScene" uid="uid://dbss78mocjgjh" path="res://objets/body_parts/mr_torso.tscn" id="3_v48yy"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="4_l4nw3"]
 [ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="5_2of1a"]
 [ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="6_7iove"]
@@ -21,9 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="19_iapuq"]
 [ext_resource type="PackedScene" uid="uid://1vlvoemgu10w" path="res://characters/player/Body_parts/arms/mr_arm.tscn" id="20_iapuq"]
 [ext_resource type="PackedScene" uid="uid://d1lfb3qg6n56f" path="res://objets/body_parts/mr_arm.tscn" id="21_c7xcu"]
+[ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="22_vxhys"]
+[ext_resource type="PackedScene" uid="uid://oo75whoaybfo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/Goblin_1.tscn" id="24_xebhr"]
+[ext_resource type="PackedScene" uid="uid://2y2k8obqg0hs" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/Goblin_2.tscn" id="25_tnanx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
-size = Vector2(818, 135)
+size = Vector2(829, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikq0o"]
 size = Vector2(20, 72)
@@ -47,12 +51,12 @@ tile_map_data = PackedByteArray("AAD9//3/AAADAAAAAAD+//3/AAADAAQAAAD///3/AAADAAQ
 [node name="Bounds" type="Area2D" parent="." unique_id=348332757]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1304408014]
-position = Vector2(311, 180)
+position = Vector2(305.5, 180)
 scale = Vector2(1, 1.2)
 shape = SubResource("RectangleShape2D_e8jrh")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_xsciu")]
-position = Vector2(0, 192)
+position = Vector2(391, 37)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1658636559]
 zoom = Vector2(1.5, 1.5)
@@ -61,17 +65,20 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("4_l4nw3")]
 
-[node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("5_2of1a")]
+[node name="bird_wings" parent="." unique_id=289347356 instance=ExtResource("5_2of1a")]
 position = Vector2(-34, 177)
 
+[node name="mr_torso" parent="." unique_id=926426869 instance=ExtResource("3_v48yy")]
+position = Vector2(420, 72)
+
 [node name="stick_arm" parent="." unique_id=29034957 instance=ExtResource("6_7iove")]
-position = Vector2(1, 182)
+position = Vector2(392, 59)
 
 [node name="stick_arm2" parent="." unique_id=512423657 instance=ExtResource("7_vax2r")]
 position = Vector2(-33, 195)
 
 [node name="frog_legs" parent="." unique_id=835217674 instance=ExtResource("9_ikq0o")]
-position = Vector2(-14, 180)
+position = Vector2(402, 55)
 
 [node name="slime_legs" parent="." unique_id=1748175525 instance=ExtResource("10_8yqei")]
 position = Vector2(-5, 202)
@@ -92,7 +99,7 @@ position = Vector2(-13, 205)
 position = Vector2(-24, 206)
 
 [node name="rat_torso" parent="." unique_id=2012691640 instance=ExtResource("15_lyfp4")]
-position = Vector2(2, 200)
+position = Vector2(370, 72)
 
 [node name="rat_legs" parent="." unique_id=343115415 instance=ExtResource("16_1ol81")]
 position = Vector2(-25, 206)
@@ -113,7 +120,7 @@ position = Vector2(-29, 212)
 position = Vector2(-44, 208)
 
 [node name="Señor" parent="." unique_id=193873761 instance=ExtResource("19_iapuq")]
-position = Vector2(83, 186)
+position = Vector2(100, 44)
 drops = Array[PackedScene]([ExtResource("20_iapuq")])
 
 [node name="mr_arm2" parent="." unique_id=1362311282 instance=ExtResource("21_c7xcu")]
@@ -121,5 +128,16 @@ position = Vector2(0, 195)
 
 [node name="mr_arm3" parent="." unique_id=186490083 instance=ExtResource("21_c7xcu")]
 position = Vector2(0, 195)
+
+[node name="Rata" parent="." unique_id=1749833397 instance=ExtResource("22_vxhys")]
+position = Vector2(545, 196)
+follow_distance = 500.0
+aceleration = 500
+
+[node name="Doblin_1" parent="." unique_id=1248878710 instance=ExtResource("24_xebhr")]
+position = Vector2(516, 51)
+
+[node name="Doblin_2" parent="." unique_id=443985601 instance=ExtResource("25_tnanx")]
+position = Vector2(497, 172)
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]

@@ -19,10 +19,7 @@ func on_physics_process(delta: float) -> void:
 			controlled_node.direction = sign(-difference)
 			controlled_node.sprite_2d.scale.x=controlled_node.direction*abs(controlled_node.sprite_2d.scale.x)
 
-			
-		enemy.wall_ray.target_position.x = enemy.direction * 30
-		enemy.floor_ray.position.x = abs(enemy.floor_ray.position.x) * enemy.direction
-		
+
 		enemy.velocity.x = move_toward(
 			enemy.velocity.x,
 			enemy.direction * enemy.speed,

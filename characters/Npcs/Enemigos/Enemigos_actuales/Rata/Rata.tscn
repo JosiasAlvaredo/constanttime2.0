@@ -90,6 +90,7 @@ size = Vector2(114.534935, 68.570114)
 collision_layer = 0
 script = ExtResource("1_wxb80")
 live = 100
+speed = 100
 Knockback_resistence = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=200376894]
@@ -103,7 +104,7 @@ autoplay = "default"
 target_position = Vector2(60, 0)
 
 [node name="FloorRay" type="RayCast2D" parent="AnimatedSprite2D/RayCasts" unique_id=1211076034]
-position = Vector2(60, -1)
+position = Vector2(88, -1)
 target_position = Vector2(0, 51)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1134687725]

@@ -1,7 +1,69 @@
 [gd_scene format=3 uid="uid://bgcpunbe24yy"]
 
 [ext_resource type="Script" uid="uid://bldyry7qecumn" path="res://characters/player/Body_parts/legs/frog_legs.gd" id="1_wvs3h"]
-[ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/Weapons/Stick.png" id="2_wvs3h"]
+[ext_resource type="Texture2D" uid="uid://b34em0p4e8wwq" path="res://assets/characters/Player/legs/rana.png" id="2_wvs3h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvs3h"]
+atlas = ExtResource("2_wvs3h")
+region = Rect2(300, 100, 100, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl6wg"]
+atlas = ExtResource("2_wvs3h")
+region = Rect2(400, 100, 100, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnjhe"]
+atlas = ExtResource("2_wvs3h")
+region = Rect2(500, 100, 100, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxfrf"]
+atlas = ExtResource("2_wvs3h")
+region = Rect2(0, 259, 100, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc74b"]
+atlas = ExtResource("2_wvs3h")
+region = Rect2(100, 259, 100, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4orxn"]
+atlas = ExtResource("2_wvs3h")
+region = Rect2(200, 259, 100, 159)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a5ab"]
+atlas = ExtResource("2_wvs3h")
+region = Rect2(300, 259, 100, 159)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wnjhe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvs3h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl6wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnjhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxfrf")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_kc74b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4orxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1a5ab")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mut7r"]
 radius = 1.4142135
@@ -9,42 +71,19 @@ radius = 1.4142135
 [node name="frog_legs" type="Node2D" unique_id=552661092]
 script = ExtResource("1_wvs3h")
 
-[node name="Stick" type="Sprite2D" parent="." unique_id=1698048193]
-modulate = Color(0, 0.6039216, 0, 1)
-position = Vector2(-7, 8)
-rotation = -9.365805
-scale = Vector2(0.61430496, 0.5883967)
-texture = ExtResource("2_wvs3h")
-flip_h = true
-
-[node name="Stick2" type="Sprite2D" parent="." unique_id=113944972]
-modulate = Color(0, 0.6039216, 0, 1)
-position = Vector2(7, 7)
-rotation = -8.613505
-scale = Vector2(0.61430496, 0.5883967)
-texture = ExtResource("2_wvs3h")
-flip_h = true
-
-[node name="Stick4" type="Sprite2D" parent="." unique_id=383203217]
-modulate = Color(0, 0.6039216, 0, 1)
-position = Vector2(-5.263386, 0.74678326)
-rotation = 1.1546929
-scale = Vector2(0.614305, 0.5883967)
-texture = ExtResource("2_wvs3h")
-flip_h = true
-
-[node name="Stick3" type="Sprite2D" parent="." unique_id=1236332418]
-modulate = Color(0, 0.6039216, 0, 1)
-position = Vector2(7.7260895, 0.22374296)
-rotation = -6.2644567
-scale = Vector2(0.61430496, 0.5883967)
-texture = ExtResource("2_wvs3h")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=655856853]
+position = Vector2(-3.9999995, 17)
+scale = Vector2(0.44382936, 0.48966298)
+sprite_frames = SubResource("SpriteFrames_wnjhe")
+animation = &"jump"
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
 flip_h = true
 
 [node name="foot_position" type="Node2D" parent="." unique_id=119149150]
-position = Vector2(0, 10)
+position = Vector2(0, 12)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="foot_position" unique_id=1165104098]
-position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_mut7r")
 debug_color = Color(0.9956085, 0, 0.21029541, 0.41960785)

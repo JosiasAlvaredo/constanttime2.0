@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=10 format=3 uid="uid://c8fjrgmsekdkj"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://c8fjrgmsekdkj"]
 
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="1_8svcv"]
 [ext_resource type="TileSet" uid="uid://cvly0sl7nb260" path="res://scenes/Generacion Procedural/scripts/mazmorra_fondo.tres" id="1_p46bs"]

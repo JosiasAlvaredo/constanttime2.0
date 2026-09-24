@@ -24,10 +24,6 @@ func on_physics_process(delta: float) -> void:
 	if abs(difference) > 5:
 		controlled_node.direction = sign(difference)
 		
-
-	enemy.wall_ray.target_position.x = enemy.direction * 40
-	enemy.floor_ray.position.x = abs(enemy.floor_ray.position.x) * enemy.direction
-	
 	# DEBUG
 	if enemy.wall_ray.is_colliding():
 		print("PARED DETECTADA")

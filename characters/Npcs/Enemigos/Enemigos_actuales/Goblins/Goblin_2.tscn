@@ -65,7 +65,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -108,7 +108,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"move",
-"speed": 7.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_21067"]
@@ -125,8 +125,9 @@ size = Vector2(114.534935, 68.570114)
 position = Vector2(-1, 1)
 collision_layer = 0
 script = ExtResource("1_7fh0d")
+follow_distance = 1000.0
 live = 50
-aceleration = 300
+aceleration = 500
 Jump_stength = -400
 speed = 200
 Knockback_resistence = 50
@@ -136,7 +137,9 @@ damage = 10
 position = Vector2(0, 3)
 scale = Vector2(0.446, 0.491)
 sprite_frames = SubResource("SpriteFrames_amfy1")
+animation = &"move"
 autoplay = "default"
+frame_progress = 0.66198
 flip_h = true
 
 [node name="RayCasts" type="Node2D" parent="AnimatedSprite2D" unique_id=681321109]
