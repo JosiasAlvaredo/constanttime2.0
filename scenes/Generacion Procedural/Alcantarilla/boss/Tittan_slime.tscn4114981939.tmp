@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="14_dxveu"]
 [ext_resource type="Texture2D" uid="uid://csmswqluy5sch" path="res://assets/tilws/alcantarilla/stock-vector-the-set-of-damaged-pipes-pixel-art-vector-1088674490.png" id="15_x4ccs"]
 [ext_resource type="PackedScene" uid="uid://dpckbqm32fc4o" path="res://objets/items/new_Sword_item.tscn" id="16_alw0m"]
-[ext_resource type="PackedScene" uid="uid://c5c1l3ap0w2ne" path="res://assets/tilws/alcantarilla/geiser_tile.tscn" id="18_44xly"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="18_x4ccs"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="19_c2ppf"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="20_5r0oi"]
@@ -137,99 +136,50 @@ position = Vector2(411, 288)
 [node name="BadWater" parent="." unique_id=1592752810 instance=ExtResource("2_w61f1")]
 position = Vector2(563, 348.00003)
 scale = Vector2(6.437009, 0.35644174)
-nro_drops = null
-drops = null
-aceleration = null
-Climb_velocity = null
-roll_velocity = null
-Knockback_resistence = null
 
 [node name="BadWater2" parent="." unique_id=1187660534 instance=ExtResource("2_w61f1")]
 position = Vector2(84, 349)
 scale = Vector2(6.437009, 0.35644174)
-nro_drops = null
-drops = null
-aceleration = null
-Climb_velocity = null
-roll_velocity = null
-Knockback_resistence = null
 
-[node name="GeiserTile" parent="." unique_id=795643117 instance=ExtResource("18_44xly")]
-z_index = 1
-position = Vector2(406.99997, 460.99994)
-scale = Vector2(1.1626385, 4.019847)
-layer_0/tile_data = PackedInt32Array(-131068, 196608, 0, -131069, 0, 0, -131067, 196608, 0, -131066, 196608, 0, -131065, 196608, 0, -131064, 196608, 0, -131063, 196608, 0, -131062, 196608, 0, -131061, 196608, 0, -131060, 327680, 0)
-
-[node name="Geiser2" parent="GeiserTile" unique_id=863601631 instance=ExtResource("2_3ewjs")]
-position = Vector2(64.50845, -47.265472)
-scale = Vector2(2.655047, 0.16972491)
+[node name="Geiser2" parent="." unique_id=863601631 instance=ExtResource("2_3ewjs")]
+position = Vector2(481, 264)
+scale = Vector2(3.0868597, 0.68226814)
 max_wait_time = 10.0
 height_limit = 150
 stream_time = 4
 
 [node name="Geiser4" parent="." unique_id=804250531 instance=ExtResource("2_3ewjs")]
-z_index = 1
-position = Vector2(91.000015, 142.00002)
-rotation = 1.6845422
-scale = Vector2(1.5051707, 0.4129813)
-max_wait_time = 1.0
+position = Vector2(88, 138)
+rotation = 1.8325958
+scale = Vector2(0.94024616, 1.0917362)
+max_wait_time = 50.0
 height_limit = 500
 stream_time = 2
-animation = "Other"
 
-[node name="StockVectorTheSetOfDamagedPipesPixelArtVector1088674491" type="Sprite2D" parent="Geiser4" unique_id=979182327]
-modulate = Color(0.23529412, 0.4392157, 0.06666667, 1)
-position = Vector2(1.3287413, 19.371304)
-scale = Vector2(2.9625363, 3.5098598)
-texture = ExtResource("15_x4ccs")
-
-[node name="Geiser3" parent="." unique_id=282810827 instance=ExtResource("2_3ewjs")]
-z_index = 1
-position = Vector2(714, 86.00001)
-rotation = -1.8242329
-scale = Vector2(1.0620645, 0.4384151)
-max_wait_time = 30.0
-height_limit = 600
-stream_time = 2
-animation = "Other"
-
-[node name="StockVectorTheSetOfDamagedPipesPixelArtVector1088674490" type="Sprite2D" parent="Geiser3" unique_id=986067724]
-modulate = Color(0.23529412, 0.4392157, 0.06666667, 1)
-position = Vector2(1.8832397, 18.247513)
-scale = Vector2(2.9938614, 4.304007)
-texture = ExtResource("15_x4ccs")
-
-[node name="GeiserTile2" parent="." unique_id=2107467541 instance=ExtResource("18_44xly")]
-z_index = 1
-position = Vector2(601, 491.99997)
-scale = Vector2(1.1626385, 4.019847)
-layer_0/tile_data = PackedInt32Array(-131068, 196608, 0, -131069, 0, 0, -131067, 196608, 0, -131066, 196608, 0, -131065, 196608, 0, -131064, 196608, 0, -131063, 196608, 0, -131062, 196608, 0, -131061, 196608, 0, -131060, 327680, 0)
-
-[node name="Geiser6" parent="GeiserTile2" unique_id=1620012252 instance=ExtResource("2_3ewjs")]
-position = Vector2(63.648376, -46.519173)
-scale = Vector2(2.655047, 0.16972491)
-max_wait_time = 15.0
-height_limit = 100
-stream_time = 2
-
-[node name="GeiserTile3" parent="." unique_id=790033531 instance=ExtResource("18_44xly")]
-z_index = 1
-position = Vector2(124.00001, 415.99997)
-scale = Vector2(1.0767164, 1.5104821)
-layer_0/tile_data = PackedInt32Array(-131068, 196608, 0, -131069, 0, 0, -131067, 196608, 0, -131066, 196608, 0, -131065, 196608, 0, -131064, 196608, 0, -131063, 196608, 0, -131062, 196608, 0, -131061, 196608, 0, -131060, 327680, 0)
-
-[node name="Geiser5" parent="GeiserTile3" unique_id=2000728917 instance=ExtResource("2_3ewjs")]
-position = Vector2(64.083725, -47.66687)
-scale = Vector2(2.8669195, 0.45168898)
+[node name="Geiser5" parent="." unique_id=2000728917 instance=ExtResource("2_3ewjs")]
+position = Vector2(192.00002, 360)
+scale = Vector2(3.0868597, 0.68226814)
 max_wait_time = 5.0
 height_limit = 50
 stream_time = 1
 
+[node name="Geiser6" parent="." unique_id=1620012252 instance=ExtResource("2_3ewjs")]
+position = Vector2(674.00006, 296)
+scale = Vector2(3.0868597, 0.68226814)
+max_wait_time = 15.0
+height_limit = 100
+stream_time = 2
+
+[node name="Geiser3" parent="." unique_id=282810827 instance=ExtResource("2_3ewjs")]
+position = Vector2(708.00006, 84.00001)
+rotation = -1.820734
+scale = Vector2(0.9870808, 0.6759841)
+max_wait_time = 30.0
+height_limit = 600
+stream_time = 2
+
 [node name="boss" type="CharacterBody2D" parent="." unique_id=1158006524]
 script = ExtResource("13_16htg")
-live = 250
-Jump_stength = 0
-speed = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss" unique_id=758221845]
 position = Vector2(450, 151)
@@ -280,6 +230,20 @@ sprite_frames = SubResource("SpriteFrames_44xly")
 autoplay = "default"
 frame_progress = 0.50023574
 
+[node name="StockVectorTheSetOfDamagedPipesPixelArtVector1088674490" type="Sprite2D" parent="boss/Node2D" unique_id=986067724]
+modulate = Color(0.23529412, 0.4392157, 0.06666667, 1)
+position = Vector2(715.00006, 79.999985)
+rotation = -1.8203784
+scale = Vector2(3.179674, 1.8869418)
+texture = ExtResource("15_x4ccs")
+
+[node name="StockVectorTheSetOfDamagedPipesPixelArtVector1088674491" type="Sprite2D" parent="boss/Node2D" unique_id=979182327]
+modulate = Color(0.23529412, 0.4392157, 0.06666667, 1)
+position = Vector2(78, 135)
+rotation = 1.8325957
+scale = Vector2(3.1796741, 1.8869419)
+texture = ExtResource("15_x4ccs")
+
 [node name="Rain" parent="boss/Node2D" unique_id=843869072 instance=ExtResource("9_3kh8l")]
 position = Vector2(214, 46)
 scale = Vector2(447.1168, -25.618183)
@@ -288,7 +252,7 @@ max_wait_time = 2.0
 [node name="hitbox" type="Area2D" parent="boss" unique_id=1028410082]
 position = Vector2(443, 113.99999)
 scale = Vector2(6.279386, -6.241956)
-collision_layer = 0
+collision_layer = 4
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss/hitbox" unique_id=65690297]
@@ -310,7 +274,6 @@ position = Vector2(418, 279)
 position = Vector2(418, 279)
 
 [node name="BossRoomTrigger" type="Area2D" parent="." unique_id=314534446]
-visible = false
 position = Vector2(418, 279)
 collision_layer = 0
 collision_mask = 3

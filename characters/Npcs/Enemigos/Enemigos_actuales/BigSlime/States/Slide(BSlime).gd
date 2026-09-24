@@ -1,6 +1,5 @@
 extends State_base
 
-@export var impulse_speed: float = 180.0
 @export var slide_time: float = 0.7
 
 var timer := 0.0
@@ -9,10 +8,15 @@ var timer := 0.0
 func start():
 	controlled_node.sprite.play("move")
 	timer = slide_time
-	controlled_node.direction=controlled_node.sprite.scale.x
+	if controlled_node.direction == 0:
+		if controlled_node.sprite.flip_h and controlled_node.start_flip:
+			controlled_node.direction=-1
+		else:
+			controlled_node.direction=1
+		controlled_node.update_direction()
 	# Impulso inicial
 	controlled_node.velocity.x = (
-		controlled_node.direction * impulse_speed
+		controlled_node.direction * controlled_node.speed
 	)
 
 
@@ -24,7 +28,7 @@ func on_physics_process(delta):
 	controlled_node.velocity.x = move_toward(
 		controlled_node.velocity.x,
 		0,
-		impulse_speed * 2.0 * delta
+		controlled_node.speed * 2.0 * delta
 	)
 
 	# Gravedad

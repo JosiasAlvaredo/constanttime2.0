@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://cay0f8yvo0rd3"]
 
 [ext_resource type="Script" uid="uid://bhxfdpihjmkfr" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/señor.gd" id="1_2u0d4"]
+[ext_resource type="PackedScene" uid="uid://dbss78mocjgjh" path="res://objets/body_parts/mr_torso.tscn" id="2_bbpvr"]
+[ext_resource type="PackedScene" uid="uid://d1lfb3qg6n56f" path="res://objets/body_parts/mr_arm.tscn" id="3_i5155"]
 [ext_resource type="Texture2D" uid="uid://by0ycskrweplk" path="res://assets/effets/attack_mele.png" id="3_nig5j"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_oathr"]
+[ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="4_i5155"]
 [ext_resource type="Script" uid="uid://c1xhw52s1i8lb" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/States/patrol(sr).gd" id="4_oathr"]
 [ext_resource type="Script" uid="uid://byr8duhi1jfq8" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/States/attack(sr).gd" id="5_jomny"]
 [ext_resource type="Texture2D" uid="uid://b70uoakmdmbak" path="res://assets/characters/enemies/señor.png" id="5_nig5j"]
@@ -200,7 +203,7 @@ scale = Vector2(1.0035105, 1)
 collision_layer = 0
 script = ExtResource("1_2u0d4")
 number_effects = Array[int]([0])
-drops = Array[PackedScene]([null, null])
+drops = Array[PackedScene]([ExtResource("3_i5155"), ExtResource("2_bbpvr"), ExtResource("4_i5155")])
 live = 100
 speed = 30
 Knockback_resistence = 75

@@ -6,8 +6,11 @@ extends enemy_base
 @onready var front_ray: RayCast2D = $RayCast/FrontRay
 @onready var sprite = $AnimatedSprite2D
 
+var start_flip
 
 func _ready():
+	start_flip=!sprite.flip_h
+
 	direction = 1
 	update_direction()
 	sprite.scale.x=direction*abs(sprite.scale.x)
@@ -22,7 +25,7 @@ func update_direction():
 	ray_cast.scale.x = direction
 
 	# Girar el sprite
-	sprite.flip_h = direction < 0
+	sprite.flip_h = direction < 0 == start_flip
 
 func _physics_process(delta: float) -> void:
 	if velocity.x!=0 and is_on_floor():

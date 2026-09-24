@@ -27,7 +27,10 @@ func _physics_process(delta: float) -> void:
 		States.Stopping:Stopping()
 	
 func Starting():
-	animations_sprites[animation].scale.y=height_limit/21
+	if animation=="Up":
+		animations_sprites[animation].scale.y=height_limit/21
+	else:
+		animations_sprites[animation].scale.x=height_limit/21
 	animations_sprites[animation].play("charge")
 	current_state=States.Continue
 	await get_tree().create_timer(float(5.0/6.0)).timeout

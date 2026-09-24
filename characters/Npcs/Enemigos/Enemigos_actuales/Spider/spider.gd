@@ -1,5 +1,5 @@
 extends enemy_base
-class_name Spider
+
 
 @export var projectile_scene: PackedScene
 @export var detection_range := 400.0

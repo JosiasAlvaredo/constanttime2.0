@@ -1,4 +1,4 @@
-extends enemy_base
+extends boss_base
 
 @onready var core_back: AnimatedSprite2D = $core/core_back
 @onready var core_gem: Sprite2D = $core/core_gem
@@ -13,14 +13,16 @@ func _ready() -> void:
 	start_live=live
 	
 func _physics_process(delta: float) -> void:
-	rain.max_wait_time=(float(live)/start_live)*10
-	print(rain.max_wait_time,"- mwt")
+	rain.max_wait_time=(float(live)/start_live)*30
+
 	
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	core_back.play("damage")
 	core_front.play("damage")
 	enemy_damage(area.get_parent())
-	
+	rain.drop()
+	rain.drop()
+	rain.drop()
 	await get_tree().create_timer(4.0/5.0).timeout
 	core_back.play("default")
 	core_front.play("default")

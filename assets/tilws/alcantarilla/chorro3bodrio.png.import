@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccuinfhyo3qxc"
-path="res://.godot/imported/Sword.png-d9ee49c1970b7ce528b2c9d116efa40a.ctex"
+uid="uid://c2umwimd30but"
+path="res://.godot/imported/chorro3bodrio.png-cb9ac24a0e88bb04320fb355aea8af15.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Weapons/Sword.png"
-dest_files=["res://.godot/imported/Sword.png-d9ee49c1970b7ce528b2c9d116efa40a.ctex"]
+source_file="res://assets/tilws/alcantarilla/chorro3bodrio.png"
+dest_files=["res://.godot/imported/chorro3bodrio.png-cb9ac24a0e88bb04320fb355aea8af15.ctex"]
 
 [params]
 
