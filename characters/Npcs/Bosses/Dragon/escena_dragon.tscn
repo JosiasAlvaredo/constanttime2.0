@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bs1ora3pgwyon"]
+[gd_scene load_steps=14 format=4 uid="uid://bs1ora3pgwyon"]
 
 [ext_resource type="PackedScene" uid="uid://cdvrca7vf6tel" path="res://characters/Npcs/Bosses/Dragon/dragon.tscn" id="1_g28ua"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_mr0xf"]

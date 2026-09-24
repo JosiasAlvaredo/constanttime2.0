@@ -1,26 +1,24 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=14 format=3 uid="uid://c8wiww83y365b"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=13 format=3 uid="uid://c8wiww83y365b"]
 
 [ext_resource type="TileSet" uid="uid://iexq4dqep3aa" path="res://scenes/Generacion Procedural/scripts/alcantarilla_fondo.tres" id="1_abqtc"]
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="1_cmg0w"]
 [ext_resource type="PackedScene" uid="uid://dd2mm4a5yiy5p" path="res://scenes/Generacion Procedural/Alcantarilla/boss/Tittan_slime.tscn" id="1_kjkxq"]
-[ext_resource type="PackedScene" uid="uid://cojyx2ppkqc2u" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/vertical/corridorV_01.tscn" id="2_abqtc"]
-[ext_resource type="PackedScene" uid="uid://78vyompmb3lx" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/vertical/corridorV_02.tscn" id="3_cktgw"]
-[ext_resource type="PackedScene" uid="uid://cl07ygoepgxoq" path="res://scenes/Generacion Procedural/Mazmorra/treasure/treasure_02.tscn" id="3_k3d0g"]
-[ext_resource type="PackedScene" uid="uid://tfts7j3krmpa" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_01.tscn" id="4_k3d0g"]
+[ext_resource type="PackedScene" uid="uid://cojyx2ppkqc2u" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/vertical/corridorV_01.tscn" id="3_cktgw"]
+[ext_resource type="PackedScene" uid="uid://78vyompmb3lx" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/vertical/corridorV_02.tscn" id="4_k3d0g"]
 [ext_resource type="PackedScene" uid="uid://b0c1iu5xjsy50" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_02.tscn" id="5_fh6hl"]
-[ext_resource type="PackedScene" uid="uid://cu2gu3v85wg8l" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_03.tscn" id="6_kxkxi"]
+[ext_resource type="PackedScene" uid="uid://tfts7j3krmpa" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_01.tscn" id="5_kxkxi"]
+[ext_resource type="PackedScene" uid="uid://cu2gu3v85wg8l" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_03.tscn" id="7_abj43"]
 [ext_resource type="PackedScene" uid="uid://bmnqofvod5a6a" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_04.tscn" id="7_c4us1"]
 [ext_resource type="PackedScene" uid="uid://rku3cesdcbvr" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_05.tscn" id="8_abj43"]
-[ext_resource type="PackedScene" uid="uid://84svjuaeha70" path="res://scenes/Generacion Procedural/Alcantarilla/start/StartRoom_01.tscn" id="10_cpdti"]
+[ext_resource type="PackedScene" uid="uid://84svjuaeha70" path="res://scenes/Generacion Procedural/Alcantarilla/start/StartRoom_01.tscn" id="11_cpdti"]
 [ext_resource type="PackedScene" uid="uid://c5swyjwk5yy2m" path="res://scenes/Generacion Procedural/Mazmorra/treasure/treasure_01.tscn" id="13_fh6hl"]
 
 [resource]
 script = ExtResource("1_cmg0w")
 level_name = "Alcantarilla"
-start_module = ExtResource("10_cpdti")
-room_modules = Array[PackedScene]([ExtResource("4_k3d0g"), ExtResource("5_fh6hl"), ExtResource("6_kxkxi"), ExtResource("7_c4us1"), ExtResource("8_abj43")])
-corridor_h_modules = Array[PackedScene]([ExtResource("3_k3d0g")])
-corridor_v_modules = Array[PackedScene]([ExtResource("2_abqtc"), ExtResource("3_cktgw")])
+start_module = ExtResource("11_cpdti")
+room_modules = Array[PackedScene]([ExtResource("5_kxkxi"), ExtResource("5_fh6hl"), ExtResource("7_abj43"), ExtResource("7_c4us1"), ExtResource("8_abj43")])
+corridor_v_modules = Array[PackedScene]([ExtResource("3_cktgw"), ExtResource("4_k3d0g")])
 treasure_modules = Array[PackedScene]([ExtResource("13_fh6hl")])
 boss_modules = Array[PackedScene]([ExtResource("1_kjkxq")])
 background_tileset = ExtResource("1_abqtc")
