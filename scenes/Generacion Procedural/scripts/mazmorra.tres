@@ -2,22 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bvqtmq8gdroge" path="res://scenes/Generacion Procedural/scripts/LevelData.gd" id="1_8svcv"]
 [ext_resource type="TileSet" uid="uid://cvly0sl7nb260" path="res://scenes/Generacion Procedural/scripts/mazmorra_fondo.tres" id="1_p46bs"]
-[ext_resource type="PackedScene" uid="uid://c40x4irhyvt5k" path="res://scenes/Generacion Procedural/Cueva/boss/Tittan_slime.tscn" id="2_3cw0i"]
 [ext_resource type="PackedScene" uid="uid://cojyx2ppkqc2u" path="res://scenes/Generacion Procedural/Mazmorra/corridors/vertical/corridorV_01.tscn" id="2_cd0e3"]
 [ext_resource type="PackedScene" uid="uid://78vyompmb3lx" path="res://scenes/Generacion Procedural/Mazmorra/corridors/vertical/corridorV_02.tscn" id="3_3cw0i"]
 [ext_resource type="PackedScene" uid="uid://tfts7j3krmpa" path="res://scenes/Generacion Procedural/Mazmorra/rooms/normal/room_01.tscn" id="4_3xrng"]
 [ext_resource type="PackedScene" uid="uid://dvqq8uas1f0kf" path="res://scenes/Generacion Procedural/Mazmorra/rooms/normal/room_02.tscn" id="5_p8k6u"]
 [ext_resource type="PackedScene" uid="uid://cu2gu3v85wg8l" path="res://scenes/Generacion Procedural/Mazmorra/rooms/normal/room_03.tscn" id="6_dta6o"]
-[ext_resource type="PackedScene" uid="uid://d4dc4hbav823m" path="res://scenes/Generacion Procedural/Cueva/start/StartRoom_01.tscn" id="9_3xrng"]
+[ext_resource type="PackedScene" uid="uid://c5swyjwk5yy2m" path="res://scenes/Generacion Procedural/Mazmorra/treasure/treasure_01.tscn" id="8_3xrng"]
+[ext_resource type="PackedScene" uid="uid://cl07ygoepgxoq" path="res://scenes/Generacion Procedural/Mazmorra/treasure/treasure_02.tscn" id="9_p8k6u"]
 
 [resource]
 script = ExtResource("1_8svcv")
 level_name = "Mazmorra"
 treasure_room_count = 0
-start_module = ExtResource("9_3xrng")
 room_modules = Array[PackedScene]([ExtResource("4_3xrng"), ExtResource("5_p8k6u"), ExtResource("6_dta6o")])
 corridor_v_modules = Array[PackedScene]([ExtResource("2_cd0e3"), ExtResource("3_3cw0i")])
-boss_modules = Array[PackedScene]([ExtResource("2_3cw0i")])
+treasure_modules = Array[PackedScene]([ExtResource("8_3xrng"), ExtResource("9_p8k6u")])
 background_tileset = ExtResource("1_p46bs")
 background_tiles = Array[Vector2i]([Vector2i(3, 1)])
 metadata/_custom_type_script = "uid://bvqtmq8gdroge"
