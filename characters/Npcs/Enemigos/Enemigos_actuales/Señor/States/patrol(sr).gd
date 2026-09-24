@@ -4,10 +4,11 @@ extends State_base
 func start() -> void:
 	print("ENTRO A PATROL")
 	controlled_node.animated_sprite_2d.play("move")
-
+	controlled_node.direction=controlled_node.animated_sprite_2d.scale.x
+	
 func on_physics_process(delta: float) -> void:
 	var enemy = controlled_node
-
+	
 	# Movimiento
 	enemy.velocity.x = enemy.direction * enemy.speed
 

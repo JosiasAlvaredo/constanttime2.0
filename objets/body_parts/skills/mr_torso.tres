@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="body_part" format=3 uid="uid://c13mk3b6khq25"]
+
+[ext_resource type="Script" uid="uid://c5pevm087pgoq" path="res://autoloads/body_part.gd" id="1_ojq7o"]
+
+[resource]
+script = ExtResource("1_ojq7o")
+shockwave = 80
+size = 3
+_name = "mr_torso"
+spanish_name = "Un gigantesco y pesado torso capaz de gran dureza"
+description = "Un gran y fortacho braso capaz de sostener armas"
+max_durability = 250
+durability = 250
+number_kinds = Array[int]([0])
+metadata/_custom_type_script = "uid://c5pevm087pgoq"

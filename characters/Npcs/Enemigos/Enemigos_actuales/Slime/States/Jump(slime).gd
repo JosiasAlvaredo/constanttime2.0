@@ -1,5 +1,7 @@
 extends State_base
 
+func start():
+	controlled_node.direction=controlled_node.sprite.scale.x
 
 func on_physics_process(delta):
 	controlled_node.sprite.play("jump")

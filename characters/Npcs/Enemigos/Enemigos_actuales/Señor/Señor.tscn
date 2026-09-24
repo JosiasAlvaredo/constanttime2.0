@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c1xhw52s1i8lb" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/States/patrol(sr).gd" id="4_oathr"]
 [ext_resource type="Script" uid="uid://byr8duhi1jfq8" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/States/attack(sr).gd" id="5_jomny"]
 [ext_resource type="Texture2D" uid="uid://b70uoakmdmbak" path="res://assets/characters/enemies/señor.png" id="5_nig5j"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="7_v3f3b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nig5j"]
 atlas = ExtResource("5_nig5j")
@@ -101,7 +102,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jomny"]
-size = Vector2(101, 50)
+size = Vector2(87.59071, 39.999996)
 
 [sub_resource type="Animation" id="Animation_nig5j"]
 resource_name = "Attack"
@@ -189,18 +190,20 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e6wy"]
-size = Vector2(20, 34)
+size = Vector2(20, 48)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nig5j"]
-radius = 17.029387
+radius = 30.907738
 
 [node name="Señor" type="CharacterBody2D" unique_id=193873761]
 scale = Vector2(1.0035105, 1)
 collision_layer = 0
 script = ExtResource("1_2u0d4")
 number_effects = Array[int]([0])
+drops = Array[PackedScene]([null, null])
 live = 100
 speed = 30
+Knockback_resistence = 75
 damage = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=638431123]
@@ -224,7 +227,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/AttackArea" unique_id=1320002503]
-position = Vector2(79.5, -1)
+position = Vector2(72.74463, -0.9999995)
 shape = SubResource("RectangleShape2D_jomny")
 
 [node name="RayCasts" type="Node2D" parent="AnimatedSprite2D" unique_id=710174433]
@@ -245,7 +248,6 @@ collision_mask = 3
 libraries/ = SubResource("AnimationLibrary_v3f3b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1027385203]
-position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_0e6wy")
 
 [node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_oathr")]
@@ -257,13 +259,25 @@ script = ExtResource("4_oathr")
 [node name="Attack(Sr)" type="Node" parent="State_Machine" unique_id=494346794]
 script = ExtResource("5_jomny")
 
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("7_v3f3b")]
+
 [node name="hitbox" type="Area2D" parent="." unique_id=408969453]
-position = Vector2(1, 4)
-collision_layer = 4
+position = Vector2(0.9965018, 4)
+collision_layer = 0
 collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=264701662]
-position = Vector2(-1, 2)
+position = Vector2(-0.0034980774, -8)
+shape = SubResource("CircleShape2D_nig5j")
+
+[node name="crush_box" type="Area2D" parent="." unique_id=491984354]
+position = Vector2(0.9965018, 4)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crush_box" unique_id=1624289639]
+position = Vector2(-0.0034980774, -8)
 shape = SubResource("CircleShape2D_nig5j")
 
 [connection signal="area_entered" from="AnimatedSprite2D/AttackArea" to="." method="_on_attack_area_area_entered"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

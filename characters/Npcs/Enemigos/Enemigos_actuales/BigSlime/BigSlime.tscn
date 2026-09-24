@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dlxu4nqmen300"]
 
 [ext_resource type="Script" uid="uid://cnqkuwqtqfbl" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/big_slime.gd" id="1_48nwi"]
+[ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="2_h4uay"]
 [ext_resource type="Texture2D" uid="uid://cf8o5rkwdnfc1" path="res://assets/characters/enemies/Slime.png" id="2_wfn5g"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_tusuu"]
 [ext_resource type="Script" uid="uid://cru67vf1ktnkt" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Idle(BSlime).gd" id="4_h4uay"]
 [ext_resource type="Script" uid="uid://bit7d61a2e1ls" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/States/Slide(BSlime).gd" id="5_wfn5g"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="6_h4uay"]
-[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="7_ys45m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tusuu"]
 atlas = ExtResource("2_wfn5g")
@@ -61,7 +61,10 @@ radius = 17.029387
 [node name="BigSlime" type="CharacterBody2D" unique_id=1982467406]
 collision_layer = 0
 script = ExtResource("1_48nwi")
+nro_drops = 3
+drops = Array[PackedScene]([ExtResource("2_h4uay")])
 live = 120
+Knockback_resistence = 80
 damage = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=64565006]
@@ -95,7 +98,6 @@ script = ExtResource("4_h4uay")
 script = ExtResource("5_wfn5g")
 
 [node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("6_h4uay")]
-script = ExtResource("7_ys45m")
 
 [node name="hitbox" type="Area2D" parent="." unique_id=1794482960]
 position = Vector2(1, 4)

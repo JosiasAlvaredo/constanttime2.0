@@ -19,7 +19,7 @@ var llegando_al_techo := true
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player") as Node2D
-
+	sprite_2d.scale.x=direction*abs(sprite_2d.scale.x)
 	update_rays_direction()
 	update_sprite_direction()
 

@@ -29,4 +29,5 @@ func on_physics_process(delta: float) -> void:
 	await get_tree().create_timer(0.45).timeout
 	if state_machine.current_state==self:
 		if state_machine.change_to("Fall")==null:
-			state_machine.change_to("Idle")
+			print(8)
+			state_machine.change_to(state_machine.default_state.name)

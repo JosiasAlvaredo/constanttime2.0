@@ -10,7 +10,7 @@ extends enemy_base
 func _ready():
 	direction = 1
 	update_direction()
-
+	sprite.scale.x=direction*abs(sprite.scale.x)
 
 func change_direction():
 	direction *= -1

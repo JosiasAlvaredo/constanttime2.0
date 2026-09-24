@@ -3,8 +3,8 @@ extends State_base
 
 func start() -> void:
 	var enemy = controlled_node
-	
-	enemy.velocity.y = enemy.jump_force
+	controlled_node.sprite_2d.play("jump")
+	enemy.velocity.y = enemy.Jump_stength
 
 
 func on_physics_process(delta: float) -> void:
@@ -15,20 +15,18 @@ func on_physics_process(delta: float) -> void:
 	if enemy.playerUbi != null:
 		var difference = enemy.playerUbi.global_position.x - enemy.global_position.x
 		
-		if difference > 5:
-			enemy.direction = 1
-		elif difference < -5:
-			enemy.direction = -1
-		
-		enemy.update_sprite_direction()
-		
+		if abs(difference) > 5:
+			controlled_node.direction = sign(-difference)
+			controlled_node.sprite_2d.scale.x=controlled_node.direction*abs(controlled_node.sprite_2d.scale.x)
+
+			
 		enemy.wall_ray.target_position.x = enemy.direction * 30
 		enemy.floor_ray.position.x = abs(enemy.floor_ray.position.x) * enemy.direction
 		
 		enemy.velocity.x = move_toward(
 			enemy.velocity.x,
 			enemy.direction * enemy.speed,
-			enemy.acceleration * delta
+			enemy.aceleration * delta
 		)
 	
 	enemy.move_and_slide()

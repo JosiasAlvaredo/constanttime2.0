@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://2fiw30huf5q1" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/idle(totem).gd" id="4_idmj4"]
 [ext_resource type="Script" uid="uid://yigefk4ydxvm" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/attack(totem).gd" id="6_wrqnx"]
 [ext_resource type="Script" uid="uid://cvwn0tvhbp3gn" path="res://characters/Npcs/Enemigos/Enemigos_actuales/TotemPajaro/States/cooldown(totem).gd" id="7_iadch"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="8_iadch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iadch"]
 atlas = ExtResource("3_wrqnx")
@@ -87,6 +88,7 @@ collision_layer = 0
 script = ExtResource("1_bdeei")
 projectile_scene = ExtResource("2_5ewtc")
 spread_angle = 50.0
+Knockback_resistence = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=941905756]
 sprite_frames = SubResource("SpriteFrames_w2m5y")
@@ -122,6 +124,8 @@ script = ExtResource("6_wrqnx")
 [node name="Cooldown(totem)" type="Node" parent="State_Machine" unique_id=1027172946]
 script = ExtResource("7_iadch")
 cooldown_time = 3.0
+
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("8_iadch")]
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1553242938]
 collision_layer = 132

@@ -9,7 +9,8 @@ var playerUbi: Node2D = null
 @onready var shoot_point: Marker2D = $ShootPoint
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-
+func _ready() -> void:
+	sprite.scale.x=direction*abs(sprite.scale.x)
 
 func shoot() -> void:
 	if playerUbi == null:

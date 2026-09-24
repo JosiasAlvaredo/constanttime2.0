@@ -19,6 +19,11 @@ var aux_values={}
 
 var weight=0
 
+func _init() -> void:
+	direction=sign(randf_range(-100,100)+randf_range(-100,100))
+	last_direction=direction
+	
+	
 func _process(delta: float) -> void:
 	if activate_Gravity:
 		velocity += transform.y * gravity * delta
@@ -35,15 +40,17 @@ func enemy_damage(weapond):
 
 	last_direction=direction
 	direction=0
-	recoil=weapond.skills.knockback*Knockback_resistence
-	velocity.x=sign(enemy.global_position.x-global_position.x)*recoil.x
-	velocity.y=sign(enemy.global_position.y-global_position.y)*recoil.y
 	
+	recoil=weapond.skills.knockback*Knockback_resistence
+	velocity.x=sign(enemy.global_position.x-global_position.x)
+	velocity.y=sign(enemy.global_position.y-global_position.y)
+	
+	if Knockback_resistence:
+		state_machine.change_to("Knockback")
 
 	for i in weapond.skills.number_effects:
 		
 		var effect=ActiveEffects[GlobalValues.Effects.keys()[i]]
-		print(effect)
 		if not effect in current_effects:
 			print("llego","-",effect)
 			current_effects.append(effect)
@@ -64,10 +71,10 @@ func suffer_damage(_damage):
 func dead():
 	
 	for drop in drops:
-		var new_drop=drop.instantiate()
-		new_drop.position=position+Vector2(randf_range(-10,10),randf_range(0,10))
 		
 		for i in range(nro_drops):
+			var new_drop=drop.instantiate()
+			new_drop.position=position+Vector2(randf_range(-10,10),randf_range(0,10))
 			get_parent().add_child(new_drop)
 	queue_free()
 	
