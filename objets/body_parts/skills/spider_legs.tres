@@ -10,6 +10,7 @@ size = 2
 number_habilities = Array[int]([0])
 _name = "spider_legs"
 spanish_name = "Patas de araña"
+origin = "body_parts"
 description = "Permiten desplazarse por superficies y trepar paredes."
 max_durability = 25
 durability = 25

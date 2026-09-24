@@ -11,6 +11,7 @@ size = 1
 number_habilities = Array[int]([3])
 _name = "slime"
 spanish_name = "Slime"
+origin = "body_parts"
 description = "Una sustancia vizcosa que se adiere a superficies planas con gran facilidad"
 max_durability = 100
 durability = 100

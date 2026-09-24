@@ -6,6 +6,7 @@
 script = ExtResource("1_ptygf")
 _name = "Sword"
 spanish_name = "Espada desgastada "
+origin = "items"
 max_durability = 100
 durability = 100
 damage = 5

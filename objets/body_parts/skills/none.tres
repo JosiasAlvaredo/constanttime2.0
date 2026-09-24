@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_4px42")
 _name = "None"
+origin = "body_parts"
 number_kinds = Array[int]([0])
 metadata/_custom_type_script = "uid://c5pevm087pgoq"

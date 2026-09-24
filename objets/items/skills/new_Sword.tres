@@ -6,6 +6,7 @@
 script = ExtResource("1_mucen")
 _name = "new_Sword"
 spanish_name = "Espada legendaria "
+origin = "items"
 description = "Echa con los mejores materiales"
 max_durability = 120
 durability = 100

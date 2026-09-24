@@ -8,6 +8,7 @@ shockwave = 70
 size = 3
 _name = "rat_torso"
 spanish_name = "Torso de rata"
+origin = "body_parts"
 description = "un gran y peludo cuerpo, absorbe gran parte de los ataques resibidos"
 max_durability = 200
 durability = 200

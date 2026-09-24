@@ -8,6 +8,7 @@ shockwave = 80
 size = 3
 _name = "mr_torso"
 spanish_name = "Torso de señor"
+origin = "body_parts"
 description = "Un gran y fortacho braso capaz de sostener armas"
 max_durability = 250
 durability = 250

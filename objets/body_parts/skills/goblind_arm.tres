@@ -8,6 +8,7 @@ can_take = true
 size = 1
 _name = "goblind_arm"
 spanish_name = "Brazo de duende"
+origin = "body_parts"
 description = "Un brazo debil pero capaz de agarrar armas."
 max_durability = 50
 durability = 50

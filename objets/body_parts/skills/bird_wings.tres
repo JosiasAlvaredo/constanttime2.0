@@ -9,6 +9,7 @@ size = 2
 number_habilities = Array[int]([2])
 _name = "bird_wings"
 spanish_name = "Ala rota"
+origin = "body_parts"
 description = "Aunque rota tiene la fuerza para realizar un segundo salto en el aire."
 max_durability = 150
 durability = 125

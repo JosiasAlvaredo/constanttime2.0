@@ -6,6 +6,7 @@
 script = ExtResource("1_2ip0x")
 _name = "Forgot_lance"
 spanish_name = "Lanza olvidada"
+origin = "items"
 description = "Una lanza usada dejada aun lado en medio de una batalla"
 max_durability = 100
 durability = 100

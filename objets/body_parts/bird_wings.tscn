@@ -13,7 +13,6 @@ radius = 4.0
 collision_layer = 0
 script = ExtResource("1_q3a76")
 _name = "bird_wings"
-durability = 55
 origin = "body_parts"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]

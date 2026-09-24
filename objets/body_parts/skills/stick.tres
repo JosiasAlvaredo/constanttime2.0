@@ -11,6 +11,7 @@ size = 1
 number_habilities = Array[int]([1])
 _name = "stick"
 spanish_name = "Palo"
+origin = "body_parts"
 description = "Un palo resistente"
 max_durability = 50
 durability = 50

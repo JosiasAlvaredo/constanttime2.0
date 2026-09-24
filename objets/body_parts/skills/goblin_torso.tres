@@ -9,6 +9,7 @@ size = 1
 bulnerable_effects = Array[int]([1])
 _name = "goblin_torso"
 spanish_name = "Torso de duende"
+origin = "body_parts"
 description = "Un torso debil y enfermiso"
 max_durability = 100
 durability = 100

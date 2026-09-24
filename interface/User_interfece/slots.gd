@@ -35,11 +35,9 @@ func _physics_process(delta: float) -> void:
 	#lo que se muestra en el slot (el objeto que esta ahi o nada)
 	if GlobalValues.bodies_parts[slot_part]!=null and (item_aux==null or not moving_thing) :
 		icon=GlobalValues.bodies_parts[slot_part].get_child(0).icon
-		var skill=load("res://objets/body_parts/skills/%s.tres" % GlobalValues.bodies_parts[slot_part].skills._name)
-		if skill==null:
-			skill=load("res://objets/items/skills/%s.tres" % GlobalValues.bodies_parts[slot_part].skills._name)
-		else:
-			skill=skill.duplicate()
+		var skill= GlobalValues.bodies_parts[slot_part].skills
+	
+		skill=skill.duplicate()
 			
 		durability_percent=float(GlobalValues.bodies_parts[slot_part].skills.durability)/skill.max_durability
 		durability_node.size.x=durability_percent*53
@@ -97,11 +95,8 @@ func _on_button_down() -> void:
 		timer()
 
 func drop():
-	var drop=load("res://objets/body_parts/%s.tscn" % item_aux.skills._name)
+	var drop=load("res://objets/%s/%s.tscn" %  [item_aux.skills.origin,item_aux.skills._name])
 	
-	if drop==null:
-		drop=load("res://objets/items/%s.tscn" % item_aux.skills._name)
-		
 	if drop==null:
 		return
 		
@@ -144,11 +139,7 @@ func turn(_bool):
 	
 	if not _bool and GlobalValues.bodies_parts[slot_part]:
 		item_aux=GlobalValues.bodies_parts[slot_part].duplicate()
-		var drop=load("res://objets/body_parts/%s.tscn" % item_aux.skills._name)
-		
-		if drop==null:
-			drop=load("res://objets/items/%s.tscn" % item_aux.skills._name)
-			
+		var drop=load("res://objets/%s/%s.tscn" %  [item_aux.skills.origin,item_aux.skills._name])
 		if drop==null:
 			return
 			

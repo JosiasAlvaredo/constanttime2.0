@@ -4,6 +4,8 @@ class_name Weapons
 @export var _name=""
 @export var spanish_name=""
 
+@export_enum("body_parts","items") var origin:String
+
 @export var description=""
 
 @export var max_durability=0

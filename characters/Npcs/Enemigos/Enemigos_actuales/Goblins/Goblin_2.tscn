@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://txw0idjvst4t" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/rata.gd" id="1_7fh0d"]
 [ext_resource type="Texture2D" uid="uid://cmygi8oq62f41" path="res://assets/characters/enemies/goblin 2.png" id="2_7fh0d"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="2_xa60m"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_7hfnl"]
 [ext_resource type="Script" uid="uid://cvq245v6pqkbe" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/patrol(Rat).gd" id="4_6qk0u"]
 [ext_resource type="Script" uid="uid://duevdpdimn63q" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/chase.gd" id="5_vkjv0"]
@@ -126,6 +127,7 @@ position = Vector2(-1, 1)
 collision_layer = 0
 script = ExtResource("1_7fh0d")
 follow_distance = 1000.0
+drops = Array[PackedScene]([ExtResource("2_xa60m"), null, null, null])
 live = 50
 aceleration = 500
 Jump_stength = -400
@@ -139,7 +141,7 @@ scale = Vector2(0.446, 0.491)
 sprite_frames = SubResource("SpriteFrames_amfy1")
 animation = &"move"
 autoplay = "default"
-frame_progress = 0.66198
+frame_progress = 0.8616776
 flip_h = true
 
 [node name="RayCasts" type="Node2D" parent="AnimatedSprite2D" unique_id=681321109]

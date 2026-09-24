@@ -10,6 +10,7 @@ shockwave = 30
 size = 2
 _name = "frog_legs"
 spanish_name = "Patas de rana"
+origin = "body_parts"
 description = "Un par de piernas fuertes pero no muy flexibles"
 max_durability = 100
 durability = 100

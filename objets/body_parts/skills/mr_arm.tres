@@ -8,6 +8,7 @@ can_take = true
 size = 3
 _name = "mr_arm"
 spanish_name = "Brazo de señor"
+origin = "body_parts"
 description = "Un gran y fortacho braso capaz de sostener armas"
 max_durability = 150
 durability = 150

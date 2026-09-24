@@ -9,6 +9,7 @@ jump_force = -300
 size = 2
 _name = "rat_legs"
 spanish_name = "Patas de rata"
+origin = "body_parts"
 description = "Unas patas medianas increiblemente agiles"
 max_durability = 125
 durability = 125

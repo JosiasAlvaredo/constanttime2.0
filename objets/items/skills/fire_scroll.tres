@@ -6,6 +6,7 @@
 script = ExtResource("1_cdbeh")
 _name = "fire_scroll"
 spanish_name = "Pergamino de fuego"
+origin = "items"
 description = "Un antiguo escrito magico capaz de invocar bolas de fuego"
 max_durability = 50
 durability = 50

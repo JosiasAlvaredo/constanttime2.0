@@ -9,6 +9,7 @@ jump_force = -400
 size = 1
 _name = "goblin_legs"
 spanish_name = "Piernas de duende"
+origin = "body_parts"
 description = "Un par de piernas rapidas pero debiles"
 max_durability = 75
 durability = 100

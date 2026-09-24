@@ -4,33 +4,20 @@
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="2_kuocb"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_xsciu"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="3_he2ru"]
-[ext_resource type="PackedScene" uid="uid://dbss78mocjgjh" path="res://objets/body_parts/mr_torso.tscn" id="3_v48yy"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="4_l4nw3"]
-[ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="5_2of1a"]
-[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="6_7iove"]
-[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="7_vax2r"]
-[ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="9_ikq0o"]
-[ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="10_8yqei"]
-[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="13_clopg"]
-[ext_resource type="PackedScene" uid="uid://bts7xkknnfm4x" path="res://objets/body_parts/cienpies.tscn" id="14_clopg"]
-[ext_resource type="PackedScene" uid="uid://cei2w4wemd2od" path="res://objets/body_parts/rat_torso.tscn" id="15_lyfp4"]
-[ext_resource type="PackedScene" uid="uid://c4vhj81yc7w70" path="res://objets/body_parts/rat_legs.tscn" id="16_1ol81"]
-[ext_resource type="PackedScene" uid="uid://b8aix8qs6054f" path="res://objets/body_parts/goblin_legs.tscn" id="17_qkvjg"]
-[ext_resource type="PackedScene" uid="uid://de7yccuygil5n" path="res://objets/body_parts/goblin_torso.tscn" id="18_5e770"]
-[ext_resource type="PackedScene" uid="uid://chm0tlaxhm01j" path="res://objets/items/fire_scroll.tscn" id="18_55tv6"]
-[ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="19_5e770"]
-[ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="19_iapuq"]
-[ext_resource type="PackedScene" uid="uid://1vlvoemgu10w" path="res://characters/player/Body_parts/arms/mr_arm.tscn" id="20_iapuq"]
-[ext_resource type="PackedScene" uid="uid://d1lfb3qg6n56f" path="res://objets/body_parts/mr_arm.tscn" id="21_c7xcu"]
-[ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="22_vxhys"]
-[ext_resource type="PackedScene" uid="uid://oo75whoaybfo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/Goblin_1.tscn" id="24_xebhr"]
-[ext_resource type="PackedScene" uid="uid://2y2k8obqg0hs" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/Goblin_2.tscn" id="25_tnanx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(829, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikq0o"]
 size = Vector2(20, 72)
+
+[sub_resource type="Gradient" id="Gradient_8vass"]
+offsets = PackedFloat32Array(0.44951922, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j8q3y"]
+gradient = SubResource("Gradient_8vass")
 
 [node name="StartRoom01" type="Node2D" unique_id=1701331687]
 position = Vector2(-191, 1)
@@ -46,7 +33,7 @@ position = Vector2(723, 178)
 
 [node name="paredes" parent="." unique_id=1155179598 instance=ExtResource("2_kuocb")]
 position = Vector2(-12, 322)
-tile_map_data = PackedByteArray("AAD9//3/AAADAAAAAAD+//3/AAADAAQAAAD///3/AAADAAQAAAAAAP3/AAADAAQAAAABAP3/AAADAAQAAAACAP3/AAADAAQAAAADAP3/AAADAAQAAAAEAP3/AAADAAQAAAAFAP3/AAADAAQAAAAGAP3/AAADAAQAAAAHAP3/AAADAAQAAAAIAP3/AAADAAQAAAAJAP3/AAADAAQAAAAKAP3/AAADAAQAAAALAP3/AAADAAQAAAAMAP3/AAADAAQAAAANAP3/AAADAAQAAAAOAP3/AAADAAQAAAAPAP3/AAADAAQAAAAQAP3/AAADAAQAAAARAP3/AAADAAQAAAASAP3/AAADAAQAAAATAP3/AAADAAQAAAAUAP3/AAADAAQAAAAVAP3/AAADAAQAAAAWAP3/AAADAAAAAAAWAPn/AAADAAIAAAD9//n/AAADAAIAAAD+//n/AAAHAAYAAAD///n/AAAHAAYAAAAAAPn/AAAHAAYAAAABAPn/AAAHAAYAAAACAPn/AAAHAAYAAAADAPn/AAAHAAYAAAAEAPn/AAAHAAYAAAAFAPn/AAAHAAYAAAAGAPn/AAAHAAYAAAAHAPn/AAAHAAYAAAAIAPn/AAAHAAYAAAAJAPn/AAAHAAYAAAAKAPn/AAAHAAYAAAALAPn/AAAHAAYAAAAMAPn/AAAHAAYAAAANAPn/AAAHAAYAAAAOAPn/AAAHAAYAAAAPAPn/AAAHAAYAAAAQAPn/AAAHAAYAAAARAPn/AAAHAAYAAAASAPn/AAAHAAYAAAATAPn/AAAHAAYAAAAUAPn/AAAHAAYAAAAVAPn/AAAHAAYAAAABAPv/AAAKAAIAAAANAPv/AAAKAAIAAAA=")
+tile_map_data = PackedByteArray("AAD9//3/AAADAAAAAAD+//3/AAADAAQAAAD///3/AAADAAQAAAAAAP3/AAADAAQAAAABAP3/AAADAAQAAAACAP3/AAADAAQAAAADAP3/AAADAAQAAAAEAP3/AAADAAQAAAAFAP3/AAADAAQAAAAGAP3/AAADAAQAAAAHAP3/AAADAAQAAAAIAP3/AAADAAQAAAAJAP3/AAADAAQAAAAKAP3/AAADAAQAAAALAP3/AAADAAQAAAAMAP3/AAADAAQAAAANAP3/AAADAAQAAAAOAP3/AAADAAQAAAAPAP3/AAADAAQAAAAQAP3/AAADAAQAAAARAP3/AAADAAQAAAASAP3/AAADAAQAAAATAP3/AAADAAQAAAAUAP3/AAADAAQAAAAVAP3/AAADAAQAAAAWAP3/AAADAAAAAAAWAPn/AAADAAIAAAD9//n/AAADAAIAAAD+//n/AAAHAAYAAAD///n/AAAHAAYAAAAAAPn/AAAHAAYAAAABAPn/AAAHAAYAAAACAPn/AAAHAAYAAAADAPn/AAAHAAYAAAAEAPn/AAAHAAYAAAAFAPn/AAAHAAYAAAAGAPn/AAAHAAYAAAAHAPn/AAAHAAYAAAAIAPn/AAAHAAYAAAAJAPn/AAAHAAYAAAAKAPn/AAAHAAYAAAALAPn/AAAHAAYAAAAMAPn/AAAHAAYAAAANAPn/AAAHAAYAAAAOAPn/AAAHAAYAAAAPAPn/AAAHAAYAAAAQAPn/AAAHAAYAAAARAPn/AAAHAAYAAAASAPn/AAAHAAYAAAATAPn/AAAHAAYAAAAUAPn/AAAHAAYAAAAVAPn/AAAHAAYAAAABAPv/AAAKAAIAAAANAPv/AAAKAAIAAAD9//z/AAAAAAMAAAD9//v/AAAAAAMAAAD9//r/AAAAAAMAAAA=")
 
 [node name="Bounds" type="Area2D" parent="." unique_id=348332757]
 
@@ -56,7 +43,7 @@ scale = Vector2(1, 1.2)
 shape = SubResource("RectangleShape2D_e8jrh")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_xsciu")]
-position = Vector2(391, 37)
+position = Vector2(-79, 180)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1658636559]
 zoom = Vector2(1.5, 1.5)
@@ -64,24 +51,6 @@ zoom = Vector2(1.5, 1.5)
 [node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("3_he2ru")]
 
 [node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("4_l4nw3")]
-
-[node name="bird_wings" parent="." unique_id=289347356 instance=ExtResource("5_2of1a")]
-position = Vector2(-34, 177)
-
-[node name="mr_torso" parent="." unique_id=926426869 instance=ExtResource("3_v48yy")]
-position = Vector2(420, 72)
-
-[node name="stick_arm" parent="." unique_id=29034957 instance=ExtResource("6_7iove")]
-position = Vector2(392, 59)
-
-[node name="stick_arm2" parent="." unique_id=512423657 instance=ExtResource("7_vax2r")]
-position = Vector2(-33, 195)
-
-[node name="frog_legs" parent="." unique_id=835217674 instance=ExtResource("9_ikq0o")]
-position = Vector2(402, 55)
-
-[node name="slime_legs" parent="." unique_id=1748175525 instance=ExtResource("10_8yqei")]
-position = Vector2(-5, 202)
 
 [node name="STOP" type="Area2D" parent="." unique_id=1405820208]
 position = Vector2(-50, 204)
@@ -92,52 +61,10 @@ collision_mask = 2
 position = Vector2(158, -20)
 shape = SubResource("RectangleShape2D_ikq0o")
 
-[node name="goblind_arm" parent="." unique_id=1865627012 instance=ExtResource("13_clopg")]
-position = Vector2(-13, 205)
-
-[node name="stick_arm3" parent="." unique_id=1307601408 instance=ExtResource("14_clopg")]
-position = Vector2(-24, 206)
-
-[node name="rat_torso" parent="." unique_id=2012691640 instance=ExtResource("15_lyfp4")]
-position = Vector2(370, 72)
-
-[node name="rat_legs" parent="." unique_id=343115415 instance=ExtResource("16_1ol81")]
-position = Vector2(-25, 206)
-
-[node name="fire_scroll" parent="." unique_id=1284734035 instance=ExtResource("18_55tv6")]
-position = Vector2(-25, 206)
-
-[node name="Torch_item" parent="." unique_id=766590214 instance=ExtResource("19_5e770")]
-position = Vector2(-40, 213)
-
-[node name="bird_wings2" parent="." unique_id=2115256637 instance=ExtResource("17_qkvjg")]
-position = Vector2(-16, 207)
-
-[node name="bird_wings3" parent="." unique_id=182063723 instance=ExtResource("18_5e770")]
-position = Vector2(-29, 212)
-
-[node name="goblind_arm2" parent="." unique_id=85397131 instance=ExtResource("13_clopg")]
-position = Vector2(-44, 208)
-
-[node name="Señor" parent="." unique_id=193873761 instance=ExtResource("19_iapuq")]
-position = Vector2(100, 44)
-drops = Array[PackedScene]([ExtResource("20_iapuq")])
-
-[node name="mr_arm2" parent="." unique_id=1362311282 instance=ExtResource("21_c7xcu")]
-position = Vector2(0, 195)
-
-[node name="mr_arm3" parent="." unique_id=186490083 instance=ExtResource("21_c7xcu")]
-position = Vector2(0, 195)
-
-[node name="Rata" parent="." unique_id=1749833397 instance=ExtResource("22_vxhys")]
-position = Vector2(545, 196)
-follow_distance = 500.0
-aceleration = 500
-
-[node name="Doblin_1" parent="." unique_id=1248878710 instance=ExtResource("24_xebhr")]
-position = Vector2(516, 51)
-
-[node name="Doblin_2" parent="." unique_id=443985601 instance=ExtResource("25_tnanx")]
-position = Vector2(497, 172)
+[node name="NoTocar" type="Sprite2D" parent="." unique_id=1614981110]
+z_index = 100
+position = Vector2(-46.75, 182)
+scale = Vector2(1.8515623, 1.5937499)
+texture = SubResource("GradientTexture2D_j8q3y")
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]

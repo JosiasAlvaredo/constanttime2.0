@@ -8,6 +8,7 @@ size = 1
 number_habilities = Array[int]([1])
 _name = "cienpies"
 spanish_name = "Pata de insecto"
+origin = "body_parts"
 description = "Una filosa extremidad, perfecta para un depredador"
 max_durability = 100
 durability = 100
