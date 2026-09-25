@@ -1,9 +1,9 @@
-[gd_scene format=4 uid="uid://78vyompmb3lx"]
+[gd_scene load_steps=11 format=4 uid="uid://78vyompmb3lx"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_itnb8"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="3_w841o"]
 [ext_resource type="PackedScene" uid="uid://ct02bdk6t3tv3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Slime/Slime.tscn" id="4_3wip4"]
-[ext_resource type="PackedScene" uid="uid://dfyewptptr14a" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="5_eewkc"]
+[ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="5_eewkc"]
 [ext_resource type="PackedScene" uid="uid://dkpqityq2i4to" path="res://objets/body_parts/slime.tscn" id="6_utg2l"]
 [ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="6_w841o"]
 [ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="7_wd1nj"]
@@ -41,7 +41,6 @@ position = Vector2(169, 64)
 position = Vector2(139, 672)
 
 [node name="Bounds" type="Area2D" parent="." unique_id=1225054392]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=189599719]
 position = Vector2(207.5, 368)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://b0c1iu5xjsy50"]
+[gd_scene load_steps=10 format=4 uid="uid://b0c1iu5xjsy50"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_jxqyb"]
 [ext_resource type="PackedScene" uid="uid://cqhbw1m88idtf" path="res://objets/Map/save_point.tscn" id="2_oxcue"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://vk1bfs3s17ao" path="res://objets/Map/Sewer/bad_water.tscn" id="8_vbw43"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuv48"]
-size = Vector2(734, 515)
+size = Vector2(736, 512)
 
 [node name="Room_01" type="Node2D" unique_id=900673031]
 metadata/_edit_vertical_guides_ = [496.0, 304.0]
@@ -46,10 +46,9 @@ position = Vector2(-1, 320)
 tile_map_data = PackedByteArray("AAATAPr/AAADAAEAAAATAPv/AAADAAEAAAATAPz/AAAIAAAAAAATAPn/AAADAAEAAAASAPz/AAACAAIAAAAUAPz/AAADAAEAAAAVAPv/AAADAAEAAAAVAPr/AAADAAEAAAAVAPn/AAADAAEAAAAVAPj/AAADAAEAAAAUAPj/AAADAAEAAAATAPj/AAADAAEAAAAUAPn/AAADAAEAAAAUAPr/AAADAAEAAAAUAPv/AAADAAEAAAAVAPz/AAADAAEAAAASAPj/AAACAAEAAAASAPn/AAACAAEAAAASAPr/AAACAAEAAAASAPv/AAACAAEAAAA=")
 
 [node name="Bounds" type="Area2D" parent="." unique_id=1796673238]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1631879316]
-position = Vector2(336, 160.5)
+position = Vector2(335, 160)
 shape = SubResource("RectangleShape2D_fuv48")
 
 [node name="SavePoint2" parent="." unique_id=147022339 instance=ExtResource("2_oxcue")]

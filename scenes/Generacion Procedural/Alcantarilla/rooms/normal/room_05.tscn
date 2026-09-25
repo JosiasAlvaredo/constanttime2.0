@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://rku3cesdcbvr"]
+[gd_scene load_steps=7 format=4 uid="uid://rku3cesdcbvr"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_2fh03"]
 [ext_resource type="PackedScene" uid="uid://vk1bfs3s17ao" path="res://objets/Map/Sewer/bad_water.tscn" id="2_t5w1w"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="5_2qp5s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw3r2"]
-size = Vector2(702, 288)
+size = Vector2(704, 289)
 
 [node name="CorridorH01" type="Node2D" unique_id=431257943]
 
@@ -41,7 +41,7 @@ position = Vector2(772, 386)
 [node name="Bounds" type="Area2D" parent="." unique_id=1743847757]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=2078390579]
-position = Vector2(499, 241)
+position = Vector2(500, 241.5)
 shape = SubResource("RectangleShape2D_kw3r2")
 
 [node name="EnemySpawner2" parent="." unique_id=1236478016 instance=ExtResource("3_0hiq1")]
