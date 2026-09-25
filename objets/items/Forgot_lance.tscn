@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://53b4nigck6v6"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_tme13"]
-[ext_resource type="Texture2D" uid="uid://h878ib1eo730" path="res://assets/three.png" id="2_tme13"]
+[ext_resource type="Texture2D" uid="uid://clwax33asl00s" path="res://assets/items/Weapons/armas 1-3.png.png" id="2_tme13"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 237.5
@@ -16,8 +16,9 @@ _name = "Forgot_lance"
 origin = "items"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
-position = Vector2(0, -2)
-scale = Vector2(0.23937875, 0.52713394)
+position = Vector2(-0.9999999, -3)
+rotation = 0.55107296
+scale = Vector2(0.5165557, 0.64690995)
 texture = ExtResource("2_tme13")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]

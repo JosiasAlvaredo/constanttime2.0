@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://chm0tlaxhm01j"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_ef8xt"]
-[ext_resource type="Texture2D" uid="uid://by0ycskrweplk" path="res://assets/effets/attack_mele.png" id="2_ef8xt"]
+[ext_resource type="Texture2D" uid="uid://82x105pjlt48" path="res://assets/items/Weapons/armas 1-9.png.png" id="2_ef8xt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -16,8 +16,9 @@ _name = "fire_scroll"
 origin = "items"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
-position = Vector2(2, 0)
-scale = Vector2(0.18220527, 0.2263503)
+position = Vector2(0.99999905, -5)
+rotation = 0.35125488
+scale = Vector2(0.55136174, 0.52075684)
 texture = ExtResource("2_ef8xt")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]

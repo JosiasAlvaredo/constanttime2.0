@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dkpqityq2i4to"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_45bu8"]
-[ext_resource type="Texture2D" uid="uid://b6jxjkkmi8i6p" path="res://assets/items/Weapons/Rock.png" id="2_fix1a"]
+[ext_resource type="Texture2D" uid="uid://c5gwsjaci74qx" path="res://assets/items/Weapons/slime.png" id="2_llfrm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -16,8 +16,9 @@ _name = "slime"
 origin = "body_parts"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=1260434761]
-position = Vector2(0, -1)
-texture = ExtResource("2_fix1a")
+position = Vector2(-1, 5)
+scale = Vector2(0.66255426, 0.78133374)
+texture = ExtResource("2_llfrm")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
 collision_layer = 64
@@ -29,6 +30,7 @@ scale = Vector2(0.08, 0.08)
 shape = SubResource("CircleShape2D_vswh6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1753255336]
+position = Vector2(0, 19)
 shape = SubResource("CircleShape2D_lc80n")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

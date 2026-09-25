@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://df2elhr4o6whe"]
+[gd_scene format=3 uid="uid://df2elhr4o6whe"]
 
 [ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/AlcantarillaGenerator.gd" id="1_1yqan"]
 [ext_resource type="Script" uid="uid://bxcuhnfwcvwsi" path="res://scenes/Generacion Procedural/dungeon_background.gd" id="2_85rqy"]

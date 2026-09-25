@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://v74wlnxoqygx"]
+[gd_scene format=4 uid="uid://v74wlnxoqygx"]
 
 [ext_resource type="PackedScene" uid="uid://crhmrgdwdjlob" path="res://objets/Map/tiles/tile_map.tscn" id="1_xlq8s"]
 [ext_resource type="Script" uid="uid://fainjisq7kpe" path="res://scenes/Generacion Procedural/Cueva/boss/teleport.gd" id="2_x5p6e"]
