@@ -1,11 +1,63 @@
 [gd_scene format=3 uid="uid://ui2ot313vec3"]
 
 [ext_resource type="Script" uid="uid://dl03ejk14nifc" path="res://characters/Npcs/Bosses/Dragon/Proyectiles/Psi-fuego/piso_fuego.gd" id="1_0va06"]
+[ext_resource type="Texture2D" uid="uid://cheudal6wcqqt" path="res://assets/characters/Bosses/Dragon/fuego (1).png" id="2_81nro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v32yy"]
+atlas = ExtResource("2_81nro")
+region = Rect2(0, 0, 80, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk0uw"]
+atlas = ExtResource("2_81nro")
+region = Rect2(80, 0, 80, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlkva"]
+atlas = ExtResource("2_81nro")
+region = Rect2(0, 40, 80, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_810wh"]
+atlas = ExtResource("2_81nro")
+region = Rect2(80, 40, 80, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwbbj"]
+atlas = ExtResource("2_81nro")
+region = Rect2(0, 80, 80, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipbif"]
+atlas = ExtResource("2_81nro")
+region = Rect2(80, 80, 80, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ak0aj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v32yy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk0uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlkva")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_810wh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwbbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipbif")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3q0mq"]
+size = Vector2(20, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0va06"]
-size = Vector2(59, 20)
+size = Vector2(78.5, 28)
 
 [node name="PisoFuego" type="CharacterBody2D" unique_id=2087668833]
 collision_layer = 0
@@ -14,9 +66,14 @@ time_alive = null
 number_effects = null
 damage = 25
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=958316227]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2086737671]
+position = Vector2(10, -9)
+sprite_frames = SubResource("SpriteFrames_ak0aj")
+autoplay = "default"
+frame_progress = 0.4065916
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1557936742]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_3q0mq")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=923664693]
@@ -24,6 +81,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=827709544]
+position = Vector2(9.75, -4)
 shape = SubResource("RectangleShape2D_0va06")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

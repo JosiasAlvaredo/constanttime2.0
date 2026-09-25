@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://bs1ora3pgwyon"]
+[gd_scene format=4 uid="uid://bs1ora3pgwyon"]
 
-[ext_resource type="PackedScene" uid="uid://cdvrca7vf6tel" path="res://characters/Npcs/Bosses/Dragon/dragon.tscn" id="1_g28ua"]
+[ext_resource type="PackedScene" uid="uid://y5xeg4sou41w" path="res://characters/Npcs/Bosses/Dragon/dragon.tscn" id="1_g28ua"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_mr0xf"]
 [ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="3_mr0xf"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="4_d50jx"]
@@ -277,11 +277,10 @@ sources/0 = SubResource("TileSetAtlasSource_33ij6")
 [node name="Dragon" parent="." unique_id=1458171680 node_paths=PackedStringArray("plataformas_spawn") instance=ExtResource("1_g28ua")]
 position = Vector2(573, 364)
 plataformas_spawn = NodePath("../PlataformasSpawn")
+live = 30
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("2_mr0xf")]
 position = Vector2(107, 554)
-
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1134492459]
 
 [node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("4_d50jx")]
 
