@@ -13,6 +13,7 @@ radius = 50.803543
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_fv7bh")
+damage = 30
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1521863614]
 position = Vector2(-3.8146973e-06, 4.9999924)

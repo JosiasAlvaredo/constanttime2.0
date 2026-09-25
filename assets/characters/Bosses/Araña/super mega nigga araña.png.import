@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccuinfhyo3qxc"
-path="res://.godot/imported/sword.png-14a9ea5be3c1ff5b33aa65bde795af5e.ctex"
+uid="uid://nwpi6dg7ikun"
+path="res://.godot/imported/super mega nigga araña.png-ab0ec5a0bf929f78305cad6a4f016651.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Weapons/sword.png"
-dest_files=["res://.godot/imported/sword.png-14a9ea5be3c1ff5b33aa65bde795af5e.ctex"]
+source_file="res://assets/characters/Bosses/Araña/super mega nigga araña.png"
+dest_files=["res://.godot/imported/super mega nigga araña.png-ab0ec5a0bf929f78305cad6a4f016651.ctex"]
 
 [params]
 
