@@ -9,6 +9,7 @@ jump_force = -600
 shockwave = 30
 size = 1
 number_habilities = Array[int]([3])
+inmune_effects = Array[int]([1])
 _name = "slime"
 spanish_name = "Slime"
 origin = "body_parts"

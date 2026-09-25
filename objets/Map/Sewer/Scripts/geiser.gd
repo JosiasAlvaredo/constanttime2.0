@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-
+@export var activate=true
 @export var max_wait_time=0.0
 @export var height_limit=0
 @export var stream_time=0
@@ -21,7 +21,7 @@ func _ready() -> void:
 	current_state=State.Shot
 
 func _physics_process(delta: float) -> void:
-	if get_parent().visible:
+	if get_parent().visible and activate:
 		match current_state:
 
 			State.Shot: shot()
