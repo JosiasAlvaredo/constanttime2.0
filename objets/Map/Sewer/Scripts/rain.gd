@@ -24,7 +24,7 @@ func drop():
 	var new_droplet=preload("res://objets/Map/Sewer/droplet.tscn").instantiate()
 	new_droplet.position.y=position.y
 	new_droplet.global_position.x=randf_range(global_position.x,global_position.x+scale.x)
-	get_parent().add_child(new_droplet)
+	owner.add_child(new_droplet)
 	
 	wait_time=randf_range(0,max_wait_time)
 	

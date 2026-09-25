@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://vk1bfs3s17ao"]
+[gd_scene format=3 uid="uid://vk1bfs3s17ao"]
 
 [ext_resource type="Script" uid="uid://d03bag7r6kcco" path="res://objets/Map/Sewer/Scripts/bad_water.gd" id="1_0w36j"]
 
@@ -11,7 +11,7 @@ z_index = 10
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_0w36j")
-number_effects = Array[int]([2])
+number_effects = Array[int]([1])
 live = 223372036854776000
 Jump_stength = 0
 speed = 0

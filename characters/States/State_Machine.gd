@@ -1,7 +1,7 @@
 extends Node
 class_name State_Machine
 
-@onready var controlled_node = owner
+@onready var controlled_node = get_parent()
 @export var default_state: State_base
 
 var current_state: State_base = null

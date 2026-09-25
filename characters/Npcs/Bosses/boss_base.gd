@@ -65,7 +65,7 @@ func suffer_damage(_damage):
 
 
 func dead():
-	queue_free()
+	state_machine.change_to("Dead")
 
 
 func damage_efect():
