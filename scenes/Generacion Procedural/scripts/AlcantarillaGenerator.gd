@@ -11,13 +11,9 @@ signal game_completed
 @export var start_module: PackedScene
 
 @export var room_modules: Array[PackedScene] = []
-
 @export var corridor_h_modules: Array[PackedScene] = []
-
 @export var corridor_v_modules: Array[PackedScene] = []
-
 @export var treasure_modules: Array[PackedScene] = []
-
 @export var boss_modules: Array[PackedScene] = []
 
 @export var exit_trigger_size: Vector2 = Vector2(32, 128)
@@ -92,7 +88,8 @@ var pending_sockets: Array[Marker2D] = []
 # READY
 # ============================================================
 
-func _ready():
+func _ready() -> void:
+
 	print("\n")
 	print("====================================================")
 	print("             DUNGEON GENERATOR START")
@@ -100,24 +97,20 @@ func _ready():
 
 	randomize()
 
-	print("[READY] Randomize ejecutado")
-
 	dungeon.z_index = -10
-
-	print("[READY] Dungeon Z Index: ", dungeon.z_index)
 
 	add_to_group("dungeon_generator")
 
-	print("[READY] Agregado al grupo dungeon_generator")
-
-	print("[READY] Módulos a generar: ", modules_to_generate)
-	print("[READY] Salas de tesoro: ", treasure_room_count)
+	print("[READY] Randomize ejecutado")
+	print("[READY] Dungeon Z Index: ", dungeon.z_index)
+	print("[READY] Módulos solicitados: ", modules_to_generate)
+	print("[READY] Tesoros solicitados: ", treasure_room_count)
 	print("[READY] Start module: ", start_module)
-	print("[READY] Rooms: ", room_modules.size())
-	print("[READY] Corridors H: ", corridor_h_modules.size())
-	print("[READY] Corridors V: ", corridor_v_modules.size())
-	print("[READY] Treasures: ", treasure_modules.size())
-	print("[READY] Bosses: ", boss_modules.size())
+	print("[READY] Rooms configuradas: ", room_modules.size())
+	print("[READY] Corridors H configurados: ", corridor_h_modules.size())
+	print("[READY] Corridors V configurados: ", corridor_v_modules.size())
+	print("[READY] Treasures configurados: ", treasure_modules.size())
+	print("[READY] Bosses configurados: ", boss_modules.size())
 
 	start_level()
 
@@ -126,16 +119,15 @@ func _ready():
 # NIVEL ACTUAL
 # ============================================================
 
-func start_level():
+func start_level() -> void:
 
 	print("\n")
 	print("====================================================")
 	print("                 START LEVEL")
-	print("                 NIVEL CONFIGURADO")
 	print("====================================================")
 
 	if not validate_level_data():
-		print("[LEVEL ERROR] Configuración del generador inválida")
+		print("[LEVEL ERROR] Configuración mínima inválida")
 		return
 
 	print("[LEVEL] Configuración válida")
@@ -148,7 +140,7 @@ func start_level():
 
 	print("[LEVEL] Background construido")
 
-	level_started.emit(0)
+	level_started.emit(current_level_index)
 
 	print("[LEVEL] level_started emitido")
 
@@ -174,31 +166,45 @@ func validate_level_data() -> bool:
 
 	if modules_to_generate < 1:
 		push_error("'modules_to_generate' debe ser mayor que 0.")
-		print("[VALIDATE ERROR] modules_to_generate inválido")
 		ok = false
 
 	if start_module == null:
 		push_error("Falta 'start_module'.")
-		print("[VALIDATE ERROR] Falta start_module")
 		ok = false
 
 	if boss_modules.is_empty():
 		push_error("'boss_modules' está vacío.")
-		print("[VALIDATE ERROR] boss_modules vacío")
 		ok = false
 
-	if treasure_room_count > 0 and treasure_modules.is_empty():
-		push_error(
-			"'treasure_room_count' es %d pero 'treasure_modules' está vacío."
-			% treasure_room_count
+	# --------------------------------------------------------
+	# LAS ROOMS YA NO SON OBLIGATORIAS
+	# --------------------------------------------------------
+
+	if get_valid_scenes(room_modules).is_empty():
+
+		print(
+			"[VALIDATE WARNING] No hay rooms válidas."
 		)
-		print("[VALIDATE ERROR] No hay escenas de tesoro")
-		ok = false
 
-	if room_modules.is_empty():
-		push_error("'room_modules' está vacío.")
-		print("[VALIDATE ERROR] room_modules vacío")
-		ok = false
+		print(
+			"[VALIDATE WARNING] Se usarán únicamente corredores."
+		)
+
+	# --------------------------------------------------------
+	# LOS TESOROS YA NO SON OBLIGATORIOS
+	# --------------------------------------------------------
+
+	if treasure_room_count > 0:
+
+		if get_valid_scenes(treasure_modules).is_empty():
+
+			print(
+				"[VALIDATE WARNING] No hay escenas de tesoro válidas."
+			)
+
+			print(
+				"[VALIDATE WARNING] Los tesoros serán omitidos."
+			)
 
 	print("[VALIDATE] Resultado: ", ok)
 
@@ -206,10 +212,30 @@ func validate_level_data() -> bool:
 
 
 # ============================================================
+# OBTENER ESCENAS VÁLIDAS
+# ============================================================
+
+func get_valid_scenes(
+	scenes: Array[PackedScene]
+) -> Array[PackedScene]:
+
+	var valid_scenes: Array[PackedScene] = []
+
+	for scene in scenes:
+
+		if scene == null:
+			continue
+
+		valid_scenes.append(scene)
+
+	return valid_scenes
+
+
+# ============================================================
 # CARGAR SIGUIENTE NIVEL
 # ============================================================
 
-func load_next_level():
+func load_next_level() -> void:
 
 	print("\n[LEVEL TRANSITION] ===============================")
 
@@ -219,7 +245,6 @@ func load_next_level():
 
 	is_transitioning = true
 
-	print("[LEVEL TRANSITION] Este generador representa un nivel único")
 	print("[LEVEL TRANSITION] Emitiendo game_completed")
 
 	game_completed.emit()
@@ -231,7 +256,7 @@ func load_next_level():
 # GENERACIÓN PRINCIPAL
 # ============================================================
 
-func generate_dungeon():
+func generate_dungeon() -> void:
 
 	print("\n")
 	print("====================================================")
@@ -252,8 +277,6 @@ func generate_dungeon():
 
 		var result: Dictionary = generate_dungeon_attempt()
 
-		print("[GENERATION] Resultado recibido")
-
 		var module_count: int = result["module_count"]
 		var treasures_created: int = result["treasures"]
 		var boss_created: bool = result["boss"]
@@ -263,44 +286,61 @@ func generate_dungeon():
 		print("[GENERATION] Boss: ", boss_created)
 
 		var enough_modules: bool = module_count > 1
-
-		var enough_treasures: bool = (
-			treasures_created >= treasure_room_count
-		)
-
 		var has_boss: bool = boss_created
+
+		# ----------------------------------------------------
+		# TESOROS
+		#
+		# Los tesoros NO invalidan una generación.
+		# Si faltan escenas o sockets, se omiten.
+		# ----------------------------------------------------
+
+		var treasure_requirement_met: bool = true
+
+		if treasure_room_count > 0:
+
+			if get_valid_scenes(treasure_modules).is_empty():
+
+				print(
+					"[GENERATION] Tesoros omitidos: no hay escenas válidas."
+				)
+
+			else:
+
+				print(
+					"[GENERATION] Tesoros creados: ",
+					treasures_created,
+					"/",
+					treasure_room_count
+				)
 
 		generation_valid = (
 			enough_modules
-			and enough_treasures
 			and has_boss
+			and treasure_requirement_met
 		)
 
 		print("[GENERATION] enough_modules: ", enough_modules)
-		print("[GENERATION] enough_treasures: ", enough_treasures)
 		print("[GENERATION] has_boss: ", has_boss)
-		print("[GENERATION] generation_valid: ", generation_valid)
+		print(
+			"[GENERATION] treasure_requirement_met: ",
+			treasure_requirement_met
+		)
+
+		print(
+			"[GENERATION] generation_valid: ",
+			generation_valid
+		)
 
 		if not generation_valid:
 
 			print("\n[GENERATION] GENERACIÓN DESCARTADA")
 
 			if not enough_modules:
-				print("- Solo se generó un módulo.")
-
-			if not enough_treasures:
-
-				print(
-					"- Faltan salas de tesoro: ",
-					treasures_created,
-					"/",
-					treasure_room_count
-				)
+				print("- No se generaron suficientes módulos.")
 
 			if not has_boss:
 				print("- No se generó la sala de Boss.")
-
-			print("[GENERATION] Limpiando intento...")
 
 			clear_dungeon()
 
@@ -312,7 +352,9 @@ func generate_dungeon():
 
 		print("[GENERATION] Sockets cerrados")
 
-		print("MAZMORRA GENERADA CORRECTAMENTE")
+		print("====================================================")
+		print("          MAZMORRA GENERADA CORRECTAMENTE")
+		print("====================================================")
 
 	else:
 
@@ -337,8 +379,6 @@ func generate_dungeon_attempt() -> Dictionary:
 
 	clear_dungeon()
 
-	print("[ATTEMPT 1] Dungeon limpiada")
-
 	if start_module == null:
 
 		print("[ATTEMPT ERROR] start_module es NULL")
@@ -361,29 +401,18 @@ func generate_dungeon_attempt() -> Dictionary:
 			"boss": false
 		}
 
-	print("[ATTEMPT 2] StartModule instanciado: ", start.name)
+	print("[ATTEMPT] StartModule instanciado: ", start.name)
 
 	dungeon.add_child(start)
 
-	print("[ATTEMPT 3] StartModule agregado al Dungeon")
-
 	start.position = Vector2.ZERO
-
-	print("[ATTEMPT 4] StartModule posición: ", start.position)
 
 	generated_modules.append(start)
 
-	print(
-		"[ATTEMPT 5] StartModule agregado a generated_modules"
-	)
-
 	register_module(start)
 
-	print("[ATTEMPT 6] StartModule registrado")
-
 	print(
-		"[ATTEMPT] Rectángulos ocupados: ",
-		occupied_rects.size()
+		"[ATTEMPT] StartModule registrado"
 	)
 
 	# --------------------------------------------------------
@@ -413,24 +442,14 @@ func generate_dungeon_attempt() -> Dictionary:
 			"boss": false
 		}
 
-	print(
-		"[START SOCKET] Encontrado en: ",
-		start_socket.global_position
-	)
-
 	pending_sockets.append(start_socket)
 
 	print(
-		"[START SOCKET] Socket agregado a pending_sockets"
-	)
-
-	print(
-		"[START SOCKET] Pendientes: ",
-		pending_sockets.size()
+		"[START SOCKET] Socket agregado"
 	)
 
 	# --------------------------------------------------------
-	# GENERAR MÓDULOS
+	# GENERAR MÓDULOS NORMALES
 	# --------------------------------------------------------
 
 	print("\n")
@@ -448,28 +467,12 @@ func generate_dungeon_attempt() -> Dictionary:
 
 		attempts += 1
 
-		print("\n")
-		print("[MODULE LOOP] Intento: ", attempts)
-		print(
-			"[MODULE LOOP] Módulos: ",
-			generated_modules.size(),
-			"/",
-			modules_to_generate + 1
-		)
-
-		print(
-			"[MODULE LOOP] Sockets pendientes: ",
-			pending_sockets.size()
-		)
+		print("\n[MODULE LOOP] Intento: ", attempts)
 
 		var socket: Marker2D = select_socket()
 
 		if socket == null:
-
-			print(
-				"[MODULE LOOP ERROR] select_socket() devolvió NULL"
-			)
-
+			print("[MODULE LOOP] No hay socket válido")
 			break
 
 		print(
@@ -481,24 +484,28 @@ func generate_dungeon_attempt() -> Dictionary:
 			socket
 		)
 
-		print(
-			"[MODULE LOOP] create_from_socket(): ",
-			created
-		)
-
 		if created:
 
 			remove_pending_socket(socket)
 
 			print(
-				"[MODULE LOOP] Socket eliminado"
+				"[MODULE LOOP] Módulo creado correctamente"
 			)
 
 		else:
 
+			# ------------------------------------------------
+			# IMPORTANTE:
+			# Si este socket no puede generar nada,
+			# se descarta y seguimos con otro.
+			# ------------------------------------------------
+
 			print(
-				"[MODULE LOOP WARNING] No se pudo crear módulo"
+				"[MODULE LOOP] Socket inutilizable. "
+				+ "Se descarta."
 			)
+
+			remove_pending_socket(socket)
 
 	# --------------------------------------------------------
 	# TESOROS
@@ -511,68 +518,90 @@ func generate_dungeon_attempt() -> Dictionary:
 
 	var treasures_created: int = 0
 
-	while (
-		treasures_created < treasure_room_count
-		and not pending_sockets.is_empty()
-		and attempts < MAX_ATTEMPTS
-	):
+	var valid_treasure_scenes: Array[PackedScene] = (
+		get_valid_scenes(treasure_modules)
+	)
 
-		attempts += 1
+	if valid_treasure_scenes.is_empty():
 
-		print("\n[TREASURE LOOP]")
 		print(
-			"[TREASURE] Creando tesoro ",
-			treasures_created + 1,
-			"/",
-			treasure_room_count
+			"[TREASURE] No existen escenas válidas."
 		)
 
 		print(
-			"[TREASURE] Sockets disponibles: ",
-			pending_sockets.size()
+			"[TREASURE] Se omite generación de tesoros."
 		)
 
-		var socket: Marker2D = select_socket()
+	else:
 
-		if socket == null:
+		while (
+			treasures_created < treasure_room_count
+			and not pending_sockets.is_empty()
+			and attempts < MAX_ATTEMPTS
+		):
+
+			attempts += 1
 
 			print(
-				"[TREASURE ERROR] No se pudo seleccionar socket"
+				"\n[TREASURE LOOP] ",
+				treasures_created + 1,
+				"/",
+				treasure_room_count
 			)
 
-			break
+			var socket: Marker2D = select_socket()
 
-		print(
-			"[TREASURE] Socket elegido: ",
-			socket.name
-		)
+			if socket == null:
 
-		var created: bool = create_special_from_socket(
-			socket,
-			treasure_modules,
-			"TREASURE"
-		)
+				print(
+					"[TREASURE] No hay sockets válidos."
+				)
 
-		print(
-			"[TREASURE] Resultado: ",
-			created
-		)
-
-		if created:
-
-			remove_pending_socket(socket)
-
-			treasures_created += 1
+				break
 
 			print(
-				"[TREASURE] Tesoro creado. Total: ",
-				treasures_created
+				"[TREASURE] Socket elegido: ",
+				socket.name
 			)
 
-		else:
+			var created: bool = create_special_from_socket(
+				socket,
+				valid_treasure_scenes,
+				"TREASURE"
+			)
+
+			if created:
+
+				remove_pending_socket(socket)
+
+				treasures_created += 1
+
+				print(
+					"[TREASURE] Tesoro creado: ",
+					treasures_created,
+					"/",
+					treasure_room_count
+				)
+
+			else:
+
+				print(
+					"[TREASURE] Este socket no permite tesoro."
+				)
+
+				remove_pending_socket(socket)
+
+		if treasures_created < treasure_room_count:
 
 			print(
-				"[TREASURE WARNING] No se pudo crear tesoro"
+				"[TREASURE WARNING] No se pudieron colocar todos."
+			)
+
+			print(
+				"[TREASURE WARNING] Creados: ",
+				treasures_created,
+				"/",
+				treasure_room_count
 			)
 
 	# --------------------------------------------------------
@@ -594,21 +623,13 @@ func generate_dungeon_attempt() -> Dictionary:
 
 		attempts += 1
 
-		print("\n[BOSS LOOP] Intento Boss")
-
 		print(
-			"[BOSS] Sockets disponibles: ",
-			pending_sockets.size()
+			"\n[BOSS LOOP] Intento Boss"
 		)
 
 		var socket: Marker2D = select_socket()
 
 		if socket == null:
-
-			print(
-				"[BOSS ERROR] No se pudo seleccionar socket"
-			)
-
 			break
 
 		print(
@@ -622,11 +643,6 @@ func generate_dungeon_attempt() -> Dictionary:
 			"BOSS"
 		)
 
-		print(
-			"[BOSS] Resultado: ",
-			boss_created
-		)
-
 		if boss_created:
 
 			remove_pending_socket(socket)
@@ -634,6 +650,15 @@ func generate_dungeon_attempt() -> Dictionary:
 			print(
 				"[BOSS] Boss creado correctamente"
 			)
+
+		else:
+
+			print(
+				"[BOSS] Socket incompatible. "
+				+ "Probando siguiente."
+			)
+
+			remove_pending_socket(socket)
 
 	# --------------------------------------------------------
 	# RESULTADO
@@ -682,14 +707,7 @@ func generate_dungeon_attempt() -> Dictionary:
 
 func select_socket() -> Marker2D:
 
-	print("\n[SELECT SOCKET] ===============================")
-
 	if pending_sockets.is_empty():
-
-		print(
-			"[SELECT SOCKET ERROR] pending_sockets está vacío"
-		)
-
 		return null
 
 	var horizontal: Array[Marker2D] = []
@@ -697,8 +715,7 @@ func select_socket() -> Marker2D:
 
 	for socket in pending_sockets:
 
-		if socket == null:
-			print("[SELECT SOCKET WARNING] Socket NULL")
+		if not is_instance_valid(socket):
 			continue
 
 		match socket.name:
@@ -708,30 +725,6 @@ func select_socket() -> Marker2D:
 
 			"SocketUp", "SocketDown":
 				vertical.append(socket)
-
-			_:
-				print(
-					"[SELECT SOCKET WARNING] Socket desconocido: ",
-					socket.name
-				)
-
-	print(
-		"[SELECT SOCKET] Horizontales: ",
-		horizontal.size()
-	)
-
-	print(
-		"[SELECT SOCKET] Verticales: ",
-		vertical.size()
-	)
-
-	if horizontal.is_empty() and vertical.is_empty():
-
-		print(
-			"[SELECT SOCKET ERROR] No hay sockets válidos"
-		)
-
-		return null
 
 	var horizontal_weight: int = (
 		horizontal.size()
@@ -748,27 +741,7 @@ func select_socket() -> Marker2D:
 		+ vertical_weight
 	)
 
-	print(
-		"[SELECT SOCKET] Peso H: ",
-		horizontal_weight
-	)
-
-	print(
-		"[SELECT SOCKET] Peso V: ",
-		vertical_weight
-	)
-
-	print(
-		"[SELECT SOCKET] Peso total: ",
-		total_weight
-	)
-
 	if total_weight <= 0:
-
-		print(
-			"[SELECT SOCKET ERROR] Peso total inválido"
-		)
-
 		return null
 
 	var value: int = randi_range(
@@ -776,96 +749,75 @@ func select_socket() -> Marker2D:
 		total_weight
 	)
 
-	print(
-		"[SELECT SOCKET] Número aleatorio: ",
-		value
-	)
-
 	if value <= horizontal_weight:
 
 		if horizontal.is_empty():
-
-			print(
-				"[SELECT SOCKET ERROR] Intentó elegir H pero está vacío"
-			)
-
 			return null
 
-		var selected_h: Marker2D = horizontal.pick_random()
-
-		print(
-			"[SELECT SOCKET] Elegido H: ",
-			selected_h.name
-		)
-
-		return selected_h
+		return horizontal.pick_random()
 
 	if vertical.is_empty():
 
-		print(
-			"[SELECT SOCKET ERROR] Intentó elegir V pero está vacío"
-		)
+		if not horizontal.is_empty():
+			return horizontal.pick_random()
 
 		return null
 
-	var selected_v: Marker2D = vertical.pick_random()
-
-	print(
-		"[SELECT SOCKET] Elegido V: ",
-		selected_v.name
-	)
-
-	return selected_v
+	return vertical.pick_random()
 
 
 # ============================================================
 # CREAR MÓDULO
 # ============================================================
 
-func create_from_socket(connection_socket: Marker2D) -> bool:
+func create_from_socket(
+	connection_socket: Marker2D
+) -> bool:
 
-	print("\n")
-	print("[CREATE] =======================================")
-	print("[CREATE] Creando módulo")
-	print("[CREATE] Socket: ", connection_socket.name)
-	print(
-		"[CREATE] Posición: ",
-		connection_socket.global_position
-	)
+	if connection_socket == null:
+		return false
 
 	var direction: String = get_socket_direction(
 		connection_socket
 	)
 
-	print(
-		"[CREATE] Dirección: ",
-		direction
-	)
-
 	if direction == "":
-
-		print(
-			"[CREATE ERROR] Dirección inválida"
-		)
-
 		return false
 
 	var module_types: Array[Dictionary] = []
 
-	module_types.append({
-		"type": "ROOM",
-		"weight": ROOM_WEIGHT
-	})
+	# --------------------------------------------------------
+	# SOLO AGREGAR TIPOS QUE REALMENTE TIENEN ESCENAS
+	# --------------------------------------------------------
 
-	module_types.append({
-		"type": "CORRIDOR_H",
-		"weight": CORRIDOR_H_WEIGHT
-	})
+	if not get_valid_scenes(room_modules).is_empty():
 
-	module_types.append({
-		"type": "CORRIDOR_V",
-		"weight": CORRIDOR_V_WEIGHT
-	})
+		module_types.append({
+			"type": "ROOM",
+			"weight": ROOM_WEIGHT
+		})
+
+	if not get_valid_scenes(corridor_h_modules).is_empty():
+
+		module_types.append({
+			"type": "CORRIDOR_H",
+			"weight": CORRIDOR_H_WEIGHT
+		})
+
+	if not get_valid_scenes(corridor_v_modules).is_empty():
+
+		module_types.append({
+			"type": "CORRIDOR_V",
+			"weight": CORRIDOR_V_WEIGHT
+		})
+
+	if module_types.is_empty():
+
+		print(
+			"[CREATE] No existen módulos normales disponibles."
+		)
+
+		return false
 
 	module_types.shuffle()
 
@@ -884,37 +836,25 @@ func create_from_socket(connection_socket: Marker2D) -> bool:
 	# CANDIDATOS
 	# --------------------------------------------------------
 
-	if selected_type == "ROOM":
+	match selected_type:
 
-		print("[CREATE] Buscando Rooms compatibles")
+		"ROOM":
+			add_compatible_room(
+				candidates,
+				direction
+			)
 
-		add_compatible_room(
-			candidates,
-			direction
-		)
+		"CORRIDOR_H":
+			add_compatible_corridor_h(
+				candidates,
+				direction
+			)
 
-	elif selected_type == "CORRIDOR_H":
-
-		print("[CREATE] Buscando Corridors H compatibles")
-
-		add_compatible_corridor_h(
-			candidates,
-			direction
-		)
-
-	elif selected_type == "CORRIDOR_V":
-
-		print("[CREATE] Buscando Corridors V compatibles")
-
-		add_compatible_corridor_v(
-			candidates,
-			direction
-		)
-
-	print(
-		"[CREATE] Candidatos encontrados: ",
-		candidates.size()
-	)
+		"CORRIDOR_V":
+			add_compatible_corridor_v(
+				candidates,
+				direction
+			)
 
 	# --------------------------------------------------------
 	# FALLBACK
@@ -923,56 +863,49 @@ func create_from_socket(connection_socket: Marker2D) -> bool:
 	if candidates.is_empty():
 
 		print(
-			"[CREATE WARNING] No hay candidatos para ",
+			"[CREATE] No hay candidatos para ",
 			selected_type
 		)
 
-		for fallback in [
+		var fallback_types: Array[String] = [
 			"ROOM",
 			"CORRIDOR_H",
 			"CORRIDOR_V"
-		]:
+		]
+
+		fallback_types.shuffle()
+
+		for fallback in fallback_types:
 
 			if fallback == selected_type:
 				continue
 
 			candidates.clear()
 
-			print(
-				"[FALLBACK] Probando ",
-				fallback
-			)
+			match fallback:
 
-			if fallback == "ROOM":
+				"ROOM":
+					add_compatible_room(
+						candidates,
+						direction
+					)
 
-				add_compatible_room(
-					candidates,
-					direction
-				)
+				"CORRIDOR_H":
+					add_compatible_corridor_h(
+						candidates,
+						direction
+					)
 
-			elif fallback == "CORRIDOR_H":
-
-				add_compatible_corridor_h(
-					candidates,
-					direction
-				)
-
-			elif fallback == "CORRIDOR_V":
-
-				add_compatible_corridor_v(
-					candidates,
-					direction
-				)
-
-			print(
-				"[FALLBACK] Candidatos: ",
-				candidates.size()
-			)
+				"CORRIDOR_V":
+					add_compatible_corridor_v(
+						candidates,
+						direction
+					)
 
 			if not candidates.is_empty():
 
 				print(
-					"[FALLBACK] Encontrado: ",
+					"[FALLBACK] Utilizando ",
 					fallback
 				)
 
@@ -981,7 +914,7 @@ func create_from_socket(connection_socket: Marker2D) -> bool:
 	if candidates.is_empty():
 
 		print(
-			"[CREATE ERROR] NO HAY CANDIDATOS COMPATIBLES"
+			"[CREATE] No existe módulo compatible."
 		)
 
 		return false
@@ -994,49 +927,18 @@ func create_from_socket(connection_socket: Marker2D) -> bool:
 
 	for candidate in candidates:
 
-		print("\n[CREATE CANDIDATE] ------------------------")
-
 		var scene: PackedScene = candidate["scene"]
-
 		var input_socket_name: String = candidate["socket"]
 
-		print(
-			"[CANDIDATE] Socket requerido: ",
-			input_socket_name
-		)
-
 		if scene == null:
-
-			print(
-				"[CANDIDATE ERROR] PackedScene NULL"
-			)
-
 			continue
-
-		print(
-			"[CANDIDATE] PackedScene válida"
-		)
 
 		var module: Node2D = scene.instantiate()
 
 		if module == null:
-
-			print(
-				"[CANDIDATE ERROR] Instantiate() devolvió NULL"
-			)
-
 			continue
 
-		print(
-			"[CANDIDATE] Instanciado: ",
-			module.name
-		)
-
 		dungeon.add_child(module)
-
-		print(
-			"[CANDIDATE] Agregado al Dungeon"
-		)
 
 		var input_socket: Marker2D = find_marker(
 			module,
@@ -1046,25 +948,16 @@ func create_from_socket(connection_socket: Marker2D) -> bool:
 		if input_socket == null:
 
 			print(
-				"[CANDIDATE ERROR] ",
+				"[CREATE] ",
 				module.name,
-				" NO tiene ",
-				input_socket_name
+				" no tiene ",
+				input_socket_name,
+				". Se omite."
 			)
 
 			module.queue_free()
 
 			continue
-
-		print(
-			"[CANDIDATE] Socket encontrado: ",
-			input_socket.name
-		)
-
-		print(
-			"[CANDIDATE] Posición antes de alinear: ",
-			module.global_position
-		)
 
 		align_module(
 			module,
@@ -1072,48 +965,21 @@ func create_from_socket(connection_socket: Marker2D) -> bool:
 			connection_socket
 		)
 
-		print(
-			"[CANDIDATE] Posición después de alinear: ",
-			module.global_position
-		)
-
-		# ----------------------------------------------------
-		# SOLAPAMIENTO
-		# ----------------------------------------------------
-
-		print(
-			"[CANDIDATE] Comprobando solapamiento..."
-		)
-
 		if module_overlaps(module):
 
 			print(
-				"[CANDIDATE] SOLAPAMIENTO DETECTADO"
+				"[CREATE] ",
+				module.name,
+				" genera solapamiento. Se omite."
 			)
 
 			module.queue_free()
 
 			continue
 
-		print(
-			"[CANDIDATE] No hay solapamiento"
-		)
-
-		# ----------------------------------------------------
-		# REGISTRAR
-		# ----------------------------------------------------
-
 		generated_modules.append(module)
 
-		print(
-			"[CANDIDATE] Agregado a generated_modules"
-		)
-
 		register_module(module)
-
-		print(
-			"[CANDIDATE] Registrado en occupied_rects"
-		)
 
 		add_module_sockets(
 			module,
@@ -1121,26 +987,14 @@ func create_from_socket(connection_socket: Marker2D) -> bool:
 		)
 
 		print(
-			"[CANDIDATE] Nuevos sockets agregados: ",
-			pending_sockets.size()
-		)
-
-		print(
 			"[CREATE SUCCESS] ",
-			selected_type,
-			" -> ",
 			module.name
-		)
-
-		print(
-			"[CREATE SUCCESS] Posición: ",
-			module.global_position
 		)
 
 		return true
 
 	print(
-		"[CREATE ERROR] TODOS LOS CANDIDATOS FALLARON"
+		"[CREATE] Todos los candidatos fallaron."
 	)
 
 	return false
@@ -1153,43 +1007,19 @@ func create_from_socket(connection_socket: Marker2D) -> bool:
 func add_compatible_room(
 	candidates: Array[Dictionary],
 	direction: String
-):
-
-	print(
-		"[ROOM COMPATIBLE] Dirección: ",
-		direction
-	)
+) -> void:
 
 	var socket_name: String = get_opposite_socket(
 		direction
 	)
 
-	print(
-		"[ROOM COMPATIBLE] Socket requerido: ",
-		socket_name
-	)
-
 	if socket_name == "":
-
-		print(
-			"[ROOM ERROR] No se pudo determinar socket"
-		)
-
 		return
-
-	print(
-		"[ROOM COMPATIBLE] Escenas disponibles: ",
-		room_modules.size()
-	)
 
 	for scene in room_modules:
 
 		if scene == null:
-
-			print(
-				"[ROOM WARNING] Escena NULL"
-			)
-
+			print("[ROOM] Escena NULL omitida")
 			continue
 
 		candidates.append({
@@ -1205,12 +1035,7 @@ func add_compatible_room(
 func add_compatible_corridor_h(
 	candidates: Array[Dictionary],
 	direction: String
-):
-
-	print(
-		"[CORRIDOR H] Dirección: ",
-		direction
-	)
+) -> void:
 
 	var socket_name: String = ""
 
@@ -1227,32 +1052,18 @@ func add_compatible_corridor_h(
 
 		"up":
 			print(
-				"[CORRIDOR H] No puede conectarse desde arriba"
+				"[CORRIDOR H] No puede conectarse desde arriba."
 			)
 
 			return
 
 	if socket_name == "":
-
-		print(
-			"[CORRIDOR H ERROR] Socket vacío"
-		)
-
 		return
-
-	print(
-		"[CORRIDOR H] Socket requerido: ",
-		socket_name
-	)
-
-	print(
-		"[CORRIDOR H] Escenas disponibles: ",
-		corridor_h_modules.size()
-	)
 
 	for scene in corridor_h_modules:
 
 		if scene == null:
+			print("[CORRIDOR H] Escena NULL omitida")
 			continue
 
 		candidates.append({
@@ -1268,20 +1079,10 @@ func add_compatible_corridor_h(
 func add_compatible_corridor_v(
 	candidates: Array[Dictionary],
 	direction: String
-):
-
-	print(
-		"[CORRIDOR V] Dirección: ",
-		direction
-	)
+) -> void:
 
 	var socket_name: String = get_opposite_socket(
 		direction
-	)
-
-	print(
-		"[CORRIDOR V] Socket requerido: ",
-		socket_name
 	)
 
 	if socket_name == "":
@@ -1290,6 +1091,7 @@ func add_compatible_corridor_v(
 	for scene in corridor_v_modules:
 
 		if scene == null:
+			print("[CORRIDOR V] Escena NULL omitida")
 			continue
 
 		candidates.append({
@@ -1311,27 +1113,12 @@ func choose_module_type(
 	for entry in types:
 		total += int(entry["weight"])
 
-	print(
-		"[CHOOSE TYPE] Peso total: ",
-		total
-	)
-
 	if total <= 0:
-
-		print(
-			"[CHOOSE TYPE ERROR] Peso total inválido"
-		)
-
-		return "ROOM"
+		return String(types[0]["type"])
 
 	var value: int = randi_range(
 		1,
 		total
-	)
-
-	print(
-		"[CHOOSE TYPE] Valor aleatorio: ",
-		value
 	)
 
 	for entry in types:
@@ -1339,15 +1126,9 @@ func choose_module_type(
 		value -= int(entry["weight"])
 
 		if value <= 0:
-
-			print(
-				"[CHOOSE TYPE] Elegido: ",
-				entry["type"]
-			)
-
 			return String(entry["type"])
 
-	return "ROOM"
+	return String(types[0]["type"])
 
 
 # ============================================================
@@ -1372,11 +1153,6 @@ func get_opposite_socket(
 		"down":
 			return "SocketUp"
 
-	print(
-		"[OPPOSITE SOCKET ERROR] Dirección desconocida: ",
-		direction
-	)
-
 	return ""
 
 
@@ -1390,78 +1166,53 @@ func create_special_from_socket(
 	type_name: String
 ) -> bool:
 
-	print("\n")
-	print("[SPECIAL] ======================================")
-	print("[SPECIAL] Tipo: ", type_name)
-	print("[SPECIAL] Socket: ", connection_socket.name)
+	if connection_socket == null:
+		return false
+
+	var valid_scenes: Array[PackedScene] = (
+		get_valid_scenes(scenes)
+	)
+
+	if valid_scenes.is_empty():
+
+		print(
+			"[SPECIAL] No existen escenas válidas para ",
+			type_name
+		)
+
+		return false
 
 	var direction: String = get_socket_direction(
 		connection_socket
 	)
 
-	print(
-		"[SPECIAL] Dirección: ",
-		direction
-	)
-
 	if direction == "":
-
-		print(
-			"[SPECIAL ERROR] Dirección inválida"
-		)
-
 		return false
 
 	var input_socket_name: String = get_opposite_socket(
 		direction
 	)
 
-	print(
-		"[SPECIAL] Socket requerido: ",
-		input_socket_name
-	)
+	if input_socket_name == "":
+		return false
 
 	var shuffled_scenes: Array[PackedScene] = (
-		scenes.duplicate()
+		valid_scenes.duplicate()
 	)
 
 	shuffled_scenes.shuffle()
 
-	print(
-		"[SPECIAL] Escenas disponibles: ",
-		shuffled_scenes.size()
-	)
-
 	for scene in shuffled_scenes:
 
 		if scene == null:
-
-			print(
-				"[SPECIAL ERROR] PackedScene NULL"
-			)
-
 			continue
 
 		var module: Node2D = scene.instantiate()
 
 		if module == null:
-
-			print(
-				"[SPECIAL ERROR] No se pudo instanciar"
-			)
-
 			continue
 
-		print(
-			"[SPECIAL] Instanciado: ",
-			module.name
-		)
-
 		dungeon.add_child(module)
-
-		print(
-			"[SPECIAL] Agregado al Dungeon"
-		)
 
 		var input_socket: Marker2D = find_marker(
 			module,
@@ -1471,19 +1222,16 @@ func create_special_from_socket(
 		if input_socket == null:
 
 			print(
-				"[SPECIAL ERROR] ",
+				"[SPECIAL] ",
 				module.name,
 				" no tiene ",
-				input_socket_name
+				input_socket_name,
+				". Se omite."
 			)
 
 			module.queue_free()
 
 			continue
-
-		print(
-			"[SPECIAL] Socket encontrado"
-		)
 
 		align_module(
 			module,
@@ -1491,14 +1239,12 @@ func create_special_from_socket(
 			connection_socket
 		)
 
-		print(
-			"[SPECIAL] Módulo alineado"
-		)
-
 		if module_overlaps(module):
 
 			print(
-				"[SPECIAL] SOLAPAMIENTO"
+				"[SPECIAL] ",
+				module.name,
+				" genera solapamiento. Se omite."
 			)
 
 			module.queue_free()
@@ -1509,15 +1255,7 @@ func create_special_from_socket(
 
 		register_module(module)
 
-		print(
-			"[SPECIAL] Módulo registrado"
-		)
-
 		if type_name == "BOSS":
-
-			print(
-				"[BOSS] Configurando metadata"
-			)
 
 			module.set_meta(
 				"entrance_socket",
@@ -1533,31 +1271,27 @@ func create_special_from_socket(
 
 			for socket_name in ALL_SOCKET_NAMES:
 
-				if socket_name != input_socket_name:
+				if socket_name == input_socket_name:
+					continue
 
-					if find_marker(
-						module,
+				if find_marker(
+					module,
+					socket_name
+				) != null:
+
+					exit_sockets.append(
 						socket_name
-					) != null:
-
-						exit_sockets.append(
-							socket_name
-						)
+					)
 
 			module.set_meta(
 				"exit_sockets",
 				exit_sockets
 			)
 
-			print(
-				"[BOSS] Entrada: ",
-				input_socket_name
-			)
-
-			print(
-				"[BOSS] Salidas: ",
-				exit_sockets
-			)
+		add_terminal_sockets(
+			module,
+			input_socket_name
+		)
 
 		print(
 			"[SPECIAL SUCCESS] ",
@@ -1566,16 +1300,7 @@ func create_special_from_socket(
 			module.name
 		)
 
-		add_terminal_sockets(
-			module,
-			input_socket_name
-		)
-
 		return true
-
-	print(
-		"[SPECIAL ERROR] Todos los candidatos fallaron"
-	)
 
 	return false
 
@@ -1587,21 +1312,9 @@ func create_special_from_socket(
 func add_module_sockets(
 	module: Node2D,
 	used_socket: String
-):
-
-	print(
-		"[ADD SOCKETS] Módulo: ",
-		module.name
-	)
-
-	print(
-		"[ADD SOCKETS] Socket utilizado: ",
-		used_socket
-	)
+) -> void:
 
 	if is_room(module):
-
-		print("[ADD SOCKETS] Es ROOM")
 
 		add_room_sockets(
 			module,
@@ -1612,8 +1325,6 @@ func add_module_sockets(
 
 	if is_horizontal_corridor(module):
 
-		print("[ADD SOCKETS] Es CORRIDOR H")
-
 		add_horizontal_sockets(
 			module,
 			used_socket
@@ -1623,8 +1334,6 @@ func add_module_sockets(
 
 	if is_vertical_corridor(module):
 
-		print("[ADD SOCKETS] Es CORRIDOR V")
-
 		add_vertical_sockets(
 			module,
 			used_socket
@@ -1633,7 +1342,7 @@ func add_module_sockets(
 		return
 
 	print(
-		"[ADD SOCKETS WARNING] Tipo de módulo desconocido: ",
+		"[ADD SOCKETS WARNING] Tipo desconocido: ",
 		module.scene_file_path
 	)
 
@@ -1645,12 +1354,7 @@ func add_module_sockets(
 func add_room_sockets(
 	room: Node2D,
 	used_socket: String
-):
-
-	print(
-		"[ROOM SOCKETS] Procesando ",
-		room.name
-	)
+) -> void:
 
 	for socket_name in ALL_SOCKET_NAMES:
 
@@ -1663,20 +1367,7 @@ func add_room_sockets(
 		)
 
 		if socket != null:
-
-			pending_sockets.append(
-				socket
-			)
-
-			print(
-				"[ROOM SOCKETS] Agregado: ",
-				socket_name
-			)
-
-	print(
-		"[ROOM SOCKETS] Total pendientes: ",
-		pending_sockets.size()
-	)
+			pending_sockets.append(socket)
 
 
 # ============================================================
@@ -1686,62 +1377,26 @@ func add_room_sockets(
 func add_horizontal_sockets(
 	corridor: Node2D,
 	used_socket: String
-):
+) -> void:
 
-	print(
-		"[H SOCKETS] Procesando ",
-		corridor.name
-	)
+	var allowed: Array[String] = [
+		"SocketLeft",
+		"SocketRight",
+		"SocketDown"
+	]
 
-	if used_socket != "SocketLeft":
+	for socket_name in allowed:
 
-		var left: Marker2D = find_marker(
+		if socket_name == used_socket:
+			continue
+
+		var socket: Marker2D = find_marker(
 			corridor,
-			"SocketLeft"
+			socket_name
 		)
 
-		if left != null:
-
-			pending_sockets.append(left)
-
-			print(
-				"[H SOCKETS] Left agregado"
-			)
-
-	if used_socket != "SocketRight":
-
-		var right: Marker2D = find_marker(
-			corridor,
-			"SocketRight"
-		)
-
-		if right != null:
-
-			pending_sockets.append(right)
-
-			print(
-				"[H SOCKETS] Right agregado"
-			)
-
-	if used_socket != "SocketDown":
-
-		var down: Marker2D = find_marker(
-			corridor,
-			"SocketDown"
-		)
-
-		if down != null:
-
-			pending_sockets.append(down)
-
-			print(
-				"[H SOCKETS] Down agregado"
-			)
-
-	print(
-		"[H SOCKETS] Total pendientes: ",
-		pending_sockets.size()
-	)
+		if socket != null:
+			pending_sockets.append(socket)
 
 
 # ============================================================
@@ -1751,12 +1406,7 @@ func add_horizontal_sockets(
 func add_vertical_sockets(
 	corridor: Node2D,
 	used_socket: String
-):
-
-	print(
-		"[V SOCKETS] Procesando ",
-		corridor.name
-	)
+) -> void:
 
 	for socket_name in ALL_SOCKET_NAMES:
 
@@ -1769,20 +1419,7 @@ func add_vertical_sockets(
 		)
 
 		if socket != null:
-
-			pending_sockets.append(
-				socket
-			)
-
-			print(
-				"[V SOCKETS] Agregado: ",
-				socket_name
-			)
-
-	print(
-		"[V SOCKETS] Total pendientes: ",
-		pending_sockets.size()
-	)
+			pending_sockets.append(socket)
 
 
 # ============================================================
@@ -1792,12 +1429,7 @@ func add_vertical_sockets(
 func add_terminal_sockets(
 	module: Node2D,
 	used_socket: String
-):
-
-	print(
-		"[TERMINAL SOCKETS] Procesando ",
-		module.name
-	)
+) -> void:
 
 	for socket_name in ALL_SOCKET_NAMES:
 
@@ -1810,15 +1442,7 @@ func add_terminal_sockets(
 		)
 
 		if socket != null:
-
-			pending_sockets.append(
-				socket
-			)
-
-			print(
-				"[TERMINAL SOCKETS] Agregado: ",
-				socket_name
-			)
+			pending_sockets.append(socket)
 
 
 # ============================================================
@@ -1829,39 +1453,14 @@ func align_module(
 	module: Node2D,
 	module_socket: Marker2D,
 	target_socket: Marker2D
-):
-
-	print(
-		"[ALIGN] Módulo: ",
-		module.name
-	)
-
-	print(
-		"[ALIGN] Module socket: ",
-		module_socket.global_position
-	)
-
-	print(
-		"[ALIGN] Target socket: ",
-		target_socket.global_position
-	)
+) -> void:
 
 	var offset: Vector2 = (
 		target_socket.global_position
 		- module_socket.global_position
 	)
 
-	print(
-		"[ALIGN] Offset: ",
-		offset
-	)
-
 	module.global_position += offset
-
-	print(
-		"[ALIGN] Nueva posición: ",
-		module.global_position
-	)
 
 
 # ============================================================
@@ -1873,11 +1472,6 @@ func get_socket_direction(
 ) -> String:
 
 	if socket == null:
-
-		print(
-			"[DIRECTION ERROR] Socket NULL"
-		)
-
 		return ""
 
 	match socket.name:
@@ -1894,11 +1488,6 @@ func get_socket_direction(
 		"SocketDown":
 			return "down"
 
-	print(
-		"[DIRECTION ERROR] Socket desconocido: ",
-		socket.name
-	)
-
 	return ""
 
 
@@ -1912,18 +1501,11 @@ func find_marker(
 ) -> Marker2D:
 
 	if root == null:
-
-		print(
-			"[FIND MARKER ERROR] Root NULL buscando ",
-			marker_name
-		)
-
 		return null
 
 	if root.name == marker_name:
 
 		if root is Marker2D:
-
 			return root as Marker2D
 
 	for child in root.get_children():
@@ -1934,7 +1516,6 @@ func find_marker(
 		)
 
 		if result != null:
-
 			return result
 
 	return null
@@ -1987,11 +1568,6 @@ func get_module_rect(
 	module: Node2D
 ) -> Rect2:
 
-	print(
-		"[BOUNDS] Calculando bounds: ",
-		module.name
-	)
-
 	if is_horizontal_corridor(module):
 
 		var polygon_node: CollisionPolygon2D = (
@@ -1999,38 +1575,14 @@ func get_module_rect(
 		)
 
 		if polygon_node == null:
-
-			push_error(
-				module.name
-				+ " no tiene CollisionPolygon2D para Bounds"
-			)
-
-			print(
-				"[BOUNDS ERROR] CollisionPolygon2D NULL"
-			)
-
 			return Rect2()
 
 		if polygon_node.polygon.is_empty():
-
-			push_error(
-				module.name
-				+ " tiene un CollisionPolygon2D vacío"
-			)
-
-			print(
-				"[BOUNDS ERROR] Polygon vacío"
-			)
-
 			return Rect2()
-
-		var polygon: PackedVector2Array = (
-			polygon_node.polygon
-		)
 
 		var first_point: Vector2 = (
 			polygon_node.global_transform
-			* polygon[0]
+			* polygon_node.polygon[0]
 		)
 
 		var rect: Rect2 = Rect2(
@@ -2038,7 +1590,7 @@ func get_module_rect(
 			Vector2.ZERO
 		)
 
-		for point in polygon:
+		for point in polygon_node.polygon:
 
 			var global_point: Vector2 = (
 				polygon_node.global_transform
@@ -2049,11 +1601,6 @@ func get_module_rect(
 				global_point
 			)
 
-		print(
-			"[BOUNDS] Rect H: ",
-			rect
-		)
-
 		return rect
 
 	var bounds: CollisionShape2D = (
@@ -2061,29 +1608,9 @@ func get_module_rect(
 	)
 
 	if bounds == null:
-
-		push_error(
-			module.name
-			+ " no tiene Bounds"
-		)
-
-		print(
-			"[BOUNDS ERROR] CollisionShape2D NULL"
-		)
-
 		return Rect2()
 
 	if bounds.shape == null:
-
-		push_error(
-			module.name
-			+ " tiene Bounds sin Shape"
-		)
-
-		print(
-			"[BOUNDS ERROR] Shape NULL"
-		)
-
 		return Rect2()
 
 	var shape: Shape2D = bounds.shape
@@ -2096,26 +1623,10 @@ func get_module_rect(
 
 		var size: Vector2 = rectangle.size
 
-		var rect: Rect2 = Rect2(
+		return Rect2(
 			bounds.global_position - size / 2.0,
 			size
 		)
-
-		print(
-			"[BOUNDS] Rect: ",
-			rect
-		)
-
-		return rect
-
-	push_error(
-		module.name
-		+ " necesita RectangleShape2D."
-	)
-
-	print(
-		"[BOUNDS ERROR] Shape no es RectangleShape2D"
-	)
 
 	return Rect2()
 
@@ -2129,7 +1640,6 @@ func find_collision_polygon(
 ) -> CollisionPolygon2D:
 
 	if root is CollisionPolygon2D:
-
 		return root as CollisionPolygon2D
 
 	for child in root.get_children():
@@ -2139,7 +1649,6 @@ func find_collision_polygon(
 		)
 
 		if result != null:
-
 			return result
 
 	return null
@@ -2154,7 +1663,6 @@ func find_collision_shape(
 ) -> CollisionShape2D:
 
 	if root is CollisionShape2D:
-
 		return root as CollisionShape2D
 
 	for child in root.get_children():
@@ -2164,7 +1672,6 @@ func find_collision_shape(
 		)
 
 		if result != null:
-
 			return result
 
 	return null
@@ -2178,26 +1685,11 @@ func module_overlaps(
 	module: Node2D
 ) -> bool:
 
-	print(
-		"[OVERLAP] Revisando: ",
-		module.name
-	)
-
 	var new_rect: Rect2 = (
 		get_module_rect(module)
 	)
 
-	print(
-		"[OVERLAP] Nuevo rect: ",
-		new_rect
-	)
-
 	if new_rect.size == Vector2.ZERO:
-
-		print(
-			"[OVERLAP ERROR] Rect inválido"
-		)
-
 		return true
 
 	for existing_rect in occupied_rects:
@@ -2207,25 +1699,7 @@ func module_overlaps(
 			false
 		):
 
-			print(
-				"[OVERLAP] SOLAPAMIENTO"
-			)
-
-			print(
-				"[OVERLAP] Nuevo: ",
-				new_rect
-			)
-
-			print(
-				"[OVERLAP] Existente: ",
-				existing_rect
-			)
-
 			return true
-
-	print(
-		"[OVERLAP] Sin solapamiento"
-	)
 
 	return false
 
@@ -2236,12 +1710,7 @@ func module_overlaps(
 
 func register_module(
 	module: Node2D
-):
-
-	print(
-		"[REGISTER] Registrando ",
-		module.name
-	)
+) -> void:
 
 	var rect: Rect2 = (
 		get_module_rect(module)
@@ -2250,23 +1719,13 @@ func register_module(
 	if rect.size == Vector2.ZERO:
 
 		print(
-			"[REGISTER WARNING] Rect inválido"
+			"[REGISTER WARNING] Bounds inválidos: ",
+			module.name
 		)
 
 		return
 
-	occupied_rects.append(
-		rect
-	)
-
-	print(
-		"[REGISTER] Rect agregado"
-	)
-
-	print(
-		"[REGISTER] Total rectángulos: ",
-		occupied_rects.size()
-	)
+	occupied_rects.append(rect)
 
 
 # ============================================================
@@ -2275,57 +1734,29 @@ func register_module(
 
 func remove_pending_socket(
 	socket: Marker2D
-):
+) -> void:
 
 	if socket == null:
-
-		print(
-			"[REMOVE SOCKET ERROR] Socket NULL"
-		)
-
 		return
 
-	var index: int = (
-		pending_sockets.find(socket)
+	var index: int = pending_sockets.find(
+		socket
 	)
 
 	if index >= 0:
-
-		pending_sockets.remove_at(
-			index
-		)
-
-		print(
-			"[REMOVE SOCKET] Eliminado: ",
-			socket.name
-		)
-
-	else:
-
-		print(
-			"[REMOVE SOCKET WARNING] Socket no encontrado"
-		)
+		pending_sockets.remove_at(index)
 
 
 # ============================================================
 # CERRAR PUERTAS
 # ============================================================
 
-func close_unused_sockets():
-
-	print("\n[CLOSE DOORS] =================================")
-
-	print(
-		"[CLOSE DOORS] Módulos: ",
-		generated_modules.size()
-	)
+func close_unused_sockets() -> void:
 
 	for module in generated_modules:
 
-		print(
-			"[CLOSE DOORS] Revisando: ",
-			module.name
-		)
+		if not is_instance_valid(module):
+			continue
 
 		for socket_name in SOCKET_TO_DOOR:
 
@@ -2335,20 +1766,10 @@ func close_unused_sockets():
 			)
 
 			if socket == null:
-
 				continue
 
 			var closed: bool = (
 				pending_sockets.has(socket)
-			)
-
-			print(
-				"[CLOSE DOORS] ",
-				module.name,
-				" | ",
-				socket_name,
-				" | Cerrada: ",
-				closed
 			)
 
 			set_socket_door_closed(
@@ -2366,25 +1787,11 @@ func set_socket_door_closed(
 	module: Node2D,
 	socket_name: String,
 	closed: bool
-):
-
-	print(
-		"[DOOR] ",
-		module.name,
-		" | ",
-		socket_name,
-		" | closed = ",
-		closed
-	)
+) -> void:
 
 	if not SOCKET_TO_DOOR.has(
 		socket_name
 	):
-
-		print(
-			"[DOOR ERROR] Socket no está en SOCKET_TO_DOOR"
-		)
-
 		return
 
 	var door: Node = find_node(
@@ -2393,12 +1800,6 @@ func set_socket_door_closed(
 	)
 
 	if door == null:
-
-		print(
-			"[DOOR WARNING] No se encontró puerta: ",
-			SOCKET_TO_DOOR[socket_name]
-		)
-
 		return
 
 	if door is CanvasItem:
@@ -2450,7 +1851,6 @@ func find_node(
 		)
 
 		if result != null:
-
 			return result
 
 	return null
@@ -2463,71 +1863,32 @@ func find_node(
 func set_node_visible(
 	node: Node,
 	value: bool
-):
+) -> void:
 
 	if node is CanvasItem:
 
-		var canvas_item: CanvasItem = (
-			node as CanvasItem
-		)
-
-		canvas_item.visible = value
+		(node as CanvasItem).visible = value
 
 	if node is TileMapLayer:
 
-		var tilemap: TileMapLayer = (
-			node as TileMapLayer
-		)
-
-		tilemap.collision_enabled = value
+		(node as TileMapLayer).collision_enabled = value
 
 
 # ============================================================
 # LIMPIAR DUNGEON
 # ============================================================
 
-func clear_dungeon():
-
-	print(
-		"\n[CLEAR] ======================================"
-	)
-
-	print(
-		"[CLEAR] Hijos del Dungeon: ",
-		dungeon.get_child_count()
-	)
+func clear_dungeon() -> void:
 
 	for child in dungeon.get_children():
-
-		print(
-			"[CLEAR] Eliminando: ",
-			child.name
-		)
 
 		dungeon.remove_child(child)
 
 		child.queue_free()
 
 	generated_modules.clear()
-
 	occupied_rects.clear()
-
 	pending_sockets.clear()
-
-	print(
-		"[CLEAR] generated_modules: ",
-		generated_modules.size()
-	)
-
-	print(
-		"[CLEAR] occupied_rects: ",
-		occupied_rects.size()
-	)
-
-	print(
-		"[CLEAR] pending_sockets: ",
-		pending_sockets.size()
-	)
 
 
 # ============================================================
@@ -2536,20 +1897,9 @@ func clear_dungeon():
 
 func lock_boss_room(
 	boss_room: Node2D
-):
+) -> void:
 
-	print(
-		"\n[BOSS LOCK] ==============================="
-	)
-
-	if not is_instance_valid(
-		boss_room
-	):
-
-		print(
-			"[BOSS LOCK ERROR] BossRoom inválida"
-		)
-
+	if not is_instance_valid(boss_room):
 		return
 
 	var entrance: String = (
@@ -2559,28 +1909,13 @@ func lock_boss_room(
 		)
 	)
 
-	print(
-		"[BOSS LOCK] Entrada: ",
-		entrance
-	)
-
 	if entrance == "":
-
-		push_error(
-			"La sala del jefe no tiene 'entrance_socket'."
-		)
-
 		return
 
 	set_socket_door_closed(
 		boss_room,
 		entrance,
 		true
-	)
-
-	print(
-		"Puerta de entrada del jefe cerrada: ",
-		entrance
 	)
 
 
@@ -2590,20 +1925,9 @@ func lock_boss_room(
 
 func complete_boss_room(
 	boss_room: Node2D
-):
+) -> void:
 
-	print(
-		"\n[BOSS COMPLETE] ==========================="
-	)
-
-	if not is_instance_valid(
-		boss_room
-	):
-
-		print(
-			"[BOSS COMPLETE ERROR] BossRoom inválida"
-		)
-
+	if not is_instance_valid(boss_room):
 		return
 
 	var entrance: String = (
@@ -2611,11 +1935,6 @@ func complete_boss_room(
 			"entrance_socket",
 			""
 		)
-	)
-
-	print(
-		"[BOSS COMPLETE] Entrada: ",
-		entrance
 	)
 
 	if entrance != "":
@@ -2633,11 +1952,6 @@ func complete_boss_room(
 		)
 	)
 
-	print(
-		"[BOSS COMPLETE] Salidas: ",
-		exit_sockets
-	)
-
 	for socket_name in exit_sockets:
 
 		set_socket_door_closed(
@@ -2651,10 +1965,6 @@ func complete_boss_room(
 			socket_name
 		)
 
-	print(
-		"Jefe derrotado: puertas abiertas"
-	)
-
 
 # ============================================================
 # CREAR EXIT TRIGGER
@@ -2663,12 +1973,7 @@ func complete_boss_room(
 func create_exit_trigger(
 	boss_room: Node2D,
 	socket_name: String
-):
-
-	print(
-		"\n[EXIT TRIGGER] Creando para: ",
-		socket_name
-	)
+) -> void:
 
 	var socket: Marker2D = find_marker(
 		boss_room,
@@ -2676,11 +1981,6 @@ func create_exit_trigger(
 	)
 
 	if socket == null:
-
-		print(
-			"[EXIT TRIGGER ERROR] Socket no encontrado"
-		)
-
 		return
 
 	var size: Vector2 = exit_trigger_size
@@ -2712,7 +2012,6 @@ func create_exit_trigger(
 	area.name = "NextLevelTrigger"
 
 	area.collision_layer = 0
-
 	area.collision_mask = 0xFFFFFFFF
 
 	area.add_child(shape)
@@ -2727,10 +2026,6 @@ func create_exit_trigger(
 		_on_exit_trigger_body_entered
 	)
 
-	print(
-		"[EXIT TRIGGER] Creado correctamente"
-	)
-
 
 # ============================================================
 # EXIT TRIGGER BODY ENTERED
@@ -2738,28 +2033,10 @@ func create_exit_trigger(
 
 func _on_exit_trigger_body_entered(
 	body: Node2D
-):
-
-	print(
-		"\n[EXIT TRIGGER] Body detectado: ",
-		body.name
-	)
+) -> void:
 
 	if not body is Player:
-
-		print(
-			"[EXIT TRIGGER] No es Player"
-		)
-
 		return
-
-	print(
-		"[EXIT TRIGGER] PLAYER DETECTADO"
-	)
-
-	print(
-		"[EXIT TRIGGER] Cargando siguiente nivel..."
-	)
 
 	call_deferred(
 		"load_next_level"
@@ -2773,7 +2050,7 @@ func _on_exit_trigger_body_entered(
 func set_collision_state_recursive(
 	node: Node,
 	enabled: bool
-):
+) -> void:
 
 	if node is CollisionShape2D:
 
@@ -2808,34 +2085,18 @@ func set_collision_state_recursive(
 # BACKGROUND
 # ============================================================
 
-func build_background():
-
-	print(
-		"\n[BACKGROUND] ==============================="
-	)
+func build_background() -> void:
 
 	if occupied_rects.is_empty():
-
-		print(
-			"[BACKGROUND] No hay rectángulos"
-		)
-
 		return
 
-	var bounds: Rect2 = (
-		occupied_rects[0]
-	)
+	var bounds: Rect2 = occupied_rects[0]
 
 	for rect in occupied_rects:
 
 		bounds = bounds.merge(
 			rect
 		)
-
-	print(
-		"[BACKGROUND] Bounds finales: ",
-		bounds
-	)
 
 	var background_data: LevelData = LevelData.new()
 
@@ -2851,8 +2112,4 @@ func build_background():
 	background.build(
 		bounds,
 		background_data
-	)
-
-	print(
-		"[BACKGROUND] Background construido"
 	)

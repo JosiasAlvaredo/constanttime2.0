@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var imagen: Sprite2D = $Sprite2D
 @onready var texto: Label = $Label
+@onready var musica: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 func _ready():
@@ -27,7 +28,7 @@ func _ready():
 		preload("res://assets/Animacion/viñetoide3.png"),
 		"Uno a uno... los héroes cayeron."
 	)
-	await esperar_y_desaparecer()
+	await viñeta3()
 
 
 	# VIÑETA 4
@@ -35,7 +36,7 @@ func _ready():
 		preload("res://assets/Animacion/viñetoide4.png"),
 		"Solo quedó Theseus. Pero el Dragón lo arrojó por un precipicio."
 	)
-	await esperar_y_desaparecer()
+	await viñeta4()
 
 
 	# VIÑETA 5
@@ -68,15 +69,21 @@ func _ready():
 
 	# VIÑETA 8
 	await mostrar_escena(
-		preload("res://assets/Animacion/viñetoide8.png"),
-		"Y tenia una misión. Mata al Dragón."
+	preload("res://assets/Animacion/viñetoide8.png"),
+	"Y TIENES una misión. Mata al Dragón."
 	)
 
-	await get_tree().create_timer(3.0).timeout
+	# Esperar a que termine la canción
+	await esperar_fin_de_musica()
 
-	# Después podés cambiar al juego:
-	# get_tree().change_scene_to_file("res://Scenes/Nivel.tscn")
+	# Esperar un segundo
+	await get_tree().create_timer(1.0).timeout
 
+	# Fadeout final
+	await fadeout_final()
+
+	# Cambiar al menú
+	get_tree().change_scene_to_file("res://interface/menu/menu.tscn")
 
 func mostrar_escena(nueva_imagen: Texture2D, nuevo_texto: String):
 	imagen.visible = true
@@ -106,12 +113,19 @@ func escribir_texto(nuevo_texto: String):
 
 	for caracter in nuevo_texto:
 		texto.text += caracter
-		await get_tree().create_timer(0.08).timeout
+		await get_tree().create_timer(0.02).timeout
 
 
 func esperar_y_desaparecer():
-	# Tiempo que queda la viñeta en pantalla
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(3.0).timeout
+
+
+func viñeta3():
+	await get_tree().create_timer(12.0).timeout
+
+
+func viñeta4():
+	await get_tree().create_timer(3.0).timeout
 
 	# Imagen y texto desaparecen juntos
 	var tween = create_tween()
@@ -149,3 +163,22 @@ func pantalla_negra(nuevo_texto: String):
 	tween2.tween_property(texto, "modulate:a", 0.0, 1.0)
 
 	await tween2.finished
+
+
+func esperar_fin_de_musica():
+	# Si la música ya terminó, no esperamos
+	if not musica.playing:
+		return
+
+	# Esperamos mientras siga reproduciéndose
+	while musica.playing:
+		await get_tree().process_frame
+
+func fadeout_final():
+	var tween = create_tween()
+	tween.set_parallel(true)
+
+	tween.tween_property(imagen, "modulate:a", 0.0, 1.0)
+	tween.tween_property(texto, "modulate:a", 0.0, 1.0)
+
+	await tween.finished
