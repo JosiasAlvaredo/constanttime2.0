@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dodqhuppv2s3b"]
+
+[ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/DungeonGenerator.gd" id="1_cu61f"]
+[ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="2_jx0a1"]
+[ext_resource type="PackedScene" uid="uid://d4dc4hbav823m" path="res://scenes/Generacion Procedural/Cueva/start/StartRoom_01.tscn" id="2_pty73"]
+[ext_resource type="PackedScene" uid="uid://113x1715qteo" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_01.tscn" id="3_jgumy"]
+[ext_resource type="PackedScene" uid="uid://c06acqtv7gko7" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_02.tscn" id="4_6yr4y"]
+[ext_resource type="PackedScene" uid="uid://droniq6ewfc8k" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_03.tscn" id="5_4b0sy"]
+[ext_resource type="Script" uid="uid://bxcuhnfwcvwsi" path="res://scenes/Generacion Procedural/dungeon_background.gd" id="5_5uiyj"]
+[ext_resource type="PackedScene" uid="uid://bepwwafpi1jw0" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_01.tscn" id="6_7pjau"]
+[ext_resource type="PackedScene" uid="uid://23l00whb2niw" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_02.tscn" id="7_sxpmn"]
+[ext_resource type="PackedScene" uid="uid://bly7h0dw7bhbf" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_01.tscn" id="8_pun55"]
+[ext_resource type="PackedScene" uid="uid://v55pgsvhnqjq" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_02.tscn" id="9_xmwaj"]
+[ext_resource type="PackedScene" uid="uid://bf5oga8r6dh61" path="res://scenes/Generacion Procedural/Cueva/treasure/treasure_01.tscn" id="10_oatp6"]
+[ext_resource type="PackedScene" uid="uid://sw53o0ecta8l" path="res://scenes/Generacion Procedural/Cueva/treasure/treasure_02.tscn" id="11_lppse"]
+[ext_resource type="PackedScene" uid="uid://b4k8fsiecdldj" path="res://scenes/Generacion Procedural/Cueva/boss/boss_01.tscn" id="12_d5ljt"]
+
+[sub_resource type="TileSet" id="TileSet_u08jo"]
+
+[node name="Mazmorra" type="Node2D" unique_id=936655814]
+script = ExtResource("1_cu61f")
+start_module = ExtResource("2_pty73")
+room_modules = Array[PackedScene]([ExtResource("3_jgumy"), ExtResource("4_6yr4y"), ExtResource("5_4b0sy")])
+corridor_h_modules = Array[PackedScene]([ExtResource("6_7pjau"), ExtResource("7_sxpmn")])
+corridor_v_modules = Array[PackedScene]([ExtResource("8_pun55"), ExtResource("9_xmwaj")])
+treasure_modules = Array[PackedScene]([ExtResource("10_oatp6"), ExtResource("11_lppse")])
+boss_modules = Array[PackedScene]([ExtResource("12_d5ljt")])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1118151226]
+visible = false
+offset_left = -33.0
+offset_top = -33.0
+offset_right = 9.430534
+offset_bottom = -31.785183
+scale = Vector2(28.682173, 17.28656)
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1448851936]
+
+[node name="Dungeon" type="Node2D" parent="." unique_id=921618824]
+
+[node name="Background" type="TileMapLayer" parent="." unique_id=371138860]
+tile_set = SubResource("TileSet_u08jo")
+script = ExtResource("5_5uiyj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624347463]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1076, 570)
+scale = Vector2(0.10674661, 0.1067466)
+texture = ExtResource("2_jx0a1")

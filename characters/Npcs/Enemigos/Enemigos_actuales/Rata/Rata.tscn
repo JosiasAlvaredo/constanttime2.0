@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dhux3ome4i70u"]
 
 [ext_resource type="Script" uid="uid://txw0idjvst4t" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/rata.gd" id="1_wxb80"]
+[ext_resource type="PackedScene" uid="uid://c4vhj81yc7w70" path="res://objets/body_parts/rat_legs.tscn" id="2_jfn85"]
 [ext_resource type="Texture2D" uid="uid://dqbfsdgbu8bjd" path="res://assets/characters/enemies/rata(11).png" id="2_kkgk3"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="2_nvgxq"]
+[ext_resource type="PackedScene" uid="uid://cei2w4wemd2od" path="res://objets/body_parts/rat_torso.tscn" id="3_234kn"]
 [ext_resource type="Script" uid="uid://cvq245v6pqkbe" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/patrol(Rat).gd" id="4_kkgk3"]
 [ext_resource type="Script" uid="uid://duevdpdimn63q" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/chase.gd" id="5_1gshu"]
 [ext_resource type="Script" uid="uid://bfp0na8q6pk4l" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/jump.gd" id="6_nvgxq"]
@@ -89,6 +91,7 @@ size = Vector2(114.534935, 68.570114)
 [node name="Rata" type="CharacterBody2D" unique_id=1749833397]
 collision_layer = 0
 script = ExtResource("1_wxb80")
+drops = Array[PackedScene]([ExtResource("2_jfn85"), ExtResource("3_234kn")])
 live = 100
 speed = 100
 Knockback_resistence = 50

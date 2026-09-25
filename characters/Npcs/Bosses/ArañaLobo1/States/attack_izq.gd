@@ -2,7 +2,7 @@ extends State_base
 
 var arañalobo
 
-@export var animation_name := "Attack_Izq"
+@export var animation_name := "ClavarI"
 
 
 func start() -> void:

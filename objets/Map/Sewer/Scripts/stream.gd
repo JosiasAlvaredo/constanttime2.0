@@ -15,7 +15,7 @@ var current_state=States.Starting
 @onready var area_2d: Area2D = $"."
 
 
-	
+
 @onready var animations_sprites= {"Up":$"../up","Other":$"../other"}
 
 func _physics_process(delta: float) -> void:
@@ -27,15 +27,19 @@ func _physics_process(delta: float) -> void:
 		States.Stopping:Stopping()
 	
 func Starting():
-	animations_sprites[animation].scale.y=height_limit/21
+	if animation=="Up":
+		animations_sprites[animation].scale.y=height_limit/21
+	else:
+		animations_sprites[animation].scale.y=height_limit/25
+		
 	animations_sprites[animation].play("charge")
 	current_state=States.Continue
-	await get_tree().create_timer(float(5.0/6.0)).timeout
+	await get_tree().create_timer(1.5).timeout
 	current_state=States.Shot
 	
 func Shotting():
 	animations_sprites[animation].play("shot")
-	
+	area_2d.set_collision_layer_value(4,true)
 	area_2d.scale.y=move_toward(area_2d.scale.y,height_limit*2,height_limit*2/10)
 	
 	if area_2d.scale.y>=height_limit*2:
@@ -50,18 +54,26 @@ func Max_height():
 	current_state=States.Stopping
 	
 func Stopping():
-	area_2d.scale.y=move_toward(area_2d.scale.y,0,area_2d.scale.y/200)
 	
-	if area_2d.scale.y<=height_limit/4:
-		animations_sprites[animation].play("stopping_4")
+	if animation=="Up":
+		area_2d.scale.y=move_toward(area_2d.scale.y,0,area_2d.scale.y/200)
+		if area_2d.scale.y<=height_limit/4:
+			animations_sprites[animation].play("stopping_4")
+			await get_tree().create_timer(3.0/5.0).timeout
+			get_parent().queue_free()
+			
+		elif area_2d.scale.y<=height_limit/2:
+			animations_sprites[animation].play("stopping_3")
+			
+		elif area_2d.scale.y<=height_limit:
+			animations_sprites[animation].play("stopping_2")
+			
+		elif area_2d.scale.y<=float(height_limit)*1.75:
+			animations_sprites[animation].play("stopping_1")
+	else:
+		animations_sprites[animation].play("stopping")
 		await get_tree().create_timer(3.0/5.0).timeout
+		area_2d.scale.y=0
+		await get_tree().create_timer(1/5.0).timeout
 		get_parent().queue_free()
 		
-	elif area_2d.scale.y<=height_limit/2:
-		animations_sprites[animation].play("stopping_3")
-		
-	elif area_2d.scale.y<=height_limit:
-		animations_sprites[animation].play("stopping_2")
-		
-	elif area_2d.scale.y<=float(height_limit)*1.75:
-		animations_sprites[animation].play("stopping_1")

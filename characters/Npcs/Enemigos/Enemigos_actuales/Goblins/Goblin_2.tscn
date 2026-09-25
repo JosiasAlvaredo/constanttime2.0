@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cmygi8oq62f41" path="res://assets/characters/enemies/goblin 2.png" id="2_7fh0d"]
 [ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="2_xa60m"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_7hfnl"]
+[ext_resource type="PackedScene" uid="uid://b8aix8qs6054f" path="res://objets/body_parts/goblin_legs.tscn" id="3_x2vou"]
 [ext_resource type="Script" uid="uid://cvq245v6pqkbe" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/patrol(Rat).gd" id="4_6qk0u"]
+[ext_resource type="PackedScene" uid="uid://de7yccuygil5n" path="res://objets/body_parts/goblin_torso.tscn" id="4_um4md"]
 [ext_resource type="Script" uid="uid://duevdpdimn63q" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/chase.gd" id="5_vkjv0"]
 [ext_resource type="Script" uid="uid://bfp0na8q6pk4l" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/jump.gd" id="6_md25x"]
 [ext_resource type="Script" uid="uid://xhj82tfbabgu" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/fall.gd" id="7_q830g"]
@@ -127,7 +129,7 @@ position = Vector2(-1, 1)
 collision_layer = 0
 script = ExtResource("1_7fh0d")
 follow_distance = 1000.0
-drops = Array[PackedScene]([ExtResource("2_xa60m"), null, null, null])
+drops = Array[PackedScene]([ExtResource("2_xa60m"), ExtResource("3_x2vou"), ExtResource("4_um4md"), ExtResource("2_xa60m")])
 live = 50
 aceleration = 500
 Jump_stength = -400

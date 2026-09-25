@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b6bmmnex2wmab"]
+
+[ext_resource type="Texture2D" uid="uid://dub4dn06a244u" path="res://assets/characters/enemies/arañabebe.png" id="1_augnp"]
+[ext_resource type="Script" uid="uid://tyljkofvuwe5" path="res://characters/Npcs/Bosses/ArañaLobo1/Proyectiles/bebe/character_body_2d.gd" id="1_ct7jg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ct7jg"]
+radius = 17.029387
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_086ep"]
+radius = 18.027756
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1545454215]
+collision_layer = 0
+script = ExtResource("1_ct7jg")
+speed = 60
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=481115818]
+texture = ExtResource("1_augnp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1417966123]
+shape = SubResource("CircleShape2D_ct7jg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=760398033]
+collision_layer = 132
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1784907862]
+shape = SubResource("CircleShape2D_086ep")
+
+[node name="FrontRay" type="RayCast2D" parent="." unique_id=2063974468]
+target_position = Vector2(-34, 1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

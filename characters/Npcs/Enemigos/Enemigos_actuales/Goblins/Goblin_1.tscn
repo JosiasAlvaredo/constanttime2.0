@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://txw0idjvst4t" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/rata.gd" id="1_8vxpa"]
 [ext_resource type="Texture2D" uid="uid://cv3tk4rxx6mvr" path="res://assets/characters/enemies/goblin 1.png" id="2_8vxpa"]
+[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="2_ywaiw"]
+[ext_resource type="PackedScene" uid="uid://b8aix8qs6054f" path="res://objets/body_parts/goblin_legs.tscn" id="3_7r87p"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_xumno"]
+[ext_resource type="PackedScene" uid="uid://de7yccuygil5n" path="res://objets/body_parts/goblin_torso.tscn" id="4_bd230"]
 [ext_resource type="Script" uid="uid://cvq245v6pqkbe" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/patrol(Rat).gd" id="4_xkig7"]
 [ext_resource type="Script" uid="uid://duevdpdimn63q" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/chase.gd" id="5_8q0n3"]
 [ext_resource type="Script" uid="uid://bfp0na8q6pk4l" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/States/jump.gd" id="6_ydr0f"]
@@ -111,6 +114,7 @@ size = Vector2(87.59071, 62.352127)
 collision_layer = 0
 script = ExtResource("1_8vxpa")
 follow_distance = 700.0
+drops = Array[PackedScene]([ExtResource("2_ywaiw"), ExtResource("3_7r87p"), ExtResource("4_bd230"), ExtResource("2_ywaiw")])
 live = 75
 aceleration = 500
 speed = 150
