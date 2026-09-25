@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://bkpcvbqppic1i" path="res://characters/Npcs/Bosses/ArañaLobo1/States/avanico_i.gd" id="11_nkfmr"]
 [ext_resource type="PackedScene" uid="uid://csdffkj65mut5" path="res://characters/Npcs/Bosses/ArañaLobo1/Proyectiles/avanico/avanico.tscn" id="12_2cuot"]
 [ext_resource type="Script" uid="uid://wths4t6tr848" path="res://characters/Npcs/Bosses/ArañaLobo1/States/avanico_d.gd" id="13_fv60b"]
+[ext_resource type="Script" uid="uid://b04nyvfp7hx17" path="res://characters/Npcs/Bosses/ArañaLobo1/States/summon_2.gd" id="14_mxc4y"]
+[ext_resource type="PackedScene" uid="uid://b6bmmnex2wmab" path="res://characters/Npcs/Bosses/ArañaLobo1/Proyectiles/bebe/character_body_2d.tscn" id="15_qcv0y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ffd4t"]
 radius = 5.860111
@@ -23,6 +25,21 @@ height = 143.98244
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffd4t"]
 radius = 50.62453
+
+[sub_resource type="Animation" id="Animation_5wyxq"]
+resource_name = "Aparicion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cuerpo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.93333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2.8571436, -190.07942), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_2cuot"]
 resource_name = "ClavarD"
@@ -162,6 +179,81 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_6btc8"]
+resource_name = "Durmiendo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cuerpo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2.8571436, -190.07942), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cuerpo/PatasI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cuerpo/PatasD:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cuerpo/GarraI:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cuerpo/GarraD:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cuerpo/Panza:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ffd4t"]
@@ -321,6 +413,166 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Cuerpo/PatasI:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Cuerpo/PatasD:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Cuerpo/GarraI:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Cuerpo/GarraD:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Cuerpo/Panza:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Cuerpo:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qcv0y"]
+resource_name = "Muerte"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cuerpo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.099999994, 0.19999999, 0.26666665, 0.36666667, 0.4333334, 0.5, 0.60000014, 0.66666675, 0.76666665, 0.79999995, 0.86666656, 0.9666667, 1.0333333, 1.1333332),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(17.500006, 0), Vector2(-27.857153, 0), Vector2(17.500006, 0), Vector2(-27.857153, 0), Vector2(0, 0), Vector2(17.500006, 0), Vector2(-27.857153, 0), Vector2(17.500006, 0), Vector2(-27.857153, 0), Vector2(0, 0), Vector2(17.500006, 0), Vector2(-27.857153, 0), Vector2(17.500006, 0), Vector2(-27.857153, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cuerpo/PatasI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.28),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cuerpo/PatasD:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.28),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cuerpo/GarraI:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.28),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cuerpo/GarraD:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.28),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cuerpo/Panza:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.28),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cuerpo/Cabeza:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.393897, 1.69, 1.95),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(15.357148, -28.174608), Vector2(61.78573, -55.555573), Vector2(87.85716, 82.14287)]
 }
 
 [sub_resource type="Animation" id="Animation_dkls4"]
@@ -505,24 +757,101 @@ tracks/14/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Cuerpo:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Cuerpo/PatasI:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Cuerpo/PatasD:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Cuerpo/GarraI:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Cuerpo/GarraD:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Cuerpo/Panza:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nkfmr"]
 _data = {
+&"Aparicion": SubResource("Animation_5wyxq"),
 &"ClavarD": SubResource("Animation_2cuot"),
 &"ClavarI": SubResource("Animation_nkfmr"),
+&"Durmiendo": SubResource("Animation_6btc8"),
 &"Idle": SubResource("Animation_ffd4t"),
+&"Muerte": SubResource("Animation_qcv0y"),
 &"RESET": SubResource("Animation_dkls4")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcv0y"]
+size = Vector2(125.71432, 62.7381)
 
 [node name="ArañaLobo" type="CharacterBody2D" unique_id=1550610712]
 scale = Vector2(2.7999992, 2.5199993)
 script = ExtResource("1_egguh")
-live = 200
-damage = 40
 
 [node name="Cuerpo" type="Node2D" parent="." unique_id=602567093]
 
 [node name="PatasI" type="Node2D" parent="Cuerpo" unique_id=1547800841]
+visible = false
 
 [node name="PataI1" type="Sprite2D" parent="Cuerpo/PatasI" unique_id=1832720473]
 position = Vector2(-47.500008, -78.17464)
@@ -571,6 +900,7 @@ region_enabled = true
 region_rect = Rect2(4.166687, 19.666668, 26.666672, 160.66667)
 
 [node name="PatasD" type="Node2D" parent="Cuerpo" unique_id=833663898]
+visible = false
 position = Vector2(-9.64286, -0.3968277)
 scale = Vector2(-1, 1)
 
@@ -621,6 +951,7 @@ region_enabled = true
 region_rect = Rect2(4.166687, 19.666668, 26.666672, 160.66667)
 
 [node name="GarraI" type="Sprite2D" parent="Cuerpo" unique_id=254791354]
+visible = false
 position = Vector2(-71.07145, 26.190487)
 rotation = 1.0384709
 scale = Vector2(0.99999994, 1)
@@ -646,6 +977,7 @@ collision_mask = 32
 shape = SubResource("CapsuleShape2D_ffd4t")
 
 [node name="GarraD" type="Sprite2D" parent="Cuerpo" unique_id=1821266141]
+visible = false
 position = Vector2(71.785736, 19.047623)
 rotation = 1.9477874
 scale = Vector2(1, -1)
@@ -672,6 +1004,7 @@ shape = SubResource("CapsuleShape2D_dkls4")
 disabled = true
 
 [node name="Panza" type="Sprite2D" parent="Cuerpo" unique_id=1161689211]
+visible = false
 position = Vector2(3.5714283, -22.619055)
 scale = Vector2(1.1065272, 1.0562975)
 texture = ExtResource("2_dkls4")
@@ -718,6 +1051,10 @@ projectile_scene = ExtResource("12_2cuot")
 script = ExtResource("13_fv60b")
 projectile_scene = ExtResource("12_2cuot")
 
+[node name="Summon2" type="Node" parent="State_Machine" unique_id=1784540023]
+script = ExtResource("14_mxc4y")
+enemy_scene = ExtResource("15_qcv0y")
+
 [node name="ShootPoint" type="Marker2D" parent="." unique_id=379365275]
 position = Vector2(5.0000014, 16.269846)
 
@@ -729,7 +1066,19 @@ position = Vector2(176.78577, 55.158745)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=329117630]
 libraries/ = SubResource("AnimationLibrary_nkfmr")
-autoplay = &"Idle"
+autoplay = &"Durmiendo"
+
+[node name="SummonPoint3" type="Marker2D" parent="." unique_id=1302698281]
+position = Vector2(2.8571434, -238.88896)
+
+[node name="ReadyArea" type="Area2D" parent="." unique_id=1867526469]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReadyArea" unique_id=1749886413]
+position = Vector2(3.5714302, 130.93259)
+shape = SubResource("RectangleShape2D_qcv0y")
 
 [connection signal="area_entered" from="Cuerpo/GarraI/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Cuerpo/GarraD/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="ReadyArea" to="." method="_on_ready_area_body_entered"]
