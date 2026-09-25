@@ -1,7 +1,7 @@
-[gd_scene load_steps=0 format=3 uid="uid://d4fnb37drwy6x"]
+[gd_scene format=3 uid="uid://d4fnb37drwy6x"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_gk6g8"]
-[ext_resource type="Texture2D" uid="uid://fb8rtlxh1og3" path="res://assets/items/Weapons/Stick.png" id="2_gk6g8"]
+[ext_resource type="Texture2D" uid="uid://cnke2iwe6vls1" path="res://assets/items/Weapons/armas 1-2.png.png" id="2_gk6g8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -16,18 +16,10 @@ _name = "Torch"
 origin = "items"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
-position = Vector2(1.4305115e-06, -6)
-rotation = -0.6128503
+position = Vector2(-2.3841858e-07, -14)
+rotation = 0.23509443
 scale = Vector2(0.7687497, 0.7600002)
 texture = ExtResource("2_gk6g8")
-
-[node name="ColorRect" type="ColorRect" parent="Stick" unique_id=1327314688]
-offset_left = 3.3425012
-offset_top = -18.533367
-offset_right = 43.342503
-offset_bottom = 21.466633
-scale = Vector2(0.30513918, 0.33171013)
-color = Color(1, 0, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
 collision_layer = 64

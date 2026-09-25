@@ -1,7 +1,7 @@
-[gd_scene load_steps=0 format=3 uid="uid://dpckbqm32fc4o"]
+[gd_scene format=3 uid="uid://dpckbqm32fc4o"]
 
 [ext_resource type="Script" uid="uid://dvja64sfqdiho" path="res://objets/items/Item_base.gd" id="1_rqaav"]
-[ext_resource type="Texture2D" uid="uid://c6urov235vq80" path="res://assets/items/Weapons/New_sword.png" id="2_rqaav"]
+[ext_resource type="Texture2D" uid="uid://ditqm24h0k0ud" path="res://assets/items/Weapons/armas 1-1.png.png" id="2_rqaav"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vswh6"]
 radius = 375.20828
@@ -16,8 +16,9 @@ _name = "new_Sword"
 origin = "items"
 
 [node name="Stick" type="Sprite2D" parent="." unique_id=61698275]
-position = Vector2(1, -5)
-scale = Vector2(0.5999994, 0.52000046)
+position = Vector2(1, -5.9999995)
+rotation = 0.5154875
+scale = Vector2(0.7095195, 0.70338285)
 texture = ExtResource("2_rqaav")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1446637905]
