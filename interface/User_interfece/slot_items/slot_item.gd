@@ -25,7 +25,8 @@ func _ready() -> void:
 		timer()
 	
 
-
+	if skills==null:
+		queue_free()
 	var durability_percent=float(skills.durability)/skills.max_durability
 	durability_node.size.x=durability_percent*53
 		

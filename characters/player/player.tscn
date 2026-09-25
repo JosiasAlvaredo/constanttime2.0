@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dbahbix74qof1"]
 
 [ext_resource type="Script" uid="uid://dei8te6t7mqh3" path="res://characters/player/player.gd" id="1_5y5mg"]
-[ext_resource type="Texture2D" uid="uid://b5iduyxx6cd7b" path="res://assets/characters/Player/head.png" id="3_w53g3"]
+[ext_resource type="Texture2D" uid="uid://cw1ywkuxufpuw" path="res://assets/characters/Player/teseo de lao.png" id="2_lv4bx"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_yklsb"]
 [ext_resource type="PackedScene" uid="uid://bg8rpo725dog0" path="res://characters/States/idle.tscn" id="4_d4e2f"]
 [ext_resource type="PackedScene" uid="uid://cswtxqj358jer" path="res://characters/States/move.tscn" id="5_cdgnk"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://nbdce5ors7ng" path="res://characters/States/player/hand_actions/action_left_hand.tscn" id="11_blik6"]
 [ext_resource type="PackedScene" uid="uid://c2ax1oj1xg2s4" path="res://characters/States/player/hand_actions/action_rigth_hand.tscn" id="12_artkk"]
 [ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="13_icpky"]
-[ext_resource type="Script" uid="uid://c7woin8ytd8cb" path="res://characters/States/recoil.gd" id="14_58jvb"]
 [ext_resource type="PackedScene" uid="uid://e3mb4qg8erpy" path="res://characters/States/player/hand_actions/fall_action_left_hand.tscn" id="17_4cx7u"]
 [ext_resource type="PackedScene" uid="uid://b38c65g0tskw5" path="res://characters/States/player/hand_actions/fall_action_right_hand.tscn" id="18_w53g3"]
 [ext_resource type="PackedScene" uid="uid://cnaljngvaj1lu" path="res://characters/States/player/hand_actions/idle_action_left_hand.tscn" id="19_e0pgg"]
@@ -48,11 +47,12 @@ shape = SubResource("CircleShape2D_7b6hw")
 
 [node name="body" type="Node2D" parent="." unique_id=1878661576]
 
-[node name="Head" type="Sprite2D" parent="body" unique_id=1706439698]
+[node name="Head" type="Sprite2D" parent="body" unique_id=1539443681]
 visibility_layer = 2
 z_index = 1
-position = Vector2(0, 5)
-texture = ExtResource("3_w53g3")
+position = Vector2(0, -1)
+scale = Vector2(0.3925211, 0.39289013)
+texture = ExtResource("2_lv4bx")
 offset = Vector2(-1, -9)
 
 [node name="Head_ray" type="RayCast2D" parent="." unique_id=1469634456]
@@ -88,7 +88,6 @@ script = ExtResource("6_jgd8i")
 [node name="Jump" parent="State_Machine/default_states" unique_id=1722413970 instance=ExtResource("7_artkk")]
 
 [node name="Knockback" parent="State_Machine/default_states" unique_id=959375226 instance=ExtResource("13_icpky")]
-script = ExtResource("14_58jvb")
 
 [node name="Trapped" type="Node" parent="State_Machine/default_states" unique_id=1052634462]
 script = ExtResource("23_jgd8i")

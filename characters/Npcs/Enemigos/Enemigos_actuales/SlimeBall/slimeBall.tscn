@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://elngnnrk0g2r"]
+
+[ext_resource type="Script" uid="uid://du8qp1ces1i6w" path="res://characters/Npcs/Enemigos/Enemigos_actuales/SlimeBall/slime_ball.gd" id="1_cdv23"]
+[ext_resource type="Texture2D" uid="uid://cf8o5rkwdnfc1" path="res://assets/characters/enemies/Slime.png" id="2_mp2bx"]
+[ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="3_7g6tk"]
+[ext_resource type="Script" uid="uid://dd0b40oml6p3a" path="res://characters/Npcs/Enemigos/Enemigos_actuales/SlimeBall/States/boing.gd" id="4_5mjg6"]
+[ext_resource type="PackedScene" uid="uid://ckxwms63cly6i" path="res://characters/States/recoil.tscn" id="6_mpdoc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp2qi"]
+atlas = ExtResource("2_mp2bx")
+region = Rect2(0, 120, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mjg6"]
+atlas = ExtResource("2_mp2bx")
+region = Rect2(0, 0, 160, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tusuu"]
+atlas = ExtResource("2_mp2bx")
+region = Rect2(0, 0, 160, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rtt3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp2qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mjg6")
+}],
+"loop": false,
+"name": &"crush",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tusuu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ys45m"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfn5g"]
+radius = 29.274563
+
+[node name="slimeBall" type="CharacterBody2D" unique_id=1982467406]
+collision_layer = 0
+script = ExtResource("1_cdv23")
+live = 30
+speed = 100
+Knockback_resistence = -10
+activate_Gravity = false
+
+[node name="up_sprite" type="AnimatedSprite2D" parent="." unique_id=64565006]
+position = Vector2(0, -15.000002)
+scale = Vector2(0.4384611, 0.4674727)
+sprite_frames = SubResource("SpriteFrames_rtt3l")
+animation = &"crush"
+autoplay = "default"
+
+[node name="left_sprite" type="AnimatedSprite2D" parent="." unique_id=421758816]
+position = Vector2(-12, 3.0000005)
+rotation = -1.7034501
+scale = Vector2(0.4384611, 0.4674727)
+sprite_frames = SubResource("SpriteFrames_rtt3l")
+animation = &"crush"
+autoplay = "default"
+
+[node name="down_sprite" type="AnimatedSprite2D" parent="." unique_id=675922468]
+position = Vector2(1.9999998, 12.000002)
+rotation = 3.0881279
+scale = Vector2(0.4384611, 0.4674727)
+sprite_frames = SubResource("SpriteFrames_rtt3l")
+autoplay = "default"
+
+[node name="rigth_sprite" type="AnimatedSprite2D" parent="." unique_id=1560691526]
+position = Vector2(16, -4.999998)
+rotation = 1.4380206
+scale = Vector2(0.4384611, 0.4674727)
+sprite_frames = SubResource("SpriteFrames_rtt3l")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=475176251]
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_ys45m")
+
+[node name="RayCast" type="Node2D" parent="." unique_id=328842527]
+
+[node name="downRay" type="RayCast2D" parent="RayCast" unique_id=1538487330]
+position = Vector2(2, 0)
+scale = Vector2(7.6831965, 0.9551097)
+target_position = Vector2(0, 29)
+
+[node name="rigthRay" type="RayCast2D" parent="RayCast" unique_id=224983737]
+scale = Vector2(0.93220484, 6.627872)
+target_position = Vector2(32, 0)
+
+[node name="upRay" type="RayCast2D" parent="RayCast" unique_id=28306053]
+position = Vector2(2, 0)
+rotation = -3.1238484
+scale = Vector2(6.1470675, 1.0374523)
+target_position = Vector2(0, 29)
+
+[node name="leftRay" type="RayCast2D" parent="RayCast" unique_id=993076182]
+position = Vector2(2, 0)
+rotation = -3.1238484
+scale = Vector2(0.8166102, 7.505154)
+target_position = Vector2(32, 0)
+
+[node name="State_Machine" parent="." unique_id=1059784330 node_paths=PackedStringArray("default_state") instance=ExtResource("3_7g6tk")]
+default_state = NodePath("Move")
+
+[node name="Move" type="Node" parent="State_Machine" unique_id=1210067796]
+script = ExtResource("4_5mjg6")
+
+[node name="Knockback" parent="State_Machine" unique_id=959375226 instance=ExtResource("6_mpdoc")]
+
+[node name="hitbox" type="Area2D" parent="." unique_id=1794482960]
+position = Vector2(1, 4)
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=489708558]
+position = Vector2(1, -5)
+shape = SubResource("CircleShape2D_wfn5g")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
