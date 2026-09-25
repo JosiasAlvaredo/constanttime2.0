@@ -9,6 +9,7 @@ radius = 16.124516
 [node name="HadaFuego" type="CharacterBody2D" unique_id=962392775]
 script = ExtResource("1_452x3")
 speed = 60
+Knockback_resistence = 100
 damage = 20
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2045897722]
