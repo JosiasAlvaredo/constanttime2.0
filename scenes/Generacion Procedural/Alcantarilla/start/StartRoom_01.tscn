@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://84svjuaeha70"]
+[gd_scene format=4 uid="uid://84svjuaeha70"]
 
 [ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Alcantarilla/start/start_room_01.gd" id="1_nhs0j"]
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="2_kuocb"]

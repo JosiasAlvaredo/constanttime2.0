@@ -8,17 +8,17 @@ signal game_completed
 @export_range(1, 1000, 1) var modules_to_generate: int = 20
 @export_range(0, 100, 1) var treasure_room_count: int = 2
 
-@export var start_module: PackedScene
+var start_module
 
-@export var room_modules: Array[PackedScene] = []
+var room_modules = []
 
-@export var corridor_h_modules: Array[PackedScene] = []
+var corridor_h_modules = []
 
-@export var corridor_v_modules: Array[PackedScene] = []
+var corridor_v_modules = []
 
-@export var treasure_modules: Array[PackedScene] = []
+var treasure_modules = []
 
-@export var boss_modules: Array[PackedScene] = []
+var boss_modules = []
 
 @export var exit_trigger_size: Vector2 = Vector2(32, 128)
 
@@ -97,7 +97,9 @@ func _ready():
 	print("====================================================")
 	print("             DUNGEON GENERATOR START")
 	print("====================================================")
-
+	
+	
+	
 	randomize()
 
 	print("[READY] Randomize ejecutado")
@@ -121,6 +123,26 @@ func _ready():
 
 	start_level()
 
+
+func obtener_escenas(carpeta: String) -> Array[String]:
+	var escenas: Array[String] = []
+	var dir := DirAccess.open(carpeta)
+
+	if dir == null:
+		return escenas
+
+	dir.list_dir_begin()
+	var archivo := dir.get_next()
+
+	while archivo != "":
+		if not dir.current_is_dir() and archivo.ends_with(".tscn"):
+			escenas.append(carpeta.path_join(archivo))
+
+		archivo = dir.get_next()
+
+	dir.list_dir_end()
+
+	return escenas
 
 # ============================================================
 # NIVEL ACTUAL

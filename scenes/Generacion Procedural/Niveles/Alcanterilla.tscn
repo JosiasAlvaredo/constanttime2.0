@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4hnu1cm3aqq8"]
 
-[ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/DungeonGenerator.gd" id="1_kpb6g"]
+[ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/AlcantarillaGenerator.gd" id="1_kpb6g"]
 [ext_resource type="PackedScene" uid="uid://84svjuaeha70" path="res://scenes/Generacion Procedural/Alcantarilla/start/StartRoom_01.tscn" id="2_kpb6g"]
 [ext_resource type="PackedScene" uid="uid://tfts7j3krmpa" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_01.tscn" id="3_kpb6g"]
 [ext_resource type="PackedScene" uid="uid://b0c1iu5xjsy50" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_02.tscn" id="4_546io"]
