@@ -27,6 +27,9 @@ func start() -> void:
 	if dragon.en_aparicion:
 		return
 
+	if dragon.muriendo:
+		return
+
 	print("🟢 IDLE")
 	print("🐉 Fase: ", dragon.fase)
 
@@ -40,6 +43,9 @@ func start() -> void:
 	if state_machine.current_state != self:
 		return
 
+	if dragon.muriendo:
+		return
+
 	if dragon.en_transicion:
 		return
 
@@ -50,6 +56,9 @@ func start() -> void:
 
 
 func elegir_ataque() -> void:
+	if dragon.muriendo:
+		return
+
 	if dragon.en_transicion:
 		return
 
@@ -84,6 +93,10 @@ func elegir_ataque() -> void:
 		acumulado += ataque["probabilidad"]
 
 		if random_value <= acumulado:
+
+			if dragon.muriendo:
+				return
+
 			print("⚔️ ATAQUE ELEGIDO: ", ataque["nombre"])
 
 			if dragon.fase == 2:

@@ -10,6 +10,6 @@ origin = "items"
 description = "Una lanza usada dejada aun lado en medio de una batalla"
 max_durability = 100
 durability = 100
-damage = 10
+damage = 15
 knockback = Vector2(-400, 0)
 metadata/_custom_type_script = "uid://csg6c1ni2e46a"

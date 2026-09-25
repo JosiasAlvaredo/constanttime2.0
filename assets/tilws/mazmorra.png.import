@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccuinfhyo3qxc"
-path="res://.godot/imported/Sword.png-d9ee49c1970b7ce528b2c9d116efa40a.ctex"
+uid="uid://b1vahdr1eoxhu"
+path="res://.godot/imported/mazmorra.png-b8e27c1476e9affba0c18eb6656e8d89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Weapons/Sword.png"
-dest_files=["res://.godot/imported/Sword.png-d9ee49c1970b7ce528b2c9d116efa40a.ctex"]
+source_file="res://assets/tilws/mazmorra.png"
+dest_files=["res://.godot/imported/mazmorra.png-b8e27c1476e9affba0c18eb6656e8d89.ctex"]
 
 [params]
 

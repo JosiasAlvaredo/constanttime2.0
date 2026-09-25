@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccuinfhyo3qxc"
-path="res://.godot/imported/Sword.png-d9ee49c1970b7ce528b2c9d116efa40a.ctex"
+uid="uid://ditjocnvc8th2"
+path="res://.godot/imported/dragon cae.png-6325e230d6db45b55680fb80c6e0bac6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/Weapons/Sword.png"
-dest_files=["res://.godot/imported/Sword.png-d9ee49c1970b7ce528b2c9d116efa40a.ctex"]
+source_file="res://assets/characters/Bosses/Dragon/dragon cae.png"
+dest_files=["res://.godot/imported/dragon cae.png-6325e230d6db45b55680fb80c6e0bac6.ctex"]
 
 [params]
 
