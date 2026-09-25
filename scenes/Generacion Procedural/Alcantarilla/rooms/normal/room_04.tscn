@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://bmnqofvod5a6a"]
+[gd_scene load_steps=7 format=4 uid="uid://bmnqofvod5a6a"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_nf05q"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="2_wo1rp"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="5_waydd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kw3r2"]
-size = Vector2(831, 159)
+size = Vector2(832, 159)
 
 [node name="CorridorH01" type="Node2D" unique_id=431257943]
 
@@ -21,15 +21,17 @@ position = Vector2(-12, 322)
 tile_map_data = PackedByteArray("AAAHAP3/AAADAAQAAAAIAP3/AAADAAQAAAAJAP3/AAADAAQAAAAKAP3/AAADAAQAAAALAP3/AAADAAQAAAAMAP3/AAADAAQAAAANAP3/AAADAAQAAAAOAP3/AAADAAQAAAAPAP3/AAADAAQAAAAQAP3/AAADAAQAAAARAP3/AAADAAQAAAASAP3/AAADAAQAAAATAP3/AAADAAQAAAAUAP3/AAADAAQAAAAVAP3/AAADAAQAAAAWAP3/AAADAAAAAAAWAPn/AAADAAIAAAAFAPn/AAAHAAYAAAAGAPn/AAAHAAYAAAAHAPn/AAAHAAYAAAAIAPn/AAAHAAYAAAAJAPn/AAAHAAYAAAAKAPn/AAAHAAYAAAALAPn/AAAHAAYAAAAMAPn/AAAHAAYAAAANAPn/AAAHAAYAAAAOAPn/AAAHAAYAAAAPAPn/AAAHAAYAAAAQAPn/AAAHAAYAAAARAPn/AAAHAAYAAAASAPn/AAAHAAYAAAATAPn/AAAHAAYAAAAUAPn/AAAHAAYAAAAVAPn/AAAHAAYAAAANAPv/AAAKAAIAAAAFAP3/AAADAAQAAAAGAP3/AAADAAQAAAD///n/AAADAAIAAAAAAPn/AAADAAIAAAABAPn/AAADAAIAAAACAPn/AAADAAIAAAADAPn/AAADAAIAAAAEAPn/AAADAAIAAAD///3/AAAHAAQAAAAAAP3/AAAHAAQAAAABAP3/AAAHAAQAAAACAP3/AAAHAAQAAAADAP3/AAAHAAQAAAAEAP3/AAAHAAQAAAACAPv/AAAKAAIAAAAHAPv/AAAKAAIAAAASAPv/AAAKAAIAAAD+//n/AAADAAIAAAD9//n/AAADAAIAAAD+//3/AAAHAAQAAAD9//3/AAAHAAQAAAA=")
 
 [node name="puertaLeft" parent="." unique_id=290356788 instance=ExtResource("1_nf05q")]
+visible = false
 position = Vector2(-12, 322)
 tile_map_data = PackedByteArray("AAD9//3/AAAGAAYAAAD+//3/AAADAAQAAAD///3/AAADAAQAAAAAAP3/AAADAAQAAAABAP3/AAADAAQAAAACAP3/AAADAAQAAAADAP3/AAADAAQAAAD9//n/AAAGAAUAAAD+//n/AAAHAAYAAAD///n/AAAHAAYAAAAAAPn/AAAHAAYAAAABAPn/AAAHAAYAAAACAPn/AAAHAAYAAAADAPn/AAAHAAYAAAD9//r/AAAAAAMAAAD9//v/AAAAAAMAAAD9//z/AAAAAAMAAAA=")
 
 [node name="puertaRigth" parent="." unique_id=121518457 instance=ExtResource("1_nf05q")]
+visible = false
 position = Vector2(-12, 322)
 tile_map_data = PackedByteArray("AAAQAP3/AAADAAQAAAARAP3/AAADAAQAAAASAP3/AAADAAQAAAATAP3/AAADAAQAAAAUAP3/AAADAAQAAAAVAP3/AAADAAQAAAAWAP3/AAAIAAYAAAAWAPn/AAAIAAUAAAAQAPn/AAAHAAYAAAARAPn/AAAHAAYAAAASAPn/AAAHAAYAAAATAPn/AAAHAAYAAAAUAPn/AAAHAAYAAAAVAPn/AAAHAAYAAAAWAPr/AAAAAAMAAAAWAPv/AAAAAAMAAAAWAPz/AAAAAAMAAAA=")
 
 [node name="SocketLeft" type="Marker2D" parent="." unique_id=1415346625]
-position = Vector2(-107, 178)
+position = Vector2(-108, 178)
 
 [node name="SocketRight" type="Marker2D" parent="." unique_id=335574365]
 position = Vector2(724, 178)
@@ -44,5 +46,5 @@ random_position = false
 [node name="Bounds" type="Area2D" parent="." unique_id=1743847757]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=2078390579]
-position = Vector2(308.5, 176.5)
+position = Vector2(308, 176.5)
 shape = SubResource("RectangleShape2D_kw3r2")

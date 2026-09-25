@@ -1,7 +1,9 @@
-[gd_scene format=3 uid="uid://buliib3nflx85"]
+[gd_scene load_steps=5 format=3 uid="uid://buliib3nflx85"]
 
 [ext_resource type="Texture2D" uid="uid://b4wssxl4bclpp" path="res://assets/Animacion/viñetoide1.png" id="1_dfljd"]
 [ext_resource type="Script" uid="uid://dh5b06rqshsa7" path="res://interface/AnimacionInicio/node_2d.gd" id="1_opshs"]
+[ext_resource type="FontFile" uid="uid://c163ga11tqgnt" path="res://assets/fuentes/Alkhemikal.ttf" id="3_opshs"]
+[ext_resource type="AudioStream" uid="uid://d0jha103agms4" path="res://assets/Intro.mp3" id="4_y5sy3"]
 
 [node name="Node2D" type="Node2D" unique_id=1483026396]
 script = ExtResource("1_opshs")
@@ -23,5 +25,11 @@ offset_left = 283.0
 offset_top = 456.0
 offset_right = 874.0
 offset_bottom = 590.0
+theme_override_fonts/font = ExtResource("3_opshs")
+theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=402552460]
+stream = ExtResource("4_y5sy3")
+autoplay = true

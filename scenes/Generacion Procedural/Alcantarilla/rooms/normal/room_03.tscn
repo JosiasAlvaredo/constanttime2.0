@@ -1,4 +1,4 @@
-[gd_scene load_steps=0 format=4 uid="uid://cu2gu3v85wg8l"]
+[gd_scene load_steps=12 format=4 uid="uid://cu2gu3v85wg8l"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_u5ef6"]
 [ext_resource type="PackedScene" uid="uid://fc1dpos8li5i" path="res://objets/Map/Sewer/Rain.tscn" id="2_cjlv7"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="10_ry71t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuv48"]
-size = Vector2(736, 511.25)
+size = Vector2(736, 512)
 
 [node name="Room_01" type="Node2D" unique_id=900673031]
 metadata/_edit_vertical_guides_ = [496.0, 304.0]
@@ -88,7 +88,7 @@ position = Vector2(703, 144)
 [node name="Bounds" type="Area2D" parent="." unique_id=1796673238]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1631879316]
-position = Vector2(335, 159.625)
+position = Vector2(335, 160)
 shape = SubResource("RectangleShape2D_fuv48")
 
 [node name="SavePoint2" parent="." unique_id=147022339 instance=ExtResource("2_ovlwj")]

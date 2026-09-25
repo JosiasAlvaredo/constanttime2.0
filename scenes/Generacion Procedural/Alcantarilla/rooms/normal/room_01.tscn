@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="9_swc8j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuv48"]
-size = Vector2(736, 511.25)
+size = Vector2(736, 512)
 
 [node name="Room_01" type="Node2D" unique_id=900673031]
 metadata/_edit_vertical_guides_ = [496.0, 304.0]
@@ -88,7 +88,7 @@ position = Vector2(703, 144)
 [node name="Bounds" type="Area2D" parent="." unique_id=1796673238]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=1631879316]
-position = Vector2(335, 159.625)
+position = Vector2(335, 160)
 shape = SubResource("RectangleShape2D_fuv48")
 
 [node name="SavePoint2" parent="." unique_id=147022339 instance=ExtResource("2_mrce5")]
