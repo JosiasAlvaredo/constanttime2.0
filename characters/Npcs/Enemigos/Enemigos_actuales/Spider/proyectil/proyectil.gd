@@ -1,6 +1,6 @@
-extends CharacterBody2D
+extends enemy_base
 
-@export var speed := 200.0
+
 @export var time_alive := 5.0
 
 var direcionP: Vector2 = Vector2.ZERO

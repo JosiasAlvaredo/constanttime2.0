@@ -9,6 +9,7 @@ radius = 18.027756
 [node name="Proyectil" type="CharacterBody2D" unique_id=1744243755]
 scale = Vector2(0.48, 0.36000103)
 script = ExtResource("1_ng1wc")
+speed = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2064344926]
 position = Vector2(-5.145829, -2.8890502)

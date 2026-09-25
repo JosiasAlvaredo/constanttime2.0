@@ -29,13 +29,5 @@ func cambiar_a_fase_2() -> void:
 	state_machine.change_to("Idle")
 
 
-func _on_hitbox_cabeza_area_entered(area: Area2D) -> void:
-	enemy_damage(area.get_parent())
-
-
-func _on_hitbox_izq_area_entered(area: Area2D) -> void:
-	enemy_damage(area.get_parent())
-
-
-func _on_hitbox_der_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
 	enemy_damage(area.get_parent())

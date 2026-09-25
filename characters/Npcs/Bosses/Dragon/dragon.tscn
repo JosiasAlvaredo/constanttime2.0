@@ -752,6 +752,7 @@ collision_mask = 0
 script = ExtResource("1_c3s44")
 plataformas_scene = ExtResource("2_f4u5j")
 live = 250
+damage = 40
 
 [node name="CuerpoFase1" type="Node2D" parent="." unique_id=790636171]
 visible = false

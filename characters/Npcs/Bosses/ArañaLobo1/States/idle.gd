@@ -11,17 +11,22 @@ var arañalobo
 @export_category("Ataques Fase 1")
 
 @export var ataques_fase_1: Array[Dictionary] = [
-	{"nombre": "Shoot", "probabilidad": 40.0},
-	{"nombre": "AttackIzq", "probabilidad": 60.0}
+	{"nombre": "Shoot", "probabilidad": 30.0},
+	{"nombre": "AttackIzq", "probabilidad": 15.0},
+	{"nombre": "AttackDer", "probabilidad": 15.0},
+	{"nombre": "Summon", "probabilidad": 10.0},
 ]
 
 
 @export_category("Ataques Fase 2")
 
 @export var ataques_fase_2: Array[Dictionary] = [
-	{"nombre": "Shoot", "probabilidad": 10.0},
-	{"nombre": "AttackIzq", "probabilidad": 10.0},
-	{"nombre": "Summon", "probabilidad": 80.0},
+	
+	{"nombre": "AttackIzq", "probabilidad": 20.0},
+	{"nombre": "AttackDer", "probabilidad": 20.0},
+	{"nombre": "Summon", "probabilidad":20.0},
+	{"nombre": "AvanicoI", "probabilidad": 10.0},
+	{"nombre": "AvanicoD", "probabilidad": 10.0},
 ]
 
 
