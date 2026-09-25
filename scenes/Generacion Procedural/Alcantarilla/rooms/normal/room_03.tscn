@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="6_6vmay"]
 [ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="7_aj63y"]
 [ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="8_rra1w"]
-[ext_resource type="PackedScene" uid="uid://bu1jwensa1x17" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/goblin.tscn" id="9_ggabb"]
+[ext_resource type="PackedScene" uid="uid://oo75whoaybfo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/Goblin_1.tscn" id="9_ggabb"]
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="10_ry71t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fuv48"]

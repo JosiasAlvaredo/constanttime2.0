@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dhux3ome4i70u" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Rata/Rata.tscn" id="4_mah78"]
 [ext_resource type="PackedScene" uid="uid://cxvahsblhhpye" path="res://objets/Map/enemy_spawner.tscn" id="4_n8cjl"]
 [ext_resource type="PackedScene" uid="uid://dlxu4nqmen300" path="res://characters/Npcs/Enemigos/Enemigos_actuales/BigSlime/BigSlime.tscn" id="5_vbw43"]
-[ext_resource type="PackedScene" uid="uid://bu1jwensa1x17" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/goblin.tscn" id="6_smrpm"]
+[ext_resource type="PackedScene" uid="uid://oo75whoaybfo" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Goblins/Goblin_1.tscn" id="6_smrpm"]
 [ext_resource type="PackedScene" uid="uid://cay0f8yvo0rd3" path="res://characters/Npcs/Enemigos/Enemigos_actuales/Señor/Señor.tscn" id="7_30mx8"]
 [ext_resource type="PackedScene" uid="uid://vk1bfs3s17ao" path="res://objets/Map/Sewer/bad_water.tscn" id="8_vbw43"]
 

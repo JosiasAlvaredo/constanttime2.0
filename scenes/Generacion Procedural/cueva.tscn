@@ -1,0 +1,49 @@
+[gd_scene load_steps=14 format=3 uid="uid://csiojet4d78m2"]
+
+[ext_resource type="Script" uid="uid://cfwn1fw85xvo0" path="res://scenes/Generacion Procedural/scripts/CuevaGenerator.gd" id="1_c65jn"]
+[ext_resource type="PackedScene" uid="uid://d4dc4hbav823m" path="res://scenes/Generacion Procedural/Cueva/start/StartRoom_01.tscn" id="2_1lbcg"]
+[ext_resource type="Script" uid="uid://bxcuhnfwcvwsi" path="res://scenes/Generacion Procedural/dungeon_background.gd" id="2_h7j31"]
+[ext_resource type="PackedScene" uid="uid://tfts7j3krmpa" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_01.tscn" id="3_6bdku"]
+[ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="3_sew4o"]
+[ext_resource type="PackedScene" uid="uid://c06acqtv7gko7" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_02.tscn" id="4_564sh"]
+[ext_resource type="PackedScene" uid="uid://droniq6ewfc8k" path="res://scenes/Generacion Procedural/Cueva/rooms/normal/room_03.tscn" id="5_kny6i"]
+[ext_resource type="PackedScene" uid="uid://bepwwafpi1jw0" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_01.tscn" id="6_1nrg6"]
+[ext_resource type="PackedScene" uid="uid://23l00whb2niw" path="res://scenes/Generacion Procedural/Cueva/corridors/horizontal/corridorH_02.tscn" id="7_w310j"]
+[ext_resource type="PackedScene" uid="uid://bly7h0dw7bhbf" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_01.tscn" id="8_kfsgr"]
+[ext_resource type="PackedScene" uid="uid://v55pgsvhnqjq" path="res://scenes/Generacion Procedural/Cueva/corridors/vertical/corridorV_02.tscn" id="9_jcvg8"]
+[ext_resource type="PackedScene" uid="uid://b4k8fsiecdldj" path="res://scenes/Generacion Procedural/Cueva/boss/puertaboss.tscn" id="10_mk11y"]
+
+[sub_resource type="TileSet" id="TileSet_u08jo"]
+
+[node name="Cueva" type="Node2D" unique_id=936655814]
+script = ExtResource("1_c65jn")
+modules_to_generate = 10
+treasure_room_count = 0
+start_module = ExtResource("2_1lbcg")
+room_modules = Array[PackedScene]([ExtResource("3_6bdku"), ExtResource("4_564sh"), ExtResource("5_kny6i")])
+corridor_h_modules = Array[PackedScene]([ExtResource("6_1nrg6"), ExtResource("7_w310j")])
+corridor_v_modules = Array[PackedScene]([ExtResource("8_kfsgr"), ExtResource("9_jcvg8")])
+boss_modules = Array[PackedScene]([ExtResource("10_mk11y")])
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1118151226]
+visible = false
+offset_left = -33.0
+offset_top = -33.0
+offset_right = 9.430534
+offset_bottom = -31.785183
+scale = Vector2(28.682173, 17.28656)
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1448851936]
+
+[node name="Dungeon" type="Node2D" parent="." unique_id=921618824]
+
+[node name="Background" type="TileMapLayer" parent="." unique_id=371138860]
+tile_set = SubResource("TileSet_u08jo")
+script = ExtResource("2_h7j31")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624347463]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1076, 570)
+scale = Vector2(0.10674661, 0.1067466)
+texture = ExtResource("3_sew4o")

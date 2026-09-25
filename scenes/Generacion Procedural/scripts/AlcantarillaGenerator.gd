@@ -5,28 +5,34 @@ signal level_started(level_index: int)
 signal game_completed
 
 
-@export var levels: Array[LevelData] = []
+@export_range(1, 1000, 1) var modules_to_generate: int = 20
+@export_range(0, 100, 1) var treasure_room_count: int = 2
+
+@export var start_module: PackedScene
+
+@export var room_modules: Array[PackedScene] = []
+
+@export var corridor_h_modules: Array[PackedScene] = []
+
+@export var corridor_v_modules: Array[PackedScene] = []
+
+@export var treasure_modules: Array[PackedScene] = []
+
+@export var boss_modules: Array[PackedScene] = []
+
 @export var exit_trigger_size: Vector2 = Vector2(32, 128)
+
+
+@export_category("Background")
+@export var background_tileset: TileSet
+@export var background_tiles: Array[Vector2i] = []
+@export var background_margin_tiles: int = 2
+@export var background_source_id: int = 0
+@export_range(0.0, 1.0, 0.01) var background_variant_chance: float = 0.0
 
 
 var current_level_index: int = 0
 var is_transitioning: bool = false
-
-
-# ============================================================
-# DATOS DEL NIVEL ACTUAL
-# ============================================================
-
-var modules_to_generate: int = 0
-var treasure_room_count: int = 0
-
-var start_module: PackedScene
-
-var room_modules: Array[PackedScene] = []
-var corridor_h_modules: Array[PackedScene] = []
-var corridor_v_modules: Array[PackedScene] = []
-var treasure_modules: Array[PackedScene] = []
-var boss_modules: Array[PackedScene] = []
 
 
 # ============================================================
@@ -104,174 +110,99 @@ func _ready():
 
 	print("[READY] Agregado al grupo dungeon_generator")
 
-	print("[READY] Cantidad de niveles: ", levels.size())
+	print("[READY] Módulos a generar: ", modules_to_generate)
+	print("[READY] Salas de tesoro: ", treasure_room_count)
+	print("[READY] Start module: ", start_module)
+	print("[READY] Rooms: ", room_modules.size())
+	print("[READY] Corridors H: ", corridor_h_modules.size())
+	print("[READY] Corridors V: ", corridor_v_modules.size())
+	print("[READY] Treasures: ", treasure_modules.size())
+	print("[READY] Bosses: ", boss_modules.size())
 
-	start_level(0)
+	start_level()
 
 
 # ============================================================
-# NIVELES
+# NIVEL ACTUAL
 # ============================================================
 
-func start_level(index: int):
+func start_level():
 
 	print("\n")
 	print("====================================================")
 	print("                 START LEVEL")
-	print("                 NIVEL: ", index + 1)
+	print("                 NIVEL CONFIGURADO")
 	print("====================================================")
 
-	if index < 0 or index >= levels.size():
-		push_error(
-			"No existe el nivel "
-			+ str(index)
-			+ ". Asigná LevelData en 'levels'."
-		)
-
-		print("[LEVEL ERROR] Índice inválido: ", index)
-
+	if not validate_level_data():
+		print("[LEVEL ERROR] Configuración del generador inválida")
 		return
 
-	print("[LEVEL] Validando LevelData...")
-
-	if not validate_level_data(levels[index], index):
-		print("[LEVEL ERROR] LevelData inválido")
-
-		return
-
-	print("[LEVEL] LevelData válido")
-
-	current_level_index = index
-
-	print("[LEVEL] current_level_index = ", current_level_index)
-
-	apply_level_data(levels[index])
-
-	print("[LEVEL] Datos aplicados")
-
-	print("[LEVEL] Generando dungeon...")
+	print("[LEVEL] Configuración válida")
 
 	generate_dungeon()
 
 	print("[LEVEL] Dungeon generada")
 
-	build_background(levels[index])
+	build_background()
 
 	print("[LEVEL] Background construido")
 
-	level_started.emit(index)
+	level_started.emit(0)
 
 	print("[LEVEL] level_started emitido")
 
 
 # ============================================================
-# VALIDAR LEVEL DATA
+# VALIDAR CONFIGURACIÓN
 # ============================================================
 
-func validate_level_data(data: LevelData, index: int) -> bool:
+func validate_level_data() -> bool:
 
 	print("\n[VALIDATE] ===============================")
 
-	var label: String = "LevelData del nivel %d" % (index + 1)
-
-	if data == null:
-
-		push_error(
-			label
-			+ ": el slot está vacío en el Inspector."
-		)
-
-		print("[VALIDATE ERROR] LevelData NULL")
-
-		return false
-
 	var ok: bool = true
 
-	print("[VALIDATE] start_module: ", data.start_module)
-	print("[VALIDATE] room_modules: ", data.room_modules.size())
-	print("[VALIDATE] corridor_h_modules: ", data.corridor_h_modules.size())
-	print("[VALIDATE] corridor_v_modules: ", data.corridor_v_modules.size())
-	print("[VALIDATE] treasure_modules: ", data.treasure_modules.size())
-	print("[VALIDATE] boss_modules: ", data.boss_modules.size())
+	print("[VALIDATE] modules_to_generate: ", modules_to_generate)
+	print("[VALIDATE] treasure_room_count: ", treasure_room_count)
+	print("[VALIDATE] start_module: ", start_module)
+	print("[VALIDATE] room_modules: ", room_modules.size())
+	print("[VALIDATE] corridor_h_modules: ", corridor_h_modules.size())
+	print("[VALIDATE] corridor_v_modules: ", corridor_v_modules.size())
+	print("[VALIDATE] treasure_modules: ", treasure_modules.size())
+	print("[VALIDATE] boss_modules: ", boss_modules.size())
 
-	if data.start_module == null:
+	if modules_to_generate < 1:
+		push_error("'modules_to_generate' debe ser mayor que 0.")
+		print("[VALIDATE ERROR] modules_to_generate inválido")
+		ok = false
 
-		push_error(
-			label
-			+ ": falta 'start_module'."
-		)
-
+	if start_module == null:
+		push_error("Falta 'start_module'.")
 		print("[VALIDATE ERROR] Falta start_module")
-
 		ok = false
 
-	if data.boss_modules.is_empty():
-
-		push_error(
-			label
-			+ ": 'boss_modules' está vacío."
-		)
-
+	if boss_modules.is_empty():
+		push_error("'boss_modules' está vacío.")
 		print("[VALIDATE ERROR] boss_modules vacío")
-
 		ok = false
 
-	if data.treasure_room_count > 0 and data.treasure_modules.is_empty():
-
+	if treasure_room_count > 0 and treasure_modules.is_empty():
 		push_error(
-			label
-			+ ": 'treasure_room_count' es %d pero 'treasure_modules' está vacío."
-			% data.treasure_room_count
+			"'treasure_room_count' es %d pero 'treasure_modules' está vacío."
+			% treasure_room_count
 		)
-
 		print("[VALIDATE ERROR] No hay escenas de tesoro")
-
 		ok = false
 
-	if data.room_modules.is_empty():
-
-		push_error(
-			label
-			+ ": 'room_modules' está vacío."
-		)
-
+	if room_modules.is_empty():
+		push_error("'room_modules' está vacío.")
 		print("[VALIDATE ERROR] room_modules vacío")
-
 		ok = false
 
 	print("[VALIDATE] Resultado: ", ok)
 
 	return ok
-
-
-# ============================================================
-# APLICAR LEVEL DATA
-# ============================================================
-
-func apply_level_data(data: LevelData):
-
-	print("\n[APPLY DATA] ===============================")
-
-	modules_to_generate = data.modules_to_generate
-	treasure_room_count = data.treasure_room_count
-
-	start_module = data.start_module
-
-	room_modules = data.room_modules
-	corridor_h_modules = data.corridor_h_modules
-	corridor_v_modules = data.corridor_v_modules
-
-	treasure_modules = data.treasure_modules
-	boss_modules = data.boss_modules
-
-	print("[APPLY DATA] modules_to_generate: ", modules_to_generate)
-	print("[APPLY DATA] treasure_room_count: ", treasure_room_count)
-	print("[APPLY DATA] start_module: ", start_module)
-	print("[APPLY DATA] rooms: ", room_modules.size())
-	print("[APPLY DATA] corridors H: ", corridor_h_modules.size())
-	print("[APPLY DATA] corridors V: ", corridor_v_modules.size())
-	print("[APPLY DATA] treasures: ", treasure_modules.size())
-	print("[APPLY DATA] bosses: ", boss_modules.size())
 
 
 # ============================================================
@@ -283,34 +214,15 @@ func load_next_level():
 	print("\n[LEVEL TRANSITION] ===============================")
 
 	if is_transitioning:
-
 		print("[LEVEL TRANSITION] Ya está cambiando de nivel")
-
 		return
 
 	is_transitioning = true
 
-	var next_index: int = current_level_index + 1
+	print("[LEVEL TRANSITION] Este generador representa un nivel único")
+	print("[LEVEL TRANSITION] Emitiendo game_completed")
 
-	print("[LEVEL TRANSITION] Próximo nivel: ", next_index + 1)
-
-	if next_index >= levels.size():
-
-		print("[LEVEL TRANSITION] No hay más niveles")
-
-		game_completed.emit()
-
-		is_transitioning = false
-
-		return
-
-	print("[LEVEL TRANSITION] Limpiando dungeon")
-
-	clear_dungeon()
-
-	print("[LEVEL TRANSITION] Cargando nivel ", next_index + 1)
-
-	start_level(next_index)
+	game_completed.emit()
 
 	is_transitioning = false
 
@@ -2896,9 +2808,7 @@ func set_collision_state_recursive(
 # BACKGROUND
 # ============================================================
 
-func build_background(
-	data: LevelData
-):
+func build_background():
 
 	print(
 		"\n[BACKGROUND] ==============================="
@@ -2927,9 +2837,20 @@ func build_background(
 		bounds
 	)
 
+	var background_data: LevelData = LevelData.new()
+
+	background_data.modules_to_generate = modules_to_generate
+	background_data.treasure_room_count = treasure_room_count
+	background_data.start_module = start_module
+	background_data.room_modules = room_modules
+	background_data.corridor_h_modules = corridor_h_modules
+	background_data.corridor_v_modules = corridor_v_modules
+	background_data.treasure_modules = treasure_modules
+	background_data.boss_modules = boss_modules
+
 	background.build(
 		bounds,
-		data
+		background_data
 	)
 
 	print(
