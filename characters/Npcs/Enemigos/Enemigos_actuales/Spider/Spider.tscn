@@ -22,7 +22,7 @@ projectile_scene = ExtResource("2_c3xrp")
 detection_range = 500.0
 number_effects = Array[int]([2])
 drops = Array[PackedScene]([ExtResource("3_yhq00")])
-live = 50
+live = 30
 speed = 60
 activate_Gravity = false
 

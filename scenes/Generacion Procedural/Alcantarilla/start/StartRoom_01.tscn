@@ -1,10 +1,12 @@
-[gd_scene format=4 uid="uid://84svjuaeha70"]
+[gd_scene load_steps=12 format=4 uid="uid://84svjuaeha70"]
 
-[ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Mazmorra/start/start_room_01.gd" id="1_nhs0j"]
+[ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Alcantarilla/start/start_room_01.gd" id="1_nhs0j"]
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="2_kuocb"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_xsciu"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="3_he2ru"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="4_l4nw3"]
+[ext_resource type="PackedScene" uid="uid://b8aix8qs6054f" path="res://objets/body_parts/goblin_legs.tscn" id="6_j8q3y"]
+[ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="7_msfxj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(833, 133.33334)
@@ -64,8 +66,19 @@ shape = SubResource("RectangleShape2D_ikq0o")
 
 [node name="NoTocar" type="Sprite2D" parent="." unique_id=1614981110]
 z_index = 100
+<<<<<<< HEAD
+position = Vector2(-79, 182)
+scale = Vector2(1.8515623, 1.5937499)
+=======
 position = Vector2(-48.874996, 181.5)
 scale = Vector2(1.8476559, 1.609375)
+>>>>>>> 1d0f9100965acb61787346e4ade34b2501397e70
 texture = SubResource("GradientTexture2D_j8q3y")
+
+[node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("6_j8q3y")]
+position = Vector2(-55, 195)
+
+[node name="bird_wings2" parent="." unique_id=662880546 instance=ExtResource("7_msfxj")]
+position = Vector2(-38, 184)
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]
