@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://boayjrrv5l1g1"]
 
-[ext_resource type="Script" uid="uid://cfwn1fw85xvo0" path="res://scenes/Generacion Procedural/scripts/CuevaGenerator.gd" id="1_c65jn"]
+[ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/AlcantarillaGenerator.gd" id="1_c65jn"]
 [ext_resource type="Script" uid="uid://bxcuhnfwcvwsi" path="res://scenes/Generacion Procedural/dungeon_background.gd" id="2_h7j31"]
 [ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="3_sew4o"]
 
@@ -8,8 +8,8 @@
 
 [node name="Cueva" type="Node2D" unique_id=936655814]
 script = ExtResource("1_c65jn")
-modules_to_generate = 10
-treasure_room_count = 0
+modules_to_generate = 15
+level = "Cueva"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1118151226]
 offset_left = -33.0

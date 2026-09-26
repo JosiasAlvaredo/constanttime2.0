@@ -12,7 +12,7 @@ radius = 18.027756
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1545454215]
 collision_layer = 0
 script = ExtResource("1_ct7jg")
-speed = 60
+speed = 120
 Knockback_resistence = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=481115818]

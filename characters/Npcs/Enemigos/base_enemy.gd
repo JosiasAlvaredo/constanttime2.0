@@ -26,7 +26,7 @@ func _init() -> void:
 	
 func _process(delta: float) -> void:
 	if activate_Gravity:
-		velocity += transform.y * gravity * delta
+		velocity.y += gravity * delta
 		
 	if aux_values=={}:
 		aux_values.speed=speed

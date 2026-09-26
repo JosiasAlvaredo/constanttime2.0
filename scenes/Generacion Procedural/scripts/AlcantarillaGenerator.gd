@@ -8,13 +8,15 @@ signal game_completed
 @export_range(1, 1000, 1) var modules_to_generate: int = 20
 @export_range(0, 100, 1) var treasure_room_count: int = 2
 
-@export var start_module: PackedScene
+@export_enum("Cueva","Alcantarilla","Mazmorra") var level:String
 
-@export var room_modules: Array[PackedScene] = []
-@export var corridor_h_modules: Array[PackedScene] = []
-@export var corridor_v_modules: Array[PackedScene] = []
-@export var treasure_modules: Array[PackedScene] = []
-@export var boss_modules: Array[PackedScene] = []
+var start_module: Array[PackedScene]
+
+var room_modules: Array[PackedScene] = []
+var corridor_h_modules: Array[PackedScene] = []
+var corridor_v_modules: Array[PackedScene] = []
+var treasure_modules: Array[PackedScene] = []
+var boss_modules: Array[PackedScene] = []
 
 @export var exit_trigger_size: Vector2 = Vector2(32, 128)
 
@@ -94,7 +96,19 @@ func _ready() -> void:
 	print("====================================================")
 	print("             DUNGEON GENERATOR START")
 	print("====================================================")
+	print(
+		"[GENERATOR] ",
+		name,
+		" | level = ",
+		level,
+		" | path = ",
+		get_path()
+	)
+	start_module = load_rooms("res://scenes/Generacion Procedural/%s/start/" % level)
 
+	room_modules = load_rooms("res://scenes/Generacion Procedural/%s/rooms/normal/" % level)
+	corridor_v_modules = load_rooms("res://scenes/Generacion Procedural/%s/corridors/vertical/" % level)
+	boss_modules = load_rooms("res://scenes/Generacion Procedural/%s/boss/" % level)
 	randomize()
 
 	dungeon.z_index = -10
@@ -114,6 +128,26 @@ func _ready() -> void:
 
 	start_level()
 
+func load_rooms(dir)-> Array[PackedScene]:
+	
+	var foulder = DirAccess.open(dir)
+	
+	
+	
+	var escenarios:Array[PackedScene]=[]
+	if foulder:
+		foulder.list_dir_begin()
+		var archivo = foulder.get_next()
+		
+		while archivo != "":
+			if archivo.ends_with(".tscn"):
+				escenarios.append(load("%s/%s" % [dir,archivo]))
+			
+			archivo = foulder.get_next()
+		
+		foulder.list_dir_end()
+	
+	return escenarios
 
 # ============================================================
 # NIVEL ACTUAL
@@ -389,7 +423,7 @@ func generate_dungeon_attempt() -> Dictionary:
 			"boss": false
 		}
 
-	var start: Node2D = start_module.instantiate()
+	var start: Node2D = start_module[0].instantiate()
 
 	if start == null:
 
@@ -2102,7 +2136,7 @@ func build_background() -> void:
 
 	background_data.modules_to_generate = modules_to_generate
 	background_data.treasure_room_count = treasure_room_count
-	background_data.start_module = start_module
+	background_data.start_module = start_module[0]
 	background_data.room_modules = room_modules
 	background_data.corridor_h_modules = corridor_h_modules
 	background_data.corridor_v_modules = corridor_v_modules

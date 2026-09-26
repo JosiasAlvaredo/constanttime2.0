@@ -6,8 +6,10 @@ extends enemy_base
 @onready var front_ray: RayCast2D = $RayCast/FrontRay
 @onready var sprite= $AnimatedSprite2D
 
+var start_flip
 
 func _ready():
+	start_flip=true
 	$AnimatedSprite2D.scale.x=direction*abs($AnimatedSprite2D.scale.x)
 	update_direction()
 

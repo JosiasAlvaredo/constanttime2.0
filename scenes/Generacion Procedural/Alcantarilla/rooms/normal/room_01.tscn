@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://tfts7j3krmpa"]
+[gd_scene format=4 uid="uid://tfts7j3krmpa"]
 
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_8c8y0"]
 [ext_resource type="PackedScene" uid="uid://fc1dpos8li5i" path="res://objets/Map/Sewer/Rain.tscn" id="2_8c8y0"]

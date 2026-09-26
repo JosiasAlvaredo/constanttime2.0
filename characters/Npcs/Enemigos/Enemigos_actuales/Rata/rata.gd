@@ -17,9 +17,8 @@ var playerUbi: Node2D
 func _ready() -> void: 
 	playerUbi = get_tree().get_first_node_in_group("player") 
 	
-	
 func _physics_process(delta: float) -> void:
-	print(state_machine.current_state)
+	velocity.y += gravity * delta
 
 func get_player_distance() -> float: 
 	if playerUbi == null: 

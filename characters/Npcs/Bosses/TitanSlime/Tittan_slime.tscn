@@ -3,30 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="1_6586s"]
 [ext_resource type="PackedScene" uid="uid://cj0ou4wf85852" path="res://objets/Map/Sewer/geiser.tscn" id="2_3ewjs"]
 [ext_resource type="PackedScene" uid="uid://vk1bfs3s17ao" path="res://objets/Map/Sewer/bad_water.tscn" id="2_w61f1"]
-[ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="5_12inf"]
-[ext_resource type="PackedScene" uid="uid://c0wndwegvj1xc" path="res://objets/body_parts/stick.tscn" id="6_3ewjs"]
 [ext_resource type="PackedScene" uid="uid://cl748w8fprxj6" path="res://characters/States/state_machine.tscn" id="6_6jl7h"]
-[ext_resource type="Script" uid="uid://igkcr3piscgl" path="res://scenes/Generacion Procedural/Alcantarilla/boss/idle.gd" id="7_a312p"]
-[ext_resource type="PackedScene" uid="uid://b7f4lpee6v5nj" path="res://objets/body_parts/spider_legs.tscn" id="7_jmps0"]
-[ext_resource type="Script" uid="uid://d1snd4co3fpwx" path="res://scenes/Generacion Procedural/Alcantarilla/boss/damage.gd" id="8_a312p"]
+[ext_resource type="Script" uid="uid://igkcr3piscgl" path="res://characters/Npcs/Bosses/TitanSlime/idle.gd" id="7_a312p"]
+[ext_resource type="Script" uid="uid://d1snd4co3fpwx" path="res://characters/Npcs/Bosses/TitanSlime/damage.gd" id="8_a312p"]
 [ext_resource type="PackedScene" uid="uid://fc1dpos8li5i" path="res://objets/Map/Sewer/Rain.tscn" id="9_3kh8l"]
-[ext_resource type="Script" uid="uid://csmrbbh7l41jj" path="res://scenes/Generacion Procedural/Alcantarilla/boss/blast.gd" id="9_dqa1c"]
-[ext_resource type="PackedScene" uid="uid://cqqnprcg0nxol" path="res://objets/items/Sword_item.tscn" id="10_8kat6"]
-[ext_resource type="Script" path="res://scenes/Generacion Procedural/Alcantarilla/boss/Boss_sence_camera.gd" id="11_44xly"]
-[ext_resource type="PackedScene" uid="uid://crlgjc5el33h1" path="res://objets/body_parts/goblind_arm.tscn" id="11_6586s"]
-[ext_resource type="Script" uid="uid://btrh1lgsocbbg" path="res://scenes/Generacion Procedural/Alcantarilla/boss/node.gd" id="11_s1qe1"]
+[ext_resource type="Script" uid="uid://csmrbbh7l41jj" path="res://characters/Npcs/Bosses/TitanSlime/blast.gd" id="9_dqa1c"]
+[ext_resource type="Script" uid="uid://dxnx2aebv15xa" path="res://characters/Npcs/Bosses/TitanSlime/Boss_sence_camera.gd" id="11_44xly"]
+[ext_resource type="Script" uid="uid://btrh1lgsocbbg" path="res://characters/Npcs/Bosses/TitanSlime/node.gd" id="11_s1qe1"]
 [ext_resource type="PackedScene" uid="uid://cqhbw1m88idtf" path="res://objets/Map/save_point.tscn" id="12_6586s"]
 [ext_resource type="Texture2D" uid="uid://cf8o5rkwdnfc1" path="res://assets/characters/enemies/Slime.png" id="13_8mrsq"]
-[ext_resource type="Script" uid="uid://bedn6eqelgkcg" path="res://scenes/Generacion Procedural/Alcantarilla/boss/slime_boss.gd" id="13_16htg"]
+[ext_resource type="Script" uid="uid://bedn6eqelgkcg" path="res://characters/Npcs/Bosses/TitanSlime/slime_boss.gd" id="13_16htg"]
 [ext_resource type="Texture2D" uid="uid://co05y8pjc8tyf" path="res://assets/characters/Bosses/slime_boss/core.webp" id="14_16htg"]
-[ext_resource type="PackedScene" uid="uid://d4fnb37drwy6x" path="res://objets/items/Torch.tscn" id="14_dxveu"]
 [ext_resource type="Texture2D" uid="uid://csmswqluy5sch" path="res://assets/tilws/alcantarilla/stock-vector-the-set-of-damaged-pipes-pixel-art-vector-1088674490.png" id="15_x4ccs"]
-[ext_resource type="PackedScene" uid="uid://dpckbqm32fc4o" path="res://objets/items/new_Sword_item.tscn" id="16_alw0m"]
 [ext_resource type="PackedScene" uid="uid://c5c1l3ap0w2ne" path="res://assets/tilws/alcantarilla/geiser_tile.tscn" id="18_44xly"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="18_x4ccs"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="19_c2ppf"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="20_5r0oi"]
-[ext_resource type="PackedScene" uid="uid://cei2w4wemd2od" path="res://objets/body_parts/rat_torso.tscn" id="21_5r0oi"]
 [ext_resource type="Script" uid="uid://df8bjwmrqln5q" path="res://scenes/Generacion Procedural/scripts/BossRoomTrigger.gd" id="22_alw0m"]
 [ext_resource type="Texture2D" uid="uid://hp646s4prb5i" path="res://assets/tilws/alcantarilla/spell.png" id="28_s1qe1"]
 
@@ -515,7 +507,7 @@ stream_time = 0.5
 [node name="boss" type="CharacterBody2D" parent="." unique_id=1158006524]
 z_index = -1
 script = ExtResource("13_16htg")
-live = 100
+live = 1000
 Jump_stength = 0
 speed = 0
 
@@ -773,36 +765,11 @@ zoom = Vector2(1.4, 1.4)
 script = ExtResource("11_44xly")
 
 [node name="Player" parent="." unique_id=294110880 instance=ExtResource("18_x4ccs")]
-position = Vector2(457, 512)
+position = Vector2(452, 637)
 
 [node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("19_c2ppf")]
 
 [node name="Pausa" parent="." unique_id=1289478724 instance=ExtResource("20_5r0oi")]
-
-[node name="rat_torso" parent="." unique_id=1827014866 instance=ExtResource("21_5r0oi")]
-position = Vector2(434, 576)
-
-[node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("5_12inf")]
-position = Vector2(425, 602)
-
-[node name="stick_arm" parent="." unique_id=419816617 instance=ExtResource("6_3ewjs")]
-position = Vector2(460, 607)
-
-[node name="stick_arm2" parent="." unique_id=818630450 instance=ExtResource("7_jmps0")]
-position = Vector2(414, 596)
-
-[node name="Sword_item" parent="." unique_id=1284734035 instance=ExtResource("10_8kat6")]
-position = Vector2(458, 591)
-
-[node name="stick_arm3" parent="." unique_id=397890883 instance=ExtResource("11_6586s")]
-position = Vector2(467, 589)
-
-[node name="new_Sword_item" parent="." unique_id=2885162 instance=ExtResource("16_alw0m")]
-position = Vector2(478, 580)
-rotation = 1.5934856
-
-[node name="Torch_item" parent="." unique_id=135219130 instance=ExtResource("14_dxveu")]
-position = Vector2(463, 576)
 
 [node name="BossRoomTrigger" type="Area2D" parent="." unique_id=314534446]
 position = Vector2(418, 279)

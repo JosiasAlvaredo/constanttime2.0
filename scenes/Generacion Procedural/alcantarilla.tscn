@@ -1,47 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://df2elhr4o6whe"]
+[gd_scene format=3 uid="uid://c72bigi0wvd12"]
 
 [ext_resource type="Script" uid="uid://mjyrqn2tpp3g" path="res://scenes/Generacion Procedural/scripts/AlcantarillaGenerator.gd" id="1_1yqan"]
 [ext_resource type="Script" uid="uid://bxcuhnfwcvwsi" path="res://scenes/Generacion Procedural/dungeon_background.gd" id="2_85rqy"]
-[ext_resource type="PackedScene" uid="uid://84svjuaeha70" path="res://scenes/Generacion Procedural/Alcantarilla/start/StartRoom_01.tscn" id="2_cngjp"]
-[ext_resource type="Texture2D" uid="uid://c5hggt18nb6y7" path="res://assets/plataformas.png" id="2_w3otv"]
-[ext_resource type="PackedScene" uid="uid://tfts7j3krmpa" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_01.tscn" id="3_ug645"]
 [ext_resource type="Texture2D" uid="uid://bv2imr13ws7n3" path="res://assets/logo.png" id="3_w3otv"]
-[ext_resource type="PackedScene" uid="uid://b0c1iu5xjsy50" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_02.tscn" id="4_ccrsy"]
-[ext_resource type="PackedScene" uid="uid://cu2gu3v85wg8l" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_03.tscn" id="5_4oefm"]
-[ext_resource type="PackedScene" uid="uid://bmnqofvod5a6a" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_04.tscn" id="6_te377"]
-[ext_resource type="PackedScene" uid="uid://rku3cesdcbvr" path="res://scenes/Generacion Procedural/Alcantarilla/rooms/normal/room_05.tscn" id="7_tt1pw"]
-[ext_resource type="PackedScene" uid="uid://cojyx2ppkqc2u" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/vertical/corridorV_01.tscn" id="8_ccrsy"]
-[ext_resource type="PackedScene" uid="uid://v74wlnxoqygx" path="res://scenes/Generacion Procedural/Alcantarilla/boss/PuertaTitanSlime.tscn" id="8_ns2qf"]
-[ext_resource type="PackedScene" uid="uid://78vyompmb3lx" path="res://scenes/Generacion Procedural/Alcantarilla/corridors/vertical/corridorV_02.tscn" id="9_4oefm"]
-[ext_resource type="TileSet" uid="uid://iexq4dqep3aa" path="res://scenes/Generacion Procedural/scripts/alcantarilla_fondo.tres" id="9_cngjp"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x1mav"]
-texture = ExtResource("2_w3otv")
-texture_region_size = Vector2i(32, 32)
-3:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_u08jo"]
-sources/1 = SubResource("TileSetAtlasSource_x1mav")
 
-[node name="Alcantarilla2" type="Node2D" unique_id=936655814]
+[node name="Alcantarilla" type="Node2D" unique_id=936655814]
 script = ExtResource("1_1yqan")
-modules_to_generate = 12
-treasure_room_count = 0
-start_module = ExtResource("2_cngjp")
-room_modules = Array[PackedScene]([ExtResource("3_ug645"), ExtResource("4_ccrsy"), ExtResource("5_4oefm"), ExtResource("6_te377"), ExtResource("7_tt1pw")])
-corridor_h_modules = null
-corridor_v_modules = Array[PackedScene]([ExtResource("8_ccrsy"), ExtResource("9_4oefm")])
-treasure_modules = null
-boss_modules = Array[PackedScene]([ExtResource("8_ns2qf")])
-exit_trigger_size = null
-background_tileset = ExtResource("9_cngjp")
-background_tiles = Array[Vector2i]([Vector2i(3, 1)])
-background_margin_tiles = null
-background_source_id = null
-background_variant_chance = null
+modules_to_generate = 15
+level = "Alcantarilla"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1118151226]
-visible = false
 offset_left = -33.0
 offset_top = -33.0
 offset_right = 9.430534
@@ -54,7 +24,6 @@ color = Color(0, 0, 0, 0)
 [node name="Dungeon" type="Node2D" parent="." unique_id=921618824]
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=371138860]
-modulate = Color(0.3953672, 0.39536718, 0.39536715, 1)
 tile_set = SubResource("TileSet_u08jo")
 script = ExtResource("2_85rqy")
 

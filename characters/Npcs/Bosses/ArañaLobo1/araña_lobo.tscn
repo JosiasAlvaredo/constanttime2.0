@@ -847,6 +847,7 @@ size = Vector2(125.71432, 62.7381)
 [node name="ArañaLobo" type="CharacterBody2D" unique_id=1550610712]
 scale = Vector2(2.7999992, 2.5199993)
 script = ExtResource("1_egguh")
+live = 1000
 
 [node name="Cuerpo" type="Node2D" parent="." unique_id=602567093]
 

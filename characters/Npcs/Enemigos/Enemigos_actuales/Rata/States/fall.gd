@@ -12,7 +12,7 @@ func on_physics_process(delta: float) -> void:
 		var difference = enemy.playerUbi.global_position.x - enemy.global_position.x
 
 		if abs(difference) > 5:
-			controlled_node.direction = sign(-difference)
+			controlled_node.direction = sign(difference)
 			controlled_node.sprite_2d.scale.x=controlled_node.direction*abs(controlled_node.sprite_2d.scale.x)
 
 		

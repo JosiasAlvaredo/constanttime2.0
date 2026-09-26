@@ -34,10 +34,10 @@ func spawn_enemy() -> void:
 		print("ERROR: La escena no tiene un Node2D como nodo raíz")
 		return
 	
+	
 
-
-	enemy.position =global_position
-	print(global_position)
-	owner.add_child(enemy)
+	enemy.position =Vector2.ZERO
+	enemy.z_index=1000
+	add_child(enemy)
 	
 	spawned_enemies.append(enemy)

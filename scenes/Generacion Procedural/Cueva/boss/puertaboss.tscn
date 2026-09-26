@@ -48,7 +48,7 @@ offset_bottom = 224.0
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_jijyp")
-boss_scene_path = "uid://c40x4irhyvt5k"
+boss_scene_path = "uid://cuvu2bd3apux5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Teleport" unique_id=1522597847]
 position = Vector2(2, 176.5)

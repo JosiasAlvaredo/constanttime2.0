@@ -1,12 +1,11 @@
 [gd_scene format=4 uid="uid://84svjuaeha70"]
 
-[ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Alcantarilla/start/start_room_01.gd" id="1_nhs0j"]
+[ext_resource type="Script" uid="uid://vswpqrm8yy6m" path="res://scenes/Generacion Procedural/Mazmorra/start/start_room_01.gd" id="1_nhs0j"]
 [ext_resource type="PackedScene" uid="uid://vfw1w3gfre2t" path="res://objets/Map/tiles/tile_sewer.tscn" id="2_kuocb"]
 [ext_resource type="PackedScene" uid="uid://dbahbix74qof1" path="res://characters/player/player.tscn" id="2_xsciu"]
 [ext_resource type="PackedScene" uid="uid://6d1qmnjmmsa4" path="res://interface/User_interfece/User_Interface.tscn" id="3_he2ru"]
 [ext_resource type="PackedScene" uid="uid://bhqrajh4ryanm" path="res://interface/pausa/pausa.tscn" id="4_l4nw3"]
-[ext_resource type="PackedScene" uid="uid://b8aix8qs6054f" path="res://objets/body_parts/goblin_legs.tscn" id="6_j8q3y"]
-[ext_resource type="PackedScene" uid="uid://c6hjwjmpk4ofw" path="res://objets/body_parts/bird_wings.tscn" id="7_msfxj"]
+[ext_resource type="PackedScene" uid="uid://d0lb8vnf1ftg2" path="res://objets/body_parts/frog_legs.tscn" id="6_j8q3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8jrh"]
 size = Vector2(833, 133.33334)
@@ -48,7 +47,7 @@ shape = SubResource("RectangleShape2D_e8jrh")
 position = Vector2(-59, 193)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1658636559]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(0.155, 0.155)
 
 [node name="User_Interface" parent="." unique_id=192385077 instance=ExtResource("3_he2ru")]
 
@@ -69,10 +68,7 @@ position = Vector2(-48.874996, 181.5)
 scale = Vector2(1.8476559, 1.609375)
 texture = SubResource("GradientTexture2D_j8q3y")
 
-[node name="bird_wings" parent="." unique_id=926426869 instance=ExtResource("6_j8q3y")]
-position = Vector2(-11, 196)
-
-[node name="bird_wings2" parent="." unique_id=593305925 instance=ExtResource("7_msfxj")]
-position = Vector2(-20, 163)
+[node name="frog_legs" parent="." unique_id=926426869 instance=ExtResource("6_j8q3y")]
+position = Vector2(-48, 193)
 
 [connection signal="body_entered" from="STOP" to="." method="_on_stop_body_entered"]
